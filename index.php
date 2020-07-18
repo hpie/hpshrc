@@ -1,645 +1,338 @@
-<!DOCTYPE html>
-<html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <title>HPSHRC | Himachal Pradesh State Human Rights Commission</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
-
-        <!-- Bootsrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-        <!-- Font awesome -->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-        <!-- Owl carousel -->
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">
-
-        <!-- Template main Css -->
-        <link rel="stylesheet" href="assets/css/style.css">
-        
-        <!-- Modernizr -->
-        <script src="assets/js/modernizr-2.6.2.min.js"></script>
-
-
-    </head>
-
-    <body>
-
-
-    <header class="main-header">
-        
-    
-        <nav class="navbar navbar-static-top">
-
-            <div class="navbar-top">
-
-              <div class="container">
-                  <div class="row">
-
-                    <div class="col-sm-6 col-xs-12">
-
-                        <ul class="list-unstyled list-inline header-contact">
-                            <li> <i class="fa fa-phone"></i> <a href="tel:">+91 177 111 1111 </a> </li>
-                             <li> <i class="fa fa-envelope"></i> <a href="mailto:info@hpshrc.hp.gov.in">info(at)hpshrc.hp.gov.in</a> </li>
-                       </ul> <!-- /.header-contact  -->
-                      
-                    </div>
-
-                    <div class="col-sm-6 col-xs-12 text-right">
-
-                        <ul class="list-unstyled list-inline header-social">
-
-                            <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-twitter"></i>  </a> </li>
-                            <li> <a href="#"> <i class="fa fa-google"></i>  </a> </li>
-                            <li> <a href="#"> <i class="fa fa-youtube"></i>  </a> </li>
-                            <li> <a href="#"> <i class="fa fa fa-pinterest-p"></i>  </a> </li>
-                       </ul> <!-- /.header-social  -->
-                      
-                    </div>
-
-
-                  </div>
-              </div>
-
-            </div>
-
-            <div class="navbar-main">
-              
-              <div class="container">
-
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-
-                  </button>
-                  
-                  <a class="navbar-brand" href="index.php"><img src="assets/images/hpshrc-logo-1.png" alt=""></a>
-                  
-                </div>
-
-                <div id="navbar" class="navbar-collapse collapse pull-right">
-
-                  <ul class="nav navbar-nav">
-
-                    <li><a class="is-active" href="index.php">HOME</a></li>
-                    <li><a href="about.php">ABOUT</a></li>
-                    <li class="has-child"><a href="#">CAUSES</a>
-
-                       <ul class="submenu">
-                         <li class="submenu-item"><a href="download.php">Downloads</a></li>
-                         <li class="submenu-item"><a href="budget.php">Budget and Finance</a></li>
-                      </ul>
-
-                    </li>
-                    <li><a href="gallery.php">GALLERY</a></li>
-                    <li><a href="contact.php">CONTACT</a></li>
-
-                  </ul>
-
-                </div> <!-- /#navbar -->
-
-              </div> <!-- /.container -->
-              
-            </div> <!-- /.navbar-main -->
-
-
-        </nav> 
-
-    </header> <!-- /. main-header -->
-
-
-
-
-    <!-- Carousel
-    ================================================== -->
-    <div id="homeCarousel" class="carousel slide carousel-home" data-ride="carousel">
-
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#homeCarousel" data-slide-to="1"></li>
-            <li data-target="#homeCarousel" data-slide-to="2"></li>
-          </ol>
-
-          <div class="carousel-inner" role="listbox">
-
-            <div class="item active">
-
-              <img src="assets/images/slider/hpshrc-home-slider-3.jpg" alt="">
-
-              <div class="container">
-
-                <div class="carousel-caption">
-
-                  <h2 class="carousel-title bounceInDown animated slow">Himachal Pradesh Human Rights Commission , Pines Grove Building Shimla 171002</h2>
-                  <h4 class="carousel-subtitle bounceInUp animated slow ">HPSHRC</h4>
-                  <!--<a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated slow" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>-->
-
-                </div> <!-- /.carousel-caption -->
-
-              </div>
-
-            </div> <!-- /.item -->
-
-
-            <div class="item ">
-
-              <img src="assets/images/slider/hpshrc-home-slider-2.jpg" alt="">
-
-              <div class="container">
-
-                <div class="carousel-caption">
-
-                  <h2 class="carousel-title bounceInDown animated slow">In Accordance with the provisions of the section-21 of the protection of human rights act,1993</h2>
-                  <h4 class="carousel-subtitle bounceInUp animated slow">HPSHRC</h4>
-                  <!--<a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>-->
-
-                </div> <!-- /.carousel-caption -->
-
-              </div>
-
-            </div> <!-- /.item -->
-
-
-
-
-            <div class="item ">
-
-              <img src="assets/images/slider/hpshrc-home-slider-1.jpg" alt="">
-
-              <div class="container">
-
-                <div class="carousel-caption">
-
-                  <h2 class="carousel-title bounceInDown animated slow" >To Ensure better protection of Human Rights in accordance with the provision of the human rights Act. 1993  and for matters concerning therewith or incidental thereto </h2>
-                  <h4 class="carousel-subtitle bounceInUp animated slow">HPSHRC</h4>
-                  <!--<a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated slow" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>-->
-
-                </div> <!-- /.carousel-caption -->
-
-              </div>
-
-            </div> <!-- /.item -->
-
-          </div>
-
-          <a class="left carousel-control" href="#homeCarousel" role="button" data-slide="prev">
-            <span class="fa fa-angle-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-
-          <a class="right carousel-control" href="#homeCarousel" role="button" data-slide="next">
-            <span class="fa fa-angle-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-
-    </div><!-- /.carousel -->
-
-    <div class="section-home about-us fadeIn animated">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-md-3 col-sm-6">
+<?php
+$lifetime=1500;
+session_set_cookie_params($lifetime);
+ini_set( 'session.cookie_httponly', 1 );
+//session_start();
+setcookie(session_name(),session_id(),time()+$lifetime,'/',null,null,TRUE);
+header("X-XSS-Protection: 1; mode=block");
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: deny');
+header('X-Powered-By:');
+
+
+// Base URL with directory support
+$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
+$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
+$base_url.= dirname($_SERVER['SCRIPT_NAME']);
+define('BASE_URL', $base_url);
+define('APPNAME', 'HPSHRC');
+define('UPLOAD_FOLDER', BASE_URL.'/uploads/');
+define('IMG_DIR','uploads/');
+define('FRONT_ASSETS_FOLDER', BASE_URL.'/assets/front/');
+define('ADMIN_ASSETS_FOLDER', BASE_URL.'/assets/admin/');
                 
-                  <div class="about-us-col">
-
-                        <div class="col-icon-wrapper">
-                          <img src="assets/images/icons/our-mission-icon.png" alt="">
-                        </div>
-                        <h3 class="col-title">our mission</h3>
-                        <div class="col-details">
-
-                          <p>
-							To Ensure better protection of Human Rights in accordance with the provision of the human rights Act. 1993  and for matters concerning therewith or incidental thereto 
-						  </p>
-                          
-                        </div>
-                        <a href="#" class="btn btn-primary"> Read more </a>
-                    
-                  </div>
-                  
-                </div>
-
-
-                <div class="col-md-3 col-sm-6">
-                
-                  <div class="about-us-col">
-
-                        <div class="col-icon-wrapper">
-                          <img src="assets/images/icons/our-functions-3-icon.png" alt="">
-                        </div>
-                        <h3 class="col-title">Our Functions</h3>
-                        <div class="col-details">
-
-                          <p>
-							All regulations and instruction received from the NHRC and state Government from the time to time.
-							Updated manuals received from the state Government from time to time 
-						  </p>
-                          
-                        </div>
-                        <a href="#" class="btn btn-primary"> Read more </a>
-                    
-                  </div>
-                  
-                </div>
-
-
-                <div class="col-md-3 col-sm-6">
-                
-                  <div class="about-us-col">
-
-                        <div class="col-icon-wrapper">
-                          <img src="assets/images/icons/help-icon.png" alt="">
-                        </div>
-                        <h3 class="col-title">Help & support</h3>
-                        <div class="col-details">
-
-                          <p>
-							The Commission in its discretion, accept telegraphic, telephonic and FAX complaints if conveyed through reliable and verifiable sources. 
-							<br /> <br /> 
-						  </p>
-                          
-                        </div>
-                        <a href="#" class="btn btn-primary"> Read more </a>
-                    
-                  </div>
-                  
-                </div>
-
-
-                <div class="col-md-3 col-sm-6">
-                
-                  <div class="about-us-col">
-
-                        <div class="col-icon-wrapper">
-                          <img src="assets/images/icons/programs-icon.png" alt="">
-                        </div>
-                        <h3 class="col-title">our programs</h3>
-                        <div class="col-details">
-
-                          <p>
-							Working for better Protection of human rights and for matters connected therewith or incidental thereto
-							<br /> <br />  <br /> 
-						  </p>
-                          
-                        </div>
-                        <a href="#" class="btn btn-primary"> Read more </a>
-                    
-                  </div>
-                  
-                </div>
-                
-
-                
-            </div>
-
-        </div>
-      
-    </div> <!-- /.about-us -->
-
-<!--
-    <div class="section-home home-reasons">
-
-        <div class="container">
-
-            <div class="row">
-                
-                <div class="col-md-6">
-
-                    <div class="reasons-col animate-onscroll fadeIn">
-
-                        <img src="assets/images/reasons/we-fight-togother.jpg" alt="">
-
-                        <div class="reasons-titles">
-
-                            <h3 class="reasons-title">We fight together</h3>
-                            <h5 class="reason-subtitle">We are humans</h5>
-                            
-                        </div>
-
-                        <div class="on-hover hidden-xs">
-                            
-                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur praesentium, itaque facilis nesciunt ab omnis cumque similique ipsa veritatis perspiciatis, harum ad at nihil molestias, dignissimos sint consequuntur. Officia, fuga.</p>
-
-
-                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur praesentium, itaque facilis nesciunt ab omnis cumque similique ipsa veritatis perspiciatis, harum ad at nihil molestias, dignissimos sint consequuntur. Officia, fuga.</p>
-
-                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur praesentium, itaque facilis nesciunt ab omnis cumque similique ipsa veritatis perspiciatis, harum ad at nihil molestias, dignissimos sint consequuntur. Officia, fuga.</p>
-                                
-                        </div>
-                    </div>
-                    
-                </div>
-
-
-                <div class="col-md-6">
-
-                    <div class="reasons-col animate-onscroll fadeIn">
-
-                        <img src="assets/images/reasons/we-care-about.jpg" alt="">
-
-                        <div class="reasons-titles">
-
-                            <h3 class="reasons-title">WE care about others</h3>
-                            <h5 class="reason-subtitle">We are humans</h5>
-                            
-                        </div>
-
-                        <div class="on-hover hidden-xs">
-                            
-                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur praesentium, itaque facilis nesciunt ab omnis cumque similique ipsa veritatis perspiciatis, harum ad at nihil molestias, dignissimos sint consequuntur. Officia, fuga.</p>
-
-
-                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur praesentium, itaque facilis nesciunt ab omnis cumque similique ipsa veritatis perspiciatis, harum ad at nihil molestias, dignissimos sint consequuntur. Officia, fuga.</p>
-
-                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur praesentium, itaque facilis nesciunt ab omnis cumque similique ipsa veritatis perspiciatis, harum ad at nihil molestias, dignissimos sint consequuntur. Officia, fuga.</p>
-                                
-                        </div>
-
-
-                    </div>
-                    
-                </div>
-
-
-            </div>
-          
-  
-
-        </div>
-      
-
-    </div> <!-- /.home-reasons -->
-    
-
-
-    <footer class="main-footer">
-
-        <div class="footer-top">
-            
-        </div>
-
-
-        <div class="footer-main">
-            <div class="container">
-                
-                <div class="row">
-                    <div class="col-md-4">
-
-                        <div class="footer-col">
-
-                            <h4 class="footer-title">About us <span class="title-under"></span></h4>
-
-                            <div class="footer-content">
-
-                                <p>
-                                    <strong>HPSHRC</strong> - Himachal Pradesh Human Rights Commission , Pines Grove Building Shimla 171002
-                                </p> 
-
-                                <p>
-                                    In Accordance with the provisions of the section-21 of the protection of human rights act,1993
-                                </p>
-
-                            </div>
-                            
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-4">
-
-                        <div class="footer-col">
-
-                            <h4 class="footer-title">LAST TWEETS <span class="title-under"></span></h4>
-
-                            <div class="footer-content">
-                                <ul class="tweets list-unstyled">
-                                    <li class="tweet"> 
-
-                                        ------------------------------------
-
-                                    </li>
-
-                                    <li class="tweet"> 
-
-                                        ------------------------------------
-
-                                    </li>
-
-                                    <li class="tweet"> 
-
-                                        ------------------------------------
-
-                                    </li>
-
-                                </ul>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-md-4">
-
-                        <div class="footer-col">
-
-                            <h4 class="footer-title">Contact us <span class="title-under"></span></h4>
-
-                            <div class="footer-content">
-
-                                <div class="footer-form">
-                                    
-                                    <div class="footer-form" >
-                                    
-                                    <form action="php/mail.php" class="ajax-form">
-
-                                        <div class="form-group">
-                                            <input type="text" name="name" class="form-control" placeholder="Name" required>
-                                        </div>
-
-                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-control" placeholder="E-mail" required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <textarea name="message" class="form-control" placeholder="Message" required></textarea>
-                                        </div>
-
-                                        <div class="form-group alerts">
-                        
-                                            <div class="alert alert-success" role="alert">
-                                              
-                                            </div>
-
-                                            <div class="alert alert-danger" role="alert">
-                                              
-                                            </div>
-                                            
-                                        </div>
-
-                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-submit pull-right">Send message</button>
-                                        </div>
-                                        
-                                    </form>
-
-                                </div>
-
-                                </div>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    <div class="clearfix"></div>
-
-
-
-                </div>
-                
-                
-            </div>
-
-            
-        </div>
-
-        <div class="footer-bottom">
-
-            <div class="container text-right">
-                HPSHRC @ copyrights 2020 |  Designed and Maintained by - <a href="https://hpie.in" target="_blank">H.P.I.E</a>
-            </div>
-        </div>
-        
-    </footer> <!-- main-footer -->
-
-
-
-
-    <!-- Donate Modal -->
-    <div class="modal fade" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
-
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
-          </div>
-          <div class="modal-body">
-
-                <form class="form-donation">
-
-                        <h3 class="title-style-1 text-center">Thank you for your donation <span class="title-under"></span>  </h3>
-
-                        <div class="row">
-
-                            <div class="form-group col-md-12 ">
-                                <input type="text" class="form-control" id="amount" placeholder="AMOUNT(€)">
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="firstName" placeholder="First name*">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="lastName" placeholder="Last name*">
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="email" placeholder="Email*">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="phone" placeholder="Phone">
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="form-group col-md-12">
-                                <input type="text" class="form-control" name="address" placeholder="Address">
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-
-                            <div class="form-group col-md-12">
-                                <textarea cols="30" rows="4" class="form-control" name="note" placeholder="Additional note"></textarea>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="form-group col-md-12">
-                                <button type="submit" class="btn btn-primary pull-right" name="donateNow" >DONATE NOW</button>
-                            </div>
-
-                        </div>
-
-
-
-                       
-                    
-                </form>
-            
-          </div>
-        </div>
-      </div>
-
-    </div> <!-- /.modal -->
-
-
-
-
-
-    <!--  Scripts
-    ================================================== -->
-
-    <!-- jQuery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')</script>
-
-    <!-- Bootsrap javascript file -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    
-    <!-- owl carouseljavascript file -->
-    <script src="assets/js/owl.carousel.min.js"></script>
-
-    <!-- Template main javascript -->
-    <script src="assets/js/main.js"></script>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-
-    </body>
-</html>
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ */
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+
+/*
+ *---------------------------------------------------------------
+ * ERROR REPORTING
+ *---------------------------------------------------------------
+ *
+ * Different environments will require different levels of error reporting.
+ * By default development will show errors but testing and live will hide them.
+ */
+switch (ENVIRONMENT)
+{
+	case 'development':
+		error_reporting(-1);
+		ini_set('display_errors', 1);
+	break;
+
+	case 'testing':
+	case 'production':
+		ini_set('display_errors', 0);
+		if (version_compare(PHP_VERSION, '5.3', '>='))
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+		}
+		else
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+		}
+	break;
+
+	default:
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'The application environment is not set correctly.';
+		exit(1); // EXIT_ERROR
+}
+
+/*
+ *---------------------------------------------------------------
+ * SYSTEM DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "system" directory.
+ * Set the path if it is not in the same directory as this file.
+ */
+	$system_path = 'system';
+
+/*
+ *---------------------------------------------------------------
+ * APPLICATION DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * If you want this front controller to use a different "application"
+ * directory than the default one you can set its name here. The directory
+ * can also be renamed or relocated anywhere on your server. If you do,
+ * use an absolute (full) server path.
+ * For more info please see the user guide:
+ *
+ * https://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ */
+	$application_folder = 'application';
+
+/*
+ *---------------------------------------------------------------
+ * VIEW DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * If you want to move the view directory out of the application
+ * directory, set the path to it here. The directory can be renamed
+ * and relocated anywhere on your server. If blank, it will default
+ * to the standard location inside your application directory.
+ * If you do move this, use an absolute (full) server path.
+ *
+ * NO TRAILING SLASH!
+ */
+	$view_folder = '';
+
+
+/*
+ * --------------------------------------------------------------------
+ * DEFAULT CONTROLLER
+ * --------------------------------------------------------------------
+ *
+ * Normally you will set your default controller in the routes.php file.
+ * You can, however, force a custom routing by hard-coding a
+ * specific controller class/function here. For most applications, you
+ * WILL NOT set your routing here, but it's an option for those
+ * special instances where you might want to override the standard
+ * routing in a specific front controller that shares a common CI installation.
+ *
+ * IMPORTANT: If you set the routing here, NO OTHER controller will be
+ * callable. In essence, this preference limits your application to ONE
+ * specific controller. Leave the function name blank if you need
+ * to call functions dynamically via the URI.
+ *
+ * Un-comment the $routing array below to use this feature
+ */
+	// The directory name, relative to the "controllers" directory.  Leave blank
+	// if your controller is not in a sub-directory within the "controllers" one
+	// $routing['directory'] = '';
+
+	// The controller class file name.  Example:  mycontroller
+	// $routing['controller'] = '';
+
+	// The controller function you wish to be called.
+	// $routing['function']	= '';
+
+
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
+ *
+ * The $assign_to_config array below will be passed dynamically to the
+ * config class when initialized. This allows you to set custom config
+ * items or override any default config values found in the config.php file.
+ * This can be handy as it permits you to share one application between
+ * multiple front controller files, with each file containing different
+ * config values.
+ *
+ * Un-comment the $assign_to_config array below to use this feature
+ */
+	// $assign_to_config['name_of_config_item'] = 'value of config item';
+
+
+
+// --------------------------------------------------------------------
+// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
+// --------------------------------------------------------------------
+
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
+ */
+
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
+
+	if (($_temp = realpath($system_path)) !== FALSE)
+	{
+		$system_path = $_temp.DIRECTORY_SEPARATOR;
+	}
+	else
+	{
+		// Ensure there's a trailing slash
+		$system_path = strtr(
+			rtrim($system_path, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		).DIRECTORY_SEPARATOR;
+	}
+
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		exit(3); // EXIT_CONFIG
+	}
+
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
+ */
+	// The name of THIS file
+	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+	// Path to the system directory
+	define('BASEPATH', $system_path);
+
+	// Path to the front controller (this file) directory
+	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+
+	// Name of the "system" directory
+	define('SYSDIR', basename(BASEPATH));
+
+	// The path to the "application" directory
+	if (is_dir($application_folder))
+	{
+		if (($_temp = realpath($application_folder)) !== FALSE)
+		{
+			$application_folder = $_temp;
+		}
+		else
+		{
+			$application_folder = strtr(
+				rtrim($application_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(BASEPATH.$application_folder.DIRECTORY_SEPARATOR))
+	{
+		$application_folder = BASEPATH.strtr(
+			trim($application_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
+
+	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
+        define('APP_INCLUDE_Library', $application_folder.DIRECTORY_SEPARATOR.'third_party'.DIRECTORY_SEPARATOR);
+
+	// The path to the "views" directory
+	if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
+	{
+		$view_folder = APPPATH.'views';
+	}
+	elseif (is_dir($view_folder))
+	{
+		if (($_temp = realpath($view_folder)) !== FALSE)
+		{
+			$view_folder = $_temp;
+		}
+		else
+		{
+			$view_folder = strtr(
+				rtrim($view_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(APPPATH.$view_folder.DIRECTORY_SEPARATOR))
+	{
+		$view_folder = APPPATH.strtr(
+			trim($view_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
+
+	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ */
+require_once BASEPATH.'core/CodeIgniter.php';

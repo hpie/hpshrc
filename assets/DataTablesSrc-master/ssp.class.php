@@ -223,10 +223,22 @@ class SSP {
 		$bindings = array();
 		$db = self::db( $conn );
                 
+                $columns_order=$columns;
 		// Build the SQL query string from the request
+                if (($request['order'][0]['column'])>0) {
+                    $columnsArray = array();                   
+                    foreach ($columns as $crow) {                       
+                        if (substr_count($crow['db'], " as ")) {
+                            $crow['db'] = explode(" as ", $crow['db'])[0];
+                        }
+                        array_push($columnsArray, $crow);
+                    }
+                    $columns_order = $columnsArray;
+                }                
                 
 		$limit = self::limit( $request, $columns );                                               
-		$order = self::order( $request, $columns );
+		$order = self::order( $request, $columns_order );                               
+                
 //		$where = self::filter( $request, $columns, $bindings );
                 $where="";
                 if ($where_custom) {
@@ -235,12 +247,8 @@ class SSP {
                     } else {
                         $where .= 'WHERE ' . $where_custom;
                     }
-                }                
-//                echo "SELECT ".implode(", ", self::pluck($columns, 'db'))."
-//			 FROM $table
-//			 $where
-//			 $order
-//			 $limit";die;
+                } 
+                
                 $data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
 			FROM $table
@@ -249,7 +257,7 @@ class SSP {
                         INNER JOIN hpshrc_categories hc1
                         ON huf.upload_file_sub_type=hc1.category_code
 			$where
-			$order
+			$order 
 			$limit"
 		); 		
 		// Data set length after filtering

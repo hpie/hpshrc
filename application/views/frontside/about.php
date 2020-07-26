@@ -184,16 +184,16 @@
 
                         <div class="thumnail">
 
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/team/male-mamber.jpg" alt="" class="cause-img">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/team/psrana.jpg" alt="P.S. Rana" class="cause-img">
 
                         </div>
 
 
 
-                        <h4 class="member-name"><a href="#">To Be Provided</a></h4>
+                        <h4 class="member-name"><a href="#">Justice P. S. Rana (R)</a></h4>
 
                         <div class="member-position">
-                            Chairman
+                            Chairperson H.P. Human Rights Commission (M.A., LL.B)
                         </div>
 
                         <div class="btn-holder">

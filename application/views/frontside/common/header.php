@@ -8,12 +8,15 @@
         <meta http-equiv="X-Content-Type-Options" content="nosniff">   
         <meta http-equiv="Content-Security-Policy" content="script-src 'strict-dynamic' 'nonce-S51U26wMQz' 'unsafe-inline' http: https: https://www.gstatic.com https://csp.withgoogle.com https://www.google.com; object-src 'none'; base-uri 'none';">
         <!-- Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+       <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>-->
 
         <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css?v=1.0" rel="stylesheet" type="text/css">
         <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css?v=1.0" rel="stylesheet" type="text/css">
-        
+
+        <!-- favico -->
+        <link rel='icon' href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/favico/favicon.ico" type="image/x-icon"/ >
+
         <!-- Bootsrap -->
         <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/bootstrap.min.css" type="text/css">
         <!-- Font awesome -->
@@ -51,7 +54,7 @@
                             <div class="col-sm-6 col-xs-12">
 
                                 <ul class="list-unstyled list-inline header-contact">
-                                    <li> <i class="fa fa-phone"></i> <a href="tel:">+91 177 111 1111 </a> </li>
+                                    <li> <i class="fa fa-phone"></i> <a href="tel:">+91 177 262 4908 </a> </li>
                                     <li> <i class="fa fa-envelope"></i> <a href="mailto:info@hpshrc.hp.gov.in">info(at)hpshrc.hp.gov.in</a> </li>
                                 </ul> <!-- /.header-contact  -->
 

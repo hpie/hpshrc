@@ -10,16 +10,16 @@ class Causes_m extends CI_Model {
         return $this->db->insert_id();        
     }
     public function get_file_type($category_ref_type) {       
-        $ressult = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_ref_type='$category_ref_type'");
+        $ressult = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_status='A' AND category_ref_type='$category_ref_type'");
         return $ressult->result_array();      
     }
     public function load_sub_type($params){
         $subtype_id = $params['category_code'];
-        $res = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
+        $res = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE  category_status='A' AND category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
         return $res->result_array();
     }
     public function get_sub_type($subtype_id){        
-        $tehsil = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
+        $tehsil = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE  category_status='A' AND category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
         return $tehsil->result_array();
     }
     public function get_single_file($upload_file_id){        

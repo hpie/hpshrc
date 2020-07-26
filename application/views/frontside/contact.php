@@ -72,8 +72,8 @@
                 <div class="contact-items">
 
                     <ul class="list-unstyled contact-items-list">
-                        <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-map-marker"></i></span> To be provided</li>
-                        <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-phone"></i></span> +91 177 111 1111</li>
+                        <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-map-marker"></i></span> Pines Grove Building Shimla 171002</li>
+                        <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-phone"></i></span> +91 177 262 4908</li>
 
                         <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-envelope"></i></span> contact(at)hpshrc.hp.gov.in</li>
                     </ul>

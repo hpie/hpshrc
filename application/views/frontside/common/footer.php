@@ -229,8 +229,8 @@
     ================================================== -->
 
     <!-- jQuery -->
-    <script nonce='S51U26wMQz' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/jquery-1.11.1.min.js"></script>
+    <!--<script nonce='S51U26wMQz' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+    <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/jquery-3.2.1.min.js"></script>
     <!--<script>window.jQuery || document.write('')</script>-->
  
     <!-- Bootsrap javascript file -->

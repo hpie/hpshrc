@@ -1,3 +1,6 @@
+<style>
+    
+</style>
 <div class="page-heading text-center">
 
     <div class="container zoomIn animated">

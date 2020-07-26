@@ -28,6 +28,11 @@
         <!-- Modernizr -->
         <script nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/modernizr-2.6.2.min.js"></script>
      
+        <style>
+            .download{
+                color:blue !important;
+            }
+        </style>
     </head>
 
     <body>

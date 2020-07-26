@@ -300,7 +300,8 @@ class SSP {
                             $class = 'btn_approve_reject btn btn-danger btn-xs';
                             $text  = 'Removed';
                             $isactive = 0;
-                        }                
+                        }
+                        $row['upload_file_original_name']="<a target='_blank' class='download' href=".BASE_URL.'/uploads/doc/'.$row['upload_file_location']."><u>".$row['upload_file_original_name']."</u></a>"; 
                         $row['upload_file_status'] = "<button type='button' data-id='".$upload_file_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
                         array_push($resData, $row);
                     }  
@@ -386,7 +387,7 @@ class SSP {
                     foreach ($result as $row){
                         $upload_file_id = $row['upload_file_id'];
                         $row['index']=''; 
-                        $row['download']="<a class='download' href=".FILE_DIR.$row['upload_file_location']." download><u>download</u></a>"; 
+                        $row['download']="<a target='_blank' class='download' href=".BASE_URL.'/uploads/doc/'.$row['upload_file_location']." download><u>download</u></a>"; 
                         array_push($resData, $row);
                     }  
                 }

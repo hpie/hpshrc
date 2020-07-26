@@ -35,6 +35,7 @@ $columns = array(
     array('db' => 'huf.upload_file_type', 'dt' =>'upload_file_type'),
     array('db' => 'huf.upload_file_sub_type', 'dt' =>'upload_file_sub_type'),
     array('db' => 'huf.upload_file_status', 'dt' =>'upload_file_status'),
+      array('db' => 'huf.upload_file_location', 'dt' =>'upload_file_location'),
     array('db' => 'hc.category_title as category_title_main', 'dt' =>'category_title_main'),
     array('db' => 'hc1.category_title as category_title_sub', 'dt' =>'category_title_sub')
 );

@@ -54,6 +54,11 @@
             color: #0c97fe !important;
         }
     </style>
+    <style>
+            .download{
+                color:blue !important;
+            }
+        </style>
   </head>
   <body class="nav-md">
     <div class="container body">

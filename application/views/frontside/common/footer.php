@@ -299,7 +299,7 @@
                     },
                     "columns": [
                         {"data": "index"},
-                        {"data": "upload_file_id"},
+                        {"data": "upload_file_ref_no"},
                         {"data": "upload_file_title"},
                         {"data": "category_title_sub"},                        
                         {"data": "upload_file_desc"},

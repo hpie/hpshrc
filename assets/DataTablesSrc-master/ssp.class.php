@@ -386,7 +386,7 @@ class SSP {
                     foreach ($result as $row){
                         $upload_file_id = $row['upload_file_id'];
                         $row['index']=''; 
-                        $row['download']="<a class='download' href=".FILE_DIR.$row['upload_file_location']." download><u>download</u></a>"; 
+                        $row['download']="<a class='download' href=".FILE_DIR.$row['upload_file_location']." download><u>Click here to download </u></a>";
                         array_push($resData, $row);
                     }  
                 }

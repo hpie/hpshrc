@@ -34,16 +34,16 @@ class Causes_c extends CI_Controller {
 //        visitLog($method,"Home");
     }
 
-    public function add_causes() {
-        if (isset($_POST['uploadd_file_name'])) {
-            if ($_REQUEST['uploadd_file_name'] && $_REQUEST['uploadd_file_name'] != '') {
-                $_REQUEST['user_id'] = $this->userId;
-                if (($_FILES['uploadd_file_original_name']['name']) != '') {
-                    $fileRes = singleFileUpload('uploadd_file_original_name');
-
+    public function add_causes() {         
+        if (isset($_POST['upload_file_title'])) {           
+            if ($_REQUEST['upload_file_title'] && $_REQUEST['upload_file_title'] != '') {                
+                $_REQUEST['admin_user_id'] = $this->userId;
+                if (($_FILES['upload_file_original_name']['name']) != '') {
+                    $fileRes = singleFileUpload('upload_file_original_name');
                     if (!empty($fileRes[2]['file_name'])) {
-                        $_REQUEST['uploadd_file_name'] = $fileRes[2]['file_name'];
-                        $_REQUEST['uploadd_file_original_name'] = $fileRes[2]['original_file_name'];
+                        $_REQUEST['upload_file_location'] = $fileRes[2]['file_name'];
+                        $_REQUEST['upload_file_original_name'] = $fileRes[2]['original_file_name'];
+        
                         $res = $this->Causes_m->add_causes($_REQUEST);
                         if ($res) {
                             //Success message : Complaint has been added
@@ -60,13 +60,60 @@ class Causes_c extends CI_Controller {
                 }
             }
         }
+        $data['file_type']=$this->Causes_m->get_file_type('MAIN_TYPE');
         $data['title'] = ADMIN_ADD_CAUSES_TITLE;
         $this->load->admin_view('adminside/causes/add', $data);
+    }
+    
+    public function edit_causes($upload_file_id) {         
+        if (isset($_POST['upload_file_title'])) {           
+            if ($_REQUEST['upload_file_title'] && $_REQUEST['upload_file_title'] != '') {                
+                $_REQUEST['admin_user_id'] = $this->userId;            
+                $res = $this->Causes_m->edit_causes($_REQUEST,$upload_file_id);                
+                if ($res) {                    
+                    //Success message : File has been added
+                    successOrErrorMessage("File has been updated", 'success');
+                    redirect(ADMIN_FILE_LIST_LINK);
+                } else {
+                    //Error message
+                    successOrErrorMessage("something happened wrong", 'error');
+                }
+            }
+        }
+        $data['single_file']=$this->Causes_m->get_single_file($upload_file_id);
+        $data['file_type']=$this->Causes_m->get_file_type('MAIN_TYPE');
+        $data['file_sub_type']=$this->Causes_m->get_sub_type($data['single_file']['upload_file_type']); 
+        $data['upload_file_id']=$upload_file_id;
+        $data['title'] = ADMIN_EDIT_CAUSES_TITLE;
+        $this->load->admin_view('adminside/causes/edit', $data);
     }
 
     public function file_list() {
         $data['title'] = ADMIN_FILE_LIST_TITLE;
         $this->load->admin_view('adminside/causes/file_list', $data);
     }
-
+    public function load_sub_type(){
+        if($_REQUEST['category_code']){            
+            $sub_type = $this->Causes_m->load_sub_type($_POST);           
+            $result=array();
+            $result['sub_type']=$sub_type;                 
+            echo json_encode($result);
+        }
+    }
+    
+   public function active_causes(){
+        if(isset($_REQUEST['upload_file_id'])){
+            $res = $this->Causes_m->active_causes($_REQUEST);
+            if($res){      
+                $data = array(                    
+                    'suceess' => true
+                );
+            }else{
+                $data = array(                    
+                    'suceess' => false
+                );
+            }
+            echo json_encode($data);
+        }
+    }
 }

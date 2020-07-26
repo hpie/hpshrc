@@ -8,11 +8,11 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="#"  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo UPLOAD_FOLDER ?>original/default.png" alt=""><?php echo $_SESSION['admin_user_firstname']; ?>
+                    <img src="<?php echo UPLOAD_FOLDER ?>original/default.png" alt=""><?php echo $_SESSION['user_firstname']; ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                      <li><a href="<?php echo ADMIN_PROFILE_LINK; ?>">Profile</a></li>                                         
+                      <li><a href="<?php echo ADMIN_UPDATE_PROFILE_LINK; ?>">Profile</a></li>                                         
                     <li><a href="<?PHP echo ADMIN_LOGOUT_LINK; ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>

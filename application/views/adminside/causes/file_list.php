@@ -16,18 +16,28 @@
                                 <tr>
                                     <th>Index</th>
                                     <th>No</th>
-                                    <th>Name</th>
-<!--                                    <th>Action</th>
-                                    <th>Status</th>-->
+                                    <th>Title</th>
+                                    <th>File Name</th>
+                                     <th>Description</th>
+                                    <th>Ref No</th>
+                                    <th>Type</th>
+                                    <th>Sub Type</th>                                    
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>Index</th>
                                     <th>No</th>
-                                    <th>Name</th>
-<!--                                    <th>Action</th>
-                                    <th>Status</th>-->
+                                    <th>Title</th>
+                                    <th>File Name</th>
+                                     <th>Description</th>
+                                    <th>Ref No</th>
+                                    <th>Type</th>
+                                    <th>Sub Type</th>                                    
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                         </table>					

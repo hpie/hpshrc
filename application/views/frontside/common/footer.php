@@ -225,10 +225,6 @@
 
     </div> <!-- /.modal -->
 
-
-
-
-
     <!--  Scripts
     ================================================== -->
 
@@ -239,6 +235,9 @@
  
     <!-- Bootsrap javascript file -->
     <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/bootstrap.min.js"></script>
+    
+    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script nonce='S51U26wMQz' type="text/javascript" language="javascript" src="<?php echo BASE_URL; ?>/assets/front/js/dataTables.responsive.min.js"></script>
     
     <!-- owl carouseljavascript file -->
     <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/owl.carousel.min.js"></script>
@@ -254,6 +253,118 @@
         e.src='//www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>    
+    </script>
+
+<?php if ($title == FRONT_DOWNLOAD_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            <?php if(isset($file_type)){
+                if(!empty($file_type)){
+                    $i=0;
+                    foreach ($file_type as $ftrow){
+                        ?>
+                        fill_datatable1("example<?php echo $i; ?>","<?php echo $ftrow['category_code']; ?>");
+                        <?php
+                        $i=$i+1;
+                    }
+                }
+            } ?>
+            
+            function fill_datatable1(str,category_code)
+            {
+                $('#'+str).DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/file_list_download.php' ?>",
+                        'data': {
+                            category_code:category_code
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "upload_file_id"},
+                        {"data": "upload_file_title"},
+                        {"data": "upload_file_desc"},
+                        {"data": "download"}
+                    ]
+                });
+            }
+            
+              $(document).on('click', '.btn_approve_reject', function () {
+                var self = $(this);
+
+                var status = self.attr('data-status');
+
+                var upload_file_status = 'ACTIVE';
+
+                if (status == 1) {
+                    upload_file_status = 'REMOVED';
+                }
+
+                if (!confirm('Are you sure want to ' + upload_file_status.toLocaleLowerCase() + ' causes?'))
+                    return;
+
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'upload_file_id': self.data('id'),
+                    'upload_file_status': upload_file_status
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo ADMIN_FILES_ACTIVE_LINK ?>",
+                    data: data,
+                    success: function (res) {
+
+                        var res = $.parseJSON(res);
+                        if (res.suceess) {
+
+                            var title = 'Click to deactivate causes';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to active causes';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text = 'Inactive';
+                                isactive = 0;
+                            }
+                            
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            
+                            self.removeAttr('disabled');
+                            self.html(text);
+                        }
+                    }
+                });
+            });
+            
+        });
+
+    </script>
+<?php } ?>    
     </body>
 </html>

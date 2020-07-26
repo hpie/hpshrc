@@ -35,6 +35,7 @@ $columns = array(
     array('db' => 'huf.upload_file_type', 'dt' =>'upload_file_type'),
     array('db' => 'huf.upload_file_sub_type', 'dt' =>'upload_file_sub_type'),
     array('db' => 'huf.upload_file_status', 'dt' =>'upload_file_status'),
+     array('db' => 'huf.upload_file_location', 'dt' =>'upload_file_location'),
     array('db' => 'hc.category_title as category_title_main', 'dt' =>'category_title_main'),
     array('db' => 'hc1.category_title as category_title_sub', 'dt' =>'category_title_sub')
 );
@@ -43,12 +44,14 @@ include 'conn.php';
 $where="";
 //print_r($_REQUEST);die;
 
-//$emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
+$category_code = $_REQUEST['category_code'];
 //$uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
 //$uploaded_file_class=$_REQUEST['uploaded_file_class'];
 //$uploaded_file_subject=$_REQUEST['uploaded_file_subject'];
 //
-//$where=" uploaded_file_volroot is null AND rmsa_employee_users_id=$emp_rmsa_user_id ";
+$where=" upload_file_status='ACTIVE' AND upload_file_type='$category_code' ";
+
+
 //
 //if(!empty($uploaded_file_tag)){
 //        $where .=" AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
@@ -60,10 +63,10 @@ $where="";
 //    $where.=" AND uploaded_file_subject = '$uploaded_file_subject' ";
 //}
 //
-if(!empty($_REQUEST['search']['value'])){
-    $value=$_REQUEST['search']['value'];
-    $where.=" (hc.category_title LIKE '%$value%' OR hc1.category_title LIKE '%$value%' OR huf.upload_file_title LIKE '%$value%' OR huf.upload_file_desc LIKE '%$value%' OR huf.upload_file_original_name LIKE '%$value%' OR huf.upload_file_status LIKE '%$value%') ";
-}
+//if(!empty($_REQUEST['search']['value'])){
+//    $value=$_REQUEST['search']['value'];
+//    $where.=" AND (uploaded_file_title LIKE '%$value%' OR uploaded_file_type LIKE '%$value%' OR uploaded_file_category LIKE '%$value%' OR uploaded_file_desc LIKE '%$value%' OR uploaded_file_group LIKE '%$value%') ";
+//}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
@@ -71,7 +74,7 @@ if(!empty($_REQUEST['search']['value'])){
  */
 require('ssp.class.php');
 echo json_encode(
-       SSP::file_list($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where)
+       SSP::file_list_download($_REQUEST, $sql_details, $table, $primaryKey, $columns,$where)
 );
 
 

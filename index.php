@@ -11,15 +11,7 @@ header('X-Powered-By:');
 
 
 // Base URL with directory support
-$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
-$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
-$base_url.= dirname($_SERVER['SCRIPT_NAME']);
-define('BASE_URL', $base_url);
-define('APPNAME', 'HPSHRC');
-define('UPLOAD_FOLDER', BASE_URL.'/uploads/');
-define('IMG_DIR','uploads/');
-define('FRONT_ASSETS_FOLDER', BASE_URL.'/assets/front/');
-define('ADMIN_ASSETS_FOLDER', BASE_URL.'/assets/admin/');
+include 'common_url.php';
                 
 /**
  * CodeIgniter

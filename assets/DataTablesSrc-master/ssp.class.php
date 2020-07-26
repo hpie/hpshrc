@@ -15,23 +15,8 @@
  */
 //$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
 //$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
-$base_url= $_SERVER['SERVER_NAME'];
-$url='';
-if($base_url=='localhost'){
-    $url.='/rmsa';
-}
-define('IMG_URL',$url); 
-$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
-$r = $_SERVER['SCRIPT_NAME'];
-$subdomain = explode('/', $r);
-array_pop($subdomain);
-$urllink=$protocol.'://'.$_SERVER['HTTP_HOST'];
-if($urllink=="https://localhost" || $urllink=="http://localhost"){  
-    $urllink.='/rmsa';
-}
-define('BASE_URL', $urllink);
-$filepath="/assets/front/fileupload/server/php/files";
-define('FILE_URL', $filepath);
+
+include '../../common_url.php';
 //define('BASE_URL', $url);
 // REMOVE THIS BLOCK - used for DataTables test environment only!
 $file = $_SERVER['DOCUMENT_ROOT'].'/datatables/pdo.php';
@@ -177,14 +162,14 @@ class SSP {
 		$globalSearch = array();
 		$columnSearch = array();
 		$dtColumns = self::pluck( $columns, 'dt' );
-		if ( isset($request['search']) && $request['search']['value'] != '' ) {
+		if ( isset($request['search']) && $request['search']['value'] != '' ) {                    
 			$str = $request['search']['value'];
 			for ( $i=0, $ien=count($request['columns']) ; $i<$ien ; $i++ ) {
 				$requestColumn = $request['columns'][$i];
 				$columnIdx = array_search( $requestColumn['data'], $dtColumns );
 				$column = $columns[ $columnIdx ];
 				if ( $requestColumn['searchable'] == 'true' ) {
-					$binding = self::bind( $bindings, '%'.$str.'%', PDO::PARAM_STR );
+					$binding = self::bind( $bindings, '%'.$str.'%', PDO::PARAM_STR );                                        
 					$globalSearch[] = "".$column['db']." LIKE ".$binding;
 				}
 			}
@@ -250,7 +235,7 @@ class SSP {
                     } else {
                         $where .= 'WHERE ' . $where_custom;
                     }
-                }
+                }                
 //                echo "SELECT ".implode(", ", self::pluck($columns, 'db'))."
 //			 FROM $table
 //			 $where
@@ -258,29 +243,129 @@ class SSP {
 //			 $limit";die;
                 $data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
-			 FROM $table
-			 $where
-			 $order
-			 $limit"
+			FROM $table
+                        INNER JOIN hpshrc_categories hc
+                        ON huf.upload_file_type=hc.category_code
+                        INNER JOIN hpshrc_categories hc1
+                        ON huf.upload_file_sub_type=hc1.category_code
+			$where
+			$order
+			$limit"
 		); 		
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
 			"SELECT COUNT({$primaryKey})
-			 FROM   $table
-			 $where "
+			FROM   $table
+                        INNER JOIN hpshrc_categories hc
+                        ON huf.upload_file_type=hc.category_code
+                        INNER JOIN hpshrc_categories hc1
+                        ON huf.upload_file_sub_type=hc1.category_code
+			$where "
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			FROM   $table "
+			FROM   $table 
+                        INNER JOIN hpshrc_categories hc
+                        ON huf.upload_file_type=hc.category_code
+                        INNER JOIN hpshrc_categories hc1
+                        ON huf.upload_file_sub_type=hc1.category_code
+                        "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
                 $result=self::data_output($columns,$data);
                 $resData=array();
                 if(!empty($result)){                    
-                    foreach ($result as $row){                                                  
+                    foreach ($result as $row){ 
+//                            print_r($row);die;
+                        $upload_file_id = $row['upload_file_id'];
                         $row['index']='';
+                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-causes/$upload_file_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";                ;
+                        
+                        $title = 'Click to deactivate causes';
+                        $class = 'btn_approve_reject btn btn-success btn-xs';
+                        $text = 'Active';
+                        $isactive = 1;
+                        if($row['upload_file_status'] == 'REMOVED'){
+                            $title = 'Click to active causes';
+                            $class = 'btn_approve_reject btn btn-danger btn-xs';
+                            $text  = 'Removed';
+                            $isactive = 0;
+                        }                
+                        $row['upload_file_status'] = "<button type='button' data-id='".$upload_file_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
+                        array_push($resData, $row);
+                    }  
+                }
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+          static function file_list_download ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+		// Build the SQL query string from the request
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns );
+		$where = self::filter( $request, $columns, $bindings );   
+                                                
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                }                  
+                             
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			FROM $table
+                        INNER JOIN hpshrc_categories hc
+                        ON huf.upload_file_type=hc.category_code
+                        INNER JOIN hpshrc_categories hc1
+                        ON huf.upload_file_sub_type=hc1.category_code
+			$where
+			$order
+			$limit"
+		); 		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			FROM   $table
+                        INNER JOIN hpshrc_categories hc
+                        ON huf.upload_file_type=hc.category_code
+                        INNER JOIN hpshrc_categories hc1
+                        ON huf.upload_file_sub_type=hc1.category_code
+			$where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			FROM   $table 
+                        INNER JOIN hpshrc_categories hc
+                        ON huf.upload_file_type=hc.category_code
+                        INNER JOIN hpshrc_categories hc1
+                        ON huf.upload_file_sub_type=hc1.category_code                        
+                        "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){
+                        $upload_file_id = $row['upload_file_id'];
+                        $row['index']=''; 
+                        $row['download']="<a href=".FILE_DIR.$row['upload_file_location']." download>".$row['upload_file_original_name']."</a>"; 
                         array_push($resData, $row);
                     }  
                 }
@@ -475,7 +560,7 @@ class SSP {
 			'key' => $key,
 			'val' => $val,
 			'type' => $type
-		);
+		);               
 		return $key;
 	}
 	/**

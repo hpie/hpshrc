@@ -25,8 +25,8 @@
     <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-scroller-bs/css/scroller.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">    
     <!--<link href="<?php //echo FRONT_ASSETS_FOLDER; ?>/assets/front/css/dataTables.responsive.css?v=1.0" rel="stylesheet" type="text/css">-->
     
-    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.min.js?v=1.0"></script>
-    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/bootstrap.min.js?v=1.0"></script>
+<!--    <script nonce='S51U26wMQz' src="<?php //echo BASE_URL; ?>/assets/front/js/jquery.min.js?v=1.0"></script>
+    <script nonce='S51U26wMQz' src="<?php //echo BASE_URL; ?>/assets/front/js/bootstrap.min.js?v=1.0"></script>-->
     <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css?v=1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css?v=1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo BASE_URL ?>/assets/front/css/bootstrap2.min.css?v=1.0" rel="stylesheet" type="text/css">
@@ -71,7 +71,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <a href="javascript::void(0)"> <h2><?php echo $_SESSION['admin_user_firstname'] .' '. $_SESSION['admin_user_lastname']; ?></h2></a>
+                <a href="javascript::void(0)"> <h2><?php echo $_SESSION['user_firstname'] .' '. $_SESSION['user_lastname']; ?></h2></a>
               </div>
             </div>
             <!-- /menu profile quick info -->

@@ -1,5 +1,3 @@
-
-
 <div class="page-heading text-center">
 
     <div class="container zoomIn animated">
@@ -12,72 +10,80 @@
     </div>
 
 </div>
-
 <div class="main-container">
-
     <div class="container">
-
         <div class="row">
-
             <div class="col-md-12 fadeIn animated">
-
                 <p>
                     Documents avaliable for public download.
                 </p>
-
             </div>
-
-
-
         </div>
-
         <div class="row ">
-
-            <div class="col-md-12 fadeIn animate-onscroll">
-
+            <div class="col-md-12 fadeIn">
                 <h2 class="title-style-2"> View / Download <span class="title-under"></span></h2>
-
-
                 <div role="tabpanel">
-
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">ACT Ammendments</a></li>
-                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Public Notice</a></li>
-                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">News</a></li>
-                    </ul>
+                        <?php
+                        if (!empty($file_type)) {
+                            $i = 0;
+                            foreach ($file_type as $ftrow) {
+                                $str = '';
+                                if ($i == 0) {
+                                    $str = 'active';
+                                }
+                                ?>
+                                <li role="presentation" class="<?php echo $str; ?>"><a href="#<?php echo $ftrow['category_title']; ?>" aria-controls="home" role="tab" data-toggle="tab"><?php echo $ftrow['category_title']; ?></a></li>                        
+                                <?php
+                                $i = $i + 1;
+                            }
+                        }
+                        ?>
 
+                    </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="home">
-                            <ul>
-                                <li><a href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/downloads/Human_Rights_Amendment-01.pdf" target="_blank"> Download: ACT Ammendment 01 </a></li>
-                                <li><a href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/downloads/Human_Rights_Amendment-02.jpg" target="_blank"> Download: ACT Ammendment 02 </a></li>
-                            </ul>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            -- No Notice Avaliable--
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="messages">
-                            -- No Message Avaliable--
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="settings">
-                            -- No News Avaliable--	
-                        </div>
+                        <?php
+                        if (!empty($file_type)) {
+                            $i = 0;
+                            foreach ($file_type as $ftrow) {
+                                $str = '';
+                                if ($i == 0) {
+                                    $str = 'active';
+                                }
+                                ?>
+                                <div role="tabpanel" class="tab-pane <?php echo $str; ?>" id="<?php echo $ftrow['category_title']; ?>">
+                                    <table id="example<?php echo $i; ?>" class="table table-striped table-bordered dt-responsive nowrap datatableEx" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Index</th>
+                                                <th>No</th>
+                                                <th>Title</th>                                    
+                                                <th>Description</th>                                    
+                                                <th>Download</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Index</th>
+                                                <th>No</th>
+                                                <th>Title</th>                                    
+                                                <th>Description</th>                                    
+                                                <th>Download</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>	
+                                </div>  
+                                <?php
+                                $i = $i + 1;
+                            }
+                        }
+                        ?>
                     </div>
-
                 </div>
-
                 <p></p>
-
-
             </div>
-
-
         </div>
-
-
-
-    </div> <!-- /.main-container  -->
-
+    </div> 
+</div><!-- /.main-container  -->

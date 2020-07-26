@@ -89,20 +89,26 @@ define('ADMIN_LOGIN_LINK', BASE_URL.'/admin-login');
 define('ADMIN_LOGOUT_LINK', BASE_URL.'/admin-logout');
 define('ADMIN_PROFILE_LINK', BASE_URL.'/admin-profile');
 define('ADMIN_DASHBOARD_LINK', BASE_URL.'/admin-dashboard');
+define('ADMIN_UPDATE_PROFILE_LINK', BASE_URL.'/admin-update-profile');
+
 
 
 define('ADMIN_FILE_LIST_LINK', BASE_URL.'/admin-file-list');
 define('ADMIN_FILE_DATATABLE_LIST_LINK', BASE_URL.'/admin-file-datatables-list');
 define('ADMIN_ADD_FILES_LINK', BASE_URL.'/admin-add-causes');
+define('ADMIN_EDIT_FILES_LINK', BASE_URL.'/admin-edit-causes/');
+define('ADMIN_FILES_ACTIVE_LINK',BASE_URL."/admin-active-causes");
+define('ADMIN_LOAD_SUB_CATEGORIES_LINK', BASE_URL.'/admin-load-sub-categories');
 
 //**************************************ADMIN TITLE****************************//
 define('ADMIN_LOGIN_TITLE', 'HPSHRC-ADMIN-LOGIN');
 define('ADMIN_PROFILE_TITLE', 'HPSHRC-ADMIN-PROFILE');
+define('ADMIN_UPDATE_PROFILE_TITLE', 'HPSHRC-ADMIN-UPDATE-PROFILE');
 define('ADMIN_DASHBOARD_TITLE', 'HPSHRC-ADMIN-DASHBOARD');
 define('ADMIN_FILE_LIST_TITLE', 'HPSHRC-ADMIN-FILE-LIST');
 
 define('ADMIN_ADD_CAUSES_TITLE', 'HPSHRC-ADMIN-ADD-CAUSES');
-
+define('ADMIN_EDIT_CAUSES_TITLE', 'HPSHRC-ADMIN-EDIT-CAUSES');
 
 
 

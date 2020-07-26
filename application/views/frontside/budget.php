@@ -31,11 +31,9 @@
 
         </div>
 
-
-
         <div class="row ">
 
-            <div class="col-md-12 fadeIn animate-onscroll">
+            <div class="col-md-12 fadeIn">
 
                 <h2 class="title-style-2"> Budget <span class="title-under"></span></h2>
 

@@ -73,11 +73,15 @@ $route['translate_uri_dashes'] = FALSE;
 //************************************Admin side route****************************//
 $route['admin-login']='adminc/Login_c';
 $route['admin-logout']='adminc/Login_c/logout';
+$route['admin-update-profile']='adminc/Admin_c/update_profile';
 $route['admin-dashboard']='adminc/Admin_c/dashboard';
 
 //************causes*****************//
 $route['admin-file-list']='adminc/Causes_c/file_list';
 $route['admin-add-causes']='adminc/Causes_c/add_causes';
+$route['admin-active-causes']='adminc/Causes_c/active_causes';
+$route['admin-edit-causes/(:any)']='adminc/Causes_c/edit_causes/$1';
+$route['admin-load-sub-categories']='adminc/Causes_c/load_sub_type';
 
 
 //************************************Front side route****************************//

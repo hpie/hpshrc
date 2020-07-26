@@ -11,6 +11,9 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
 
+        <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css?v=1.0" rel="stylesheet" type="text/css">
+        <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css?v=1.0" rel="stylesheet" type="text/css">
+        
         <!-- Bootsrap -->
         <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/bootstrap.min.css" type="text/css">
         <!-- Font awesome -->
@@ -52,22 +55,16 @@
                             <div class="col-sm-6 col-xs-12 text-right">
 
                                 <ul class="list-unstyled list-inline header-social">
-
                                     <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
                                     <li> <a href="#"> <i class="fa fa-twitter"></i>  </a> </li>
                                     <li> <a href="#"> <i class="fa fa-google"></i>  </a> </li>
                                     <li> <a href="#"> <i class="fa fa-youtube"></i>  </a> </li>
                                     <li> <a href="#"> <i class="fa fa fa-pinterest-p"></i>  </a> </li>
                                 </ul> <!-- /.header-social  -->
-
                             </div>
-
-
                         </div>
                     </div>
-
                 </div>
-
                 <div class="navbar-main">
 
                     <div class="container">

@@ -10,7 +10,7 @@
             </li>
 <!--            <li><a><i class="fa fa-users"></i> Dealers <span class="fa fa-chevron-right"></span></a>
                 <ul class="nav child_menu" style="display: none">
-                    <li><a href="<?php echo ADMIN_DASHBOARD_LINK; ?>">Add Files</a>
+                    <li><a href="<?php //echo ADMIN_DASHBOARD_LINK; ?>">Add Files</a>
                     </li>
                     <li><a href="<?php //echo ADMIN_TAX_DEALER_PENDING_LIST_LINK; ?>">Pending</a>
                     </li>                                   

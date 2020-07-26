@@ -29,7 +29,6 @@ function set_cheked($desired_value, $new_value) {
     }
 }
 
-
 function reCaptchaResilt($captcha_entered, $redirect_url) {
     if ($captcha_entered != $_SESSION['rand_code']) {
         $_SESSION['captcha'] = 1;
@@ -38,24 +37,21 @@ function reCaptchaResilt($captcha_entered, $redirect_url) {
     return true;
 }
 
-function visitLog($method, $controller) {
-    if ($method != "isActiveEmployee") {
-        if (isset($_SESSION['user_id'])) {
-            $userId = $_SESSION['user_id'];
-            $userType = $_SESSION['usertype'];
-            log_message('info', "$userType id $userId visit the $controller controller and method name is $method");
-        } else {
-            log_message('info', "guest user visit the $controller controller and method name is $method");
-        }
-    }
+function visitLog($method, $controller) {    
+    if (isset($_SESSION['user_id'])) {
+        $userId = $_SESSION['user_id'];
+        $userType = $_SESSION['usertype'];
+        log_message('info', "$userType id $userId visit the $controller controller and method name is $method");
+    } else {
+        log_message('info', "guest user visit the $controller controller and method name is $method");
+    }    
 }
 
 function sessionAdmin($row) {
-//         session_regenerate_id();
     foreach ($row as $key => &$value) {
-        $_SESSION['admin_' . $key] = $value;
+        $_SESSION[$key] = $value;
     }
-    $_SESSION['user_id'] = $row['user_id'];
+    $_SESSION['user_id'] = $row['admin_user_id'];
     $_SESSION['usertype'] = 'admin';
     return;
 }

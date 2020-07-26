@@ -42,31 +42,13 @@ $columns = array(
 include 'conn.php';
 
 $where="";
-//print_r($_REQUEST);die;
-
 $category_code = $_REQUEST['category_code'];
-//$uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
-//$uploaded_file_class=$_REQUEST['uploaded_file_class'];
-//$uploaded_file_subject=$_REQUEST['uploaded_file_subject'];
-//
-$where=" upload_file_status='ACTIVE' AND upload_file_type='$category_code' ";
+$where=" huf.upload_file_status='ACTIVE' AND huf.upload_file_type='$category_code' ";
 
-
-//
-//if(!empty($uploaded_file_tag)){
-//        $where .=" AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
-//}
-//if(!empty($uploaded_file_class)){
-//    $where.=" AND uploaded_file_class = '$uploaded_file_class' ";
-//}
-//if(!empty($uploaded_file_subject)){
-//    $where.=" AND uploaded_file_subject = '$uploaded_file_subject' ";
-//}
-//
-//if(!empty($_REQUEST['search']['value'])){
-//    $value=$_REQUEST['search']['value'];
-//    $where.=" AND (uploaded_file_title LIKE '%$value%' OR uploaded_file_type LIKE '%$value%' OR uploaded_file_category LIKE '%$value%' OR uploaded_file_desc LIKE '%$value%' OR uploaded_file_group LIKE '%$value%') ";
-//}
+if(!empty($_REQUEST['search']['value'])){
+    $value=$_REQUEST['search']['value'];
+    $where.=" AND (hc.category_title LIKE '%$value%' OR hc1.category_title LIKE '%$value%' OR huf.upload_file_title LIKE '%$value%' OR huf.upload_file_desc LIKE '%$value%' OR huf.upload_file_original_name LIKE '%$value%' OR huf.upload_file_status LIKE '%$value%') ";
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

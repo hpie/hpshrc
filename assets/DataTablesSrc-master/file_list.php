@@ -41,25 +41,7 @@ $columns = array(
 include 'conn.php';
 
 $where="";
-//print_r($_REQUEST);die;
 
-//$emp_rmsa_user_id = $_REQUEST['emp_rmsa_user_id'];
-//$uploaded_file_tag=$_REQUEST['uploaded_file_tag'];
-//$uploaded_file_class=$_REQUEST['uploaded_file_class'];
-//$uploaded_file_subject=$_REQUEST['uploaded_file_subject'];
-//
-//$where=" uploaded_file_volroot is null AND rmsa_employee_users_id=$emp_rmsa_user_id ";
-//
-//if(!empty($uploaded_file_tag)){
-//        $where .=" AND uploaded_file_tag LIKE '%$uploaded_file_tag%' ";
-//}
-//if(!empty($uploaded_file_class)){
-//    $where.=" AND uploaded_file_class = '$uploaded_file_class' ";
-//}
-//if(!empty($uploaded_file_subject)){
-//    $where.=" AND uploaded_file_subject = '$uploaded_file_subject' ";
-//}
-//
 if(!empty($_REQUEST['search']['value'])){
     $value=$_REQUEST['search']['value'];
     $where.=" (hc.category_title LIKE '%$value%' OR hc1.category_title LIKE '%$value%' OR huf.upload_file_title LIKE '%$value%' OR huf.upload_file_desc LIKE '%$value%' OR huf.upload_file_original_name LIKE '%$value%' OR huf.upload_file_status LIKE '%$value%') ";

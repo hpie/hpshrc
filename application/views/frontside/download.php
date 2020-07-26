@@ -62,7 +62,8 @@
                                             <tr>
                                                 <th>Index</th>
                                                 <th>No</th>
-                                                <th>Title</th>                                    
+                                                <th>Title</th>
+                                                <th>Category</th>
                                                 <th>Description</th>                                    
                                                 <th>Download</th>
                                             </tr>
@@ -71,7 +72,8 @@
                                             <tr>
                                                 <th>Index</th>
                                                 <th>No</th>
-                                                <th>Title</th>                                    
+                                                <th>Title</th> 
+                                                <th>Category</th>
                                                 <th>Description</th>                                    
                                                 <th>Download</th>
                                             </tr>

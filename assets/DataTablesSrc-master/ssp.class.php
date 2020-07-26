@@ -322,10 +322,23 @@ class SSP {
                 
 		// Build the SQL query string from the request
                 
+                $columns_order=$columns;
+		// Build the SQL query string from the request
+                if (($request['order'][0]['column'])>0) {
+                    $columnsArray = array();                   
+                    foreach ($columns as $crow) {                       
+                        if (substr_count($crow['db'], " as ")) {
+                            $crow['db'] = explode(" as ", $crow['db'])[0];
+                        }
+                        array_push($columnsArray, $crow);
+                    }
+                    $columns_order = $columnsArray;
+                }                
+                
 		$limit = self::limit( $request, $columns );                                               
-		$order = self::order( $request, $columns );
-		$where = self::filter( $request, $columns, $bindings );   
-                                                
+		$order = self::order( $request, $columns_order );                 
+//		$where = self::filter( $request, $columns, $bindings );   
+                $where="";                                
                 if ($where_custom) {
                     if ($where) {
                         $where .= ' AND ' . $where_custom;

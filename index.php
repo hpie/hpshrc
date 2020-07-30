@@ -1,14 +1,8 @@
 <?php
-$lifetime=1500;
-session_set_cookie_params($lifetime);
-ini_set( 'session.cookie_httponly', 1 );
-//session_start();
-setcookie(session_name(),session_id(),time()+$lifetime,'/',null,null,TRUE);
 header("X-XSS-Protection: 1; mode=block");
 header('X-Content-Type-Options: nosniff');
-header('X-Frame-Options: deny');
+header('X-Frame-Options: sameorigin');
 header('X-Powered-By:');
-
 
 // Base URL with directory support
 include 'common_url.php';

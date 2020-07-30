@@ -23,15 +23,12 @@
     <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-responsive-bs/css/responsive.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-scroller-bs/css/scroller.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">    
-    <!--<link href="<?php //echo FRONT_ASSETS_FOLDER; ?>/assets/front/css/dataTables.responsive.css?v=1.0" rel="stylesheet" type="text/css">-->
-    
-<!--    <script nonce='S51U26wMQz' src="<?php //echo BASE_URL; ?>/assets/front/js/jquery.min.js?v=1.0"></script>
-    <script nonce='S51U26wMQz' src="<?php //echo BASE_URL; ?>/assets/front/js/bootstrap.min.js?v=1.0"></script>-->
+
     <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css?v=1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css?v=1.0" rel="stylesheet" type="text/css">
     <link href="<?php echo BASE_URL ?>/assets/front/css/bootstrap2.min.css?v=1.0" rel="stylesheet" type="text/css">
     
-       <!-- PNotify -->     
+    <!-- PNotify -->     
     <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotify.js" type="text/javascript"></script>
     <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyStyleMaterial.js" type="text/javascript"></script>
     <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyButtons.js" type="text/javascript"></script>              
@@ -39,9 +36,6 @@
     <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyConfirm.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/animate.css" rel="stylesheet"/>      
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/icon.css"/>
-       
-    <!--<link href="<?php //echo ADMIN_ASSETS_FOLDER; ?>pnotify/dist/pnotifiadmin.css?v=1.0" rel="stylesheet" type="text/css">-->
-    <!-- Custom Theme Style -->
     <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css?v=1.0" rel="stylesheet" type="text/css">
     <style>
         .navbar nav_title{

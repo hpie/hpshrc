@@ -65,11 +65,13 @@
                                     <input type="file" id="upload_file_original_name" name="upload_file_original_name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>                                  
                             </div>
+                            <input type='hidden' class="txt_csrfname" name='<?=$this->security->get_csrf_token_name();?>' value='<?=$this->security->get_csrf_hash();?>' />                                
+                            <?php echo echoCaptcha(); ?>                                                                                  
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
                                     <button class="btn btn-primary" type="reset">Reset</button>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="submit" class="btn btn-success" disabled  id="btnLogin">Submit</button>
                                 </div>
                             </div>                            
                         </form>

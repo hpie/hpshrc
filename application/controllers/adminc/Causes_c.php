@@ -5,20 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Causes_c extends CI_Controller {
 
     public function __construct() {
-        parent::__construct();
-        securityToken1();
+        parent::__construct(); 
+        $this->load->helper(array('url','functions'));  
         sessionCheckAdmin();
-        include APPPATH . 'third_party/image-resize/imageresize.php';
-//        include APPPATH . 'third_party/smtp_mail/smtp_send.php';                                      
-//       $a = new SMTP_mail;
-//       $res = $a->sendMail('vasimlook@gmail.com','vasim','9099384773','hi');                          
+        include APPPATH . 'third_party/image-resize/imageresize.php';                          
         $this->load->model('adminm/Causes_m');
-        $this->load->model('adminm/Login_m');
-        $this->load->helper('url');
-        $this->load->helper('functions');
-        $_SESSION['securityToken2'] = $_SESSION['securityToken1'];
-        sessionCheckToken();
-        $_SESSION['securityToken1'] = bin2hex(random_bytes(24));
+        $this->load->model('adminm/Login_m');              
         if (isset($_SESSION['user_id'])) {
             $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
             if ($result) {
@@ -35,16 +27,16 @@ class Causes_c extends CI_Controller {
     }
 
     public function add_causes() {         
-        if (isset($_POST['upload_file_title'])) {           
-            if ($_REQUEST['upload_file_title'] && $_REQUEST['upload_file_title'] != '') {                
-                $_REQUEST['admin_user_id'] = $this->userId;
+        if (isset($_POST['upload_file_title'])) {
+            unset($_POST['g-recaptcha-response']); 
+            if ($_POST['upload_file_title'] && $_POST['upload_file_title'] != '') {                
+                $_POST['admin_user_id'] = $this->userId;
                 if (($_FILES['upload_file_original_name']['name']) != '') {
                     $fileRes = singleFileUpload('upload_file_original_name');
                     if (!empty($fileRes[2]['file_name'])) {
-                        $_REQUEST['upload_file_location'] = $fileRes[2]['file_name'];
-                        $_REQUEST['upload_file_original_name'] = $fileRes[2]['original_file_name'];
-        
-                        $res = $this->Causes_m->add_causes($_REQUEST);
+                        $_POST['upload_file_location'] = $fileRes[2]['file_name'];
+                        $_POST['upload_file_original_name'] = $fileRes[2]['original_file_name'];        
+                        $res = $this->Causes_m->add_causes($_POST);
                         if ($res) {
                             //Success message : Complaint has been added
                             successOrErrorMessage("File has been added", 'success');
@@ -66,10 +58,11 @@ class Causes_c extends CI_Controller {
     }
     
     public function edit_causes($upload_file_id) {         
-        if (isset($_POST['upload_file_title'])) {           
-            if ($_REQUEST['upload_file_title'] && $_REQUEST['upload_file_title'] != '') {                
-                $_REQUEST['admin_user_id'] = $this->userId;            
-                $res = $this->Causes_m->edit_causes($_REQUEST,$upload_file_id);                
+        if (isset($_POST['upload_file_title'])) {   
+            unset($_POST['g-recaptcha-response']);           
+            if ($_POST['upload_file_title'] && $_POST['upload_file_title'] != '') {                
+                $_POST['admin_user_id'] = $this->userId;            
+                $res = $this->Causes_m->edit_causes($_POST,$upload_file_id);                
                 if ($res) {                    
                     //Success message : File has been added
                     successOrErrorMessage("File has been updated", 'success');
@@ -93,17 +86,18 @@ class Causes_c extends CI_Controller {
         $this->load->admin_view('adminside/causes/file_list', $data);
     }
     public function load_sub_type(){
-        if($_REQUEST['category_code']){            
+        if($_POST['category_code']){            
             $sub_type = $this->Causes_m->load_sub_type($_POST);           
             $result=array();
-            $result['sub_type']=$sub_type;                 
+            $result['sub_type']=$sub_type;            
+            $result['token'] = $this->security->get_csrf_hash();               
             echo json_encode($result);
         }
     }
     
-   public function active_causes(){
-        if(isset($_REQUEST['upload_file_id'])){
-            $res = $this->Causes_m->active_causes($_REQUEST);
+    public function active_causes(){
+        if(isset($_POST['upload_file_id'])){           
+            $res = $this->Causes_m->active_causes($_POST);
             if($res){      
                 $data = array(                    
                     'suceess' => true
@@ -113,6 +107,7 @@ class Causes_c extends CI_Controller {
                     'suceess' => false
                 );
             }
+            $data['token'] = $this->security->get_csrf_hash(); 
             echo json_encode($data);
         }
     }

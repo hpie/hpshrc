@@ -22,6 +22,7 @@
         </div>
     </div>
 </div>
+<input type='hidden' class="ajax_csrfname" name='<?=$this->security->get_csrf_token_name();?>' value='<?=$this->security->get_csrf_hash();?>' />  
 <!-- jQuery -->
 
 <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js?v=1.0" type="text/javascript" nonce='S51U26wMQz'></script>
@@ -126,10 +127,10 @@
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/file_list.php' ?>",
                         'data': {
                             admin_user_id: <?php
-    if (isset($_SESSION['user_id'])) {
-        echo $_SESSION['user_id'];
-    }
-    ?>
+                            if (isset($_SESSION['user_id'])) {
+                                echo $_SESSION['user_id'];
+                            }
+                            ?>
                         }
                     },
                     "columns": [
@@ -148,6 +149,10 @@
             }
             
               $(document).on('click', '.btn_approve_reject', function () {
+              
+                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+              
                 var self = $(this);
 
                 var status = self.attr('data-status');
@@ -165,7 +170,8 @@
 
                 var data = {
                     'upload_file_id': self.data('id'),
-                    'upload_file_status': upload_file_status
+                    'upload_file_status': upload_file_status,
+                    [csrfName]: csrfHash
                 };
 
                 $.ajax({
@@ -173,10 +179,9 @@
                     url: "<?php echo ADMIN_FILES_ACTIVE_LINK ?>",
                     data: data,
                     success: function (res) {
-
-                        var res = $.parseJSON(res);
-                        if (res.suceess) {
-
+                        var data = $.parseJSON(res);
+                        $('.ajax_csrfname').val(data.token);
+                        if (data.suceess) {
                             var title = 'Click to deactivate causes';
                             var class_ = 'btn_approve_reject btn btn-success btn-xs';
                             var text = 'Active';
@@ -193,8 +198,7 @@
                             self.attr({
                                 'data-status': isactive,
                                 'title': title
-                            });
-                            
+                            });                            
                             self.removeAttr('disabled');
                             self.html(text);
                         }
@@ -271,6 +275,7 @@
                             text: 'Old password not match'
                         });
                     }
+                    $('.txt_csrfname').val(result['token']);
                 }, 'json');
             });
         });
@@ -282,18 +287,23 @@
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
             $('#upload_file_type').on('change', function () {
+                
+                var csrfName = $('.txt_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+                var csrfHash = $('.txt_csrfname').val(); // CSRF hash
+                
                 var category_code = $(this).val();
                 $.ajax({
                     type: "POST",
                     url: "<?php echo ADMIN_LOAD_SUB_CATEGORIES_LINK ?>",
-                    data: {'category_code': category_code},
+                    data: {'category_code': category_code,[csrfName]: csrfHash},
                     success: function (res) {
                         var data = jQuery.parseJSON(res);
+                        $('.txt_csrfname').val(data.token);
                         $("#upload_file_sub_type").empty();
                         $("#upload_file_sub_type").append(new Option('---Select---', ''));
                         $.each(data.sub_type, function (index, value) {
                             $("#upload_file_sub_type").append(new Option(value.category_title, value.category_code));
-                        });
+                        });                        
                     }
                 });
             });

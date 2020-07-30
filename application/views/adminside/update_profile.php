@@ -36,6 +36,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <input type='hidden' class="txt_csrfname" name='<?=$this->security->get_csrf_token_name();?>' value='<?=$this->security->get_csrf_hash();?>' />                                
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">

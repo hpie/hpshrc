@@ -35,14 +35,15 @@ class Login_m extends CI_Model {
             $get_user = $this->db->query("SELECT * FROM admin WHERE user_email_id = '$username' ");
             $check = $get_user->row_array();
             if (is_array($check)) {
-
-                if ($check['user_attempt'] == 0 || $check['user_attempt'] == 1) {
+                $attempt=$check['user_attempt'];
+                if ($attempt == 0 || $attempt == 1) {
+                    $msgAttempt=2-$attempt;
                     $this->db->query("UPDATE admin SET user_attempt = user_attempt+1 WHERE admin_user_id = '{$check['admin_user_id']}'");
+                    successOrErrorMessage("Invalid Username & Password. Account will be locked after $msgAttempt unsuccessful attempts", 'error');
                 }
-                if ($check['user_attempt'] >= 2) {
-                    $this->db->query("UPDATE admin SET user_attempt=user_attempt+1 WHERE admin_user_id = '{$check['admin_user_id']}'");
-                    $this->db->query("UPDATE admin SET user_locked_status=1 WHERE admin_user_id = '{$check['admin_user_id']}'");
-                    $_SESSION['invalidAttempt'] = 1;
+                if ($attempt >= 2) {
+                    $this->db->query("UPDATE admin SET user_attempt=user_attempt+1,user_locked_status=1 WHERE admin_user_id = '{$check['admin_user_id']}'");                  
+                    successOrErrorMessage('Your account is locked after consecutive failure attempts. Please contact your school with your email id to unlock', 'error');
                 }
             }
         }

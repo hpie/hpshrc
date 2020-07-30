@@ -209,7 +209,7 @@ class CI_Security {
 	{
 		// If it's not a POST request we will set the CSRF cookie
 		if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST')
-		{
+		{                       
 			return $this->csrf_set_cookie();
 		}
 
@@ -227,6 +227,9 @@ class CI_Security {
 		}
 
 		// Check CSRF token validity, but don't error on mismatch just yet - we'll want to regenerate
+                
+//                print_r($_COOKIE);die;
+                
 		$valid = isset($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name])
 			&& is_string($_POST[$this->_csrf_token_name]) && is_string($_COOKIE[$this->_csrf_cookie_name])
 			&& hash_equals($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name]);
@@ -248,8 +251,7 @@ class CI_Security {
 		if ($valid !== TRUE)
 		{
 			$this->csrf_show_error();
-		}
-
+		}              
 		log_message('info', 'CSRF token verified');
 		return $this;
 	}
@@ -272,15 +274,28 @@ class CI_Security {
 			return FALSE;
 		}
 
-		setcookie(
-			$this->_csrf_cookie_name,
-			$this->_csrf_hash,
-			$expire,
-			config_item('cookie_path'),
-			config_item('cookie_domain'),
-			$secure_cookie,
-			config_item('cookie_httponly')
-		);
+//		setcookie(
+//			$this->_csrf_cookie_name,
+//			$this->_csrf_hash,
+//			$expire,
+//			config_item('cookie_path'),
+//			config_item('cookie_domain'),
+//			$secure_cookie,
+//			config_item('cookie_httponly')
+//		);
+                
+                setcookie(
+                        $this->_csrf_cookie_name,
+                        $this->_csrf_hash,
+                        [   'samesite' => 'None',
+                            'secure' => $secure_cookie,
+                            'expires' => $expire,
+                            'path' => config_item('cookie_path'),
+                            'domain' => config_item('cookie_domain'),
+                            'httponly' => config_item('cookie_httponly')]
+                        );
+                
+                
 		log_message('info', 'CSRF cookie sent');
 
 		return $this;

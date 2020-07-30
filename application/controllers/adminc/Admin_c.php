@@ -6,18 +6,9 @@ class Admin_c extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        securityToken1();
-        sessionCheckAdmin();                
-//        include APPPATH . 'third_party/image-resize/imageresize.php';
-//        include APPPATH . 'third_party/smtp_mail/smtp_send.php';                                      
-//       $a = new SMTP_mail;
-//       $res = $a->sendMail('vasimlook@gmail.com','vasim','9099384773','hi');                                  
-        $this->load->model('adminm/Login_m');
-        $this->load->helper('url');                        
-        $this->load->helper('functions');         
-        $_SESSION['securityToken2']=$_SESSION['securityToken1'];
-        sessionCheckToken();
-        $_SESSION['securityToken1'] = bin2hex(random_bytes(24));                     
+        $this->load->helper(array('url','functions'));          
+        sessionCheckAdmin();        
+        $this->load->model('adminm/Login_m');                                    
         if (isset($_SESSION['user_id'])) {            
             $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
             if ($result) {                
@@ -28,8 +19,6 @@ class Admin_c extends CI_Controller {
                 }
             }
         }
-//        $method=$this->router->fetch_method();
-//        visitLog($method,"Home");
     }           
     public function dashboard() {                     
         $data['title'] = ADMIN_DASHBOARD_TITLE;        
@@ -48,6 +37,7 @@ class Admin_c extends CI_Controller {
             else{
                 $result['success']="fail";
             }
+            $result['token'] = $this->security->get_csrf_hash();   
             echo json_encode($result);die;            
         }        
         $data['title']=ADMIN_UPDATE_PROFILE_TITLE;        

@@ -9,12 +9,12 @@
 
         <title><?php echo $title; ?></title>
         <!-- Bootstrap -->
-        
+
         <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/css/bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
-           
+
         <!-- Font Awesome -->
         <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css?v=1.0" rel="stylesheet" type="text/css">
-        
+
         <!-- NProgress -->
         <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>nprogress/nprogress.css?v=1.0" rel="stylesheet" type="text/css">            
 
@@ -45,7 +45,7 @@
             <div class="login_wrapper" id="validdiv1">
                 <div class="animate form login_form">
                     <section class="login_content">                                               
-                        <form method="post">              
+                        <form method="post" id='loginform'>              
                             <h1>Login Form</h1>
                             <div>
                                 <input type="text" class="form-control" placeholder="Username" required="" name="username"/>
@@ -57,19 +57,19 @@
                             $csrf = array(
                                 'name' => $this->security->get_csrf_token_name(),
                                 'hash' => $this->security->get_csrf_hash()
-                                );                                                            
+                            );
                             ?>
-                            <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />                                                        
+                            <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />                                                        
                             <div>                               
-                                    <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
-                                    <script nonce='S51U26wMQz' type="text/javascript">
-                                        function enableLogin() {                                         
-                                            document.getElementById("btnLogin").disabled = false;
-                                        }
-                                    </script>
-                                    
-                                        <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>                        
-                                        <br>
+                                <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
+                                <script nonce='S51U26wMQz' type="text/javascript">
+                                    function enableLogin() {
+                                        document.getElementById("btnLogin").disabled = false;
+                                    }
+                                </script>
+
+                                <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>                        
+                                <br>
                             </div>
                             <div>                                
                                 <input type="submit" disabled  id="btnLogin" class="btn primary_btn btn_disabled submit col-xs-12 btn-info" value="Log in" name="login"/>
@@ -97,6 +97,26 @@
                 </div>
             </div>
         </div>        
-    <?php include(VIEWPATH . "adminside/common/notify.php"); ?>
+        <?php include(VIEWPATH . "adminside/common/notify.php"); ?>
+        <script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js?v=1.0" type="text/javascript"></script>
+        <script nonce='S51U26wMQz' type="text/javascript">
+                                    $(document).ready(function () {                                       
+                                        $('#overrideOptionsForm').bootstrapValidator({
+                                            fields: {
+                                                username: {
+                                                    validators: {
+                                                        notEmpty: {
+                                                            message: 'The username is required'
+                                                        },
+                                                        uri: {
+                                                            message: 'The website address is not valid'
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+        </script>
+
     </body>
 </html>

@@ -119,6 +119,11 @@ define('FRONT_BUDGET_LINK', BASE_URL.'/front-budget');
 define('FRONT_GALLERY_LINK', BASE_URL.'/front-gallery');
 define('FRONT_CONTACT_LINK', BASE_URL.'/front-contact');
 
+
+//**************************************COMMON ROUTE****************************//
+define('PAGE_404_LINK', BASE_URL.'/errorpage');
+
+
 //**************************************FRONT TITLE****************************//
 define('FRONT_HOME_TITLE', 'HPSHRC-FRONT-HOME');
 define('FRONT_ABOUT_TITLE', 'HPSHRC-FRONT-ABOUT');
@@ -126,3 +131,4 @@ define('FRONT_DOWNLOAD_TITLE', 'HPSHRC-FRONT-DOWNLOAD');
 define('FRONT_BUDGET_TITLE', 'HPSHRC-FRONT-BUDGET');
 define('FRONT_GALLERY_TITLE', 'HPSHRC-FRONT-GALLERY');
 define('FRONT_CONTACT_TITLE', 'HPSHRC-FRONT-CONTACT');
+define('FRONT_404_TITLE', 'HPSHRC-404');

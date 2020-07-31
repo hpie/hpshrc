@@ -34,4 +34,8 @@ class Home_c extends CI_Controller {
         $data['title'] = FRONT_CONTACT_TITLE;        
         $this->load->front_view('frontside/contact',$data);
     }
+    public function page404() {        
+        $data['title'] = FRONT_404_TITLE;        
+        $this->load->single_page('errors/html/custome_error_404',$data);
+    }
 }

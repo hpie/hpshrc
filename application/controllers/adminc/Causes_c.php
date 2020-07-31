@@ -74,11 +74,15 @@ class Causes_c extends CI_Controller {
             }
         }
         $data['single_file']=$this->Causes_m->get_single_file($upload_file_id);
-        $data['file_type']=$this->Causes_m->get_file_type('MAIN_TYPE');
-        $data['file_sub_type']=$this->Causes_m->get_sub_type($data['single_file']['upload_file_type']); 
-        $data['upload_file_id']=$upload_file_id;
-        $data['title'] = ADMIN_EDIT_CAUSES_TITLE;
-        $this->load->admin_view('adminside/causes/edit', $data);
+        if(isset($data['single_file'])){
+            $data['file_type']=$this->Causes_m->get_file_type('MAIN_TYPE');
+            $data['file_sub_type']=$this->Causes_m->get_sub_type($data['single_file']['upload_file_type']); 
+            $data['upload_file_id']=$upload_file_id;
+            $data['title'] = ADMIN_EDIT_CAUSES_TITLE;
+            $this->load->admin_view('adminside/causes/edit', $data);
+        }else{
+            redirect(PAGE_404_LINK);
+        }
     }
 
     public function file_list() {

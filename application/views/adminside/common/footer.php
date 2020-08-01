@@ -69,7 +69,7 @@
 <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>moment/moment.min.js?v=1.0" type="text/javascript" nonce='S51U26wMQz'></script>
 
 <?php include(VIEWPATH . "adminside/common/notify.php"); ?>
-
+<script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript" nonce='S51U26wMQz'>
     function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode;

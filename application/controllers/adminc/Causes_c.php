@@ -6,7 +6,8 @@ class Causes_c extends CI_Controller {
 
     public function __construct() {
         parent::__construct(); 
-        $this->load->helper(array('url','functions'));  
+        $this->load->helper(array('url', 'functions', 'form'));
+        $this->load->library('session');
         sessionCheckAdmin();
         include APPPATH . 'third_party/image-resize/imageresize.php';                          
         $this->load->model('adminm/Causes_m');

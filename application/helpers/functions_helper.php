@@ -5,8 +5,9 @@ if (!defined('BASEPATH'))
 
 
 if (!function_exists('echoCaptcha')) {
-    function echoCaptcha() {        
-    return  "<div class='form-group'>  
+
+    function echoCaptcha() {
+        return "<div class='form-group'>  
                 <label class='control-label col-md-3 col-sm-3 col-xs-12'>
                 </label>
                     <script nonce='S51U26wMQz' type='text/javascript' src='https://www.google.com/recaptcha/api.js' async defer></script>
@@ -18,31 +19,32 @@ if (!function_exists('echoCaptcha')) {
                     <div class='g-recaptcha col-md-6 col-sm-6 col-xs-12' style='' data-sitekey='6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo' data-callback='enableLogin'></div>                                                           
             </div>";
     }
+
 }
 
-
 if (!function_exists('successOrErrorMessage')) {
-    function successOrErrorMessage($message,$type) {        
-        $_SESSION[$type]=1;
-        $_SESSION['message']=$message;
+
+    function successOrErrorMessage($message, $type) {
+        $_SESSION[$type] = 1;
+        $_SESSION['message'] = $message;
     }
+
 }
 
 function set_selected($desired_value, $new_value) {
     if ($desired_value == $new_value) {
-         $str=' selected="selected" ';
-         return $str;
-    }
-    else{
+        $str = ' selected="selected" ';
+        return $str;
+    } else {
         return '';
     }
 }
+
 function set_cheked($desired_value, $new_value) {
     if ($desired_value == $new_value) {
         $str = ' checked ';
         return $str;
-    }
-    else{
+    } else {
         return '';
     }
 }
@@ -55,14 +57,14 @@ function reCaptchaResilt($captcha_entered, $redirect_url) {
     return true;
 }
 
-function visitLog($method, $controller) {    
+function visitLog($method, $controller) {
     if (isset($_SESSION['user_id'])) {
         $userId = $_SESSION['user_id'];
         $userType = $_SESSION['usertype'];
         log_message('info', "$userType id $userId visit the $controller controller and method name is $method");
     } else {
         log_message('info', "guest user visit the $controller controller and method name is $method");
-    }    
+    }
 }
 
 function sessionAdmin($row) {
@@ -90,6 +92,7 @@ function sessionCheckAll() {
     }
     return true;
 }
+
 function generateToken() {
     $token = "";
     $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -262,9 +265,9 @@ if (!function_exists('singleFileUpload')) {
 
     function singleFileUpload($file_tag) {
 
-         $file_ary = $_FILES[$file_tag];
+        $file_ary = $_FILES[$file_tag];
 
-        return fileUpload($file_ary);       
+        return fileUpload($file_ary);
     }
 
 }
@@ -288,11 +291,12 @@ if (!function_exists('multiFileUpload')) {
 
         return $output_array;
     }
+
 }
 if (!function_exists('fileUpload')) {
 
     function fileUpload($file) {
-        
+
         //If directory doesnot exists create it.
 
         $data = array();
@@ -324,7 +328,7 @@ if (!function_exists('fileUpload')) {
 
             $filename = '';
 
-            $expensions = array(               
+            $expensions = array(
                 "pdf",
                 "doc",
                 "docx"
@@ -351,10 +355,10 @@ if (!function_exists('fileUpload')) {
                 $NewImageName = 'uploads-' . rand(111, 999) . rand(11, 99) . '-' . $RandomNum . '.' . $ImageExt;
 
                 $filepath_original = $output_subdir . $NewImageName;
-                
+
                 if (move_uploaded_file($file_tmp, "$filepath_original")) {
                     $data["file_name"] = $NewImageName;
-                    $data['original_file_name']=$file_name;
+                    $data['original_file_name'] = $file_name;
                     $data["file_ext"] = $file_ext;
                     $message = 'File uploaded successfully';
                     return array(true, $message, $data);

@@ -1,89 +1,89 @@
- <footer class="main-footer">
+<footer class="main-footer">
 
-        <div class="footer-top">
-            
-        </div>
+    <div class="footer-top">
+
+    </div>
 
 
-        <div class="footer-main">
-            <div class="container">
-                
-                <div class="row">
-                    <div class="col-md-4">
+    <div class="footer-main">
+        <div class="container">
 
-                        <div class="footer-col">
+            <div class="row">
+                <div class="col-md-4">
 
-                            <h4 class="footer-title">About us <span class="title-under"></span></h4>
+                    <div class="footer-col">
 
-                            <div class="footer-content">
+                        <h4 class="footer-title">About us <span class="title-under"></span></h4>
 
-                                <p>
-                                    <strong>HPSHRC</strong> - Himachal Pradesh Human Rights Commission , Pines Grove Building Shimla 171002
-                                </p> 
+                        <div class="footer-content">
 
-                                <p>
-                                    In Accordance with the provisions of the section-21 of the protection of human rights act,1993
-                                </p>
+                            <p>
+                                <strong>HPSHRC</strong> - Himachal Pradesh Human Rights Commission , Pines Grove Building Shimla 171002
+                            </p> 
 
-                            </div>
-                            
+                            <p>
+                                In Accordance with the provisions of the section-21 of the protection of human rights act,1993
+                            </p>
+
                         </div>
 
                     </div>
 
-                    <div class="col-md-4">
+                </div>
 
-                        <div class="footer-col">
+                <div class="col-md-4">
 
-                            <h4 class="footer-title">LAST TWEETS <span class="title-under"></span></h4>
+                    <div class="footer-col">
 
-                            <div class="footer-content">
-                                <ul class="tweets list-unstyled">
-                                    <li class="tweet"> 
+                        <h4 class="footer-title">LAST TWEETS <span class="title-under"></span></h4>
 
-                                        ------------------------------------
+                        <div class="footer-content">
+                            <ul class="tweets list-unstyled">
+                                <li class="tweet"> 
 
-                                    </li>
+                                    ------------------------------------
 
-                                    <li class="tweet"> 
+                                </li>
 
-                                        ------------------------------------
+                                <li class="tweet"> 
 
-                                    </li>
+                                    ------------------------------------
 
-                                    <li class="tweet"> 
+                                </li>
 
-                                        ------------------------------------
+                                <li class="tweet"> 
 
-                                    </li>
+                                    ------------------------------------
 
-                                </ul>
-                            </div>
-                            
+                                </li>
+
+                            </ul>
                         </div>
 
                     </div>
 
+                </div>
 
-                    <div class="col-md-4">
 
-                        <div class="footer-col">
+                <div class="col-md-4">
 
-                            <h4 class="footer-title">Contact us <span class="title-under"></span></h4>
+                    <div class="footer-col">
 
-                            <div class="footer-content">
+                        <h4 class="footer-title">Contact us <span class="title-under"></span></h4>
 
-                                <div class="footer-form">
-                                    
-                                    <div class="footer-form" >
-                                    
-                                    <form action="php/mail.php" class="ajax-form">
+                        <div class="footer-content">
+
+                            <div class="footer-form">
+
+                                <div class="footer-form" >
+
+                                    <form action="php/mail.php" class="ajax-form form-horizontal contact_form_footer" id="contact_form_footer">
 
                                         <div class="form-group">
                                             <input type="text" name="name" class="form-control" placeholder="Name" required>
                                         </div>
 
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <input type="email" name="email" class="form-control" placeholder="E-mail" required>
                                         </div>
 
@@ -91,189 +91,234 @@
                                             <textarea name="message" class="form-control" placeholder="Message" required></textarea>
                                         </div>
 
-                                        <div class="form-group alerts">
-                        
-                                            <div class="alert alert-success" role="alert">
-                                              
-                                            </div>
-
-                                            <div class="alert alert-danger" role="alert">
-                                              
-                                            </div>
-                                            
-                                        </div>
-
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <button type="submit" class="btn btn-submit pull-right">Send message</button>
                                         </div>
-                                        
+
                                     </form>
 
                                 </div>
 
-                                </div>
                             </div>
-                            
                         </div>
 
                     </div>
-                    <div class="clearfix"></div>
-
-
 
                 </div>
-                
-                
+                <div class="clearfix"></div>
+
+
+
             </div>
 
-            
+
         </div>
 
-        <div class="footer-bottom">
 
-            <div class="container text-right">
-                HPSHRC @ copyrights 2020 |  Designed and Maintained by - <a href="https://hpie.in" target="_blank">H.P.I.E</a>
-            </div>
+    </div>
+
+    <div class="footer-bottom">
+
+        <div class="container text-right">
+            HPSHRC @ copyrights 2020 |  Designed and Maintained by - <a href="https://hpie.in" target="_blank">H.P.I.E</a>
         </div>
-        
-    </footer> <!-- main-footer -->
+    </div>
+
+</footer> <!-- main-footer -->
 
 
 
 
-    <!-- Donate Modal -->
-    <div class="modal fade" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
+<!-- Donate Modal -->
+<div class="modal fade" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
 
-      <div class="modal-dialog">
+    <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
-          </div>
-          <div class="modal-body">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
+            </div>
+            <div class="modal-body">
 
                 <form class="form-donation">
 
-                        <h3 class="title-style-1 text-center">Thank you for your donation <span class="title-under"></span>  </h3>
+                    <h3 class="title-style-1 text-center">Thank you for your donation <span class="title-under"></span>  </h3>
 
-                        <div class="row">
+                    <div class="row">
 
-                            <div class="form-group col-md-12 ">
-                                <input type="text" class="form-control" id="amount" placeholder="AMOUNT(€)">
-                            </div>
-
+                        <div class="form-group col-md-12 ">
+                            <input type="text" class="form-control" id="amount" placeholder="AMOUNT(€)">
                         </div>
 
+                    </div>
 
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="firstName" placeholder="First name*">
-                            </div>
 
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="lastName" placeholder="Last name*">
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" name="firstName" placeholder="First name*">
                         </div>
 
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" name="lastName" placeholder="Last name*">
+                        </div>
+                    </div>
 
-                        <div class="row">
 
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="email" placeholder="Email*">
-                            </div>
+                    <div class="row">
 
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="phone" placeholder="Phone">
-                            </div>
-
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" name="email" placeholder="Email*">
                         </div>
 
-                        <div class="row">
-
-                            <div class="form-group col-md-12">
-                                <input type="text" class="form-control" name="address" placeholder="Address">
-                            </div>
-
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" name="phone" placeholder="Phone">
                         </div>
 
+                    </div>
 
-                        <div class="row">
+                    <div class="row">
 
-                            <div class="form-group col-md-12">
-                                <textarea cols="30" rows="4" class="form-control" name="note" placeholder="Additional note"></textarea>
-                            </div>
-
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control" name="address" placeholder="Address">
                         </div>
 
-                        <div class="row">
+                    </div>
 
-                            <div class="form-group col-md-12">
-                                <button type="submit" class="btn btn-primary pull-right" name="donateNow" >DONATE NOW</button>
-                            </div>
 
+                    <div class="row">
+
+                        <div class="form-group col-md-12">
+                            <textarea cols="30" rows="4" class="form-control" name="note" placeholder="Additional note"></textarea>
                         </div>
 
+                    </div>
 
+                    <div class="row">
 
-                       
-                    
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary pull-right" name="donateNow" >DONATE NOW</button>
+                        </div>
+
+                    </div>
                 </form>
-            
-          </div>
+
+            </div>
         </div>
-      </div>
+    </div>
 
-    </div> <!-- /.modal -->
+</div> <!-- /.modal -->
 
-    <!--  Scripts
-    ================================================== -->
+<!--  Scripts
+================================================== -->
 
-    <!-- jQuery -->
-    <!--<script nonce='S51U26wMQz' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-    <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/jquery-3.2.1.min.js"></script>
-    <!--<script>window.jQuery || document.write('')</script>-->
- 
-    <!-- Bootsrap javascript file -->
-    <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/bootstrap.min.js"></script>
-    
-    <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script nonce='S51U26wMQz' type="text/javascript" language="javascript" src="<?php echo BASE_URL; ?>/assets/front/js/dataTables.responsive.min.js"></script>
-    
-    <!-- owl carouseljavascript file -->
-    <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/owl.carousel.min.js"></script>
+<!-- jQuery -->
+<!--<script nonce='S51U26wMQz' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/jquery-3.2.1.min.js"></script>
+<!--<script>window.jQuery || document.write('')</script>-->
 
-    <!-- Template main javascript -->
-    <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/main.js"></script>
+<!-- Bootsrap javascript file -->
+<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/bootstrap.min.js"></script>
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js?v=1.0" type="text/javascript"></script>    
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script nonce='S51U26wMQz' type="text/javascript" language="javascript" src="<?php echo BASE_URL; ?>/assets/front/js/dataTables.responsive.min.js"></script>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script nonce="S51U26wMQz">
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+<!-- owl carouseljavascript file -->
+<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/owl.carousel.min.js"></script>
 
+<!-- Template main javascript -->
+<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script nonce="S51U26wMQz">
+    (function (b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+                function () {
+                    (b[l].q = b[l].q || []).push(arguments)
+                });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = '//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+</script>
+
+<?php include(VIEWPATH . "adminside/common/notify.php"); ?>   
+
+
+<script nonce='S51U26wMQz' type="text/javascript">
+    $(document).ready(function () {
+        $('.contact_form_footer').bootstrapValidator({
+            // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    validators: {
+                        stringLength: {
+                            max: 50
+                        },
+                        notEmpty: {
+                            message: 'Please Enter Title'
+                        },
+                        regexp: {
+                            regexp: /^[^~!#%^_,.*|\":<>[\]{}`\\()';@&/$]+$/,
+                            message: 'Special character not allowed'
+                        }
+                    }
+                },
+                email: {
+                    validators: {
+                        emailAddress: {
+                            message: 'The value is not a valid email address'
+                        }
+                    }
+                },
+                message: {
+                        validators: {
+                            stringLength: {
+                                max: 500
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Descriptipn'
+                            },
+                            regexp: {
+                                regexp: /^[^~#%^_*|\<>[\]{}`\\();/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    }
+            }
+        });
+    });
+</script>    
 <?php if ($title == FRONT_DOWNLOAD_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
-            <?php if(isset($file_type)){
-                if(!empty($file_type)){
-                    $i=0;
-                    foreach ($file_type as $ftrow){
-                        ?>
-                        fill_datatable1("example<?php echo $i; ?>","<?php echo $ftrow['category_code']; ?>");
-                        <?php
-                        $i=$i+1;
-                    }
-                }
-            } ?>
-            
-            function fill_datatable1(str,category_code)
+    <?php
+    if (isset($file_type)) {
+        if (!empty($file_type)) {
+            $i = 0;
+            foreach ($file_type as $ftrow) {
+                ?>
+                        fill_datatable1("example<?php echo $i; ?>", "<?php echo $ftrow['category_code']; ?>");
+                <?php
+                $i = $i + 1;
+            }
+        }
+    }
+    ?>
+
+            function fill_datatable1(str, category_code)
             {
-                $('#'+str).DataTable({
+                $('#' + str).DataTable({
                     responsive: {
                         details: {
                             type: 'column',
@@ -294,21 +339,21 @@
                         'type': 'POST',
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/file_list_download.php' ?>",
                         'data': {
-                            category_code:category_code
+                            category_code: category_code
                         }
                     },
                     "columns": [
                         {"data": "index"},
                         {"data": "upload_file_ref_no"},
                         {"data": "upload_file_title"},
-                        {"data": "category_title_sub"},                        
+                        {"data": "category_title_sub"},
                         {"data": "upload_file_desc"},
                         {"data": "download"}
                     ]
                 });
             }
-            
-              $(document).on('click', '.btn_approve_reject', function () {
+
+            $(document).on('click', '.btn_approve_reject', function () {
                 var self = $(this);
 
                 var status = self.attr('data-status');
@@ -349,23 +394,23 @@
                                 text = 'Inactive';
                                 isactive = 0;
                             }
-                            
+
                             self.removeClass().addClass(class_);
                             self.attr({
                                 'data-status': isactive,
                                 'title': title
                             });
-                            
+
                             self.removeAttr('disabled');
                             self.html(text);
                         }
                     }
                 });
             });
-            
+
         });
 
     </script>
 <?php } ?>    
-    </body>
+</body>
 </html>

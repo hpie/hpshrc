@@ -22,7 +22,7 @@
 
                 <h2 class="title-style-2">CONTACT FORM <span class="title-under"></span></h2>
 
-                <form action="php/mail.php" class="contact-form ajax-form">
+                <form action="php/mail.php" class="contact-form ajax-form contact_form_footer">
 
                     <div class="row">
 

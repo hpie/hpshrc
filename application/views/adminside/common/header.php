@@ -37,6 +37,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/animate.css" rel="stylesheet"/>      
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/icon.css"/>
     <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css?v=1.0" rel="stylesheet" type="text/css">
+    <!--<script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>-->
     <style>
         .navbar nav_title{
             border: 0 !important;

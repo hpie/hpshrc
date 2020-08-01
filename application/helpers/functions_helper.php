@@ -14,7 +14,7 @@ if (!function_exists('echoCaptcha')) {
                         function enableLogin() {                                            
                             document.getElementById('btnLogin').disabled = false;
                         }
-                    </script>                                    
+                    </script>                    
                     <div class='g-recaptcha col-md-6 col-sm-6 col-xs-12' style='' data-sitekey='6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo' data-callback='enableLogin'></div>                                                           
             </div>";
     }

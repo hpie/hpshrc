@@ -307,12 +307,87 @@
                     }
                 });
             });
+            
+            
+             $('#add_causes').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    upload_file_title: {
+                        validators: {
+                            stringLength: {
+                                max: 50
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Title'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    },
+                    upload_file_desc: {
+                        validators: {
+                            stringLength: {
+                                max: 500
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Descriptipn'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    },
+                    upload_file_ref_no: {
+                        validators: {
+                            stringLength: {
+                                max: 50
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Ref No'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    },
+                    upload_file_type: {
+                        validators: {                           
+                            notEmpty: {
+                                message: 'Please Select File Type'
+                            }                                                       
+                        }
+                    },
+                    upload_file_sub_type: {
+                        validators: {                           
+                            notEmpty: {
+                                message: 'Please Select Sub File Type'
+                            }                                                       
+                        }
+                    },
+                    upload_file_original_name: {
+                        validators: {                           
+                            notEmpty: {
+                                message: 'Please Choose File'
+                            }                                                       
+                        }
+                    }
+                }
+            });
         });
     </script>
 <?php } ?>
 <?php
 if (isset($_SESSION['data'])) {
-    unset($_SESSION['data']);
+    unset($_SESSION['data']); 
 }
 ?>
 </body>

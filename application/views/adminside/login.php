@@ -21,7 +21,7 @@
         <!-- Custom Theme Style -->
         <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css?v=1.0" rel="stylesheet" type="text/css">
 
-        <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js?v=1.0" type="text/javascript" nonce='S51U26wMQz'></script>        
+        <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js?v=1.0" type="text/javascript" nonce='S51U26wMQz'></script>       
         <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/js/bootstrap.min.js?v=1.0" type="text/javascript" nonce='S51U26wMQz'></script>         
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotify.js" type="text/javascript"></script>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyStyleMaterial.js" type="text/javascript"></script>
@@ -48,10 +48,10 @@
                         <form method="post" id='loginform'>              
                             <h1>Login Form</h1>
                             <div>
-                                <input type="text" class="form-control" placeholder="Username" required="" name="username"/>
+                                <input type="text" class="form-control" placeholder="Username" name="username" id="username" required="" maxlength="50"/>
                             </div>
                             <div>
-                                <input type="password" class="form-control" placeholder="Password" required="" name="password" autocomplete="on"/>
+                                <input type="password" class="form-control" placeholder="Password" required="" id="password" name="password" autocomplete="on" maxlength="50"/>
                             </div>
                             <?php
                             $csrf = array(
@@ -97,26 +97,26 @@
                 </div>
             </div>
         </div>        
-        <?php include(VIEWPATH . "adminside/common/notify.php"); ?>
-        <script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js?v=1.0" type="text/javascript"></script>
+        <?php include(VIEWPATH . "adminside/common/notify.php"); ?>      
         <script nonce='S51U26wMQz' type="text/javascript">
-                                    $(document).ready(function () {                                       
-                                        $('#overrideOptionsForm').bootstrapValidator({
-                                            fields: {
-                                                username: {
-                                                    validators: {
-                                                        notEmpty: {
-                                                            message: 'The username is required'
-                                                        },
-                                                        uri: {
-                                                            message: 'The website address is not valid'
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        });
-                                    });
+            $(document).ready(function () {
+                $('input[type=text]').keyup(function (e) {
+                    if ($(this).hasClass("novalidation")) {
+                    } else {
+                        var str = $(this).val();
+                        for (var i = 0; i < str.length; i++) {
+                            var charCode = str.charAt(i).charCodeAt(0);
+                            if (charCode === 60 || charCode === 96 || charCode === 126 || charCode === 33 || charCode === 35 || charCode === 36 || charCode === 37 || charCode === 94 || charCode === 96 || charCode === 38 || charCode === 42 || charCode == 40 || charCode === 41 || charCode === 61 || charCode === 43 || charCode === 123 || charCode === 125 || charCode === 91 || charCode === 93 || charCode === 124 || charCode === 92 || charCode === 58 || charCode === 59 || charCode === 34 || charCode === 39 || charCode === 44 || charCode === 63 || charCode === 47 || charCode === 62)
+                            {
+                                alert('Special Characters are not allowed. Only use A-Z, a-z and 0-9');
+                                $(this).val('');
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                });
+            });
         </script>
-
     </body>
 </html>

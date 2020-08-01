@@ -12,7 +12,7 @@
 #        RewriteCond %{QUERY_STRING} view=products&id=12345 
 #        RewriteRule .*$ /8831? [L,R=301]
 
-#        RewriteCond %{QUERY_STRING} v=1.0        
+#        RewriteCond %{QUERY_STRING} .        
 #        RewriteRule .*  /? [R=404,L]
         ErrorDocument 404 http://localhost/hpshrc/errorpage
 #   RewriteCond %{HTTPS} off

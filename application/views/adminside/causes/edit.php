@@ -11,7 +11,7 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form class="form-horizontal form-label-left" method="post" name="addcauses" action="<?php echo ADMIN_EDIT_FILES_LINK.$upload_file_id; ?>">                                                                                                                                          
+                        <form class="form-horizontal form-label-left" id="add_causes" method="post" name="addcauses" action="<?php echo ADMIN_EDIT_FILES_LINK.$upload_file_id; ?>">                                                                                                                                          
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="upload_file_title">Title<span class="required">*</span>
                                 </label>

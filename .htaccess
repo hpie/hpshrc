@@ -30,7 +30,6 @@
     Header always edit Set-Cookie (.*) "$1; SameSite=strict"
 </IfModule>
 
-
 <FilesMatch "\.(css|js)$">
     Header set X-Content-Type-Options nosniff
 </FilesMatch>

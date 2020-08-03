@@ -227,8 +227,10 @@ class CI_Security {
 		}
 
 		// Check CSRF token validity, but don't error on mismatch just yet - we'll want to regenerate
-                
-//                print_r($_COOKIE);die;
+                                
+                log_message('info', print_r($_COOKIE, TRUE));
+                log_message('info', "csrf coockie name: ".$_COOKIE[$this->_csrf_cookie_name]);
+                log_message('info', "csrf token: ".$_POST[$this->_csrf_token_name]);
                 
 		$valid = isset($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name])
 			&& is_string($_POST[$this->_csrf_token_name]) && is_string($_COOKIE[$this->_csrf_cookie_name])

@@ -10,19 +10,19 @@
         <title><?php echo $title; ?></title>
         <!-- Bootstrap -->
 
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/css/bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
+        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
         <!-- Font Awesome -->
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css?v=1.0" rel="stylesheet" type="text/css">
+        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- NProgress -->
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>nprogress/nprogress.css?v=1.0" rel="stylesheet" type="text/css">            
+        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>nprogress/nprogress.css" rel="stylesheet" type="text/css">            
 
         <!-- Custom Theme Style -->
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css?v=1.0" rel="stylesheet" type="text/css">
+        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css" rel="stylesheet" type="text/css">
 
-        <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js?v=1.0" type="text/javascript" nonce='S51U26wMQz'></script>       
-        <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/js/bootstrap.min.js?v=1.0" type="text/javascript" nonce='S51U26wMQz'></script>         
+        <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>       
+        <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/js/bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>         
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotify.js" type="text/javascript"></script>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyStyleMaterial.js" type="text/javascript"></script>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyButtons.js" type="text/javascript"></script>              

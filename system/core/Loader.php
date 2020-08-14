@@ -1253,6 +1253,13 @@ class CI_Loader {
         $this->view($template_name,$data);
         $this->view('adminside/common/footer',$data);                
     }
+    public function employee_view($template_name, $data = array()) {        
+        $this->view('employee/common/header', $data);
+        $this->view('employee/common/sidebar', $data);
+        $this->view('employee/common/topnavigation', $data);
+        $this->view($template_name,$data);
+        $this->view('employee/common/footer',$data);                
+    }
     public function single_page($template_name, $data = array()) {                
         $this->view($template_name,$data);                       
     }

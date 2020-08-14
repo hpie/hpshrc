@@ -555,4 +555,3 @@ var PNotifyButtons = function (PNotify) {
 	function noop() {}
 	return PNotifyButtons;
 }(PNotify);
-//# sourceMappingURL=PNotifyButtons.js.map

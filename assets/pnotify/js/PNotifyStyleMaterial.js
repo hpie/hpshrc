@@ -230,4 +230,3 @@ var PNotifyStyleMaterial = function (PNotify) {
 	}
 	return PNotifyStyleMaterial;
 }(PNotify);
-//# sourceMappingURL=PNotifyStyleMaterial.js.map

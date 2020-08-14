@@ -23,8 +23,8 @@ class Causes_c extends CI_Controller {
             }
         }
         $this->userId = (int) $_SESSION['user_id'];
-//        $method=$this->router->fetch_method();
-//        visitLog($method,"Home");
+        $method=$this->router->fetch_method();
+        visitLog($method,"Causes_c");
     }
 
     public function add_causes() {         

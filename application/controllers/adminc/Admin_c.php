@@ -20,6 +20,8 @@ class Admin_c extends CI_Controller {
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"Admin_c");
     }           
     public function dashboard() {                     
         $data['title'] = ADMIN_DASHBOARD_TITLE;        

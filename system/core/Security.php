@@ -276,30 +276,28 @@ class CI_Security {
 			return FALSE;
 		}
 
-		setcookie(
-			$this->_csrf_cookie_name,
-			$this->_csrf_hash,                          
-			$expire,
-			config_item('cookie_path'),
-			config_item('cookie_domain'),
-			$secure_cookie,
-			config_item('cookie_httponly')
-		);
+//		setcookie(
+//			$this->_csrf_cookie_name,
+//			$this->_csrf_hash,                          
+//			$expire,
+//			config_item('cookie_path'),
+//			config_item('cookie_domain'),
+//			$secure_cookie,
+//			config_item('cookie_httponly')                        
+//		);
                 
-//        setrawcookie(
-//        $this->_csrf_cookie_name,
-//        $this->_csrf_hash,
-//        ['samesite' => 'None',
-//            'secure' => true,
-//            'expires' => $expire,
-//            'path' => config_item('cookie_path'),
-//            'domain' => config_item('cookie_domain'),
-//            'httponly' => config_item('cookie_httponly')
-//            ]
-//        );
-                
-                
-		log_message('info', 'CSRF cookie sent');
+        setcookie(
+        $this->_csrf_cookie_name,
+        $this->_csrf_hash,
+        ['samesite' => 'None',
+            'secure' => true,
+            'expires' => $expire,
+            'path' => config_item('cookie_path'),
+            'domain' => config_item('cookie_domain'),
+            'httponly' => config_item('cookie_httponly')
+            ]
+        );                 
+        log_message('info', 'CSRF cookie sent');
 
 		return $this;
 	}

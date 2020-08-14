@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ini_set('session.cookie_samesite', 'None');
+
 $protocol_http = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+
 if($protocol_http=='https://'){
     ini_set('session.cookie_secure', TRUE);
 }
@@ -406,7 +408,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 */
 $config['cookie_prefix']	= 'hpshrc_';
 $config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
+$config['cookie_path']		= APPPATH;
 
 
 if($protocol_http=='https://'){

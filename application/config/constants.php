@@ -100,17 +100,12 @@ define('ADMIN_EDIT_FILES_LINK', BASE_URL.'/admin-edit-causes/');
 define('ADMIN_FILES_ACTIVE_LINK',BASE_URL."/admin-active-causes");
 define('ADMIN_LOAD_SUB_CATEGORIES_LINK', BASE_URL.'/admin-load-sub-categories');
 
-//**************************************ADMIN TITLE****************************//
-define('ADMIN_LOGIN_TITLE', 'HPSHRC-ADMIN-LOGIN');
-define('ADMIN_PROFILE_TITLE', 'HPSHRC-ADMIN-PROFILE');
-define('ADMIN_UPDATE_PROFILE_TITLE', 'HPSHRC-ADMIN-UPDATE-PROFILE');
-define('ADMIN_DASHBOARD_TITLE', 'HPSHRC-ADMIN-DASHBOARD');
-define('ADMIN_FILE_LIST_TITLE', 'HPSHRC-ADMIN-FILE-LIST');
-
-define('ADMIN_ADD_CAUSES_TITLE', 'HPSHRC-ADMIN-ADD-CAUSES');
-define('ADMIN_EDIT_CAUSES_TITLE', 'HPSHRC-ADMIN-EDIT-CAUSES');
-
-
+//**************************************EMPLOYEE ROUTE****************************//
+define('EMPLOYEE_LOGIN_LINK', BASE_URL.'/employee-login');
+define('EMPLOYEE_LOGOUT_LINK', BASE_URL.'/employee-logout');
+define('EMPLOYEE_PROFILE_LINK', BASE_URL.'/employee-profile');
+define('EMPLOYEE_DASHBOARD_LINK', BASE_URL.'/employee-dashboard');
+define('EMPLOYEE_UPDATE_PROFILE_LINK', BASE_URL.'/employee-update-profile');
 
 //**************************************FRONT ROUTE****************************//
 define('FRONT_ABOUT_LINK', BASE_URL.'/front-about');
@@ -132,3 +127,21 @@ define('FRONT_BUDGET_TITLE', 'HPSHRC-FRONT-BUDGET');
 define('FRONT_GALLERY_TITLE', 'HPSHRC-FRONT-GALLERY');
 define('FRONT_CONTACT_TITLE', 'HPSHRC-FRONT-CONTACT');
 define('FRONT_404_TITLE', 'HPSHRC-404');
+
+
+//**************************************Employee TITLE****************************//
+define('EMPLOYEE_LOGIN_TITLE', 'HPSHRC-EMPLOYEE-LOGIN');
+define('EMPLOYEE_PROFILE_TITLE', 'HPSHRC-EMPLOYEE-PROFILE');
+define('EMPLOYEE_UPDATE_PROFILE_TITLE', 'HPSHRC-EMPLOYEE-UPDATE-PROFILE');
+define('EMPLOYEE_DASHBOARD_TITLE', 'HPSHRC-EMPLOYEE-DASHBOARD');
+
+
+//**************************************ADMIN TITLE****************************//
+define('ADMIN_LOGIN_TITLE', 'HPSHRC-ADMIN-LOGIN');
+define('ADMIN_PROFILE_TITLE', 'HPSHRC-ADMIN-PROFILE');
+define('ADMIN_UPDATE_PROFILE_TITLE', 'HPSHRC-ADMIN-UPDATE-PROFILE');
+define('ADMIN_DASHBOARD_TITLE', 'HPSHRC-ADMIN-DASHBOARD');
+define('ADMIN_FILE_LIST_TITLE', 'HPSHRC-ADMIN-FILE-LIST');
+
+define('ADMIN_ADD_CAUSES_TITLE', 'HPSHRC-ADMIN-ADD-CAUSES');
+define('ADMIN_EDIT_CAUSES_TITLE', 'HPSHRC-ADMIN-EDIT-CAUSES');

@@ -19,6 +19,8 @@ class Login_c extends CI_Controller {
                 }
             }
         }
+        $method=$this->router->fetch_method();
+        visitLog($method,"Admin Login_c");
     }
 
     public function index() {
@@ -45,11 +47,8 @@ class Login_c extends CI_Controller {
     }
 
     public function logout() {
-//        $res = $this->Student_model->update_logout_status($_SESSION['st_rmsa_user_id']);
         sessionDestroy();
-//        if($res){
         redirect(ADMIN_LOGIN_LINK);
-//        }        
     }
 
 }

@@ -92,3 +92,10 @@ $route['front-download']='frontc/Home_c/download';
 $route['front-budget']='frontc/Home_c/budget';
 $route['front-gallery']='frontc/Home_c/gallery';
 $route['front-contact']='frontc/Home_c/contact';
+
+
+//************************************Employee side route****************************//
+$route['employee-login']='employeec/Login_c';
+$route['employee-logout']='employeec/Login_c/logout';
+$route['employee-update-profile']='employeec/Employee_c/update_profile';
+$route['employee-dashboard']='employeec/Employee_c/dashboard';

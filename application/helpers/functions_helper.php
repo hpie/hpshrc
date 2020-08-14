@@ -19,7 +19,6 @@ if (!function_exists('echoCaptcha')) {
                     <div class='g-recaptcha col-md-6 col-sm-6 col-xs-12' style='' data-sitekey='6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo' data-callback='enableLogin'></div>                                                           
             </div>";
     }
-
 }
 
 if (!function_exists('successOrErrorMessage')) {
@@ -77,8 +76,24 @@ function sessionAdmin($row) {
 }
 
 function sessionCheckAdmin() {
-    if (!isset($_SESSION['admin_user_id'])) {
+    if (!isset($_SESSION['admin_user_id']) && $_SESSION['usertype'] != 'admin') {
         redirect(ADMIN_LOGIN_LINK);
+        return false;
+    }
+    return true;
+}
+
+function sessionEmployee($row) {
+    foreach ($row as $key => &$value) {
+        $_SESSION[$key] = $value;
+    }
+    $_SESSION['user_id'] = $row['employee_user_id'];
+    $_SESSION['usertype'] = 'employee';
+    return;
+}
+function sessionCheckEmployee() {
+    if (!isset($_SESSION['employee_user_id']) && $_SESSION['usertype'] != 'employee') {
+        redirect(EMPLOYEE_LOGIN_LINK);
         return false;
     }
     return true;

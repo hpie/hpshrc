@@ -9,24 +9,24 @@
 
     <title><?php echo $title ?></title>
     <!-- Bootstrap -->
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/css/bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css?v=1.0" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         
     <!-- NProgress -->
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>nprogress/nprogress.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap-daterangepicker/daterangepicker.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>icheck/green.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>editor/prettify.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-bs/css/dataTables.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons-bs/css/buttons.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-responsive-bs/css/responsive.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-scroller-bs/css/scroller.bootstrap.min.css?v=1.0" rel="stylesheet" type="text/css">    
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>nprogress/nprogress.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>icheck/green.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>editor/prettify.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet" type="text/css">    
 
-    <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css?v=1.0" rel="stylesheet" type="text/css">
-    <link href="<?php echo BASE_URL ?>/assets/front/css/bootstrap2.min.css?v=1.0" rel="stylesheet" type="text/css">
+    <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo BASE_URL ?>/assets/front/css/bootstrap2.min.css" rel="stylesheet" type="text/css">
     
     <!-- PNotify -->     
     <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotify.js" type="text/javascript"></script>
@@ -36,7 +36,7 @@
     <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyConfirm.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/animate.css" rel="stylesheet"/>      
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/icon.css"/>
-    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css?v=1.0" rel="stylesheet" type="text/css">    
+    <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css" rel="stylesheet" type="text/css">    
     <style>
         .navbar nav_title{
             border: 0 !important;

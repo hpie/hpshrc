@@ -25649,3 +25649,63 @@ INFO - 2020-08-14 20:48:52 --> File loaded: C:\xampp741\htdocs\hpshrc\applicatio
 INFO - 2020-08-14 20:48:52 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/footer.php
 INFO - 2020-08-14 20:48:52 --> Final output sent to browser
 DEBUG - 2020-08-14 20:48:52 --> Total execution time: 1.0334
+INFO - 2020-08-14 20:49:53 --> Config Class Initialized
+INFO - 2020-08-14 20:49:53 --> Hooks Class Initialized
+DEBUG - 2020-08-14 20:49:53 --> UTF-8 Support Enabled
+INFO - 2020-08-14 20:49:53 --> Utf8 Class Initialized
+INFO - 2020-08-14 20:49:53 --> URI Class Initialized
+INFO - 2020-08-14 20:49:53 --> Router Class Initialized
+INFO - 2020-08-14 20:49:53 --> Output Class Initialized
+INFO - 2020-08-14 20:49:53 --> Security Class Initialized
+DEBUG - 2020-08-14 20:49:53 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-08-14 20:49:54 --> CSRF cookie sent
+INFO - 2020-08-14 20:49:54 --> Input Class Initialized
+INFO - 2020-08-14 20:49:54 --> Language Class Initialized
+INFO - 2020-08-14 20:49:54 --> Loader Class Initialized
+INFO - 2020-08-14 20:49:54 --> Helper loaded: url_helper
+INFO - 2020-08-14 20:49:54 --> Helper loaded: functions_helper
+INFO - 2020-08-14 20:49:54 --> Database Driver Class Initialized
+DEBUG - 2020-08-14 20:49:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-08-14 20:49:54 --> Session: Class initialized using 'files' driver.
+INFO - 2020-08-14 20:49:54 --> Controller Class Initialized
+INFO - 2020-08-14 20:49:54 --> Helper loaded: form_helper
+DEBUG - 2020-08-14 20:49:54 --> Session class already loaded. Second attempt ignored.
+INFO - 2020-08-14 20:49:54 --> Model "Login_m" initialized
+INFO - 2020-08-14 20:49:54 --> employee id 7241 visit the Employee_c controller and method name is update_profile
+INFO - 2020-08-14 20:49:54 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/header.php
+INFO - 2020-08-14 20:49:54 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/sidebar.php
+INFO - 2020-08-14 20:49:54 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/topnavigation.php
+INFO - 2020-08-14 20:49:54 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/update_profile.php
+INFO - 2020-08-14 20:49:54 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/footer.php
+INFO - 2020-08-14 20:49:54 --> Final output sent to browser
+DEBUG - 2020-08-14 20:49:54 --> Total execution time: 1.0644
+INFO - 2020-08-14 20:51:33 --> Config Class Initialized
+INFO - 2020-08-14 20:51:33 --> Hooks Class Initialized
+DEBUG - 2020-08-14 20:51:33 --> UTF-8 Support Enabled
+INFO - 2020-08-14 20:51:34 --> Utf8 Class Initialized
+INFO - 2020-08-14 20:51:34 --> URI Class Initialized
+INFO - 2020-08-14 20:51:34 --> Router Class Initialized
+INFO - 2020-08-14 20:51:34 --> Output Class Initialized
+INFO - 2020-08-14 20:51:34 --> Security Class Initialized
+DEBUG - 2020-08-14 20:51:34 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-08-14 20:51:34 --> CSRF cookie sent
+INFO - 2020-08-14 20:51:34 --> Input Class Initialized
+INFO - 2020-08-14 20:51:34 --> Language Class Initialized
+INFO - 2020-08-14 20:51:34 --> Loader Class Initialized
+INFO - 2020-08-14 20:51:34 --> Helper loaded: url_helper
+INFO - 2020-08-14 20:51:34 --> Helper loaded: functions_helper
+INFO - 2020-08-14 20:51:34 --> Database Driver Class Initialized
+DEBUG - 2020-08-14 20:51:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-08-14 20:51:34 --> Session: Class initialized using 'files' driver.
+INFO - 2020-08-14 20:51:34 --> Controller Class Initialized
+INFO - 2020-08-14 20:51:34 --> Helper loaded: form_helper
+DEBUG - 2020-08-14 20:51:34 --> Session class already loaded. Second attempt ignored.
+INFO - 2020-08-14 20:51:34 --> Model "Login_m" initialized
+INFO - 2020-08-14 20:51:34 --> employee id 7241 visit the Employee_c controller and method name is update_profile
+INFO - 2020-08-14 20:51:34 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/header.php
+INFO - 2020-08-14 20:51:34 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/sidebar.php
+INFO - 2020-08-14 20:51:34 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/topnavigation.php
+INFO - 2020-08-14 20:51:34 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/update_profile.php
+INFO - 2020-08-14 20:51:34 --> File loaded: C:\xampp741\htdocs\hpshrc\application\views\employee/common/footer.php
+INFO - 2020-08-14 20:51:34 --> Final output sent to browser
+DEBUG - 2020-08-14 20:51:34 --> Total execution time: 1.0073

@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="dropdown-inner">
                                     <ul class="link-list">
-                                        <li><a href="<?php echo EMPLOYEE_UPDATE_PROFILE_LINK; ?>"><em class="icon ni ni-user-alt"></em><span>Update Profile</span></a></li>
+                                        <li><a href="<?php echo EMPLOYEE_UPDATE_PROFILE_LINK; ?>"><em class="icon ni ni-user-alt"></em><span>Change Password</span></a></li>
                                         <!--<li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>-->
                                         <!--<li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>-->
                                     </ul>

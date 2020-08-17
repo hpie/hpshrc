@@ -12,6 +12,7 @@
         <!-- StyleSheets  -->
         <link rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/dashlite.css">
         <link id="skin-default" rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/theme.css">
+        <link href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/toastr.min.css" rel="stylesheet" type="text/css"/>        
     </head>
     <body class="nk-body bg-white npc-general pg-auth">
         <div class="nk-app-root">
@@ -109,5 +110,6 @@
         <!-- JavaScript -->
         <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/bundle.js"></script>
         <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/scripts.js"></script>
-
+        <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/toastr.min.js" type="text/javascript"></script>
+        <?php include(VIEWPATH . "employee/common/notify.php"); ?>
 </html>

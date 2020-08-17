@@ -12,7 +12,7 @@
         <title><?php echo $title; ?></title>
         <!-- StyleSheets  -->
         <link rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/dashlite.css">        
-        <link rel="stylesheet" href="https://codeseven.github.io/toastr/build/toastr.min.css"/>
+        <link href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/toastr.min.css" rel="stylesheet" type="text/css"/>        
         <style>
             .labelleft{
                 float: right !important;

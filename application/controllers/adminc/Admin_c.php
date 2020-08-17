@@ -7,8 +7,8 @@ class Admin_c extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper(array('url', 'functions', 'form'));
-        $this->load->library('session');         
-        sessionCheckAdmin();        
+        $this->load->library('session');        
+        sessionCheckAdmin();  
         $this->load->model('adminm/Login_m');                                    
         if (isset($_SESSION['user_id'])) {            
             $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'],$_SESSION['user_id']);            
@@ -23,7 +23,7 @@ class Admin_c extends CI_Controller {
         $method=$this->router->fetch_method();
         visitLog($method,"Admin_c");
     }           
-    public function dashboard() {                     
+    public function dashboard() {        
         $data['title'] = ADMIN_DASHBOARD_TITLE;        
         $this->load->admin_view('adminside/dashboard',$data);
     }

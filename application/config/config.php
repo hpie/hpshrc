@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-ini_set('session.cookie_samesite', 'None');
-
 $protocol_http = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-
+ini_set('session.cookie_samesite', 'None');
 if($protocol_http=='https://'){
     ini_set('session.cookie_secure', TRUE);
 }

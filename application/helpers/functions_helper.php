@@ -71,15 +71,15 @@ function sessionAdmin($row) {
         $_SESSION[$key] = $value;
     }
     $_SESSION['user_id'] = $row['admin_user_id'];
-    $_SESSION['usertype'] = 'admin';
-    return;
+    $_SESSION['usertype'] = 'admin';     
+    return true;
 }
 
-function sessionCheckAdmin() {
-    if (!isset($_SESSION['admin_user_id']) && $_SESSION['usertype'] != 'admin') {
+function sessionCheckAdmin() {       
+    if ((!isset($_SESSION['admin_user_id'])) && ($_SESSION['usertype'] != 'admin')) {         
         redirect(ADMIN_LOGIN_LINK);
         return false;
-    }
+    }    
     return true;
 }
 
@@ -89,7 +89,7 @@ function sessionEmployee($row) {
     }
     $_SESSION['user_id'] = $row['employee_user_id'];
     $_SESSION['usertype'] = 'employee';
-    return;
+    return true;
 }
 function sessionCheckEmployee() {
     if (!isset($_SESSION['employee_user_id']) && $_SESSION['usertype'] != 'employee') {

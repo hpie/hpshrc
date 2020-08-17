@@ -12,7 +12,8 @@
                         <img class="logo-light logo-img" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo2x.png 2x" alt="logo">
                         <img class="logo-dark logo-img" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-dark.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-dark2x.png 2x" alt="logo-dark">
                     </a>
-                </div><!-- .nk-header-brand -->
+                </div>
+                <!-- .nk-header-brand -->
                 <div class="nk-header-tools">
                     <ul class="nk-quick-nav">
                         <li class="dropdown user-dropdown">

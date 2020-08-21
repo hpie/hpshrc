@@ -30,7 +30,11 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+
 $routes->get('/', 'Home_c::index');
+$routes->add('404_override', 'Home_c::page404');
+$routes->add('errorpage', 'Home_c::page404');
 //************************************Admin side route****************************//
 $routes->add('admin-login', 'Login_c::index');
 $routes->add('admin-logout', 'Login_c::logout');

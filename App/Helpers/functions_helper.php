@@ -44,6 +44,7 @@ function set_cheked($desired_value, $new_value) {
         return '';
     }
 }
+
 function reCaptchaResilt($captcha_entered, $redirect_url) {
     if ($captcha_entered != $_SESSION['rand_code']) {
         $_SESSION['captcha'] = 1;
@@ -51,6 +52,7 @@ function reCaptchaResilt($captcha_entered, $redirect_url) {
     }
     return true;
 }
+
 function visitLog($method, $controller) {
     if (isset($_SESSION['user_id'])) {
         $userId = $_SESSION['user_id'];
@@ -60,52 +62,76 @@ function visitLog($method, $controller) {
         log_message('info', "guest user visit the $controller controller and method name is $method");
     }
 }
+
+function lasturl() {
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+        $link = "https";
+    else
+        $link = "http";
+
+// Here append the common URL characters. 
+    $link .= "://";
+
+// Append the host(domain name, ip) to the URL. 
+    $link .= $_SERVER['HTTP_HOST'];
+
+// Append the requested resource location to the URL 
+    $link .= $_SERVER['REQUEST_URI'];
+
+// Print the link 
+    return $link;
+}
+
 function sessionAdmin($row) {
     foreach ($row as $key => &$value) {
         $_SESSION[$key] = $value;
     }
     $_SESSION['user_id'] = $row['admin_user_id'];
     $_SESSION['usertype'] = 'admin';
+    $_SESSION['lastULR'] = BASE_URL . $_SERVER['REQUEST_URI'];      
     return true;
 }
 function sessionCheckAdmin() {
     if ((!isset($_SESSION['admin_user_id'])) || !isset($_SESSION['usertype'])) {
         session_destroy();
-        header('Location: '.ADMIN_LOGIN_LINK); 
+        header('Location: ' . ADMIN_LOGIN_LINK);
         exit();
     }
     if (isset($_SESSION['usertype'])) {
         if ($_SESSION['usertype'] != 'admin') {
             session_destroy();
-            header('Location: '.ADMIN_LOGIN_LINK); 
+            header('Location: ' . ADMIN_LOGIN_LINK);
             exit();
         }
     }
     return true;
 }
+
 function sessionEmployee($row) {
     foreach ($row as $key => &$value) {
         $_SESSION[$key] = $value;
     }
     $_SESSION['user_id'] = $row['employee_user_id'];
-    $_SESSION['usertype'] = 'employee';
+    $_SESSION['usertype'] = 'employee';    
     return true;
 }
+
 function sessionCheckEmployee() {
     if (!isset($_SESSION['employee_user_id']) || !isset($_SESSION['usertype'])) {
         session_destroy();
-        header('Location: '.EMPLOYEE_LOGIN_LINK);
+        header('Location: ' . EMPLOYEE_LOGIN_LINK);
         exit();
     }
     if (isset($_SESSION['usertype'])) {
         if ($_SESSION['usertype'] != 'employee') {
             session_destroy();
-            header('Location: '.EMPLOYEE_LOGIN_LINK);
+            header('Location: ' . EMPLOYEE_LOGIN_LINK);
             exit();
         }
     }
     return true;
 }
+
 function generateToken() {
     $token = "";
     $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

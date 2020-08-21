@@ -69,7 +69,7 @@
                                 <br>
                             </div>
                             <div>                                
-                                <input type="submit"   id="btnLogin" class="btn primary_btn btn_disabled submit col-xs-12 btn-info" value="Log in" name="login"/>
+                                <input type="submit"   id="btnLogin" disabled="" class="btn primary_btn btn_disabled submit col-xs-12 btn-info" value="Log in" name="login"/>
                             </div>
                             <div class="clearfix"></div>
 

@@ -5,9 +5,9 @@ if($_SERVER['HTTP_HOST']=='localhost'){
     define('DATABASE','hpshrc');
 }
 else{
-    define('USERNAME','s7hpiein_rmsauser');
-    define('PASSWORD','Hp!#Rm%aD*');
-    define('DATABASE','s7hpiein_rmsa');
+     define('USERNAME','knebxnii_knebxnii');
+    define('PASSWORD','v@siml00k!me');
+    define('DATABASE','knebxnii_hpshrc');
 }
 // SQL server connection information
 $sql_details = array(

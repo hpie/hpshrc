@@ -10,6 +10,7 @@ if($urllink=="https://localhost" || $urllink=="http://localhost"){
     }    
 }
 define('BASE_URL',$urllink);
+define('BASE_URL_CI',$urllink);
 define('BASE_URL_DATATABLES',BASE_URL.'/');
 define('BASE_URL_API', 'http://' . $_SERVER['HTTP_HOST'] . implode('/', $subdomain) . '/');
 define('APPNAME', 'HPSHRC');

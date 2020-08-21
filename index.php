@@ -1,4 +1,9 @@
 <?php
+header("X-XSS-Protection: 1; mode=block");
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: sameorigin');
+header('X-Powered-By:');
+
 $lifetime=1500;
 session_set_cookie_params($lifetime);
 $protocol_http = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
@@ -15,10 +20,6 @@ if($protocol_http=='https://'){
 }else{
     setcookie(session_name(),session_id(),time()+$lifetime,'writable/cache',null,null,TRUE);
 }
-
-
-
-
 
 include 'common_url.php';
 // Valid PHP Version?

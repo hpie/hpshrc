@@ -15,8 +15,9 @@ class Elogin_c extends Controller {
     public function index() { 
         helper('form');
         if (isset($_SESSION['user_id'])) {
-            if ($_SESSION['user_id'] > 0) {                
-                return redirect()->to(EMPLOYEE_DASHBOARD_LINK);
+            if ($_SESSION['user_id'] > 0) {
+                sessionDestroy();
+                return redirect()->to(EMPLOYEE_LOGIN_LINK);
             }
         }
         $_SESSION['invalid_login'] = 0;

@@ -15,7 +15,8 @@ class Login_c extends Controller
         helper('form');
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['user_id'] > 0) {                
-                return redirect()->to(ADMIN_DASHBOARD_LINK); 
+                sessionDestroy();
+                return redirect()->to(ADMIN_LOGIN_LINK); 
             }
         }       
         $_SESSION['invalid_login'] = 0;

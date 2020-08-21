@@ -49,8 +49,10 @@ class Login_m extends Model
                     $this->db->query("UPDATE employee SET user_attempt=user_attempt+1,user_locked_status=1 WHERE employee_user_id = '{$check['employee_user_id']}'");                  
                     successOrErrorMessage('Your account is locked after consecutive failure attempts. Please contact your school with your email id to unlock', 'error');
                 }
+                return false;
             }
         }
+        successOrErrorMessage("Invalid Username & Password", 'error');
         return false;
     }
         

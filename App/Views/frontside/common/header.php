@@ -15,7 +15,7 @@
         <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css" rel="stylesheet" type="text/css">
 
         <!-- favico -->
-        <link rel='icon' href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/favico/favicon.ico" type="image/x-icon"/ >
+        <link rel='icon' href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/favico/favicon.ico" type="image/x-icon">
 
         <!-- Bootsrap -->
         <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/bootstrap.min.css" type="text/css">

@@ -57,7 +57,7 @@
                             <div>
                                 <input type="password" class="form-control" placeholder="Password" required="" id="password" name="password" autocomplete="off" maxlength="50"/>
                             </div>                            
-<!--                            <div>                               
+                            <div>                               
                                 <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
                                 <script nonce='S51U26wMQz' type="text/javascript">
                                     function enableLogin() {
@@ -67,7 +67,7 @@
 
                                 <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>                        
                                 <br>
-                            </div>-->
+                            </div>
                             <div>                                
                                 <input type="submit"   id="btnLogin" class="btn primary_btn btn_disabled submit col-xs-12 btn-info" value="Log in" name="login"/>
                             </div>

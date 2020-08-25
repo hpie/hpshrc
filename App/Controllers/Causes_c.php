@@ -13,7 +13,6 @@ class Causes_c extends Controller {
         helper('functions');
         helper('url');
         sessionCheckAdmin();              
-        include APPPATH . 'ThirdParty/image-resize/imageresize.php';
         $this->Login_m = new Login_m();
         $this->Causes_m = new Causes_m();
         $this->security = \Config\Services::security();

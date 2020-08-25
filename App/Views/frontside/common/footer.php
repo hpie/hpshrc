@@ -216,24 +216,36 @@
 <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/jquery-3.2.1.min.js"></script>
 <script nonce="S51U26wMQz">window.jQuery || document.write('')</script>
 
-
-
 <!-- Bootsrap javascript file -->
 <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/bootstrap.min.js"></script>
 <script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js" type="text/javascript"></script>    
 <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script nonce='S51U26wMQz' type="text/javascript" language="javascript" src="<?php echo BASE_URL; ?>/assets/front/js/dataTables.responsive.min.js"></script>
 
-
-
 <!-- owl carouseljavascript file -->
 <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/owl.carousel.min.js"></script>
-
 
 <!-- Template main javascript -->
 <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/main.js"></script>
 <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/assets/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+<?php include(APPPATH . "Views/frontside/common/notify.php"); ?>
 
+<script type="text/javascript" nonce='S51U26wMQz'>
+     $(document).ready(function () {   
+    $(".mobileno").keyup(function (e) {
+            var str=$(this).val();
+            for (var i = 0; i < str.length; i++) {
+                var charCode=str.charAt(i).charCodeAt(0);                  
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                {                                    
+                    $(this).val('');
+                    return false;
+                }                                       
+            }               
+            return true;
+        });
+    });
+</script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script nonce="S51U26wMQz">
     (function (b, o, i, l, e, r) {
@@ -415,6 +427,113 @@
         });
 
     </script>
-<?php } ?>    
+<?php } ?>  
+    
+    
+    <?php if ($title == CUSTOMER_REGISTRATION_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+
+        $(document).ready(function () {            
+            
+            $('#student_register').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {                    
+                    customer_photo_path: {
+                        validators: {
+                            file: {
+                                extension: 'jpeg,png',
+                                type: 'image/jpeg,image/png',                                
+                                message: 'The selected file is not valid'
+                            }
+                        }
+                    },                    
+                    customer_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },                    
+                    customer_middle_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    customer_mobile_no: {
+                        validators: {
+                            stringLength: {
+                                min: 10,
+                                max:10
+                            },
+                            notEmpty: {
+                                message: 'Please Enter mobile number'
+                            }
+                        }
+                    },
+                    customer_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    customer_email_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'customer_email_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    },
+                    customer_dob: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
+                    }
+                }
+            }); 
+        });
+    </script>
+<?php }
+?>
 </body>
 </html>

@@ -417,7 +417,8 @@ a:hover, a:focus, a:active {
 /* Pages 
 ================================= */
 .page-heading {
-  background: url('../images/hpshrc-heading-bg.jpg?1428795369') no-repeat center;
+  /*background: url('../images/hpshrc-heading-bg.jpg') no-repeat center;*/
+  background: #333;
   background-size: cover;
   min-height: 190px;
   color: #fff;

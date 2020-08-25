@@ -107,6 +107,9 @@ define('FRONT_BUDGET_LINK', BASE_URL_CI.'/front-budget');
 define('FRONT_GALLERY_LINK', BASE_URL_CI.'/front-gallery');
 define('FRONT_CONTACT_LINK', BASE_URL_CI.'/front-contact');
 
+define('CUSTOMER_REGISTER_LINK',BASE_URL."/customer-registration");
+define('CUSTOMER_ACTIVE_EMAIL_LINK',BASE_URL_CI."/email-verify/");
+
 
 //**************************************COMMON ROUTE****************************//
 define('PAGE_404_LINK', BASE_URL_CI.'/errorpage');
@@ -138,3 +141,6 @@ define('ADMIN_FILE_LIST_TITLE', 'HPSHRC-ADMIN-FILE-LIST');
 
 define('ADMIN_ADD_CAUSES_TITLE', 'HPSHRC-ADMIN-ADD-CAUSES');
 define('ADMIN_EDIT_CAUSES_TITLE', 'HPSHRC-ADMIN-EDIT-CAUSES');
+
+define('CUSTOMER_REGISTRATION_TITLE', 'HPSHRC-CUSTOMER-REGISTRATION');
+

@@ -27,7 +27,7 @@
         <link href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
         <!-- Template main Css -->
         <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/style.css" type="text/css">
-
+        
         <!-- Modernizr -->
         <script nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/modernizr-2.6.2.min.js"></script>
      
@@ -37,8 +37,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/PNotifyBrightTheme.css"/>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyConfirm.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/animate.css" rel="stylesheet"/>      
-        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/icon.css"/>
-        <!--<link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css" rel="stylesheet" type="text/css">-->
+        <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/icon.css"/>        
         
         <style>
             .download{
@@ -77,7 +76,10 @@
                                     <li> <a href="#"> <i class="fa fa-google"></i>  </a> </li>
                                     <li> <a href="#"> <i class="fa fa-youtube"></i>  </a> </li>
                                     <li> <a href="#"> <i class="fa fa fa-pinterest-p"></i>  </a> </li>
-                                </ul> <!-- /.header-social  -->
+                                    
+                                </ul> <!-- /.header-social  -->   
+                                <a href="#">Login </a>  
+                                <a href="<?php echo CUSTOMER_REGISTER_LINK; ?>">&nbsp;&nbsp;Register </a>  
                             </div>
                         </div>
                     </div>

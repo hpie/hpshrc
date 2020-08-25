@@ -1,1 +1,277 @@
-<?php/** * This example shows making an SMTP connection with authentication. *///SMTP needs accurate times, and the PHP time zone MUST be set//This should be done in your php.ini, but this is how to do it if you don't have access to that//date_default_timezone_set('Etc/UTC');require APPPATH.'third_party/smtp_mail/PHPMailerAutoload.php';//require APP_INCLUDE_Library.'smtp_mail/Security.php';class SMTP_mail {    public $mail;    public $sender_email;    public $username;    public $password;    public $host;    public $port;    public $subject;       public $sender_name;   // public $product_name;    public function __construct() {        $this->mail = new PHPMailer;        $this->port = 465;        $this->host = "mail.codexives.com";               $this->username = "info@codexives.com";        $this->password = "jeny7001@";                                     }public function inviteMail($friendEmail) {                                            $this->sender_email ='info@codexives.com';         $this->sender_name ='Linkpan';                $this->subject ='Invitation mail';        $this->mail->isSMTP();        $this->mail->SMTPDebug = 0;        $this->mail->Debugoutput = 'html';        $this->mail->Host = $this->host;        $this->mail->Port = $this->port;        $this->mail->SMTPAuth = true;        $this->mail->SMTPSecure = true;        $this->mail->Username = $this->username;        $this->mail->Password = $this->password;        $this->mail->setFrom($this->sender_email);        $this->mail->addReplyTo($this->sender_email);        foreach ($friendEmail as $row){            $this->mail->addAddress($row);                   }                        $this->mail->Subject = $this->subject;        $this->mail->Body ="Hello \r\n\r\nWelcome to linkpan explore new things here and some cool features are also available. \r\n\r\nYour Business Model is promising with Linkpan, We focus on Transforming Your Business, by providing value, reinvent your processes and strengthen your capabilities and stimulate Your Core. Our architecture helps to promote your business drive, one-minute deal options, and network growth. We seek to know more, reinvent the wheel and discard common principles even if they prove otherwise Ethics Regulation: Doing Business with good faith, Trust and transparency, we know how hard it is to find a trustworthy Partner for business; we work on developing the best possibilities to make this goal even seamless, worry-free as possible. \r\n\r\nYou can register here ".FRONT_SIGNUP_VIEW_LINK." \r\n\r\n Regards \r\n Linkpan team.";         $this->mail->AltBody = "";          if (!$this->mail->send()) {            return "Mailer Error: " . $this->mail->ErrorInfo;        } else {            return true;        }    }    public function resetPasswordMail($email,$url) {                                $this->sender_email ='info@codexives.in';         $this->sender_name ='Linkpan';                $this->subject ='Forgot password';        $this->mail->isSMTP();        $this->mail->SMTPDebug = 0;        $this->mail->Debugoutput = 'html';        $this->mail->Host = $this->host;        $this->mail->Port = $this->port;        $this->mail->SMTPAuth = true;        $this->mail->SMTPSecure = true;        $this->mail->Username = $this->username;        $this->mail->Password = $this->password;        $this->mail->setFrom($this->sender_email);        $this->mail->addReplyTo($this->sender_email);        $this->mail->addAddress($email);                   $this->mail->Subject = $this->subject;        $this->mail->Body ='Your reset password link click here:'.$url;         $this->mail->AltBody = "";          if (!$this->mail->send()) {            return "Mailer Error: " . $this->mail->ErrorInfo;        } else {            return true;        }    }}?>
+<?php
+/**
+
+ * This example shows making an SMTP connection with authentication.
+
+ */
+
+//SMTP needs accurate times, and the PHP time zone MUST be set
+
+//This should be done in your php.ini, but this is how to do it if you don't have access to that
+
+//date_default_timezone_set('Etc/UTC');
+
+require APPPATH.'ThirdParty/smtp_mail/PHPMailerAutoload.php';
+
+//require APP_INCLUDE_Library.'smtp_mail/Security.php';
+
+
+
+class SMTP_mail {
+
+    public $mail;
+
+    public $sender_email;
+
+    public $username;
+
+    public $password;
+
+    public $host;
+
+    public $port;
+
+    public $subject;   
+
+    public $sender_name;
+
+   // public $product_name;
+    public function __construct() {
+        $this->mail = new PHPMailer;        
+        $this->port = 465;
+        $this->host = "mail.codexives.com";       
+        $this->username = "info@codexives.com";
+        $this->password = "info@123CDX";
+    }
+
+    public function sendRegistrationDetails($email,$data) {
+        $template=$data['template'];
+        
+        $this->sender_email ='info@codexives.com';
+
+        $this->sender_name ='HPSHRC';
+
+        $this->subject ='HPSHRC Support: User Registration Details';
+
+        $this->mail->isSMTP();
+
+        $this->mail->SMTPDebug = 0;
+
+        $this->mail->Debugoutput = 'html';
+
+        $this->mail->Host = $this->host;
+
+        $this->mail->Port = $this->port;
+
+        $this->mail->SMTPAuth = true;
+
+        $this->mail->SMTPSecure = true;
+
+        $this->mail->Username = $this->username;
+
+        $this->mail->Password = $this->password;
+
+        $this->mail->setFrom($this->sender_email);
+
+        $this->mail->addReplyTo($this->sender_email);
+
+        $this->mail->addAddress($email);
+
+        $this->mail->Subject = $this->subject;
+
+        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+//        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
+
+        $word = array('{{username}}','{{password}}','{{activationlink}}');
+        $replace = array($data['username'],$data['password'],$data['activationlink']);
+
+        $html = str_replace($word, $replace, $html);
+        $this->mail->msgHTML($html, dirname(__FILE__));
+
+        $this->mail->AltBody = "";
+
+        $resultMail=array();
+        $resultMail['success']=0;
+        $res=$this->mail->send();        
+        if($res==1){
+            $resultMail['success']=1;
+            return $resultMail;
+        }else {
+            $resultMail['Error']="Mailer Error: " . $this->mail->ErrorInfo;
+            return $resultMail;
+        }
+    }
+    public function sendResetPasswordDetails($email,$data) {
+        $template=$data['template'];
+        
+        $this->sender_email ='info@codexives.com';
+
+        $this->sender_name ='Gyanshala Support';
+
+        $this->subject ='Gyanshala Support: Password Reset Notification';
+
+        $this->mail->isSMTP();
+
+        $this->mail->SMTPDebug = 0;
+
+        $this->mail->Debugoutput = 'html';
+
+        $this->mail->Host = $this->host;
+
+        $this->mail->Port = $this->port;
+
+        $this->mail->SMTPAuth = true;
+
+        $this->mail->SMTPSecure = true;
+
+        $this->mail->Username = $this->username;
+
+        $this->mail->Password = $this->password;
+
+        $this->mail->setFrom($this->sender_email);
+
+        $this->mail->addReplyTo($this->sender_email);
+
+        $this->mail->addAddress($email);
+
+        $this->mail->Subject = $this->subject;
+
+        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+//        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
+
+        $word = array('{{username}}','{{password}}');
+        $replace = array($data['username'],$data['password']);
+
+        $html = str_replace($word, $replace, $html);
+        $this->mail->msgHTML($html, dirname(__FILE__));
+
+        $this->mail->AltBody = "";
+
+        $resultMail=array();
+        $resultMail['success']=0;
+        $res=$this->mail->send();        
+        if($res==1){
+            $resultMail['success']=1;
+            return $resultMail;
+        }else {
+            $resultMail['Error']="Mailer Error: " . $this->mail->ErrorInfo;
+            return $resultMail;
+        }
+    }
+    public function sendForgetLink($email,$data) {
+        $template=$data['template'];
+        
+        $this->sender_email ='info@codexives.com';
+
+        $this->sender_name ='Gyanshala';
+
+        $this->subject ='Gyanshala Support: User Change Forget Password Link';
+
+        $this->mail->isSMTP();
+
+        $this->mail->SMTPDebug = 0;
+
+        $this->mail->Debugoutput = 'html';
+
+        $this->mail->Host = $this->host;
+
+        $this->mail->Port = $this->port;
+
+        $this->mail->SMTPAuth = true;
+
+        $this->mail->SMTPSecure = true;
+
+        $this->mail->Username = $this->username;
+
+        $this->mail->Password = $this->password;
+
+        $this->mail->setFrom($this->sender_email);
+
+        $this->mail->addReplyTo($this->sender_email);
+
+        $this->mail->addAddress($email);
+
+        $this->mail->Subject = $this->subject;
+
+        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+//        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
+
+        $word = array('{{change_password_link}}');
+        $replace = array($data['change_password_link']);
+
+        $html = str_replace($word, $replace, $html);
+        $this->mail->msgHTML($html, dirname(__FILE__));
+
+        $this->mail->AltBody = "";
+
+        $resultMail=array();
+        $resultMail['success']=0;
+        $res=$this->mail->send();        
+        if($res==1){
+            $resultMail['success']=1;
+            return $resultMail;
+        }else {
+            $resultMail['Error']="Mailer Error: " . $this->mail->ErrorInfo;
+            return $resultMail;
+        }
+    }
+    public function sendTestMail($email,$data) {
+        $template=$data['template'];
+        
+        $this->sender_email ='info@codexives.com';
+
+        $this->sender_name ='Gyanshala';
+
+        $this->subject ='User Details';
+
+        $this->mail->isSMTP();
+
+        $this->mail->SMTPDebug = 0;
+
+        $this->mail->Debugoutput = 'html';
+
+        $this->mail->Host = $this->host;
+
+        $this->mail->Port = $this->port;
+
+        $this->mail->SMTPAuth = true;
+
+        $this->mail->SMTPSecure = true;
+
+        $this->mail->Username = $this->username;
+
+        $this->mail->Password = $this->password;
+
+        $this->mail->setFrom($this->sender_email);
+
+        $this->mail->addReplyTo($this->sender_email);
+
+        $this->mail->addAddress($email);
+        $this->mail->addBCC("info@hpie.in");
+
+        $this->mail->Subject = $this->subject;
+
+        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+//        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
+
+        $word = array('{{username}}','{{password}}','{{activationlink}}');
+        $replace = array($data['username'],$data['password'],$data['activationlink']);
+
+        $html = str_replace($word, $replace, $html);
+        $this->mail->msgHTML($html, dirname(__FILE__));
+
+        $this->mail->AltBody = "";
+
+        $resultMail=array();
+        $resultMail['success']=0;
+        $res=$this->mail->send();        
+        if($res==1){
+            $resultMail['success']=1;
+            return $resultMail;
+        }else {
+            $resultMail['Error']="Mailer Error: " . $this->mail->ErrorInfo;
+            return $resultMail;
+        }
+    }
+}
+?>

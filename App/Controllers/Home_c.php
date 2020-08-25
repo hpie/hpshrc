@@ -33,7 +33,7 @@ class Home_c extends Controller
     public function contact() {        
         $data['title'] = FRONT_CONTACT_TITLE;        
         echo front_view('frontside/contact',$data);
-    }
+    }    
     public function page404() {        
         $data['title'] = FRONT_404_TITLE;        
         echo single_page('errors/html/custome_error_404',$data);

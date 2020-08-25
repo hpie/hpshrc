@@ -496,10 +496,10 @@ if (!function_exists('reArrayFiles')) {
 if (!function_exists('imageResizeLib')) {
 
     function imageResizeLib($file, $filepath_original, $path_size) {
-
+        include APPPATH . 'ThirdParty/Imageresize/Imageresize.php'; 
         if ($file) {
 
-            $image = new \Eventviva\ImageResize($file);
+            $image = new \Eventviva\Imageresize($file);
 
             $image->save($filepath_original);
 
@@ -604,8 +604,9 @@ if (!function_exists('imageUpload')) {
                     array('path' => $output_subdir3 . $NewImageName, 'size' => 100)
                 );
                 if (imageResizeLib($file_tmp, $filepath_original, $path_size)) {
-                    // if(move_uploaded_file($file_tmp, "$output_dir/$NewImageName")){
-                    $data["image_name"] = $NewImageName;
+                    $data["file_name"] = $NewImageName;
+                    $data['original_file_name'] = $file_name;
+                    $data["file_ext"] = $file_ext;
                     $message = 'File uploaded successfully';
                     return array(true, $message, $data);
                     die;
@@ -624,4 +625,45 @@ if (!function_exists('imageUpload')) {
         return array(false, "System error", $data);
     }
 
+}
+
+function gen_uuid($user_id,$action = 'e') {   
+    $code = md5(sprintf('%04x%04x%04x%04x%04x%04x%04x%04x', mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000, mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)) . time() . uniqid(rand() . mt_rand(1, 10000000), true));    
+    $secret_key = 'my_simple_secret_key';
+    $secret_iv = 'my_simple_secret_iv';
+    $output = false;
+    $encrypt_method = "AES-256-CBC";
+    $key = hash('sha256', $secret_key);
+    $iv = substr(hash('sha256', $secret_iv), 0, 16);
+    if ($action == 'e') {
+        $output = base64_encode(openssl_encrypt($user_id, $encrypt_method, $key, 0, $iv));
+    } else if ($action == 'd') {        
+        $splitStr=explode('-', $user_id);
+        $user_id=$splitStr[1];        
+        return openssl_decrypt(base64_decode($user_id), $encrypt_method, $key, 0, $iv);
+    }     
+    return $code.'-'.$output;
+}
+function forget_password_uuid($user_id,$user_type='',$action = 'e') {   
+    $code = md5(sprintf('%04x%04x%04x%04x%04x%04x%04x%04x', mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0x0fff) | 0x4000, mt_rand(0, 0x3fff) | 0x8000, mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)) . time() . uniqid(rand() . mt_rand(1, 10000000), true));    
+    $secret_key = 'my_simple_secret_key';
+    $secret_iv = 'my_simple_secret_iv';
+    $user_id_enc = false;
+    $user_type_enc = false;
+    $encrypt_method = "AES-256-CBC";
+    $key = hash('sha256', $secret_key);
+    $iv = substr(hash('sha256', $secret_iv), 0, 16);
+    if ($action == 'e') {
+        $user_id_enc = base64_encode(openssl_encrypt($user_id, $encrypt_method, $key, 0, $iv));
+        $user_type_enc = base64_encode(openssl_encrypt($user_type, $encrypt_method, $key, 0, $iv));
+        return $code.'-'.$user_id_enc.'-'.$user_type_enc;
+    } else if ($action == 'd') {        
+        $splitStr=explode('-', $user_id);
+        $user_id_code=$splitStr[1];   
+        $user_type_code=$splitStr[2];
+        $res=array();
+        $res['user_id']=openssl_decrypt(base64_decode($user_id_code), $encrypt_method, $key, 0, $iv);
+        $res['user_type']=openssl_decrypt(base64_decode($user_type_code), $encrypt_method, $key, 0, $iv);
+        return $res; 
+    }
 }

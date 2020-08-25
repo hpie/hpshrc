@@ -63,8 +63,12 @@ $routes->add('front-contact', 'Home_c::contact');
 $routes->add('employee-login', 'Elogin_c::index');
 $routes->add('employee-logout', 'Elogin_c::logout');
 $routes->add('employee-update-profile', 'Employee_c::update_profile');
-    $routes->add('employee-dashboard', 'Employee_c::dashboard');
+$routes->add('employee-dashboard', 'Employee_c::dashboard');
 
+
+//************************************Customer Registration****************************//
+$routes->add('customer-registration', 'Common_c::create_customer');
+$routes->add('email-verify/(:any)/(:any)', 'Common_c::verify_email/$1/$2');
 
 
 

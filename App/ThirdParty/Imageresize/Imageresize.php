@@ -9,7 +9,7 @@ use \Exception;
 /**
  * PHP class to resize and scale images
  */
-class ImageResize
+class Imageresize
 {
     const CROPTOP = 1;
     const CROPCENTRE = 2;

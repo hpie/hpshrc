@@ -57,8 +57,9 @@ class Login_m extends Model
     }
         
     public function getTokenAndCheck($table,$user_id) {       
+        $where_field=$table.'_user_id';
         $table=$table.'_token';        
-        $result = $this->db->query("SELECT token FROM $table WHERE admin_user_id=$user_id");        
+        $result = $this->db->query("SELECT token FROM $table WHERE $where_field=$user_id");        
         $data = $result->getRowArray();        
         if($data){
             return $data;

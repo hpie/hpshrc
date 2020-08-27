@@ -99,6 +99,7 @@ define('EMPLOYEE_LOGOUT_LINK', BASE_URL_CI.'/employee-logout');
 define('EMPLOYEE_PROFILE_LINK', BASE_URL_CI.'/employee-profile');
 define('EMPLOYEE_DASHBOARD_LINK', BASE_URL_CI.'/employee-dashboard');
 define('EMPLOYEE_UPDATE_PROFILE_LINK', BASE_URL_CI.'/employee-update-profile');
+define('EMPLOYEE_CUSTOMER_LIST_LINK', BASE_URL_CI.'/employee-customers-list');
 
 //**************************************FRONT ROUTE****************************//
 define('FRONT_ABOUT_LINK', BASE_URL_CI.'/front-about');
@@ -113,6 +114,7 @@ define('CUSTOMER_ACTIVE_EMAIL_LINK',BASE_URL_CI."/email-verify/");
 
 //**************************************COMMON ROUTE****************************//
 define('PAGE_404_LINK', BASE_URL_CI.'/errorpage');
+define('APPROVE_STATUS',BASE_URL."/approve-status");
 
 
 //**************************************FRONT TITLE****************************//
@@ -123,13 +125,14 @@ define('FRONT_BUDGET_TITLE', 'HPSHRC-FRONT-BUDGET');
 define('FRONT_GALLERY_TITLE', 'HPSHRC-FRONT-GALLERY');
 define('FRONT_CONTACT_TITLE', 'HPSHRC-FRONT-CONTACT');
 define('FRONT_404_TITLE', 'HPSHRC-404');
-
+define('CUSTOMER_REGISTRATION_TITLE', 'HPSHRC-CUSTOMER-REGISTRATION');
 
 //**************************************Employee TITLE****************************//
 define('EMPLOYEE_LOGIN_TITLE', 'HPSHRC-EMPLOYEE-LOGIN');
 define('EMPLOYEE_PROFILE_TITLE', 'HPSHRC-EMPLOYEE-PROFILE');
 define('EMPLOYEE_UPDATE_PROFILE_TITLE', 'HPSHRC-EMPLOYEE-UPDATE-PROFILE');
 define('EMPLOYEE_DASHBOARD_TITLE', 'HPSHRC-EMPLOYEE-DASHBOARD');
+define('EMPLOYEE_CUSTOMER_LIST_TITLE', 'HPSHRC-EMPLOYEE-CUSTOMER-LIST');
 
 
 //**************************************ADMIN TITLE****************************//
@@ -141,6 +144,4 @@ define('ADMIN_FILE_LIST_TITLE', 'HPSHRC-ADMIN-FILE-LIST');
 
 define('ADMIN_ADD_CAUSES_TITLE', 'HPSHRC-ADMIN-ADD-CAUSES');
 define('ADMIN_EDIT_CAUSES_TITLE', 'HPSHRC-ADMIN-EDIT-CAUSES');
-
-define('CUSTOMER_REGISTRATION_TITLE', 'HPSHRC-CUSTOMER-REGISTRATION');
 

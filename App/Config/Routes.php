@@ -64,6 +64,8 @@ $routes->add('employee-login', 'Elogin_c::index');
 $routes->add('employee-logout', 'Elogin_c::logout');
 $routes->add('employee-update-profile', 'Employee_c::update_profile');
 $routes->add('employee-dashboard', 'Employee_c::dashboard');
+$routes->add('employee-customers-list', 'Customers_c::customers_list');
+$routes->add('approve-status', 'Customers_c::approve_status');
 
 
 //************************************Customer Registration****************************//

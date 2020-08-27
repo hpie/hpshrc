@@ -29,7 +29,20 @@
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->                                                              
+                                </li>
+                                 <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                                        <span class="nk-menu-text">Customers</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="<?php echo EMPLOYEE_CUSTOMER_LIST_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Customers List</span></a>
+                                            <!--<a href="<?php //echo EMPLOYEE_ADD_STUDENTS_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Add Student</span></a>-->
+                                        </li>                                       
+                                    </ul>                                     
+                                </li>
+                                <!-- .nk-menu-item -->                                                              
 <!--                                <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
@@ -39,7 +52,8 @@
                                         <li class="nk-menu-item">
                                             <a href="#" class="nk-menu-link"><span class="nk-menu-text">User List - Default</span></a>
                                         </li>                                       
-                                    </ul> .nk-menu-sub 
+                                    </ul> 
+                                    .nk-menu-sub 
                                 </li>-->
                                 <!-- .nk-menu-item -->
                             </ul><!-- .nk-menu -->

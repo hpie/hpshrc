@@ -218,6 +218,129 @@ class SSP {
 	 *  @return array          Server-side processing response array
 	 */
 	
+         static function customers_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+                $columns_order=$columns;
+		// Build the SQL query string from the request
+                if (($request['order'][0]['column'])>0) {
+                    $columnsArray = array();                   
+                    foreach ($columns as $crow) {                       
+                        if (substr_count($crow['db'], " as ")) {
+                            $crow['db'] = explode(" as ", $crow['db'])[0];
+                        }
+                        array_push($columnsArray, $crow);
+                    }
+                    $columns_order = $columnsArray;
+                }                
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns_order );                               
+                
+		$where = self::filter( $request, $columns, $bindings );
+//                $where="";
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                } 
+                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			FROM $table                       
+			$where
+			$order 
+			$limit"
+		); 		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			FROM $table                       
+			$where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			FROM $table                       
+                        "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){                                                                         
+                        $customer_id = $row['customer_id'];                                               
+                        
+                        $verify_email_str='';
+                        $title = 'Click to verify email';
+                        $class = 'btn_approve_reject_email btn btn-xs btn-success';
+                        $text = "Email Verified <em class='icon ni ni-check-thick'></em>";
+                        $isactive = 1; 
+                        $table='hpshrc_customer';
+                        $table_update_field='customer_email_verified_status';
+                        $table_where_field='customer_id';
+                        if($row['customer_email_verified_status'] == 0){
+                            $title = 'Click to unverify email';
+                            $class = 'btn_approve_reject_email btn btn-xs btn-danger';
+                            $text  = "Verify Email <em class='icon ni ni-edit-fill'></em>";
+                            $isactive = 0;                            
+                        }                                                    
+                        $verify_email_str="<button type='button' data-id='".$customer_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                
+                        
+                        
+                        $locked_unlocked_str='';
+                        $title = 'Click to locke customer';
+                        $class = 'btn_lock_unlock_customer btn btn-xs btn-success';
+                        $text = "Customer Unlocked <em class='icon ni ni-unlock-fill'></em>";
+                        $isactive = 0; 
+                        $table='hpshrc_customer';
+                        $table_update_field='customer_locked_status';
+                        $table_where_field='customer_id';
+                        if($row['customer_locked_status'] == 0){
+                            $title = 'Click to unlocke customer';
+                            $class = 'btn_lock_unlock_customer btn btn-xs btn-danger';
+                            $text  = "Customer Locked <em class='icon ni ni-lock-fill'></em>";
+                            $isactive = 1;                            
+                        }                                                    
+                        $locked_unlocked_str="<button type='button' data-id='".$customer_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                
+                        
+                        $active_inactive_str='';
+                        $title = 'Click to inactive customer';
+                        $class = 'btn_active_inactive_customer btn btn-xs btn-success';
+                        $text = "Customer Activated <em class='icon ni ni-user-check-fill'></em>";
+                        $isactive = "REMOVED"; 
+                        $table='hpshrc_customer';
+                        $table_update_field='customer_status';
+                        $table_where_field='customer_id';
+                        if($row['customer_status'] == "REMOVED"){
+                            $title = 'Click to active customer';
+                            $class = 'btn_active_inactive_customer btn btn-xs btn-danger';
+                            $text  = "Customer Inactivated <em class='icon ni ni-user-cross-fill'></em>";
+                            $isactive = "ACTIVE";                            
+                        }                                                    
+                        $active_inactive_str="<button type='button' data-id='".$customer_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                                                                
+                        $row['index']='';
+                        $row['action']="<a href='".BASE_URL_DATATABLES."employee-edit-customer/$customer_id' class='btn btn-xs btn-warning'>Edit  <em class='icon ni ni-edit-fill'></em></a>                            
+                            $verify_email_str $locked_unlocked_str $active_inactive_str";
+                        array_push($resData, $row);
+                    }  
+                }
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+        
          static function file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{                         
 		$bindings = array();

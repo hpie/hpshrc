@@ -9061,7 +9061,7 @@ body.swal2-toast-column .swal2-toast .swal2-input { height: 2em; margin: .3125em
 
 body.swal2-toast-column .swal2-toast .swal2-validation-message { font-size: 1em; }
 
-table.dataTable { clear: both; max-width: none !important; border-collapse: separate !important; border-spacing: 0; }
+/*table.dataTable { clear: both; max-width: none !important; border-collapse: separate !important; border-spacing: 0; }
 
 table.dataTable td.dataTables_empty, table.dataTable th.dataTables_empty { text-align: center; }
 
@@ -9158,7 +9158,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
 .dataTable td:focus { outline: none; }
 
-.datatable-wrap { border: 1px solid #e5e9f2; border-radius: 4px; }
+.datatable-wrap { border: 1px solid #e5e9f2; border-radius: 4px; }*/
 
 .dtr-details { padding-left: 0.25rem; }
 

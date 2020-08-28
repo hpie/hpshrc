@@ -39,23 +39,23 @@ class Common_c extends Controller {
     }
 
     public function create_customer() {
-        include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php'; 
+        include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                         
         $_SESSION['exist_email'] = 0;
         if (isset($_POST['customer_first_name'])) {
-            unset($_POST['user_confirm_password']); 
-            
-            
-            
+            $_SESSION['post_data']=$_POST;            
+            if(!isset($_POST['customer_email_password'])){
+                $_POST['customer_email_password']=generateStrongPassword();
+            }
+            if(isset($_POST['user_confirm_password'])){
+                unset($_POST['user_confirm_password']); 
+            }                                   
             if (($_FILES['customer_photo_path']['name']) != '') {
                 $fileRes = singleImageUpload('customer_photo_path');
                 if (!empty($fileRes[2]['file_name'])) {
                     $_POST['customer_photo_path'] = $fileRes[2]['file_name'];
                 }
             }
-
-            $res =  $this->Common_m->register_customer($_POST); 
-
-
+            $res =  $this->Common_m->register_customer($_POST);                       
             $result = array();
             $send_email_error = 0;
             if ($res['success'] == true) {
@@ -96,13 +96,30 @@ class Common_c extends Controller {
             }
             if ($result['success'] == 'success' && $send_email_error == 0) {
                 $_SESSION['registration'] = 2;
-            }
+            } 
+            if ($result['success'] == 'fail') {                
+                $_SESSION['registration'] = 3;
+            } 
 //            echo json_encode($result);
 //            die;
         }
         helper('form');
-        $data['title'] = CUSTOMER_REGISTRATION_TITLE;
-        echo front_view('frontside/user_registration', $data);
+        $data['title'] = CUSTOMER_REGISTRATION_TITLE;        
+        if(isset($_SESSION['usertype'])){
+            if($_SESSION['usertype']=='employee'){
+                sessionCheckEmployee();               
+                echo employee_view('employee/user_registration', $data);
+            }
+            if($_SESSION['usertype']=='admin'){
+                sessionCheckAdmin();
+                echo admin_view('adminside/user_registration', $data);
+            }
+        }else{
+            echo front_view('frontside/user_registration', $data);
+        }
+        if(isset($_SESSION['post_data'])){
+            unset($_SESSION['post_data']);
+        }        
     }
 
     public function verify_email($user_type, $link_code) {

@@ -21,9 +21,9 @@
                                             <th>First Name</th>
                                             <th>Middle Name</th>
                                             <th>Last Name</th>                                            
-                                            <th>Father Name</th>
-                                            <th>DOB</th>
+                                            <th>Father Name</th>                                            
                                             <th>Gender</th>
+                                            <th>DOB</th>
                                             <th>Mobile</th>
                                             <th>Email</th>                                                                                        
                                             <th>Action</th>                                          
@@ -36,9 +36,9 @@
                                             <th>First Name</th>
                                             <th>Middle Name</th>
                                             <th>Last Name</th>                                            
-                                            <th>Father Name</th>
-                                            <th>DOB</th>
+                                            <th>Father Name</th>                                            
                                             <th>Gender</th>
+                                            <th>DOB</th>
                                             <th>Mobile</th>
                                             <th>Email</th>                                                                                        
                                             <th>Action</th> 

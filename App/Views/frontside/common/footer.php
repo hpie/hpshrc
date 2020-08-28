@@ -450,6 +450,9 @@
                                 extension: 'jpeg,png',
                                 type: 'image/jpeg,image/png',                                
                                 message: 'The selected file is not valid'
+                            },
+                            notEmpty: {
+                                message: 'Please select profile image'
                             }
                         }
                     },                    

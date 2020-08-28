@@ -21,7 +21,6 @@
 <!--<script src="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>js/example-toastr.js"></script>-->
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/toastr.min.js" type="text/javascript"></script>
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/charts/chart-ecommerce.js"></script>
-<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js" type="text/javascript"></script>
 
 <!-- datatable start js  -->
 <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
@@ -41,8 +40,27 @@
 <script src="<?php echo BASE_URL ?>/assets/front/js/dataTables.responsive.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
 <!-- datatable end js  -->
 
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js" type="text/javascript"></script>
 
 <?php include(APPPATH . "Views/employee/common/notify.php"); ?>
+
+<script type="text/javascript" nonce='S51U26wMQz'>
+     $(document).ready(function () {   
+    $(".mobileno").keyup(function (e) {
+            var str=$(this).val();
+            for (var i = 0; i < str.length; i++) {
+                var charCode=str.charAt(i).charCodeAt(0);                  
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                {                                    
+                    $(this).val('');
+                    return false;
+                }                                       
+            }               
+            return true;
+        });
+    });
+</script>
+
 <?php if ($title == EMPLOYEE_UPDATE_PROFILE_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
@@ -200,13 +218,13 @@
                         $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
-                            var title = 'Click to verify email';
+                            var title = 'Click to unverify email';
                             var class_ = 'btn_approve_reject_email btn btn-xs btn-success';
                             var text = "Email Verified <em class='icon ni ni-check-thick'></em>";
                             var isactive = 1;
 
                             if (status == 1) {
-                                title = 'Click to unverify email';
+                                title = 'Click to verify email';
                                 class_ = 'btn_approve_reject_email btn btn-xs btn-danger';
                                 text = "Verify Email <em class='icon ni ni-edit-fill'></em>";
                                 isactive = 0;
@@ -235,9 +253,7 @@
                 var wherefield = self.attr('data-wherefield');
                 
                 var status = self.attr('data-status');
-                var user_status = 1;
-                if (status == 1)
-                    user_status = 0;
+                var user_status = status;               
 
                 if (!confirm('Are you sure want to update?'))
                     return;
@@ -264,13 +280,13 @@
                             var title = 'Click to locke customer';
                             var class_ = 'btn_lock_unlock_customer btn btn-xs btn-success';
                             var text = "Customer Unlocked <em class='icon ni ni-unlock-fill'></em>";
-                            var isactive = 0;
+                            var isactive = 1;
 
-                            if (status == 0) {
+                            if (status == 1) {
                                 title = 'Click to unlocke customer';
                                 class_ = 'btn_lock_unlock_customer btn btn-xs btn-danger';
                                 text = "Customer Locked <em class='icon ni ni-lock-fill'></em>";
-                                isactive = 1;
+                                isactive = 0;
                             }
                             self.removeClass().addClass(class_);
                             self.attr({
@@ -348,5 +364,113 @@
         });
     </script>
 <?php } ?> 
+    
+<?php if ($title == CUSTOMER_REGISTRATION_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+
+        $(document).ready(function () {            
+            
+            $('#student_register').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {                    
+                    customer_photo_path: {
+                        validators: {
+                            file: {
+                                extension: 'jpeg,jpg,png',
+                                type: 'image/jpeg,image/png,image/jpg',                                
+                                message: 'The selected file is not valid'
+                            },
+                            notEmpty: {
+                                message: 'Please select profile image'
+                            }
+                        }
+                    },                    
+                    customer_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },                    
+                    customer_middle_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    customer_mobile_no: {
+                        validators: {
+                            stringLength: {
+                                min: 10,
+                                max:10
+                            },
+                            notEmpty: {
+                                message: 'Please Enter mobile number'
+                            }
+                        }
+                    },
+                    customer_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    customer_email_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'customer_email_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    },
+                    customer_dob: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
+                    }
+                }
+            }); 
+        });
+    </script>
+<?php } ?>    
 </body>
 </html>

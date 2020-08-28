@@ -277,7 +277,7 @@ class SSP {
                         $customer_id = $row['customer_id'];                                               
                         
                         $verify_email_str='';
-                        $title = 'Click to verify email';
+                        $title = 'Click to unverify email';
                         $class = 'btn_approve_reject_email btn btn-xs btn-success';
                         $text = "Email Verified <em class='icon ni ni-check-thick'></em>";
                         $isactive = 1; 
@@ -285,7 +285,7 @@ class SSP {
                         $table_update_field='customer_email_verified_status';
                         $table_where_field='customer_id';
                         if($row['customer_email_verified_status'] == 0){
-                            $title = 'Click to unverify email';
+                            $title = 'Click to verify email';
                             $class = 'btn_approve_reject_email btn btn-xs btn-danger';
                             $text  = "Verify Email <em class='icon ni ni-edit-fill'></em>";
                             $isactive = 0;                            
@@ -297,15 +297,15 @@ class SSP {
                         $title = 'Click to locke customer';
                         $class = 'btn_lock_unlock_customer btn btn-xs btn-success';
                         $text = "Customer Unlocked <em class='icon ni ni-unlock-fill'></em>";
-                        $isactive = 0; 
+                        $isactive = 1; 
                         $table='hpshrc_customer';
                         $table_update_field='customer_locked_status';
                         $table_where_field='customer_id';
-                        if($row['customer_locked_status'] == 0){
+                        if($row['customer_locked_status'] == 1){
                             $title = 'Click to unlocke customer';
                             $class = 'btn_lock_unlock_customer btn btn-xs btn-danger';
                             $text  = "Customer Locked <em class='icon ni ni-lock-fill'></em>";
-                            $isactive = 1;                            
+                            $isactive = 0;                            
                         }                                                    
                         $locked_unlocked_str="<button type='button' data-id='".$customer_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                
                         

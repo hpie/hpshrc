@@ -38,7 +38,7 @@
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
                                             <a href="<?php echo EMPLOYEE_CUSTOMER_LIST_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Customers List</span></a>
-                                            <!--<a href="<?php //echo EMPLOYEE_ADD_STUDENTS_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Add Student</span></a>-->
+                                            <a href="<?php echo CUSTOMER_REGISTER_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Add Customers</span></a>
                                         </li>                                       
                                     </ul>                                     
                                 </li>

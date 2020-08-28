@@ -10,7 +10,7 @@ class Common_m extends Model
         $this->db = db_connect();
         helper('functions');
     }
-    public function register_customer($params){         
+    public function register_customer($params){        
         $email_exist = $this->db->query("SELECT * FROM hpshrc_customer WHERE customer_email_id='".$params['customer_email_id']."' ");
         $res = $email_exist->getRowArray();                       
         if($res){
@@ -22,7 +22,12 @@ class Common_m extends Model
         $params['customer_email_password'] = md5($params['customer_email_password']);
         unset($params['confirm_password']);
         unset($params['g-recaptcha-response']);     
-                       
+        
+        if(isset($_SESSION['usertype'])){
+            $params['createdby_type']=$_SESSION['usertype'];
+            $params['created_by']=$_SESSION['user_id'];
+        }
+        
         $builder = $this->db->table('hpshrc_customer');
         $builder->insert($params);
         $insert_id = $this->db->insertID();

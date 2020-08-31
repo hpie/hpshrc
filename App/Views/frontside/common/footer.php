@@ -30,7 +30,7 @@
                     </div>
 
                 </div>
-
+<!--
                 <div class="col-md-4">
 
                     <div class="footer-col">
@@ -105,6 +105,7 @@
                     </div>
 
                 </div>
+-->
                 <div class="clearfix"></div>
 
 
@@ -130,6 +131,7 @@
 
 
 <!-- Donate Modal -->
+<!--
 <div class="modal fade" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
 
     <div class="modal-dialog">
@@ -206,7 +208,7 @@
         </div>
     </div>
 
-</div> <!-- /.modal -->
+</div> --> <!-- /.modal -->
 
 <!--  Scripts
 ================================================== -->

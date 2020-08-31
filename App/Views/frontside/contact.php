@@ -17,7 +17,7 @@
     <div class="container">
 
         <div class="row">
-
+<!--
             <div class="col-md-7 col-sm-12 col-form">
 
                 <h2 class="title-style-2">CONTACT FORM <span class="title-under"></span></h2>
@@ -61,7 +61,7 @@
                 </form>
 
             </div>
-
+-->
             <div class="col-md-4 col-md-offset-1 col-contact">
 
                 <h2 class="title-style-2"> HPSHRC CONTACTS <span class="title-under"></span></h2>

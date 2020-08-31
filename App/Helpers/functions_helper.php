@@ -3,22 +3,17 @@
 if (!function_exists('echoCaptcha')) {
 
     function echoCaptcha() {
-        return "<div class='form-group'>  
-                <label class='control-label col-md-3 col-sm-3 col-xs-12'>
-                </label>
-                    <script nonce='S51U26wMQz' type='text/javascript' src='https://www.google.com/recaptcha/api.js' async defer></script>
+        return "<script nonce='S51U26wMQz' type='text/javascript' src='https://www.google.com/recaptcha/api.js' async defer></script>
                     <script nonce='S51U26wMQz' type='text/javascript'>
                         function enableLogin() {                                            
-                            document.getElementById('btnLogin').disabled = false;
+                            document.getElementById('btnSubmit').disabled = false;
                         }
                     </script>                    
                     <div class='g-recaptcha col-md-6 col-sm-6 col-xs-12' style='' data-sitekey='6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo' data-callback='enableLogin'></div>                                                           
-            </div>";
+                ";
     }
 
 }
-
-
 if (!function_exists('generateStrongPassword')) {
 
     function generateStrongPassword($length = 8, $add_dashes = false, $available_sets = 'luds') {

@@ -17,5 +17,30 @@
                 });
                 <?php  $_SESSION['success'] = 0; ?>
     }
+    if (<?php if (isset($_SESSION['registration'])) {echo $_SESSION['registration'];} else {echo 0;}?> == 1) {
+            PNotify.success({
+                title: 'Success!',
+                text: 'Registration success.'
+            });
+            PNotify.error({
+                title: 'Failed!',
+                text: 'Failed to deliver email.'
+            });
+        }
+        if (<?php
+        if (isset($_SESSION['registration'])) {echo $_SESSION['registration'];} else {echo 0;}?> == 2) {
+            PNotify.success({
+                title: 'Success!',
+                text: 'Registration success. A verification email and login details have been sent on customer email.'
+            });            
+        }        
+        if (<?php
+        if (isset($_SESSION['registration'])) {echo $_SESSION['registration'];} else {echo 0;}?> == 3) {
+            PNotify.error({
+                title: 'Error!',
+                text: 'Email allready exist'
+            });
+            <?php $_SESSION['registration'] = 0; ?>
+        }
 });
 </script>

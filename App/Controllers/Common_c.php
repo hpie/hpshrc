@@ -99,9 +99,12 @@ class Common_c extends Controller {
             } 
             if ($result['success'] == 'fail') {                
                 $_SESSION['registration'] = 3;
-            } 
-//            echo json_encode($result);
-//            die;
+            }
+            if($result['success']=="success"){
+                if(isset($_SESSION['post_data'])){
+                    unset($_SESSION['post_data']);
+                }
+            }
         }
         helper('form');
         $data['title'] = CUSTOMER_REGISTRATION_TITLE;        
@@ -112,16 +115,52 @@ class Common_c extends Controller {
             }
             if($_SESSION['usertype']=='admin'){
                 sessionCheckAdmin();
-                echo admin_view('adminside/user_registration', $data);
+                echo admin_view('adminside/customer/user_registration', $data);
             }
         }else{
             echo front_view('frontside/user_registration', $data);
-        }
-        if(isset($_SESSION['post_data'])){
-            unset($_SESSION['post_data']);
-        }        
+        }                
     }
-
+    
+    public function edit_customer($customer_id) {                                
+        if (isset($_POST['customer_first_name'])) {
+            unset($_POST['g-recaptcha-response']);
+            if (($_FILES['customer_photo_path']['name']) != '') {
+                $fileRes = singleImageUpload('customer_photo_path');
+                if (!empty($fileRes[2]['file_name'])) {
+                    $_POST['customer_photo_path'] = $fileRes[2]['file_name'];
+                }
+            }
+            $res =  $this->Common_m->edit_customer($_POST,$customer_id);                       
+            $result = array();
+            $send_email_error = 0;
+            if ($res['success'] == true) {
+                successOrErrorMessage("Data updated successfully", "success");          
+            } else {
+                if (isset($res['email_exist'])) {
+                    if ($res['email_exist'] == true) {
+                        successOrErrorMessage("Email allready exist", "error");
+                    }
+                }                
+            }            
+        }
+        helper('form'); 
+        $data['single_customer']=$this->Common_m->get_single_customer($customer_id);
+        $data['customer_id'] = $customer_id;        
+        $data['title'] = EDIT_CUSTOMER_TITLE;        
+        if(isset($_SESSION['usertype'])){
+            if($_SESSION['usertype']=='employee'){
+                sessionCheckEmployee();               
+                echo employee_view('employee/edit_customer', $data);
+            }
+            if($_SESSION['usertype']=='admin'){
+                sessionCheckAdmin();
+                echo admin_view('adminside/customer/edit_customer', $data);
+            }
+        }                
+    }
+    
+    
     public function verify_email($user_type, $link_code) {
         $user_id = gen_uuid($link_code, 'd');
         $res = $this->Common_m->chek_code_exist($user_id, $link_code, $user_type);

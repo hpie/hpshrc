@@ -531,6 +531,13 @@
                                 message: 'Please supply your date of birth'
                             }
                         }
+                    },
+                    g-recaptcha-response: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select captcha'
+                            }
+                        }
                     }
                 }
             }); 

@@ -15,9 +15,7 @@
                         <?php
                         $attributes = ['class'=>'form-horizontal form-label-left','id' => 'add_causes','name'=>'addcauses','enctype'=>'multipart/form-data'];
                         echo form_open(ADMIN_ADD_FILES_LINK,$attributes);
-                       ?>
-                        
-                        <!--<form class="form-horizontal form-label-left" method="post" name="addcauses" id="add_causes" action="<?php //echo ADMIN_ADD_FILES_LINK; ?>" enctype="multipart/form-data">-->                                                                                                                                          
+                       ?>                                                
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="upload_file_title">Title
                                 </label>
@@ -70,8 +68,12 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="file" id="upload_file_original_name" name="upload_file_original_name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>                                  
-                            </div>                             
-                            <?php echo echoCaptcha(); ?>                                                                                  
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">reCaptcha
+                                </label>                                
+                                    <?php echo echoCaptcha(); ?>                                                           
+                            </div>                                                                                                             
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">

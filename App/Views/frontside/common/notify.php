@@ -25,11 +25,11 @@
         if (<?php if (isset($_SESSION['registration'])) {echo $_SESSION['registration'];} else {echo 0;}?> == 1) {
             PNotify.success({
                 title: 'Success!',
-                text: 'Registration success. Your account will be activated by the admin.'
+                text: 'Registration success.'
             });
             PNotify.error({
                 title: 'Failed!',
-                text: 'Failed to deliver email. Please contact your school and share your email id.'
+                text: 'Failed to deliver email. Please contact admin and share your email id.'
             });
         }
         if (<?php

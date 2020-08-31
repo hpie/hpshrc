@@ -26,8 +26,8 @@
     }    
     if (<?php if (isset($_SESSION['registration'])) { echo $_SESSION['registration'];} else {echo 0;} ?> === 1)
     {         
-        toastr.success('Registration success. Your account will be activated by the admin.'); 
-        toastr.error('Failed to deliver email. Please contact your school and share your email id.'); 
+        toastr.success('Registration success.'); 
+        toastr.error('Failed to deliver email.'); 
     }
     if (<?php if (isset($_SESSION['registration'])) {echo $_SESSION['registration'];} else {echo 0;} ?> === 2) {            
         toastr.success('Registration success. A verification email and login details have been sent.');                    

@@ -61,20 +61,15 @@
                                                 </a>
                                                 <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Enter your password" autocomplete="off" required="">
                                             </div>
-                                        </div>                                                                                                       
-                                        <div>                               
-                                <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
-                                <script nonce='S51U26wMQz' type="text/javascript">
-                                    function enableLogin() {
-                                        document.getElementById("btnLogin").disabled = false;
-                                    }
-                                </script>
-                                <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableLogin"></div>                        
-                                <br>
-                            </div>
-                                        
+                                        </div> 
+                                    
+                                        <div class="form-group">                                            
+                                            <div class="form-control-wrap">                                                
+                                                <?php echo echoCaptcha(); ?>
+                                            </div>
+                                        </div>                                                                                                                
                                         <div class="form-group">
-                                            <button class="btn btn-lg btn-primary btn-block" disabled  id="btnLogin" >Sign in</button>
+                                            <button class="btn btn-lg btn-primary btn-block" disabled  id="btnSubmit" >Sign in</button>
                                         </div>
                                       <?php echo form_close();?>        
                                 </div>

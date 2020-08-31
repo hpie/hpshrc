@@ -36,11 +36,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">reCaptcha
+                                </label>                                
+                                    <?php echo echoCaptcha(); ?>                                                           
+                            </div>                                                                                    
                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" class="btn btn-success">Update</button>
+                                    <button type="submit" id="btnSubmit" disabled=""  class="btn btn-success">Update</button>
                                 </div>
                             </div>
                         </form>

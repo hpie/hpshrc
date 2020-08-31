@@ -14,15 +14,20 @@ class Admin_c extends Controller {
         $this->Login_m = new Login_m();
         $this->security = \Config\Services::security();
         if (isset($_SESSION['user_id'])) {
-            if($_SESSION['usertype']=='admin'){
-            $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
-            if ($result) {
-                $token = $result['token'];
-                if ($_SESSION['tokencheck'] != $token) {
-                    session_destroy();
-                    header('Location: '.ADMIN_LOGIN_LINK); 
+            if ($_SESSION['usertype'] == 'admin' || $_SESSION['usertype'] == 'employee') {
+                $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
+                if ($result) {
+                    $token = $result['token'];
+                    if ($_SESSION['tokencheck'] != $token) {
+                        session_destroy();
+                        if ($_SESSION['usertype'] == 'employee') {
+                            header('Location: ' . EMPLOYEE_LOGIN_LINK);
+                        }
+                        if ($_SESSION['usertype'] == 'admin') {
+                            header('Location: ' . ADMIN_LOGIN_LINK);
+                        }
+                    }
                 }
-            }
             }
         }
     }
@@ -48,5 +53,5 @@ class Admin_c extends Controller {
         }
         $data['title'] = ADMIN_UPDATE_PROFILE_TITLE;
         echo admin_view('adminside/update_profile', $data);
-    }
+    }    
 }

@@ -431,35 +431,7 @@
                                 message: 'Please supply a valid email address'
                             }
                         }
-                    },
-                    customer_email_password: {
-                        validators: {
-                            stringLength: {
-                                min: 8
-                            },
-                            identical: {
-                                field: 'user_confirm_password',
-                                message: 'The password and its confirm are not the same'
-                            },
-                            notEmpty: {
-                                message: 'Please supply your new password'
-                            }
-                        }
-                    },
-                    user_confirm_password: {
-                        validators: {
-                            stringLength: {
-                                min: 8
-                            },
-                            identical: {
-                                field: 'customer_email_password',
-                                message: 'The password and its confirm are not the same'
-                            },
-                            notEmpty: {
-                                message: 'Please supply your confirm password'
-                            }
-                        }
-                    },
+                    },             
                     customer_dob: {
                         validators: {
                             notEmpty: {
@@ -471,6 +443,73 @@
             }); 
         });
     </script>
-<?php } ?>    
+<?php } ?>  
+     <?php if ($title == EDIT_CUSTOMER_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+
+        $(document).ready(function () {            
+            
+            $('#edit_customer').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {                                                           
+                    customer_first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },                    
+                    customer_middle_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    customer_mobile_no: {
+                        validators: {
+                            stringLength: {
+                                min: 10,
+                                max:10
+                            },
+                            notEmpty: {
+                                message: 'Please Enter mobile number'
+                            }
+                        }
+                    },
+                    customer_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },            
+                    customer_dob: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your date of birth'
+                            }
+                        }
+                    }
+                }
+            }); 
+        });
+    </script>
+<?php } ?>  
 </body>
 </html>

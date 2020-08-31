@@ -65,4 +65,32 @@ class Common_m extends Model
         }
         return false;
      }
+     
+       public function edit_customer($params,$customer_id){  
+        $email_exist = $this->db->query("SELECT * FROM hpshrc_customer WHERE customer_email_id='".$params['customer_email_id']."' AND customer_id!={$customer_id} ");
+        $res = $email_exist->getRowArray();                       
+        if($res){
+            return Array(
+                'success' => false,
+                'email_exist' => true
+            );
+        }  
+        
+        $builder = $this->db->table('hpshrc_customer');
+        $builder->where('customer_id', $customer_id);
+        $update =$builder->update($params);  
+        
+        if($update){
+            return Array(
+                'success' => true,
+                'email_exist' => false               
+            );
+        }        
+        return FALSE;
+    }
+    public function get_single_customer($customer_id){  
+        $res = $this->db->query("SELECT * FROM hpshrc_customer WHERE customer_id={$customer_id} ");
+        $row = $res->getRowArray();
+        return $row;
+    }
 }

@@ -57,7 +57,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
+                            
+                                <div class="row g-3 align-center">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">                                             
+                                             <label class="form-label float-right">reCaptcha: </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">                                        
+                                        <?php echo echoCaptcha(); ?>                                        
+                                    </div>
+                                </div>
+                               
+                                
                                 <hr>                                
                                 <div class="row g-3">
                                     <div class="col-lg-7 offset-lg-5">

@@ -4,9 +4,9 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Employeem\Customers_m;
-use App\Models\Employeem\Login_m;
+use App\Models\Adminm\Login_m;
 
-class Customers_c extends Controller {
+class Customers_a extends Controller {
 
     private $Customers_m;
     private $Login_m;
@@ -16,27 +16,30 @@ class Customers_c extends Controller {
         helper('url');
         $this->security = \Config\Services::security();
         helper('functions');
-        sessionCheckEmployee();
+        sessionCheckAdmin();
         $this->Customers_m = new Customers_m();
         $this->Login_m = new Login_m();
         if (isset($_SESSION['user_id'])) {
-            if ($_SESSION['usertype'] == 'employee') {
+            if ($_SESSION['usertype'] == 'admin' || $_SESSION['usertype'] == 'employee') {
                 $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
                 if ($result) {
                     $token = $result['token'];
                     if ($_SESSION['tokencheck'] != $token) {
                         session_destroy();
-                        header('Location: ' . EMPLOYEE_LOGOUT_LINK);
-                        exit();
+                        if ($_SESSION['usertype'] == 'employee') {
+                            header('Location: ' . EMPLOYEE_LOGIN_LINK);
+                        }
+                        if ($_SESSION['usertype'] == 'admin') {
+                            header('Location: ' . ADMIN_LOGIN_LINK);
+                        }
                     }
                 }
             }
         }
     }
-
     public function customers_list() {
-        $data['title'] = EMPLOYEE_CUSTOMER_LIST_TITLE;
-        echo employee_view('employee/customers_list', $data);
+        $data['title'] = ADMIN_CUSTOMER_LIST_TITLE;
+        echo admin_view('adminside/customer/customers_list', $data);
     }
 
     public function approve_status() {

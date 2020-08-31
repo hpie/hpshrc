@@ -6,7 +6,10 @@
                 <a href="<?php echo ADMIN_DASHBOARD_LINK; ?>"><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-right"></span></a>                    
             </li>
             <li>
-                <a href="<?php echo ADMIN_FILE_LIST_LINK; ?>"><i class="fa fa-file"></i> Files <span class="fa fa-chevron-right"></span></a>                    
+                <a href="<?php echo ADMIN_FILE_LIST_LINK; ?>"><i class="fa fa-files-o"></i> Files <span class="fa fa-chevron-right"></span></a>                    
+            </li>
+            <li>
+                <a href="<?php echo ADMIN_CUSTOMER_LIST_LINK; ?>"><i class="fa fa-users"></i> Customers <span class="fa fa-chevron-right"></span></a>                    
             </li>
 <!--            <li><a><i class="fa fa-users"></i> Dealers <span class="fa fa-chevron-right"></span></a>
                 <ul class="nav child_menu" style="display: none">

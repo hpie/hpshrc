@@ -61,7 +61,7 @@
                                 <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
                                 <script nonce='S51U26wMQz' type="text/javascript">
                                     function enableLogin() {
-                                        document.getElementById("btnLogin").disabled = false;
+                                        document.getElementById("btnSubmit").disabled = false;
                                     }
                                 </script>
 
@@ -69,7 +69,7 @@
                                 <br>
                             </div>
                             <div>                                
-                                <input type="submit"   id="btnLogin" disabled="" class="btn primary_btn btn_disabled submit col-xs-12 btn-info" value="Log in" name="login"/>
+                                <input type="submit"   id="btnSubmit" disabled="" class="btn primary_btn btn_disabled submit col-xs-12 btn-info" value="Log in" name="login"/>
                             </div>
                             <div class="clearfix"></div>
 

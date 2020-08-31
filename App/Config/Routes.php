@@ -48,6 +48,8 @@ $routes->add('admin-add-causes', 'Causes_c::add_causes');
 $routes->add('admin-active-causes', 'Causes_c::active_causes');
 $routes->add('admin-edit-causes/(:any)', 'Causes_c::edit_causes/$1');
 $routes->add('admin-load-sub-categories', 'Causes_c::load_sub_type');
+$routes->add('admin-customers-list', 'Customers_a::customers_list');
+$routes->add('admin-customer-approve-status', 'Customers_a::approve_status');
 
 
 //************************************Front side route****************************//
@@ -64,12 +66,13 @@ $routes->add('employee-login', 'Elogin_c::index');
 $routes->add('employee-logout', 'Elogin_c::logout');
 $routes->add('employee-update-profile', 'Employee_c::update_profile');
 $routes->add('employee-dashboard', 'Employee_c::dashboard');
-$routes->add('employee-customers-list', 'Customers_c::customers_list');
-$routes->add('approve-status', 'Customers_c::approve_status');
+$routes->add('employee-customers-list', 'Customers_e::customers_list');
+$routes->add('approve-status', 'Customers_e::approve_status');
 
 
 //************************************Customer Registration****************************//
 $routes->add('customer-registration', 'Common_c::create_customer');
+$routes->add('edit-customer/(:any)', 'Common_c::edit_customer/$1');
 $routes->add('email-verify/(:any)/(:any)', 'Common_c::verify_email/$1/$2');
 
 

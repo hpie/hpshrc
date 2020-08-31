@@ -13,11 +13,9 @@
                         <br/>
                         
                         <?php
-                        $attributes = ['class'=>'form-horizontal form-label-left','id' => 'edit_causes','name'=>'editcauses','enctype'=>'multipart/form-data'];
-                        echo form_open(ADMIN_EDIT_FILES_LINK.$upload_file_id,$attributes);
-                       ?>
-                        
-                        <!--<form class="form-horizontal form-label-left" id="add_causes" method="post" name="addcauses" action="<?php //echo ADMIN_EDIT_FILES_LINK.$upload_file_id; ?>">-->                                                                                                                                          
+                            $attributes = ['class'=>'form-horizontal form-label-left','id' => 'edit_causes','name'=>'editcauses','enctype'=>'multipart/form-data'];
+                            echo form_open(ADMIN_EDIT_FILES_LINK.$upload_file_id,$attributes);
+                        ?>                                               
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="upload_file_title">Title<span class="required">*</span>
                                 </label>
@@ -71,11 +69,15 @@
                                         </select>
                                     </div>
                             </div>                                                       
-                            <?php echo echoCaptcha(); ?> 
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">reCaptcha
+                                </label>                                
+                                    <?php echo echoCaptcha(); ?>                                                           
+                            </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">                                   
-                                    <button type="submit" class="btn btn-success" disabled  id="btnLogin">Update</button>                                  
+                                    <button type="submit" class="btn btn-success" id="btnSubmit" disabled="">Update</button>                                  
                                 </div>
                             </div>                            
                         <?php echo form_close();?> 

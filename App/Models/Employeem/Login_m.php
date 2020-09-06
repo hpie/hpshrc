@@ -24,10 +24,10 @@ class Login_m extends Model
                 
                 $token=generateToken();                
                 $_SESSION['tokencheck'] = $token;
-                $uid=$employee_data['employee_user_id'];
-                                                
-                $result_token = $this->db->query("select count(*) as allcount from employee_token");
-                $row_token = $result_token->getRowArray();                
+                $uid=$employee_data['employee_user_id'];                                
+                
+                $result_token = $this->db->query("select count(*) as allcount from employee_token WHERE employee_user_id='$uid'");
+                $row_token = $result_token->getRowArray();                               
                 if ($row_token['allcount'] > 0) {                    
                     $this->db->query("update employee_token set token='$token' where employee_user_id='$uid'");
                 } else {

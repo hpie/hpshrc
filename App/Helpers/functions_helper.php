@@ -119,7 +119,7 @@ function lasturl() {
     return $link;
 }
 
-function sessionAdmin($row) {
+function sessionAdmin($row) {    
     foreach ($row as $key => &$value) {
         $_SESSION[$key] = $value;
     }
@@ -129,13 +129,13 @@ function sessionAdmin($row) {
 }
 function sessionCheckAdmin() {
     if ((!isset($_SESSION['admin_user_id'])) || !isset($_SESSION['usertype'])) {
-        session_destroy();
+        sessionDestroy();
         header('Location: ' . ADMIN_LOGIN_LINK);
         exit();
     }
     if (isset($_SESSION['usertype'])) {
         if ($_SESSION['usertype'] != 'admin') {
-            session_destroy();
+            sessionDestroy();
             header('Location: ' . ADMIN_LOGIN_LINK);
             exit();
         }
@@ -143,7 +143,7 @@ function sessionCheckAdmin() {
     return true;
 }
 
-function sessionEmployee($row) {
+function sessionEmployee($row) {    
     foreach ($row as $key => &$value) {
         $_SESSION[$key] = $value;
     }
@@ -151,16 +151,15 @@ function sessionEmployee($row) {
     $_SESSION['usertype'] = 'employee';    
     return true;
 }
-
-function sessionCheckEmployee() {
-    if (!isset($_SESSION['employee_user_id']) || !isset($_SESSION['usertype'])) {
-        session_destroy();
-        header('Location: ' . EMPLOYEE_LOGIN_LINK);
+function sessionCheckEmployee() {    
+    if (!isset($_SESSION['employee_user_id']) || !isset($_SESSION['usertype'])) {        
+        sessionDestroy();         
+        header('Location: ' . EMPLOYEE_LOGIN_LINK);        
         exit();
     }
     if (isset($_SESSION['usertype'])) {
         if ($_SESSION['usertype'] != 'employee') {
-            session_destroy();
+            sessionDestroy();
             header('Location: ' . EMPLOYEE_LOGIN_LINK);
             exit();
         }
@@ -180,8 +179,8 @@ function generateToken() {
     return $token;
 }
 
-function sessionDestroy() {
-    session_destroy();
+function sessionDestroy() {    
+    session_destroy();    
 }
 
 /*

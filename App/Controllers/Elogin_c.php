@@ -12,10 +12,10 @@ class Elogin_c extends Controller {
         $this->Login_m = new Login_m();       
     }
 
-    public function index() { 
-        helper('form');
-        if (isset($_SESSION['user_id'])) {
-            if ($_SESSION['user_id'] > 0) {
+    public function index() {         
+        helper('form');        
+        if (isset($_SESSION['user_id'])) {            
+            if ($_SESSION['user_id'] > 0) {                
                 sessionDestroy();
                 return redirect()->to(EMPLOYEE_LOGIN_LINK);
             }
@@ -23,7 +23,7 @@ class Elogin_c extends Controller {
         $_SESSION['invalid_login'] = 0;
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $result = $this->Login_m->employee_login_select($_POST['username'], $_POST['password']);
-            if ($result == true) {
+            if ($result == true) {                
                 $userId = $_SESSION['user_id'];
                 $userType = $_SESSION['usertype'];
                 log_message('info', "$userType id $userId logged into the system");

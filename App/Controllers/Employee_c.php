@@ -3,27 +3,27 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 
-class Employee_c extends Controller {
+class Employee_c extends BaseController {
     private $Login_m;
-    private $security;     
-    public function __construct() {
-        helper('url');
-        $this->security = \Config\Services::security();           
-        helper('functions');
-        sessionCheckEmployee();       
-        $this->Login_m = new Login_m();                                        
+    private $security;      
+    public function __construct() {                         
+        helper('url');               
+        helper('functions');                        
+        sessionCheckEmployee();              
+        $this->Login_m = new Login_m();         
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['usertype'] == 'admin' || $_SESSION['usertype'] == 'employee') {
-                $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
+                $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);                               
                 if ($result) {
-                    $token = $result['token'];
-                    if ($_SESSION['tokencheck'] != $token) {
-                        session_destroy();
+                    $token = $result['token'];                    
+                    if ($_SESSION['tokencheck'] != $token) {                                                                                                                         
                         if ($_SESSION['usertype'] == 'employee') {
-                            header('Location: ' . EMPLOYEE_LOGIN_LINK);
+                            sessionDestroy();                             
+                            header('Location: ' . EMPLOYEE_LOGIN_LINK);                            
                         }
                         if ($_SESSION['usertype'] == 'admin') {
-                            header('Location: ' . ADMIN_LOGIN_LINK);
+                            sessionDestroy(); 
+                            header('Location: ' . ADMIN_LOGIN_LINK);                                                             
                         }
                     }
                 }

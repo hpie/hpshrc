@@ -26,7 +26,7 @@ class Login_m extends Model
                 $_SESSION['tokencheck'] = $token;
                 $uid=$admin_data['admin_user_id'];
                                                 
-                $result_token = $this->db->query("select count(*) as allcount from admin_token");
+                $result_token = $this->db->query("select count(*) as allcount from admin_token WHERE admin_user_id='$uid'");
                 $row_token = $result_token->getRowArray();                
                 if ($row_token['allcount'] > 0) {                    
                     $this->db->query("update admin_token set token='$token' where admin_user_id='$uid'");

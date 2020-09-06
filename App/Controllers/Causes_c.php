@@ -22,11 +22,13 @@ class Causes_c extends Controller {
                 if ($result) {
                     $token = $result['token'];
                     if ($_SESSION['tokencheck'] != $token) {
-                        session_destroy();
+                        
                         if ($_SESSION['usertype'] == 'employee') {
+                            sessionDestroy();
                             header('Location: ' . EMPLOYEE_LOGIN_LINK);
                         }
                         if ($_SESSION['usertype'] == 'admin') {
+                            sessionDestroy();
                             header('Location: ' . ADMIN_LOGIN_LINK);
                         }
                     }

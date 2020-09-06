@@ -18,9 +18,14 @@
 <!-- JavaScript -->
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/bundle.js"></script>
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/scripts.js"></script>
-<!--<script src="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>js/example-toastr.js"></script>-->
-<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/toastr.min.js" type="text/javascript"></script>
-<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/charts/chart-ecommerce.js"></script>
+
+<link rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/editors/summernote.css">
+<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/libs/editors/summernote.js"></script>
+<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/editors.js"></script>
+
+<!--<script src="<?php //echo EMPLOYEE_ASSETS_FOLDER;  ?>js/example-toastr.js"></script>-->
+<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/toastr.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/charts/chart-ecommerce.js" type="text/javascript" nonce='S51U26wMQz'></script>
 
 <!-- datatable start js  -->
 <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
@@ -45,17 +50,17 @@
 <?php include(APPPATH . "Views/employee/common/notify.php"); ?>
 
 <script type="text/javascript" nonce='S51U26wMQz'>
-     $(document).ready(function () {   
-    $(".mobileno").keyup(function (e) {
-            var str=$(this).val();
+    $(document).ready(function () {
+        $(".mobileno").keyup(function (e) {
+            var str = $(this).val();
             for (var i = 0; i < str.length; i++) {
-                var charCode=str.charAt(i).charCodeAt(0);                  
+                var charCode = str.charAt(i).charCodeAt(0);
                 if (charCode > 31 && (charCode < 48 || charCode > 57))
-                {                                    
+                {
                     $(this).val('');
                     return false;
-                }                                       
-            }               
+                }
+            }
             return true;
         });
     });
@@ -64,7 +69,7 @@
 <?php if ($title == EMPLOYEE_UPDATE_PROFILE_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
-        $(document).ready(function () {            
+        $(document).ready(function () {
             $('#frm_change_password').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -125,12 +130,13 @@
                     }
                     $('.txt_csrfname').val(result['token']);
                 }, 'json');
-            });                                    
+            });
         });
     </script>
 <?php } ?>
-    
-     <?php if ($title == EMPLOYEE_CUSTOMER_LIST_TITLE) {
+
+
+<?php if ($title == EMPLOYEE_LIST_CASES_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
@@ -144,7 +150,58 @@
                             target: 'tr'
                         }
                     },
-                                       
+
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/cases_list.php' ?>",
+                        'data': {
+                            employee_user_id: <?php
+    if (isset($_SESSION['user_id'])) {
+        echo $_SESSION['user_id'];
+    }
+    ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "cases_title"},
+                        {"data": "cases_priority"},
+                        {"data": "cases_assign_to"},
+                        {"data": "cases_status"},
+                        {"data": "cases_dt_created"},
+                        {"data": "action"}
+                    ]
+                });
+            }
+        });
+    </script>
+<?php } ?> 
+
+<?php if ($title == EMPLOYEE_CUSTOMER_LIST_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {
+                $('#example').DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+
                     columnDefs: [{
                             className: 'control',
                             orderable: false,
@@ -160,10 +217,10 @@
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/customers_list.php' ?>",
                         'data': {
                             employee_user_id: <?php
-                            if (isset($_SESSION['user_id'])) {
-                                echo $_SESSION['user_id'];
-                            }
-                            ?>
+    if (isset($_SESSION['user_id'])) {
+        echo $_SESSION['user_id'];
+    }
+    ?>
                         }
                     },
                     "columns": [
@@ -173,9 +230,9 @@
                         {"data": "customer_last_name"},
                         {"data": "customer_father_name"},
                         {"data": "customer_gender"},
-                        {"data": "customer_dob"},                                           
+                        {"data": "customer_dob"},
                         {"data": "customer_mobile_no"},
-                        {"data": "customer_email_id"},                       
+                        {"data": "customer_email_id"},
                         {"data": "action"}
                     ]
                 });
@@ -184,13 +241,13 @@
 
                 var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
                 var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
-        
+
                 var self = $(this);
 
                 var table = self.attr('data-table');
                 var updatefield = self.attr('data-updatefield');
                 var wherefield = self.attr('data-wherefield');
-                
+
                 var status = self.attr('data-status');
                 var user_status = 1;
                 if (status == 1)
@@ -203,9 +260,9 @@
                 var data = {
                     'table_id': self.data('id'),
                     'user_status': user_status,
-                    'table':table,
-                    'updatefield':updatefield,
-                    'wherefield':wherefield,
+                    'table': table,
+                    'updatefield': updatefield,
+                    'wherefield': wherefield,
                     [csrfName]: csrfHash
                 };
 
@@ -214,8 +271,8 @@
                     url: "<?php echo APPROVE_STATUS ?>",
                     data: data,
                     success: function (res) {
-                        var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+                        var res = $.parseJSON(res);
+                        $('.ajax_csrfname').val(res.token);
                         if (res.suceess) {
 
                             var title = 'Click to unverify email';
@@ -240,20 +297,20 @@
                         }
                     }
                 });
-            }); 
+            });
             $(document).on('click', '.btn_lock_unlock_customer', function () {
 
                 var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
                 var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
-        
+
                 var self = $(this);
 
                 var table = self.attr('data-table');
                 var updatefield = self.attr('data-updatefield');
                 var wherefield = self.attr('data-wherefield');
-                
+
                 var status = self.attr('data-status');
-                var user_status = status;               
+                var user_status = status;
 
                 if (!confirm('Are you sure want to update?'))
                     return;
@@ -262,9 +319,9 @@
                 var data = {
                     'table_id': self.data('id'),
                     'user_status': user_status,
-                    'table':table,
-                    'updatefield':updatefield,
-                    'wherefield':wherefield,
+                    'table': table,
+                    'updatefield': updatefield,
+                    'wherefield': wherefield,
                     [csrfName]: csrfHash
                 };
 
@@ -273,8 +330,8 @@
                     url: "<?php echo APPROVE_STATUS ?>",
                     data: data,
                     success: function (res) {
-                        var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+                        var res = $.parseJSON(res);
+                        $('.ajax_csrfname').val(res.token);
                         if (res.suceess) {
 
                             var title = 'Click to locke customer';
@@ -299,18 +356,18 @@
                         }
                     }
                 });
-            }); 
+            });
             $(document).on('click', '.btn_active_inactive_customer', function () {
 
                 var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
                 var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
-        
+
                 var self = $(this);
 
                 var table = self.attr('data-table');
                 var updatefield = self.attr('data-updatefield');
                 var wherefield = self.attr('data-wherefield');
-                
+
                 var status = self.attr('data-status');
                 var user_status = "ACTIVE";
                 if (status == "REMOVED")
@@ -323,9 +380,9 @@
                 var data = {
                     'table_id': self.data('id'),
                     'user_status': user_status,
-                    'table':table,
-                    'updatefield':updatefield,
-                    'wherefield':wherefield,
+                    'table': table,
+                    'updatefield': updatefield,
+                    'wherefield': wherefield,
                     [csrfName]: csrfHash
                 };
 
@@ -334,8 +391,8 @@
                     url: "<?php echo APPROVE_STATUS ?>",
                     data: data,
                     success: function (res) {
-                        var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+                        var res = $.parseJSON(res);
+                        $('.ajax_csrfname').val(res.token);
                         if (res.suceess) {
 
                             var title = 'Click to inactive customer';
@@ -360,30 +417,32 @@
                         }
                     }
                 });
-            }); 
+            });
         });
     </script>
 <?php } ?> 
-    
-<?php if ($title == CUSTOMER_REGISTRATION_TITLE) {
+
+<?php if ($title == EMPLOYEE_ADD_CASES_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
 
-        $(document).ready(function () {            
+        $(document).ready(function () { 
             
-            $('#student_register').bootstrapValidator({
+           
+            
+            $('#add_cases').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
                     valid: 'glyphicon glyphicon-ok',
                     invalid: 'glyphicon glyphicon-remove',
                     validating: 'glyphicon glyphicon-refresh'
                 },
-                fields: {                    
+                fields: {
                     customer_photo_path: {
                         validators: {
                             file: {
-                                extension: 'jpeg,jpg,png',
-                                type: 'image/jpeg,image/png,image/jpg',                                
+                                extension: 'jpeg,jpg,png,xlsx,xls,doc,docx,ppt,pptx,txt,pdf',
+                                type: '.xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf',
                                 message: 'The selected file is not valid'
                             },
                             notEmpty: {
@@ -391,6 +450,48 @@
                             }
                         }
                     },                    
+                    cases_title: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Title'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<?php } ?>      
+    
+<?php if ($title == CUSTOMER_REGISTRATION_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#student_register').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    customer_photo_path: {
+                        validators: {
+                            file: {
+                                extension: 'jpeg,jpg,png',
+                                type: 'image/jpeg,image/png,image/jpg',
+                                message: 'The selected file is not valid'
+                            },
+                            notEmpty: {
+                                message: 'Please select profile image'
+                            }
+                        }
+                    },
                     customer_first_name: {
                         validators: {
                             stringLength: {
@@ -400,7 +501,7 @@
                                 message: 'Please supply your first name'
                             }
                         }
-                    },                    
+                    },
                     customer_middle_name: {
                         validators: {
                             stringLength: {
@@ -415,7 +516,7 @@
                         validators: {
                             stringLength: {
                                 min: 10,
-                                max:10
+                                max: 10
                             },
                             notEmpty: {
                                 message: 'Please Enter mobile number'
@@ -431,7 +532,7 @@
                                 message: 'Please supply a valid email address'
                             }
                         }
-                    },             
+                    },
                     customer_dob: {
                         validators: {
                             notEmpty: {
@@ -440,16 +541,16 @@
                         }
                     }
                 }
-            }); 
+            });
         });
     </script>
 <?php } ?>  
-     <?php if ($title == EDIT_CUSTOMER_TITLE) {
+<?php if ($title == EDIT_CUSTOMER_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
 
-        $(document).ready(function () {            
-            
+        $(document).ready(function () {
+
             $('#edit_customer').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -457,7 +558,7 @@
                     invalid: 'glyphicon glyphicon-remove',
                     validating: 'glyphicon glyphicon-refresh'
                 },
-                fields: {                                                           
+                fields: {
                     customer_first_name: {
                         validators: {
                             stringLength: {
@@ -467,7 +568,7 @@
                                 message: 'Please supply your first name'
                             }
                         }
-                    },                    
+                    },
                     customer_middle_name: {
                         validators: {
                             stringLength: {
@@ -482,7 +583,7 @@
                         validators: {
                             stringLength: {
                                 min: 10,
-                                max:10
+                                max: 10
                             },
                             notEmpty: {
                                 message: 'Please Enter mobile number'
@@ -498,7 +599,7 @@
                                 message: 'Please supply a valid email address'
                             }
                         }
-                    },            
+                    },
                     customer_dob: {
                         validators: {
                             notEmpty: {
@@ -507,7 +608,7 @@
                         }
                     }
                 }
-            }); 
+            });
         });
     </script>
 <?php } ?>  

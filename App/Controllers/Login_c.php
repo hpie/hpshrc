@@ -9,8 +9,7 @@ class Login_c extends Controller
     public function __construct() {  
         helper('functions');    
         $this->Login_m = new Login_m();        
-    }
-    
+    }    
     public function index() {
         helper('form');
         if (isset($_SESSION['user_id'])) {

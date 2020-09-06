@@ -11,11 +11,12 @@
         <!-- Page Title  -->
         <title><?php echo $title; ?></title>
         <!-- StyleSheets  -->
-        <link rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/dashlite.css">        
+        <link rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/dashlite.css">
+        <link id="skin-default" rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/theme.css">        
         <link href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/toastr.min.css" rel="stylesheet" type="text/css"/>  
         
         
-          <!-- datatable start css  -->
+        <!-- datatable start css  -->
         <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">

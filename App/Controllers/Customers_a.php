@@ -24,12 +24,13 @@ class Customers_a extends Controller {
                 $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
                 if ($result) {
                     $token = $result['token'];
-                    if ($_SESSION['tokencheck'] != $token) {
-                        session_destroy();
+                    if ($_SESSION['tokencheck'] != $token) {                        
                         if ($_SESSION['usertype'] == 'employee') {
+                            sessionDestroy();
                             header('Location: ' . EMPLOYEE_LOGIN_LINK);
                         }
                         if ($_SESSION['usertype'] == 'admin') {
+                            sessionDestroy();
                             header('Location: ' . ADMIN_LOGIN_LINK);
                         }
                     }

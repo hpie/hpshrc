@@ -68,6 +68,8 @@ $routes->add('employee-update-profile', 'Employee_c::update_profile');
 $routes->add('employee-dashboard', 'Employee_c::dashboard');
 $routes->add('employee-customers-list', 'Customers_e::customers_list');
 $routes->add('approve-status', 'Customers_e::approve_status');
+$routes->add('employee-add-cases', 'Cases_e::add_cases');
+$routes->add('employee-list-cases', 'Cases_e::cases_list');
 
 
 //************************************Customer Registration****************************//

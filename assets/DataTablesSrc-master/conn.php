@@ -1,8 +1,8 @@
 <?php
 if($_SERVER['HTTP_HOST']=='localhost'){
     define('USERNAME','root');
-    define('PASSWORD','hpie@edu');
-    define('DATABASE','s7hpiein_hpshrc');
+    define('PASSWORD','');
+    define('DATABASE','hpshrc');
 }
 else{
      define('USERNAME','knebxnii_knebxnii');

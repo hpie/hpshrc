@@ -102,6 +102,10 @@ define('EMPLOYEE_PROFILE_LINK', BASE_URL_CI.'/employee-profile');
 define('EMPLOYEE_DASHBOARD_LINK', BASE_URL_CI.'/employee-dashboard');
 define('EMPLOYEE_UPDATE_PROFILE_LINK', BASE_URL_CI.'/employee-update-profile');
 define('EMPLOYEE_CUSTOMER_LIST_LINK', BASE_URL_CI.'/employee-customers-list');
+
+define('EMPLOYEE_ADD_CASES_LINK', BASE_URL_CI.'/employee-add-cases');
+define('EMPLOYEE_CASES_LIST_LINK', BASE_URL_CI.'/employee-list-cases');
+
 define('APPROVE_STATUS',BASE_URL."/approve-status");
 
 //**************************************FRONT ROUTE****************************//
@@ -137,6 +141,9 @@ define('EMPLOYEE_PROFILE_TITLE', 'HPSHRC-EMPLOYEE-PROFILE');
 define('EMPLOYEE_UPDATE_PROFILE_TITLE', 'HPSHRC-EMPLOYEE-UPDATE-PROFILE');
 define('EMPLOYEE_DASHBOARD_TITLE', 'HPSHRC-EMPLOYEE-DASHBOARD');
 define('EMPLOYEE_CUSTOMER_LIST_TITLE', 'HPSHRC-EMPLOYEE-CUSTOMER-LIST');
+
+define('EMPLOYEE_ADD_CASES_TITLE', 'HPSHRC-ADD-CASES');
+define('EMPLOYEE_LIST_CASES_TITLE', 'HPSHRC-LIST-CASES');
 
 
 //**************************************ADMIN TITLE****************************//

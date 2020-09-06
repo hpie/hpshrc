@@ -18,19 +18,25 @@ class Admin_c extends Controller {
                 $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
                 if ($result) {
                     $token = $result['token'];
+
+                    echo($token."<br />");
                     if ($_SESSION['tokencheck'] != $token) {                        
                         if ($_SESSION['usertype'] == 'employee') {
-                            sessionDestroy();
-                            header('Location: ' . EMPLOYEE_LOGIN_LINK);
+                            //sessionDestroy();
+                            //header('Location: ' . EMPLOYEE_LOGIN_LINK);
+                            $this->logout();
                         }
                         if ($_SESSION['usertype'] == 'admin') {
                             sessionDestroy();
                             header('Location: ' . ADMIN_LOGIN_LINK);
+                            exit();
                         }
                     }   
                 }
             }
+
         }
+        //print_r($_SESSION);
     }
     public function dashboard() {                        
         $data['title'] = ADMIN_DASHBOARD_TITLE;
@@ -54,5 +60,6 @@ class Admin_c extends Controller {
         }
         $data['title'] = ADMIN_UPDATE_PROFILE_TITLE;
         echo admin_view('adminside/update_profile', $data);
-    }    
+    }
+
 }

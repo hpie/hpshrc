@@ -127,7 +127,8 @@ function sessionAdmin($row) {
         $_SESSION[$key] = $value;
     }    
     $_SESSION['admin_usertype'] = 'admin'; 
-    $_SESSION[$_SESSION['admin_usertype'].'_session_id'] = session_create_id();    
+    $_SESSION[$_SESSION['admin_usertype'].'_session_id'] = session_create_id();
+    
     session_regenerate_id(); // Generate a new session identifier
     $_SESSION['SERVER_GENERATED_SID'] = true;    
     return true;

@@ -141,9 +141,9 @@
                         'type': 'POST',
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/admin_customers_list.php' ?>",
                         'data': {
-                            employee_user_id: <?php
-                            if (isset($_SESSION['employee_user_id'])) {
-                                echo $_SESSION['employee_user_id'];
+                            admin_user_id: <?php
+                            if (isset($_SESSION['admin_user_id'])) {
+                                echo $_SESSION['admin_user_id'];
                             }
                             ?>
                         }

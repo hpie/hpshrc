@@ -25,7 +25,7 @@ class Elogin_c extends Controller {
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $result = $this->Login_m->employee_login_select($_POST['username'], $_POST['password']);
             if ($result == true) {                
-                $userId = $_SESSION['admin_user_id'];
+                $userId = $_SESSION['employee_user_id'];
                 $userType = $_SESSION['employee_usertype'];
                 log_message('info', "$userType id $userId logged into the system");
                 return redirect()->to(EMPLOYEE_DASHBOARD_LINK);

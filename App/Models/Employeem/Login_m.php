@@ -23,7 +23,7 @@ class Login_m extends Model
                 sessionEmployee($employee_data);
                 
                 $token=generateToken();                
-                $_SESSION['tokencheck'] = $token;
+                $_SESSION['employee_tokencheck'] = $token;
                 $uid=$employee_data['employee_user_id'];                                
                 
                 $result_token = $this->db->query("select count(*) as allcount from employee_token WHERE employee_user_id='$uid'");
@@ -74,7 +74,7 @@ class Login_m extends Model
     
     public function check_current_password($current_password) {
         $current_password = md5($current_password);
-        $employee_user_id = $_SESSION['user_id'];
+        $employee_user_id = $_SESSION['employee_user_id'];
         $check = $this->db->query("SELECT * FROM employee
                                        WHERE employee_user_id = '" . $employee_user_id . "'
                                        AND user_email_password ='" . $current_password . "'");
@@ -89,7 +89,7 @@ class Login_m extends Model
 
     public function update_password($params) {
         $new_password = md5($params['user_new_password']);
-        $employee_user_id = $_SESSION['user_id'];
+        $employee_user_id = $_SESSION['employee_user_id'];
         $result = $this->db->query("UPDATE employee
                               SET user_email_password = '" . $new_password . "'
                               WHERE employee_user_id = '" . $employee_user_id . "'");

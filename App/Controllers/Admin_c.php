@@ -10,33 +10,21 @@ class Admin_c extends Controller {
     public function __construct() {         
         helper('functions');
         helper('url');
-        sessionCheckAdmin();               
+        sessionCheckAdmin();        
         $this->Login_m = new Login_m();
         $this->security = \Config\Services::security();
-        if (isset($_SESSION['user_id'])) {
-            if ($_SESSION['usertype'] == 'admin' || $_SESSION['usertype'] == 'employee') {
-                $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
+        if (isset($_SESSION['admin_user_id'])) {            
+                $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin_user_id']);
                 if ($result) {
                     $token = $result['token'];
-
-                    echo($token."<br />");
-                    if ($_SESSION['tokencheck'] != $token) {                        
-                        if ($_SESSION['usertype'] == 'employee') {
-                            //sessionDestroy();
-                            //header('Location: ' . EMPLOYEE_LOGIN_LINK);
-                            $this->logout();
-                        }
-                        if ($_SESSION['usertype'] == 'admin') {
-                            sessionDestroy();
+                    if ($_SESSION['admin_tokencheck'] != $token) {                                                                       
+                            logoutUser('admin');
                             header('Location: ' . ADMIN_LOGIN_LINK);
-                            exit();
-                        }
+                            exit();                        
                     }   
                 }
-            }
-
-        }
-        //print_r($_SESSION);
+            
+        }        
     }
     public function dashboard() {                        
         $data['title'] = ADMIN_DASHBOARD_TITLE;

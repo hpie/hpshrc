@@ -20,10 +20,9 @@ class Login_m extends Model
                 $this->db->query("UPDATE admin SET user_attempt =0,user_locked_status=0 WHERE admin_user_id = '{$admin_data['admin_user_id']}'");
                 
                 $this->db->query("UPDATE admin SET user_login_active = 1 WHERE admin_user_id='" . $admin_data['admin_user_id'] . "' ");
-                sessionAdmin($admin_data);                
-                
+                sessionAdmin($admin_data);                                
                 $token=generateToken();                
-                $_SESSION['tokencheck'] = $token;
+                $_SESSION['admin_tokencheck'] = $token;
                 $uid=$admin_data['admin_user_id'];
                                                 
                 $result_token = $this->db->query("select count(*) as allcount from admin_token WHERE admin_user_id='$uid'");
@@ -75,7 +74,7 @@ class Login_m extends Model
     
     public function check_current_password($current_password) {
         $current_password = md5($current_password);
-        $admin_user_id = $_SESSION['user_id'];
+        $admin_user_id = $_SESSION['admin_user_id'];
         $check = $this->db->query("SELECT * FROM admin
                                        WHERE admin_user_id = '" . $admin_user_id . "'
                                        AND user_email_password ='" . $current_password . "'");
@@ -90,7 +89,7 @@ class Login_m extends Model
 
     public function update_password($params) {
         $new_password = md5($params['user_new_password']);
-        $admin_user_id = $_SESSION['user_id'];
+        $admin_user_id = $_SESSION['admin_user_id'];
         $result = $this->db->query("UPDATE admin
                               SET user_email_password = '" . $new_password . "'
                               WHERE admin_user_id = '" . $admin_user_id . "'");

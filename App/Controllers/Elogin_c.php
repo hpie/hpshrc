@@ -14,9 +14,10 @@ class Elogin_c extends Controller {
 
     public function index() {         
         helper('form');        
-        if (isset($_SESSION['user_id'])) {            
-            if ($_SESSION['user_id'] > 0) {                
-                sessionDestroy();
+        if (isset($_SESSION['employee_user_id'])) {            
+            if ($_SESSION['employee_user_id'] > 0) {                
+                logoutUser('employee'); 
+                unset($_SESSION['employee_user_id']);
                 return redirect()->to(EMPLOYEE_LOGIN_LINK);
             }
         }
@@ -24,8 +25,8 @@ class Elogin_c extends Controller {
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $result = $this->Login_m->employee_login_select($_POST['username'], $_POST['password']);
             if ($result == true) {                
-                $userId = $_SESSION['user_id'];
-                $userType = $_SESSION['usertype'];
+                $userId = $_SESSION['admin_user_id'];
+                $userType = $_SESSION['employee_usertype'];
                 log_message('info', "$userType id $userId logged into the system");
                 return redirect()->to(EMPLOYEE_DASHBOARD_LINK);
             }
@@ -39,7 +40,7 @@ class Elogin_c extends Controller {
     }
 
     public function logout() {
-        sessionDestroy();
+        logoutUser('employee');
         return redirect()->to(EMPLOYEE_LOGIN_LINK);
     }
 

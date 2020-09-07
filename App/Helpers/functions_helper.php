@@ -91,12 +91,15 @@ function reCaptchaResilt($captcha_entered, $redirect_url) {
 }
 
 function visitLog($method, $controller) {
-    if (isset($_SESSION['user_id'])) {
-        $userId = $_SESSION['user_id'];
-        $userType = $_SESSION['usertype'];
+    if (isset($_SESSION['admin_user_id'])) {
+        $userId = $_SESSION['admin_user_id'];
+        $userType = $_SESSION['admin_usertype'];
         log_message('info', "$userType id $userId visit the $controller controller and method name is $method");
-    } else {
-        log_message('info', "guest user visit the $controller controller and method name is $method");
+    }
+    if (isset($_SESSION['employee_user_id'])) {
+        $userId = $_SESSION['employee_user_id'];
+        $userType = $_SESSION['employee_usertype'];
+        log_message('info', "$userType id $userId visit the $controller controller and method name is $method");
     }
 }
 
@@ -122,20 +125,20 @@ function lasturl() {
 function sessionAdmin($row) {    
     foreach ($row as $key => &$value) {
         $_SESSION[$key] = $value;
-    }
-    $_SESSION['user_id'] = $row['admin_user_id'];
-    $_SESSION['usertype'] = 'admin';        
+    }    
+    $_SESSION['admin_usertype'] = 'admin'; 
+    $_SESSION[$_SESSION['admin_usertype'].'_session_id'] = session_create_id();    
+    session_regenerate_id(); // Generate a new session identifier
+    $_SESSION['SERVER_GENERATED_SID'] = true;    
     return true;
 }
 function sessionCheckAdmin() {
-    if ((!isset($_SESSION['admin_user_id'])) || !isset($_SESSION['usertype'])) {
-        sessionDestroy();
+    if ((!isset($_SESSION['admin_user_id'])) || !isset($_SESSION['admin_usertype']) || !isset($_SESSION['admin_session_id'])) {        
         header('Location: ' . ADMIN_LOGIN_LINK);
         exit();
     }
-    if (isset($_SESSION['usertype'])) {
-        if ($_SESSION['usertype'] != 'admin') {
-            sessionDestroy();
+    if (isset($_SESSION['admin_usertype'])) {
+        if ($_SESSION['admin_usertype'] != 'admin') {            
             header('Location: ' . ADMIN_LOGIN_LINK);
             exit();
         }
@@ -146,24 +149,31 @@ function sessionCheckAdmin() {
 function sessionEmployee($row) {    
     foreach ($row as $key => &$value) {
         $_SESSION[$key] = $value;
-    }
-    $_SESSION['user_id'] = $row['employee_user_id'];
-    $_SESSION['usertype'] = 'employee';    
+    }    
+//    $_SESSION['user_id'] = $row['employee_user_id'];
+    $_SESSION['employee_usertype'] = 'employee';
+    $_SESSION[$_SESSION['employee_usertype'].'_session_id'] = session_create_id();
+
+    session_regenerate_id(); // Generate a new session identifier
+    $_SESSION['SERVER_GENERATED_SID'] = true;
     return true;
 }
 function sessionCheckEmployee() {    
-    if (!isset($_SESSION['employee_user_id']) || !isset($_SESSION['usertype'])) {        
-        sessionDestroy();         
+    if (!isset($_SESSION['employee_user_id']) || !isset($_SESSION['employee_usertype']) || !isset($_SESSION['employee_session_id'])) {                 
         header('Location: ' . EMPLOYEE_LOGIN_LINK);        
         exit();
     }
-    if (isset($_SESSION['usertype'])) {
-        if ($_SESSION['usertype'] != 'employee') {
-            sessionDestroy();
+    if (isset($_SESSION['employee_usertype'])) {
+        if ($_SESSION['employee_usertype'] != 'employee') {            
             header('Location: ' . EMPLOYEE_LOGIN_LINK);
             exit();
         }
     }
+    return true;
+}
+
+function logoutUser($usertype) {    
+    unset($_SESSION[$usertype.'_session_id']); 
     return true;
 }
 

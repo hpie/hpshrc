@@ -23,9 +23,13 @@ class Common_m extends Model
         unset($params['confirm_password']);
         unset($params['g-recaptcha-response']);     
         
-        if(isset($_SESSION['usertype'])){
-            $params['createdby_type']=$_SESSION['usertype'];
-            $params['created_by']=$_SESSION['user_id'];
+        if(isset($_SESSION['employee_usertype'])){
+            $params['createdby_type']=$_SESSION['employee_usertype'];
+            $params['created_by']=$_SESSION['employee_user_id'];
+        }
+        if(isset($_SESSION['admin_usertype'])){
+            $params['createdby_type']=$_SESSION['admin_usertype'];
+            $params['created_by']=$_SESSION['admin_user_id'];
         }
         
         $builder = $this->db->table('hpshrc_customer');

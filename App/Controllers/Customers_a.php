@@ -19,24 +19,17 @@ class Customers_a extends Controller {
         sessionCheckAdmin();
         $this->Customers_m = new Customers_m();
         $this->Login_m = new Login_m();
-        if (isset($_SESSION['user_id'])) {
-            if ($_SESSION['usertype'] == 'admin' || $_SESSION['usertype'] == 'employee') {
-                $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
-                if ($result) {
-                    $token = $result['token'];
-                    if ($_SESSION['tokencheck'] != $token) {                        
-                        if ($_SESSION['usertype'] == 'employee') {
-                            sessionDestroy();
-                            header('Location: ' . EMPLOYEE_LOGIN_LINK);
-                        }
-                        if ($_SESSION['usertype'] == 'admin') {
-                            sessionDestroy();
-                            header('Location: ' . ADMIN_LOGIN_LINK);
-                        }
-                    }
-                }
-            }
-        }
+        if (isset($_SESSION['admin_user_id'])) {            
+            $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin_user_id']);
+            if ($result) {
+                $token = $result['token'];
+                if ($_SESSION['admin_tokencheck'] != $token) {                                                                       
+                        logoutUser('admin');
+                        header('Location: ' . ADMIN_LOGIN_LINK);
+                        exit();                        
+                }   
+            }            
+        } 
     }
     public function customers_list() {
         $data['title'] = ADMIN_CUSTOMER_LIST_TITLE;

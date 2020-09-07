@@ -14,26 +14,19 @@ class Cases_e extends Controller {
         helper('functions');
         sessionCheckEmployee();       
         $this->Login_m = new Login_m();  
-        $this->Cases_m = new Cases_m();  
-        if (isset($_SESSION['user_id'])) {
-            if ($_SESSION['usertype'] == 'admin' || $_SESSION['usertype'] == 'employee') {
-                $result = $this->Login_m->getTokenAndCheck($_SESSION['usertype'], $_SESSION['user_id']);
+        $this->Cases_m = new Cases_m();        
+        if (isset($_SESSION['employee_user_id'])) {            
+                $result = $this->Login_m->getTokenAndCheck('employee', $_SESSION['employee_user_id']);
                 if ($result) {
                     $token = $result['token'];
-                    if ($_SESSION['tokencheck'] != $token) {
-                        
-                        if ($_SESSION['usertype'] == 'employee') {
-                            sessionDestroy();
+                    if ($_SESSION['employee_tokencheck'] != $token) {                                                                       
+                            logoutUser('admin');
                             header('Location: ' . EMPLOYEE_LOGIN_LINK);
-                        }
-                        if ($_SESSION['usertype'] == 'admin') {
-                            sessionDestroy();
-                            header('Location: ' . ADMIN_LOGIN_LINK);
-                        }
-                    }
+                            exit();                        
+                    }   
                 }
-            }
-        }
+            
+        }  
     }           
     public function add_cases() { 
         

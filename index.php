@@ -14,7 +14,16 @@ if($protocol_http=='https://'){
 }else{
     ini_set('session.cookie_samesite', 'None');
 }
+ini_set('session.use_strict_mode', 1);
+ini_set('session.use_cookies',1);
+
 session_start();
+//if (!isset($_SESSION['SERVER_GENERATED_SID'])) {    
+//    session_destroy(); // Destroy all data in session
+//    session_start();
+//}
+//session_regenerate_id(); // Generate a new session identifier
+$_SESSION['SERVER_GENERATED_SID'] = true;
 if($protocol_http=='https://'){
     setcookie(session_name(),session_id(),time()+$lifetime,'writable/cache',1,1,TRUE);
 }else{

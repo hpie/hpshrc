@@ -142,8 +142,8 @@
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/admin_customers_list.php' ?>",
                         'data': {
                             employee_user_id: <?php
-                            if (isset($_SESSION['user_id'])) {
-                                echo $_SESSION['user_id'];
+                            if (isset($_SESSION['employee_user_id'])) {
+                                echo $_SESSION['employee_user_id'];
                             }
                             ?>
                         }
@@ -375,8 +375,8 @@
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/file_list.php' ?>",
                         'data': {
                             admin_user_id: <?php
-                            if (isset($_SESSION['user_id'])) {
-                                echo $_SESSION['user_id'];
+                            if (isset($_SESSION['admin_user_id'])) {
+                                echo $_SESSION['admin_user_id'];
                             }
                             ?>
                         }
@@ -462,6 +462,58 @@
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
+            
+            $.fn.bootstrapValidator.validators.securePassword = {
+        validate: function(validator, $field, options) {
+            var value = $field.val();
+            if (value === '') {
+                return true;
+            }
+
+            // Check the password strength
+            if (value.length < 8) {
+                return {
+                    valid: false,
+                    message: 'The password must be more than 8 characters long'
+                };
+            }
+            
+            if (value.length > 20) {
+                return {
+                    valid: false,
+                    message: 'The password must be less than 20 characters'
+                };
+            }
+
+            // The password doesn't contain any uppercase character
+            if (value === value.toLowerCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one upper case character'
+                };
+            }
+
+            // The password doesn't contain any uppercase character
+            if (value === value.toUpperCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one lower case character'
+                };
+            }
+
+            // The password doesn't contain any digit
+            if (value.search(/[0-9]/) < 0) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one digit'
+                };
+            }
+
+            return true;
+        }
+    };
+            
+            
             $('#frm_change_password').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -471,13 +523,13 @@
                 },
                 fields: {
                     user_new_password: {
-                        validators: {
-                            stringLength: {
-                                min: 8
-                            },
+                        validators: {                           
                             identical: {
                                 field: 'user_confirm_password',
                                 message: 'The password and its confirm are not the same'
+                            },
+                            securePassword: {
+                                message: 'The password is not valid'
                             },
                             notEmpty: {
                                 message: 'Please supply your new password'
@@ -485,13 +537,13 @@
                         }
                     },
                     user_confirm_password: {
-                        validators: {
-                            stringLength: {
-                                min: 8
-                            },
+                        validators: {                            
                             identical: {
                                 field: 'user_new_password',
                                 message: 'The password and its confirm are not the same'
+                            },
+                            securePassword: {
+                                message: 'The password is not valid'
                             },
                             notEmpty: {
                                 message: 'Please supply your confirm password'
@@ -700,35 +752,7 @@
                                 message: 'Please supply a valid email address'
                             }
                         }
-                    },
-                    customer_email_password: {
-                        validators: {
-                            stringLength: {
-                                min: 8
-                            },
-                            identical: {
-                                field: 'user_confirm_password',
-                                message: 'The password and its confirm are not the same'
-                            },
-                            notEmpty: {
-                                message: 'Please supply your new password'
-                            }
-                        }
-                    },
-                    user_confirm_password: {
-                        validators: {
-                            stringLength: {
-                                min: 8
-                            },
-                            identical: {
-                                field: 'customer_email_password',
-                                message: 'The password and its confirm are not the same'
-                            },
-                            notEmpty: {
-                                message: 'Please supply your confirm password'
-                            }
-                        }
-                    },
+                    },                   
                     customer_dob: {
                         validators: {
                             notEmpty: {

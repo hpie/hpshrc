@@ -233,7 +233,7 @@
 <?php include(APPPATH . "Views/frontside/common/notify.php"); ?>
 
 <script type="text/javascript" nonce='S51U26wMQz'>
-     $(document).ready(function () {   
+   $(document).ready(function () {   
     $(".mobileno").keyup(function (e) {
             var str=$(this).val();
             for (var i = 0; i < str.length; i++) {
@@ -438,6 +438,58 @@
 
         $(document).ready(function () {            
             
+        $.fn.bootstrapValidator.validators.securePassword = {
+        validate: function(validator, $field, options) {
+            var value = $field.val();
+            if (value === '') {
+                return true;
+            }
+
+            // Check the password strength
+            if (value.length < 8) {
+                return {
+                    valid: false,
+                    message: 'The password must be more than 8 characters long'
+                };
+            }
+            
+            if (value.length > 20) {
+                return {
+                    valid: false,
+                    message: 'The password must be less than 20 characters'
+                };
+            }
+
+            // The password doesn't contain any uppercase character
+            if (value === value.toLowerCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one upper case character'
+                };
+            }
+
+            // The password doesn't contain any uppercase character
+            if (value === value.toUpperCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one lower case character'
+                };
+            }
+
+            // The password doesn't contain any digit
+            if (value.search(/[0-9]/) < 0) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one digit'
+                };
+            }
+
+            return true;
+        }
+    };
+            
+            
+            
             $('#student_register').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -500,13 +552,13 @@
                         }
                     },
                     customer_email_password: {
-                        validators: {
-                            stringLength: {
-                                min: 8
-                            },
+                        validators: {                           
                             identical: {
                                 field: 'user_confirm_password',
                                 message: 'The password and its confirm are not the same'
+                            },
+                            securePassword: {
+                                message: 'The password is not valid'
                             },
                             notEmpty: {
                                 message: 'Please supply your new password'
@@ -522,6 +574,9 @@
                                 field: 'customer_email_password',
                                 message: 'The password and its confirm are not the same'
                             },
+                            securePassword: {
+                                message: 'The password is not valid'
+                            },
                             notEmpty: {
                                 message: 'Please supply your confirm password'
                             }
@@ -531,13 +586,6 @@
                         validators: {
                             notEmpty: {
                                 message: 'Please supply your date of birth'
-                            }
-                        }
-                    },
-                    g-recaptcha-response: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Please select captcha'
                             }
                         }
                     }

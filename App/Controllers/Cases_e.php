@@ -20,7 +20,7 @@ class Cases_e extends Controller {
                 if ($result) {
                     $token = $result['token'];
                     if ($_SESSION['employee_tokencheck'] != $token) {                                                                       
-                            logoutUser('admin');
+                            logoutUser('employee');
                             header('Location: ' . EMPLOYEE_LOGIN_LINK);
                             exit();                        
                     }   

@@ -19,28 +19,28 @@ class Common_c extends Controller {
         $this->Login_m = new Login_m();
         $this->Common_m = new Common_m();
         $this->security = \Config\Services::security();                        
-        if (isset($_SESSION['employee_user_id'])) {            
-                $result = $this->Login_m->getTokenAndCheck('employee', $_SESSION['employee_user_id']);
-                if ($result) {
-                    $token = $result['token'];
-                    if ($_SESSION['employee_tokencheck'] != $token) {                                                                       
-                            logoutUser('admin');
-                            header('Location: ' . EMPLOYEE_LOGIN_LINK);
-                            exit();                        
-                    }   
-                }            
-        }         
-        if (isset($_SESSION['admin_user_id'])) {            
-                $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin_user_id']);
-                if ($result) {
-                    $token = $result['token'];
-                    if ($_SESSION['admin_tokencheck'] != $token) {                                                                       
-                            logoutUser('admin');
-                            header('Location: ' . ADMIN_LOGIN_LINK);
-                            exit();                        
-                    }   
-                }            
-        }                
+//        if (isset($_SESSION['employee_user_id'])) {            
+//                $result = $this->Login_m->getTokenAndCheck('employee', $_SESSION['employee_user_id']);
+//                if ($result) {
+//                    $token = $result['token'];
+//                    if ($_SESSION['employee_tokencheck'] != $token) {                                                                       
+//                            logoutUser('admin');
+//                            header('Location: ' . EMPLOYEE_LOGIN_LINK);
+//                            exit();                        
+//                    }   
+//                }            
+//        }         
+//        if (isset($_SESSION['admin_user_id'])) {            
+//                $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin_user_id']);
+//                if ($result) {
+//                    $token = $result['token'];
+//                    if ($_SESSION['admin_tokencheck'] != $token) {                                                                       
+//                            logoutUser('admin');
+//                            header('Location: ' . ADMIN_LOGIN_LINK);
+//                            exit();                        
+//                    }   
+//                }            
+//        }                
     }
 
     public function create_customer() {

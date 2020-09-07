@@ -10,19 +10,14 @@ class Admin_c extends Controller {
     public function __construct() {         
         helper('functions');
         helper('url');
-        echo '5';
-        sessionCheckAdmin();
-        echo '8';
+        sessionCheckAdmin();        
         $this->Login_m = new Login_m();
         $this->security = \Config\Services::security();
-        if (isset($_SESSION['admin_user_id'])) { 
-                echo '9';
+        if (isset($_SESSION['admin_user_id'])) {            
                 $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin_user_id']);
                 if ($result) {
-                    echo '10';
                     $token = $result['token'];
-                    if ($_SESSION['admin_tokencheck'] != $token) {
-                            echo '11';die;
+                    if ($_SESSION['admin_tokencheck'] != $token) {                                                                       
                             logoutUser('admin');
                             header('Location: ' . ADMIN_LOGIN_LINK);
                             exit();                        
@@ -30,8 +25,7 @@ class Admin_c extends Controller {
                 }            
         }        
     }
-    public function dashboard() {
-        echo 'success';die;
+    public function dashboard() {                        
         $data['title'] = ADMIN_DASHBOARD_TITLE;
         echo admin_view('adminside/dashboard', $data);                
     }

@@ -135,13 +135,12 @@ function sessionAdmin($row) {
 }
 function sessionCheckAdmin() {
     if ((!isset($_SESSION['admin_user_id'])) || !isset($_SESSION['admin_usertype']) || !isset($_SESSION['admin_session_id'])) {
-        echo '6';die;
+    
         header('Location: ' . ADMIN_LOGIN_LINK);
         exit();
     }
     if (isset($_SESSION['admin_usertype'])) {
-        if ($_SESSION['admin_usertype'] != 'admin') {
-            echo '7';die;
+        if ($_SESSION['admin_usertype'] != 'admin') {            
             header('Location: ' . ADMIN_LOGIN_LINK);
             exit();
         }

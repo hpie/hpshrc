@@ -70,7 +70,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <a href="javascript::void(0)"> <h2><?php echo $_SESSION['user_firstname'] .' '. $_SESSION['user_lastname']; ?></h2></a>
+                <a href="javascript::void(0)"> <h2><?php echo $_SESSION['admin']['user_firstname'] .' '. $_SESSION['admin']['user_lastname']; ?></h2></a>
               </div>
             </div>
             <!-- /menu profile quick info -->

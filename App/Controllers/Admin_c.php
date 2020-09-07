@@ -13,11 +13,11 @@ class Admin_c extends Controller {
         sessionCheckAdmin();        
         $this->Login_m = new Login_m();
         $this->security = \Config\Services::security();
-        if (isset($_SESSION['admin_user_id'])) {            
-                $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin_user_id']);
+        if (isset($_SESSION['admin']['admin_user_id'])) {            
+                $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin']['admin_user_id']);
                 if ($result) {
                     $token = $result['token'];
-                    if ($_SESSION['admin_tokencheck'] != $token) {                                                                       
+                    if ($_SESSION['admin']['admin_tokencheck'] != $token) {                                                                       
                             logoutUser('admin');
                             header('Location: ' . ADMIN_LOGIN_LINK);
                             exit();                        

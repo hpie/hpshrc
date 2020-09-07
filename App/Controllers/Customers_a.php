@@ -19,11 +19,11 @@ class Customers_a extends Controller {
         sessionCheckAdmin();
         $this->Customers_m = new Customers_m();
         $this->Login_m = new Login_m();
-        if (isset($_SESSION['admin_user_id'])) {            
-            $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin_user_id']);
+        if (isset($_SESSION['admin']['admin_user_id'])) {            
+            $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin']['admin_user_id']);
             if ($result) {
                 $token = $result['token'];
-                if ($_SESSION['admin_tokencheck'] != $token) {                                                                       
+                if ($_SESSION['admin']['admin_tokencheck'] != $token) {                                                                       
                         logoutUser('admin');
                         header('Location: ' . ADMIN_LOGIN_LINK);
                         exit();                        

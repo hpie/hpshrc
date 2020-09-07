@@ -8,7 +8,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="#"  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo UPLOAD_FOLDER ?>original/default.png" alt=""><?php echo $_SESSION['user_firstname']; ?>
+                    <img src="<?php echo UPLOAD_FOLDER ?>original/default.png" alt=""><?php echo $_SESSION['admin']['user_firstname']; ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

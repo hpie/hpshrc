@@ -114,13 +114,13 @@ class Common_c extends Controller {
         helper('form');
         $data['title'] = CUSTOMER_REGISTRATION_TITLE;        
        
-        if($_SESSION['employee_usertype']=='employee'){
+        if($_SESSION['employee']['employee_usertype']=='employee'){
             sessionCheckEmployee();               
             echo employee_view('employee/user_registration', $data);
             die;
         }
         
-        if($_SESSION['admin_usertype']=='admin'){
+        if($_SESSION['admin']['admin_usertype']=='admin'){
             sessionCheckAdmin();
             echo admin_view('adminside/customer/user_registration', $data);
             die;
@@ -159,11 +159,11 @@ class Common_c extends Controller {
         $data['customer_id'] = $customer_id;        
         $data['title'] = EDIT_CUSTOMER_TITLE;        
         
-            if($_SESSION['employee_usertype']=='employee'){
+            if($_SESSION['employee']['employee_usertype']=='employee'){
                 sessionCheckEmployee();               
                 echo employee_view('employee/edit_customer', $data);
             }
-            if($_SESSION['admin_usertype']=='admin'){
+            if($_SESSION['admin']['admin_usertype']=='admin'){
                 sessionCheckAdmin();
                 echo admin_view('adminside/customer/edit_customer', $data);
             }                       

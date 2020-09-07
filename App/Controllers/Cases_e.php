@@ -15,11 +15,11 @@ class Cases_e extends Controller {
         sessionCheckEmployee();       
         $this->Login_m = new Login_m();  
         $this->Cases_m = new Cases_m();        
-        if (isset($_SESSION['employee_user_id'])) {            
-                $result = $this->Login_m->getTokenAndCheck('employee', $_SESSION['employee_user_id']);
+        if (isset($_SESSION['employee']['employee_user_id'])) {            
+                $result = $this->Login_m->getTokenAndCheck('employee', $_SESSION['employee']['employee_user_id']);
                 if ($result) {
                     $token = $result['token'];
-                    if ($_SESSION['employee_tokencheck'] != $token) {                                                                       
+                    if ($_SESSION['employee']['employee_tokencheck'] != $token) {                                                                       
                             logoutUser('employee');
                             header('Location: ' . EMPLOYEE_LOGIN_LINK);
                             exit();                        

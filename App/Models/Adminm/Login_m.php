@@ -14,6 +14,9 @@ class Login_m extends Model
         $password = md5($password);
         $resAdmin = $this->db->query("SELECT * FROM `admin` WHERE ( user_email_id = '$username') AND user_email_password = '$password' AND user_status = 'ACTIVE' AND user_locked_status=0");
         $admin_data = $resAdmin->getRowArray();
+        
+//        echo '<pre>';print_r($admin_data);die;
+//        
         if (isset($admin_data)) {                     
            if (($username == $admin_data['user_email_id']) && ($password == $admin_data['user_email_password'])) {               
 
@@ -22,7 +25,7 @@ class Login_m extends Model
                 $this->db->query("UPDATE admin SET user_login_active = 1 WHERE admin_user_id='" . $admin_data['admin_user_id'] . "' ");
                 
                 $token=generateToken();                
-                $_SESSION['admin_tokencheck'] = $token;
+                $_SESSION['admin']['admin_tokencheck'] = $token;
                 sessionAdmin($admin_data);                                                
                 $uid=$admin_data['admin_user_id'];
                                                 
@@ -75,7 +78,7 @@ class Login_m extends Model
     
     public function check_current_password($current_password) {
         $current_password = md5($current_password);
-        $admin_user_id = $_SESSION['admin_user_id'];
+        $admin_user_id = $_SESSION['admin']['admin_user_id'];
         $check = $this->db->query("SELECT * FROM admin
                                        WHERE admin_user_id = '" . $admin_user_id . "'
                                        AND user_email_password ='" . $current_password . "'");
@@ -90,7 +93,7 @@ class Login_m extends Model
 
     public function update_password($params) {
         $new_password = md5($params['user_new_password']);
-        $admin_user_id = $_SESSION['admin_user_id'];
+        $admin_user_id = $_SESSION['admin']['admin_user_id'];
         $result = $this->db->query("UPDATE admin
                               SET user_email_password = '" . $new_password . "'
                               WHERE admin_user_id = '" . $admin_user_id . "'");

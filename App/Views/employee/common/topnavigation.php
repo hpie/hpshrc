@@ -24,7 +24,7 @@
                                     </div>
                                     <div class="user-info d-none d-xl-block">
                                         <!--<div class="user-status user-status-unverified">Unverified</div>-->
-                                        <div class="user-name dropdown-indicator"><?php echo $_SESSION['user_firstname'].' '.$_SESSION['user_lastname']; ?></div>
+                                        <div class="user-name dropdown-indicator"><?php echo $_SESSION['employee']['user_firstname'].' '.$_SESSION['employee']['user_lastname']; ?></div>
                                     </div>
                                 </div>
                             </a>
@@ -35,8 +35,8 @@
                                             <span>AB</span>
                                         </div>
                                         <div class="user-info">
-                                            <span class="lead-text"><?php echo $_SESSION['user_firstname'].' '.$_SESSION['user_lastname']; ?></span>
-                                            <span class="sub-text"><?php echo $_SESSION['user_email_id']; ?></span>
+                                            <span class="lead-text"><?php echo $_SESSION['employee']['user_firstname'].' '.$_SESSION['employee']['user_lastname']; ?></span>
+                                            <span class="sub-text"><?php echo $_SESSION['employee']['user_email_id']; ?></span>
                                         </div>
                                     </div>
                                 </div>

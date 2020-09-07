@@ -217,8 +217,8 @@
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/cases_list.php' ?>",
                         'data': {
                             employee_user_id: <?php
-    if (isset($_SESSION['employee_user_id'])) {
-        echo $_SESSION['employee_user_id'];
+    if (isset($_SESSION['employee']['employee_user_id'])) {
+        echo $_SESSION['employee']['employee_user_id'];
     }
     ?>
                         }
@@ -268,8 +268,8 @@
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/customers_list.php' ?>",
                         'data': {
                             employee_user_id: <?php
-    if (isset($_SESSION['employee_user_id'])) {
-        echo $_SESSION['employee_user_id'];
+    if (isset($_SESSION['employee']['employee_user_id'])) {
+        echo $_SESSION['employee']['employee_user_id'];
     }
     ?>
                         }

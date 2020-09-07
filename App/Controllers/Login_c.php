@@ -12,10 +12,10 @@ class Login_c extends Controller
     }    
     public function index() {
         helper('form');
-        if (isset($_SESSION['admin_user_id'])) {            
-            if ($_SESSION['admin_user_id'] > 0) {                
+        if (isset($_SESSION['admin']['admin_user_id'])) {            
+            if ($_SESSION['admin']['admin_user_id'] > 0) {                
                 logoutUser('admin');
-                unset($_SESSION['admin_user_id']);
+                unset($_SESSION['admin']['admin_user_id']);
                 return redirect()->to(ADMIN_LOGIN_LINK); 
             }
         }       
@@ -23,8 +23,8 @@ class Login_c extends Controller
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $result = $this->Login_m->admin_login_select($_POST['username'], $_POST['password']);
             if ($result == true) {
-                $userId = $_SESSION['admin_user_id'];
-                $userType = $_SESSION['admin_usertype'];
+                $userId = $_SESSION['admin']['admin_user_id'];
+                $userType = $_SESSION['admin']['admin_usertype'];
                 log_message('info', "$userType id $userId logged into the system");                
                 return redirect()->to(ADMIN_DASHBOARD_LINK); 
             }

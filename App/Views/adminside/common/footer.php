@@ -142,8 +142,8 @@
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/admin_customers_list.php' ?>",
                         'data': {
                             admin_user_id: <?php
-                            if (isset($_SESSION['admin_user_id'])) {
-                                echo $_SESSION['admin_user_id'];
+                            if (isset($_SESSION['admin']['admin_user_id'])) {
+                                echo $_SESSION['admin']['admin_user_id'];
                             }
                             ?>
                         }
@@ -375,8 +375,8 @@
                         'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/file_list.php' ?>",
                         'data': {
                             admin_user_id: <?php
-                            if (isset($_SESSION['admin_user_id'])) {
-                                echo $_SESSION['admin_user_id'];
+                            if (isset($_SESSION['admin']['admin_user_id'])) {
+                                echo $_SESSION['admin']['admin_user_id'];
                             }
                             ?>
                         }

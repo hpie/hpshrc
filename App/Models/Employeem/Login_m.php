@@ -22,7 +22,7 @@ class Login_m extends Model
                 $this->db->query("UPDATE employee SET user_login_active = 1 WHERE employee_user_id='" . $employee_data['employee_user_id'] . "' ");
                 
                 $token=generateToken();                
-                $_SESSION['employee_tokencheck'] = $token;
+                $_SESSION['employee']['employee_tokencheck'] = $token;
                 sessionEmployee($employee_data);
                                 
                 $uid=$employee_data['employee_user_id'];                                

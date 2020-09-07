@@ -126,6 +126,9 @@ class Common_c extends Controller {
             die;
         }               
         echo front_view('frontside/user_registration', $data);
+        if(isset($_SESSION['post_data'])){
+            unset($_SESSION['post_data']);
+        }
         die;                      
     }
     
@@ -163,8 +166,7 @@ class Common_c extends Controller {
             if($_SESSION['admin_usertype']=='admin'){
                 sessionCheckAdmin();
                 echo admin_view('adminside/customer/edit_customer', $data);
-            }
-                       
+            }                       
     }
     
     

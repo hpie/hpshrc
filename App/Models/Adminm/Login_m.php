@@ -20,9 +20,10 @@ class Login_m extends Model
                 $this->db->query("UPDATE admin SET user_attempt =0,user_locked_status=0 WHERE admin_user_id = '{$admin_data['admin_user_id']}'");
                 
                 $this->db->query("UPDATE admin SET user_login_active = 1 WHERE admin_user_id='" . $admin_data['admin_user_id'] . "' ");
-                sessionAdmin($admin_data);                                
+                
                 $token=generateToken();                
                 $_SESSION['admin_tokencheck'] = $token;
+                sessionAdmin($admin_data);                                                
                 $uid=$admin_data['admin_user_id'];
                                                 
                 $result_token = $this->db->query("select count(*) as allcount from admin_token WHERE admin_user_id='$uid'");

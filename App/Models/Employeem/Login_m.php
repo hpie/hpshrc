@@ -20,10 +20,11 @@ class Login_m extends Model
                 $this->db->query("UPDATE employee SET user_attempt =0,user_locked_status=0 WHERE employee_user_id = '{$employee_data['employee_user_id']}'");
                 
                 $this->db->query("UPDATE employee SET user_login_active = 1 WHERE employee_user_id='" . $employee_data['employee_user_id'] . "' ");
-                sessionEmployee($employee_data);
                 
                 $token=generateToken();                
                 $_SESSION['employee_tokencheck'] = $token;
+                sessionEmployee($employee_data);
+                                
                 $uid=$employee_data['employee_user_id'];                                
                 
                 $result_token = $this->db->query("select count(*) as allcount from employee_token WHERE employee_user_id='$uid'");

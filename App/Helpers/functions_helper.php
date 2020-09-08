@@ -419,8 +419,10 @@ if (!function_exists('fileUpload')) {
 
             $expensions = array(
                 "pdf",
-                "doc",
-                "docx"
+                "jpeg",
+                "jpg",
+                "png",
+                "gif"
             );
             //echo $file_ext;die;       
             if (in_array($file_ext, $expensions) === false) {

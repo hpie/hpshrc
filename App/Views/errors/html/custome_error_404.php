@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
         <title>404 Page Not Found</title>
-<!--        <style type="text/css">
+        <style type="text/css">
 
-            /*@import url('https://fonts.googleapis.com/css');*/
+            @import url('https://fonts.googleapis.com/css');
 
             body {
                 background: $light;
@@ -253,7 +253,7 @@
                     }
                 }
             }
-        </style>-->
+        </style>
     </head>
     <body>
         <div id="container">
@@ -261,6 +261,15 @@
             <div class="top">
                 <h1>404</h1>
                 <h3>page not found</h3>
+                
+                <p>
+			<?php if (! empty($message) && $message !== '(null)') : ?>
+				<?= esc($message) ?>
+			<?php else : ?>
+				Sorry! Cannot seem to find the page you were looking for.
+			<?php endif ?>
+		</p>
+                
             </div>
             <div class="container">
                 <div class="ghost-copy">

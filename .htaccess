@@ -36,18 +36,15 @@ Options All -Indexes
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-
     RewriteCond %{QUERY_STRING} .        
     RewriteRule .*  /? [R=404,L]
-    ErrorDocument 404 http://localhost/hpshrc2/errorpage
+#    ErrorDocument 404 http://localhost/hpshrc2/errorpage
 </IfModule>
-
 <IfModule !mod_rewrite.c>
     # If we don't have mod_rewrite installed, all 404's
     # can be sent to index.php, and everything works as normal.
-    ErrorDocument 404 index.php
+    ErrorDocument 404 http://localhost/hpshrc2/errorpage
 </IfModule>
-
 # Disable server signature start
     ServerSignature Off
 # Disable server signature end

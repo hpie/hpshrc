@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
         <title>404 Page Not Found</title>
-        <style type="text/css">
+<!--        <style type="text/css">
 
-            @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Lato');
+            /*@import url('https://fonts.googleapis.com/css');*/
 
             body {
                 background: $light;
@@ -253,7 +253,7 @@
                     }
                 }
             }
-        </style>
+        </style>-->
     </head>
     <body>
         <div id="container">

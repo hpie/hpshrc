@@ -3,7 +3,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 
-class Employee_c extends BaseController {
+class Employee_c extends Controller {
     private $Login_m;
     private $security;      
     public function __construct() {                         

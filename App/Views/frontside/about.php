@@ -19,7 +19,7 @@
 
             <div class="col-md-6">
 
-                <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/hpshrc-big-logo.png" alt="" class="img-responsive">
+                <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/hpshrc-big-logo.png" alt="" class="img-responsive">
 
             </div>
 
@@ -75,7 +75,7 @@
                     <div class="about-us-col">
 
                         <div class="col-icon-wrapper">
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/icons/our-mission-icon.png" alt="">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/icons/our-mission-icon.png" alt="">
                         </div>
                         <h3 class="col-title">our mission</h3>
                         <div class="col-details">
@@ -97,7 +97,7 @@
                     <div class="about-us-col">
 
                         <div class="col-icon-wrapper">
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/icons/our-functions-3-icon.png" alt="">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/icons/our-functions-3-icon.png" alt="">
                         </div>
                         <h3 class="col-title">Our Functions</h3>
                         <div class="col-details">
@@ -120,7 +120,7 @@
                     <div class="about-us-col">
 
                         <div class="col-icon-wrapper">
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/icons/help-icon.png" alt="">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/icons/help-icon.png" alt="">
                         </div>
                         <h3 class="col-title">Help & support</h3>
                         <div class="col-details">
@@ -143,7 +143,7 @@
                     <div class="about-us-col">
 
                         <div class="col-icon-wrapper">
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/icons/programs-icon.png" alt="">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/icons/programs-icon.png" alt="">
                         </div>
                         <h3 class="col-title">our programs</h3>
                         <div class="col-details">
@@ -184,7 +184,7 @@
 
                         <div class="thumnail">
 
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/team/psrana.jpg" alt="P.S. Rana" class="cause-img">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/psrana.jpg" alt="P.S. Rana" class="cause-img">
 
                         </div>
 
@@ -218,7 +218,7 @@
 
                         <div class="thumnail">
 
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/team/male-mamber.jpg" alt="" class="cause-img">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/male-mamber.jpg" alt="" class="cause-img">
 
                         </div>
 
@@ -253,7 +253,7 @@
 
                         <div class="thumnail">
 
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/team/female-mamber.jpg" alt="" class="cause-img">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/female-mamber.jpg" alt="" class="cause-img">
 
                         </div>
 
@@ -288,7 +288,7 @@
 
                         <div class="thumnail">
 
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/team/male-mamber.jpg" alt="" class="cause-img">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/male-mamber.jpg" alt="" class="cause-img">
 
                         </div>
 

@@ -25,48 +25,16 @@
 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
 <!-- jQuery -->
 
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/js/bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>icheck/icheck.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<!-- FastClick -->
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>fastclick/lib/fastclick.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<!-- NProgress -->
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>nprogress/nprogress.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>jquery/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script src="<?php echo ADMIN_MAIN_ASSETS_FOLDER; ?>icheck/icheck.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
 
-<!-- DateJS -->
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>moment/min/moment.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<!-- PNotify -->
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap-daterangepicker/daterangepicker.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<!--<script src="<?php //echo ADMIN_ASSETS_FOLDER;  ?>pnotify/dist/pnotifyadmin.js" type="text/javascript" nonce='S51U26wMQz'></script>-->
-<!-- bootstrap-wysiwyg -->
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>editor/jquery.hotkeys.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>editor/prettify.js" type="text/javascript" nonce='S51U26wMQz'></script>
 <!-- Datatables -->
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net/js/jquery.dataTables.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-bs/js/dataTables.bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons/js/dataTables.buttons.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons-bs/js/buttons.bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons/js/buttons.flash.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons/js/buttons.html5.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons/js/buttons.print.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-fixedheader/js/dataTables.fixedHeader.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-keytable/js/dataTables.keyTable.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-responsive/js/dataTables.responsive.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-responsive-bs/js/responsive.bootstrap.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-scroller/js/dataTables.scroller.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css" />
-<script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="<?php echo BASE_URL ?>/assets/front/js/dataTables.responsive.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script nonce='S51U26wMQz' src="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/dataTables.responsive.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script nonce='S51U26wMQz' src="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrapValidator.min.js" type="text/javascript"></script>
 
-<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js" type="text/javascript"></script>
-<!--Slider--> 
-<!-- ECharts -->
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>echarts/dist/echarts.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>echarts/map/js/world.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<!-- Custom Theme Scripts -->
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>build/js/custom.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script src="<?php echo ADMIN_ASSETS_FOLDER; ?>moment/moment.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script src="<?php echo ADMIN_MAIN_ASSETS_FOLDER; ?>build/js/custom.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
 
 <?php include(APPPATH . "Views/adminside/common/notify.php"); ?>
 <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -91,24 +59,6 @@
                 }                                       
             }               
             return true;
-        });
-    });
-</script>
-
-<script type="text/javascript" nonce='S51U26wMQz'>
-    $(document).ready(function () {
-        $('#dp4').datepicker({
-            format: 'yyyy',
-            viewMode: 'years',
-            minViewMode: 'years',
-            autoclose: true
-        });
-        $('#dp5').datepicker({
-            dateFormat: 'MM yy',
-            format: 'mm-yyyy',
-            viewMode: 'months',
-            minViewMode: 'months',
-            autoclose: true
         });
     });
 </script>

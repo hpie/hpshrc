@@ -11,25 +11,25 @@
        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>-->
 
-        <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css" rel="stylesheet" type="text/css">
+       <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/dataTables.responsive.css" rel="stylesheet" type="text/css"> 
 
         <!-- favico -->
-        <link rel='icon' href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/favico/favicon.ico" type="image/x-icon">
+        <link rel='icon' href="<?php echo FRONT_ASSETS_FOLDER; ?>images/favico/favicon.ico" type="image/x-icon">
 
         <!-- Bootsrap -->
-        <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/bootstrap.min.css" type="text/css">
+        <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- Font awesome -->
-        <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/font-awesome.min.css" type="text/css">
+        <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- Owl carousel -->
-        <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/owl.carousel.css" type="text/css">
-        <link href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>css/owl.carousel.css" type="text/css">
+        <link href="<?php echo FRONT_ASSETS_FOLDER; ?>css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
         <!-- Template main Css -->
-        <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>assets/css/style.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>css/style.css" type="text/css">
         
         <!-- Modernizr -->
-        <script nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/modernizr-2.6.2.min.js"></script>
+        <script nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>js/modernizr-2.6.2.min.js"></script>
      
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotify.js" type="text/javascript"></script>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyStyleMaterial.js" type="text/javascript"></script>
@@ -98,7 +98,7 @@
 
                             </button>
 
-                            <a class="navbar-brand" href="<?php echo BASE_URL; ?>"><img src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/images/hpshrc-logo-1.png" alt=""></a>
+                            <a class="navbar-brand" href="<?php echo BASE_URL; ?>"><img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/hpshrc-logo-1.png" alt=""></a>
 
                         </div>
 

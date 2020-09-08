@@ -18,6 +18,8 @@ define('UPLOAD_FOLDER', BASE_URL.'/uploads/');
 define('IMG_DIR','uploads/');
 define('FILE_DIR', "/uploads/doc/");
 define('FRONT_ASSETS_FOLDER', BASE_URL.'/assets/front/');
-define('ADMIN_ASSETS_FOLDER', BASE_URL.'/assets/admin/');
+//define('ADMIN_MAIN_ASSETS_FOLDER', BASE_URL.'/assets/admin_assets/');
+define('ADMIN_MAIN_ASSETS_FOLDER', BASE_URL.'/assets/admin/');
+define('CENTRAL_ASSETS_FOLDER', BASE_URL.'/assets/central/');
 define('EMPLOYEE_ASSETS_FOLDER', BASE_URL.'/assets/employee/');
 ?>

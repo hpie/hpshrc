@@ -5,24 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta http-equiv="X-Content-Type-Options" content="nosniff">   
-        <meta http-equiv="Content-Security-Policy" content="script-src 'strict-dynamic' 'nonce-S51U26wMQz' 'unsafe-inline' http: https: https://www.gstatic.com https://csp.withgoogle.com https://www.google.com; object-src 'none'; base-uri 'none';">
+        <!--<meta http-equiv="Content-Security-Policy" content="script-src 'strict-dynamic' 'nonce-S51U26wMQz' 'unsafe-inline' http: https: https://www.gstatic.com https://csp.withgoogle.com https://www.google.com; object-src 'none'; base-uri 'none';">-->
 
         <title><?php echo $title; ?></title>
         <!-- Bootstrap -->
 
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
         <!-- Font Awesome -->
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- NProgress -->
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>nprogress/nprogress.css" rel="stylesheet" type="text/css">            
+        <link href="<?php echo ADMIN_MAIN_ASSETS_FOLDER; ?>nprogress/nprogress.css" rel="stylesheet" type="text/css">            
 
         <!-- Custom Theme Style -->
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>build/css/custom.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo ADMIN_MAIN_ASSETS_FOLDER; ?>build/css/custom.min.css" rel="stylesheet" type="text/css">
 
-        <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>jquery/dist/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>       
-        <script src="<?php echo ADMIN_ASSETS_FOLDER; ?>bootstrap/dist/js/bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>         
+        <script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>jquery/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>       
+        <script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>         
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotify.js" type="text/javascript"></script>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyStyleMaterial.js" type="text/javascript"></script>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyButtons.js" type="text/javascript"></script>              

@@ -16,13 +16,9 @@
         <link href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/toastr.min.css" rel="stylesheet" type="text/css"/>  
         
         
-        <!-- datatable start css  -->
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo ADMIN_ASSETS_FOLDER; ?>datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet" type="text/css">    
-        <link href="<?php echo BASE_URL; ?>/assets/front/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo BASE_URL; ?>/assets/front/css/dataTables.responsive.css" rel="stylesheet" type="text/css">
+        <!-- datatable start css  -->       
+        <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/dataTables.responsive.css" rel="stylesheet" type="text/css"> 
         <!-- datatable end css  -->
         
         <style>

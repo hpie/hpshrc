@@ -133,8 +133,7 @@ function sessionAdmin($row) {
     return true;
 }
 function sessionCheckAdmin() {
-    if ((!isset($_SESSION['admin']['admin_user_id'])) || !isset($_SESSION['admin']['admin_usertype']) || !isset($_SESSION['admin']['admin_session_id'])) {
-    
+    if ((!isset($_SESSION['admin']['admin_user_id'])) || !isset($_SESSION['admin']['admin_usertype']) || !isset($_SESSION['admin']['admin_session_id'])) {    
         header('Location: ' . ADMIN_LOGIN_LINK);
         exit();
     }

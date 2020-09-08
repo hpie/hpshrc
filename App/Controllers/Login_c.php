@@ -25,7 +25,7 @@ class Login_c extends Controller
             if ($result == true) {
                 $userId = $_SESSION['admin']['admin_user_id'];
                 $userType = $_SESSION['admin']['admin_usertype'];
-                log_message('info', "$userType id $userId logged into the system");                
+//                log_message('info', "$userType id $userId logged into the system");                
                 return redirect()->to(ADMIN_DASHBOARD_LINK); 
             }
             if ($result == false) {

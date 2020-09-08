@@ -214,21 +214,21 @@
 ================================================== -->
 
 <!-- jQuery -->
-<!--<script nonce='S51U26wMQz' src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/jquery-3.2.1.min.js"></script>
+<script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>jquery/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
 <script nonce="S51U26wMQz">window.jQuery || document.write('')</script>
 
 <!-- Bootsrap javascript file -->
-<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/bootstrap.min.js"></script>
-<script nonce='S51U26wMQz' src="<?php echo BASE_URL ?>/assets/front/js/bootstrapValidator.min.js" type="text/javascript"></script>    
-<script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script nonce='S51U26wMQz' type="text/javascript" language="javascript" src="<?php echo BASE_URL; ?>/assets/front/js/dataTables.responsive.min.js"></script>
+<!-- Datatables -->
+<script nonce='S51U26wMQz' src="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/dataTables.responsive.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
+<script nonce='S51U26wMQz' src="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrapValidator.min.js" type="text/javascript"></script>
 
 <!-- owl carouseljavascript file -->
-<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/owl.carousel.min.js"></script>
+<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>js/owl.carousel.min.js"></script>
 
 <!-- Template main javascript -->
-<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>assets/js/main.js"></script>
+<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>js/main.js"></script>
 <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/assets/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 <?php include(APPPATH . "Views/frontside/common/notify.php"); ?>
 

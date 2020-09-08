@@ -624,7 +624,12 @@
                         }
                     },
                     upload_file_original_name: {
-                        validators: {                           
+                        validators: {
+                            file: {
+                                extension: 'jpeg,png,jpg,pdf',
+                                type: 'image/jpeg,image/png,image/jpg,application/pdf',                                
+                                message: 'The selected file is not valid'
+                            },
                             notEmpty: {
                                 message: 'Please Choose File'
                             }                                                       

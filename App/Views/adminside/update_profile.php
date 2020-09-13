@@ -11,7 +11,13 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form method="post" id="frm_change_password" class="form-horizontal form-label-left" action="<?php echo ADMIN_UPDATE_PROFILE_LINK ?>">            
+                        <!--<form method="post" id="frm_change_password" class="form-horizontal form-label-left" action="<?php echo ADMIN_UPDATE_PROFILE_LINK ?>">-->  
+                            
+                             <?php
+                                $attributes = ['id' => 'frm_change_password','class'=>'form-horizontal form-label-left'];
+                                echo form_open(ADMIN_UPDATE_PROFILE_LINK,$attributes);
+                               ?> 
+                            
                             <div class="form-group">
                                 <div class="row">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_current_password">Current Password:</label>
@@ -48,7 +54,7 @@
                                     <button type="submit" id="btnSubmit" disabled=""  class="btn btn-success">Update</button>
                                 </div>
                             </div>
-                        </form>
+                         <?php echo form_close();?> 
                     </div>
                 </div>
             </div>

@@ -4,14 +4,14 @@ use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 use App\Models\Employeem\Cases_m;
 
-class Cases_e extends Controller {
+class Cases_e extends BaseController {
     private $Login_m;
     private $Cases_m;
     private $security;     
     public function __construct() {
         helper('url');
-        $this->security = \Config\Services::security();           
         helper('functions');
+        $this->security = \Config\Services::security();                   
         sessionCheckEmployee();       
         $this->Login_m = new Login_m();  
         $this->Cases_m = new Cases_m();        

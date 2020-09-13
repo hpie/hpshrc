@@ -3,15 +3,16 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Employeem\Login_m;
 
-class Elogin_c extends Controller {
+class Elogin_c extends BaseController {
 
-    private $Login_m;     
+    private $Login_m; 
+    private $security;
     public function __construct() {
+        helper('url');
         helper('functions');
-        helper('cookie');
+        $this->security = \Config\Services::security();
         $this->Login_m = new Login_m();       
     }
-
     public function index() {         
         helper('form');        
         if (isset($_SESSION['employee']['employee_user_id'])) {            

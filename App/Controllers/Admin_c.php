@@ -3,13 +3,13 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 
-class Admin_c extends Controller {
+class Admin_c extends BaseController {
 
     private $Login_m;
     private $security;     
     public function __construct() {         
-        helper('functions');
         helper('url');
+        helper('functions');
         sessionCheckAdmin();        
         $this->Login_m = new Login_m();
         $this->security = \Config\Services::security();
@@ -45,6 +45,7 @@ class Admin_c extends Controller {
             echo json_encode($result);
             die;
         }
+        helper('form');
         $data['title'] = ADMIN_UPDATE_PROFILE_TITLE;
         echo admin_view('adminside/update_profile', $data);
     }

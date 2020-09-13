@@ -60,11 +60,10 @@ $paths = new Config\Paths();
 // Location of the framework bootstrap file.
 $app = require rtrim($paths->systemDirectory, '/ ') . '/bootstrap.php';
 
-
 if($protocol_http=='https://'){
-    setcookie(session_name(),session_id(),time()+$lifetime, $paths->writableDirectory,1,1,TRUE);
+    setcookie(session_name(),session_id(),time()+$lifetime,$paths->writableDirectory,1,1,TRUE);
 }else{
-    setcookie(session_name(),session_id(),time()+$lifetime, $paths->writableDirectory,null,null,TRUE);
+    setcookie(session_name(),session_id(),time()+$lifetime,$paths->writableDirectory,null,null,TRUE);
 }
 
 /*

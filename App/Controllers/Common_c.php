@@ -7,7 +7,7 @@ use App\Models\Adminm\Login_m;
 use App\Models\Common_m;
 use App\ThirdParty\smtp_mail\SMTP_mail;
 
-class Common_c extends Controller {
+class Common_c extends BaseController {
 
     private $Login_m;
     private $Common_m;
@@ -15,13 +15,14 @@ class Common_c extends Controller {
 
     public function __construct() {
         helper('functions');
-        helper('url');
+        helper('url');        
         $this->Login_m = new Login_m();
         $this->Common_m = new Common_m();
         $this->security = \Config\Services::security();                
     }
 
-    public function create_customer() {        
+    public function create_customer() {
+//        print_r($_POST);die;
         include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                         
         $_SESSION['exist_email'] = 0;
         if (isset($_POST['customer_first_name'])) {
@@ -31,13 +32,7 @@ class Common_c extends Controller {
             }
             if(isset($_POST['user_confirm_password'])){
                 unset($_POST['user_confirm_password']); 
-            }                                   
-            if (($_FILES['customer_photo_path']['name']) != '') {
-                $fileRes = singleImageUpload('customer_photo_path');
-                if (!empty($fileRes[2]['file_name'])) {
-                    $_POST['customer_photo_path'] = $fileRes[2]['file_name'];
-                }
-            }
+            }                                               
             $res =  $this->Common_m->register_customer($_POST);                       
             $result = array();
             $send_email_error = 0;
@@ -96,8 +91,7 @@ class Common_c extends Controller {
             sessionCheckEmployee();               
             echo employee_view('employee/user_registration', $data);
             die;
-        }
-        
+        }        
         if(isset($_SESSION['admin']['admin_usertype'])){
             sessionCheckAdmin();
             echo admin_view('adminside/customer/user_registration', $data);

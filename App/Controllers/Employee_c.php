@@ -3,12 +3,13 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 
-class Employee_c extends Controller {
+class Employee_c extends BaseController {
     private $Login_m;
     private $security;      
     public function __construct() {                         
-        helper('url');               
-        helper('functions');          
+        helper('url');
+        helper('functions');
+        $this->security = \Config\Services::security();         
         sessionCheckEmployee();  
         $this->Login_m = new Login_m();         
         if (isset($_SESSION['employee']['employee_user_id'])) {            

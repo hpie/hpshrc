@@ -20,7 +20,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="upload_file_title">Title
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="upload_file_title"  placeholder="Enter file title" required="required" class="form-control col-md-7 col-xs-12" required="">
+                                    <input type="text" name="upload_file_title"  placeholder="Enter file title" required="required" class="form-control col-md-7 col-xs-12" required="" autocomplete="off">
                                 </div>                                
                             </div>                            
                             <div class="form-group">
@@ -34,7 +34,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="upload_file_ref_no">Reference File No
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="upload_file_ref_no"  placeholder="Enter ref file number" required="required" class="form-control col-md-7 col-xs-12" required="">
+                                    <input type="text" name="upload_file_ref_no"  placeholder="Enter ref file number" required="required" class="form-control col-md-7 col-xs-12" required="" autocomplete="off">
                                 </div>                                
                             </div>
                             <div class="form-group">
@@ -66,7 +66,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="upload_file_original_name">Select File
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="file" id="upload_file_original_name" name="upload_file_original_name" required="required" class="form-control col-md-7 col-xs-12" accept="application/pdf,image/*">
+                                    <input type="file" id="upload_file_original_name" name="upload_file_original_name" required="required" class="form-control col-md-7 col-xs-12" accept="application/pdf,image/jpg,image/jpeg,image/png">
                                 </div>                                  
                             </div>
                             <div class="form-group">

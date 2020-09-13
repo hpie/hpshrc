@@ -183,7 +183,7 @@ class App extends BaseConfig
 	public $sessionDriver            = 'files';
 	public $sessionCookieName        = 'ci_session';
 	public $sessionExpiration        = 7200;
-	public $sessionSavePath          = APPPATH . 'writable';
+	public $sessionSavePath          = WRITEPATH;
 	public $sessionMatchIP           = false;
 	public $sessionTimeToUpdate      = 300;
 	public $sessionRegenerateDestroy = true;
@@ -202,11 +202,11 @@ class App extends BaseConfig
 	| Note: These settings (with the exception of 'cookie_prefix' and
 	|       'cookie_httponly') will also affect sessions.
 	|
-	*/
+	*/  
 	public $cookiePrefix   = '_hpshrc';
 	public $cookieDomain   = '';
-	public $cookiePath     = '/';                
-	public $cookieSecure   = true;
+	public $cookiePath     = WRITEPATH;                
+	public $cookieSecure   = false;
 	public $cookieHTTPOnly = true;
 
 	/*

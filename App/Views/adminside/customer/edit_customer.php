@@ -19,21 +19,21 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customer_first_name">First Name
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="customer_first_name" value="<?php echo $single_customer['customer_first_name']; ?>" id="customer_first_name"  placeholder="Enter First Name" class="form-control col-md-7 col-xs-12" required="">
+                                <input type="text" name="customer_first_name" value="<?php echo $single_customer['customer_first_name']; ?>" id="customer_first_name"  placeholder="Enter First Name" class="form-control col-md-7 col-xs-12" required="" autocomplete="off">
                             </div>                                
                         </div> 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customer_middle_name">Middle Name
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="customer_middle_name" value="<?php echo $single_customer['customer_middle_name']; ?>" id="customer_middle_name"  placeholder="Enter Middle Name" class="form-control col-md-7 col-xs-12" required="">
+                                <input type="text" name="customer_middle_name" value="<?php echo $single_customer['customer_middle_name']; ?>" id="customer_middle_name"  placeholder="Enter Middle Name" class="form-control col-md-7 col-xs-12" autocomplete="off">
                             </div>                                
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customer_last_name">Last Name
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="customer_last_name" value="<?php echo $single_customer['customer_last_name']; ?>" id="customer_last_name"  placeholder="Enter Last Name" class="form-control col-md-7 col-xs-12" required="">
+                                <input type="text" name="customer_last_name" value="<?php echo $single_customer['customer_last_name']; ?>" id="customer_last_name"  placeholder="Enter Last Name" class="form-control col-md-7 col-xs-12" required="" autocomplete="off">
                             </div>                                
                         </div>
                         <div class="form-group">
@@ -47,14 +47,14 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customer_mobile_no">Mobile No
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="customer_mobile_no" value="<?php echo $single_customer['customer_mobile_no']; ?>" id="customer_mobile_no" maxlength="10" minlength="10"  placeholder="Enter Mobile No" class="form-control col-md-7 col-xs-12 mobileno" required="">
+                                <input type="text" name="customer_mobile_no" value="<?php echo $single_customer['customer_mobile_no']; ?>" id="customer_mobile_no" maxlength="10" minlength="10"  placeholder="Enter Mobile No" class="form-control col-md-7 col-xs-12 mobileno" autocomplete="off">
                             </div>                                
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customer_email_id">Email
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="email" name="customer_email_id" value="<?php echo $single_customer['customer_email_id']; ?>" id="customer_email_id"  placeholder="Enter Email" class="form-control col-md-7 col-xs-12" required="">
+                                <input type="email" name="customer_email_id" value="<?php echo $single_customer['customer_email_id']; ?>" id="customer_email_id"  placeholder="Enter Email" class="form-control col-md-7 col-xs-12" required="" autocomplete="off">
                             </div>                                
                         </div>
                         <div class="form-group">
@@ -84,14 +84,7 @@
                                     </label>
                                 </div>
                             </div>                                
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customer_photo_path">Select File
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="file" id="customer_photo_path" name="customer_photo_path" accept="image/*" class="form-control col-md-7 col-xs-12">
-                            </div>                                  
-                        </div>
+                        </div>                       
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">reCaptcha
                             </label>                                

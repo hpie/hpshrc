@@ -21,14 +21,16 @@
             <div class="col-md-8 col-sm-12 col-form"> 
                 <!--<h2 class="title-style-2">Registration FORM <span class="title-under"></span></h2>-->
                 <?php
-                $attributes = ['class' => 'contact-form', 'id' => 'student_register', 'name' => 'adduser', 'enctype' => 'multipart/form-data'];
-                echo form_open(CUSTOMER_REGISTER_LINK, $attributes);
+//                $attributes = ['class' => 'contact-form', 'id' => 'student_register', 'name' => 'adduser', 'enctype' => 'multipart/form-data'];
+//                echo form_open(CUSTOMER_REGISTER_LINK, $attributes);                
                 ?>                                       
+                <form class="contact-form" id="student_register" name="adduser" enctype="multipart/form-data" action="<?= CUSTOMER_REGISTER_LINK; ?>" method="post">
+                    <?= csrf_field() ?>
                 <div class="form-group">
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_first_name">First Name:</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" name="customer_first_name" id="customer_first_name" placeholder="Enter First Name " required="">
+                            <input type="text" class="form-control" name="customer_first_name" id="customer_first_name" placeholder="Enter First Name " required="" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -36,7 +38,7 @@
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_middle_name">Middle Name:</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" name="customer_middle_name" id="customer_middle_name" placeholder="Enter Middle Name " required="">
+                            <input type="text" class="form-control" name="customer_middle_name" id="customer_middle_name" placeholder="Enter Middle Name " required="" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_last_name">Last Name: </label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" name="customer_last_name" id="customer_last_name" placeholder="Enter Last Name " required="">
+                            <input type="text" class="form-control" name="customer_last_name" id="customer_last_name" placeholder="Enter Last Name " required="" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -52,7 +54,7 @@
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_father_name">Father Name: </label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" name="customer_father_name" id="customer_father_name" placeholder="Enter Father Name " required="">
+                            <input type="text" class="form-control" name="customer_father_name" id="customer_father_name" placeholder="Enter Father Name " required="" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -60,7 +62,7 @@
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_mobile_no">Mobile Number: </label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control mobileno" name="customer_mobile_no" id="customer_mobile_no" maxlength="10" minlength="10" placeholder="Enter Mobile Number " required="">
+                            <input type="text" class="form-control mobileno" name="customer_mobile_no" id="customer_mobile_no" maxlength="10" minlength="10" placeholder="Enter Mobile Number " required="" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -68,7 +70,7 @@
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_email_id">Email: </label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="email" class="form-control" name="customer_email_id" id="customer_email_id" placeholder="Enter Email " required="">
+                            <input type="email" class="form-control" name="customer_email_id" id="customer_email_id" placeholder="Enter Email " required="" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -92,7 +94,7 @@
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_dob">Date of Birth:</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="date" class="form-control dob" name="customer_dob">
+                            <input type="date" class="form-control dob" name="customer_dob" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -105,16 +107,7 @@
                             <input type="radio" name="customer_gender" value="O">&nbsp;<span>Other</span>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <label class="control-label col-sm-4 col-xs-12" for="customer_photo_path">Customer Photo
-                        </label>
-                        <div class="col-sm-8 col-xs-12">
-                            <input type="file" id="customer_photo_path" name="customer_photo_path" required="required">
-                        </div> 
-                    </div>
-                </div>                                        
+                </div>                                                     
                 <div class="form-group">
                     <div class="row">
                         <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -127,17 +120,16 @@
                             <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableRegister"></div>
                         </div>
                     </div>
-                </div>
-                
-                
-                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />    
-                
+                </div>                                                              
                 <div class="form-group">
                     <div class="m-auto text-center">    
                         <button type="submit" class="btn warning_btn btn_disabled"  disabled="true" id="btnRegister">Register</button>
                     </div>
                 </div>
-                <?php echo form_close(); ?>  
+                </form>
+                <?php 
+//                echo form_close(); 
+                ?>  
             </div>
         </div> <!-- /.row -->       
     </div>

@@ -6,7 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\Employeem\Customers_m;
 use App\Models\Adminm\Login_m;
 
-class Customers_e extends Controller {
+class Customers_e extends BaseController {
 
     private $Customers_m;
     private $Login_m;
@@ -14,8 +14,8 @@ class Customers_e extends Controller {
 
     public function __construct() {
         helper('url');
-        $this->security = \Config\Services::security();
         helper('functions');
+        $this->security = \Config\Services::security();
         sessionCheckEmployee();
         $this->Customers_m = new Customers_m();
         $this->Login_m = new Login_m();

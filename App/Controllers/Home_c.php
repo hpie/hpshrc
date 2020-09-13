@@ -3,10 +3,14 @@
 use CodeIgniter\Controller;
 use App\Models\Adminm\Causes_m;
 
-class Home_c extends Controller
+class Home_c extends BaseController
 {
     private $Causes_m;
-    public function __construct() {                                     
+    private $security;  
+    public function __construct() {
+        helper('url');
+        helper('functions');
+        $this->security = \Config\Services::security();           
         $this->Causes_m = new Causes_m();
     }    
     public function index() {        

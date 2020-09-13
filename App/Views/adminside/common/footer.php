@@ -654,47 +654,58 @@
                     invalid: 'glyphicon glyphicon-remove',
                     validating: 'glyphicon glyphicon-refresh'
                 },
-                fields: {                    
-                    customer_photo_path: {
-                        validators: {
-                            file: {
-                                extension: 'jpeg,jpg,png',
-                                type: 'image/jpeg,image/png,image/jpg',                                
-                                message: 'The selected file is not valid'
-                            },
-                            notEmpty: {
-                                message: 'Please select profile image'
-                            }
-                        }
-                    },                    
-                    customer_first_name: {
+                fields: {                                                          
+                     customer_first_name: {
                         validators: {
                             stringLength: {
                                 min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your first name'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
                             }
                         }
                     },                    
                     customer_middle_name: {
                         validators: {
-                            stringLength: {
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }
+                            
+                        }
+                    },                    
+                    customer_last_name: {
+                        validators: {
+                             stringLength: {
                                 min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your last name'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
                             }
                         }
                     },
+                    customer_father_name: {
+                        validators: {
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }
+                            
+                        }
+                    },                                     
                     customer_mobile_no: {
                         validators: {
                             stringLength: {
                                 min: 10,
                                 max:10
-                            },
-                            notEmpty: {
-                                message: 'Please Enter mobile number'
                             }
                         }
                     },
@@ -734,24 +745,50 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {                                                           
-                    customer_first_name: {
+                     customer_first_name: {
                         validators: {
                             stringLength: {
                                 min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your first name'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
                             }
                         }
                     },                    
                     customer_middle_name: {
                         validators: {
-                            stringLength: {
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }
+                            
+                        }
+                    },                    
+                    customer_last_name: {
+                        validators: {
+                             stringLength: {
                                 min: 2
                             },
                             notEmpty: {
                                 message: 'Please supply your last name'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
                             }
+                        }
+                    },
+                    customer_father_name: {
+                        validators: {
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }
+                            
                         }
                     },
                     customer_mobile_no: {
@@ -759,9 +796,6 @@
                             stringLength: {
                                 min: 10,
                                 max:10
-                            },
-                            notEmpty: {
-                                message: 'Please Enter mobile number'
                             }
                         }
                     },

@@ -47,7 +47,7 @@
                                             <div class="form-label-group">
                                                 <label class="form-label" for="default-01">Email or Username</label>
                                             </div>
-                                            <input type="text" class="form-control form-control-lg" name="username" id="default-01" placeholder="Enter your email address or username" required="">
+                                            <input type="text" class="form-control form-control-lg" name="username" id="default-01" placeholder="Enter your email address or username" required="" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <div class="form-label-group">
@@ -59,7 +59,7 @@
                                                     <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                                     <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                                 </a>
-                                                <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Enter your password" autocomplete="off" required="">
+                                                <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Enter your password" autocomplete="off" required="" autocomplete="off"> 
                                             </div>
                                         </div> 
                                     

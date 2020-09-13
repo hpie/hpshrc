@@ -20,7 +20,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="upload_file_title">Title<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="upload_file_title" value="<?php echo $single_file['upload_file_title']; ?>"  placeholder="Enter file title" required="required" class="form-control col-md-7 col-xs-12" required="">
+                                    <input type="text" name="upload_file_title" value="<?php echo $single_file['upload_file_title']; ?>"  placeholder="Enter file title" required="required" class="form-control col-md-7 col-xs-12" required="" autocomplete="off">
                                 </div>                                
                             </div>                            
                             <div class="form-group">
@@ -34,7 +34,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="upload_file_ref_no">Reference File No<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="upload_file_ref_no" value="<?php echo $single_file['upload_file_ref_no']; ?>"  placeholder="Enter ref file number" required="required" class="form-control col-md-7 col-xs-12" required="">
+                                    <input type="text" name="upload_file_ref_no" value="<?php echo $single_file['upload_file_ref_no']; ?>"  placeholder="Enter ref file number" required="required" class="form-control col-md-7 col-xs-12" required="" autocomplete="off">
                                 </div>                                
                             </div>
                             <div class="form-group">

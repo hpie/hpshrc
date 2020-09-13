@@ -4,14 +4,14 @@ use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 use App\Models\Adminm\Causes_m;
 
-class Causes_c extends Controller {    
+class Causes_c extends BaseController {    
     private $Login_m;
     private $Causes_m;
     private $security;
     private $userId;
     public function __construct() {               
-        helper('functions');
         helper('url');
+        helper('functions');
         sessionCheckAdmin();              
         $this->Login_m = new Login_m();
         $this->Causes_m = new Causes_m();

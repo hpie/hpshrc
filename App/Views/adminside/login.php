@@ -15,8 +15,7 @@
         <!-- Font Awesome -->
         <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-        <!-- NProgress -->
-        <link href="<?php echo ADMIN_MAIN_ASSETS_FOLDER; ?>nprogress/nprogress.css" rel="stylesheet" type="text/css">            
+        <!-- NProgress -->              
 
         <!-- Custom Theme Style -->
         <link href="<?php echo ADMIN_MAIN_ASSETS_FOLDER; ?>build/css/custom.min.css" rel="stylesheet" type="text/css">
@@ -52,10 +51,10 @@
                        ?>                                    
                             <h1>Login Form</h1>
                             <div>
-                                <input type="text" class="form-control" placeholder="Username" name="username" id="username" required="" maxlength="50"/>
+                                <input type="text" class="form-control" placeholder="Username" name="username" id="username" required="" maxlength="50" autocomplete="off">
                             </div>
                             <div>
-                                <input type="password" class="form-control" placeholder="Password" required="" id="password" name="password" autocomplete="off" maxlength="50"/>
+                                <input type="password" class="form-control" placeholder="Password" required="" id="password" name="password" autocomplete="off" maxlength="50" autocomplete="off">
                             </div>                            
                             <div>                               
                                 <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>

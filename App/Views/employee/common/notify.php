@@ -37,5 +37,9 @@
         toastr.error('Email allready exist');             
         <?php $_SESSION['registration'] = 0; ?>
     }
+     if (<?php if(isset($_SESSION['csrfInvalidToken'])){ echo $_SESSION['csrfInvalidToken'];} else {echo 0;} ?> === 3) {         
+        toastr.error('Invalid Token');             
+        <?php $_SESSION['csrfInvalidToken'] = 0; ?>
+    }   
 });
 </script>

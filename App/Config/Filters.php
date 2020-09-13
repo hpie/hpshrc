@@ -15,15 +15,14 @@ class Filters extends BaseConfig
 	// Always applied before every request
 	public $globals = [
 		'before' => [
-			'honeypot'
-			// 'csrf',
+//			'honeypot',
+			 'csrf'
 		],
 		'after'  => [
 			'toolbar',
-			'honeypot'
+//			'honeypot'
 		],
 	];
-
 	// Works on all of a particular HTTP method
 	// (GET, POST, etc) as BEFORE filters only
 	//     like: 'post' => ['CSRF', 'throttle'],

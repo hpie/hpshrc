@@ -22,13 +22,8 @@ session_start();
 //    session_destroy(); // Destroy all data in session
 //    session_start();
 //}
-//session_regenerate_id(); // Generate a new session identifier
+session_regenerate_id(); // Generate a new session identifier
 $_SESSION['SERVER_GENERATED_SID'] = true;
-if($protocol_http=='https://'){
-    setcookie(session_name(),session_id(),time()+$lifetime,'writable/cache',1,1,TRUE);
-}else{
-    setcookie(session_name(),session_id(),time()+$lifetime,'writable/cache',null,null,TRUE);
-}
 
 include 'common_url.php';
 // Valid PHP Version?
@@ -64,6 +59,13 @@ require $pathsPath;
 $paths = new Config\Paths();
 // Location of the framework bootstrap file.
 $app = require rtrim($paths->systemDirectory, '/ ') . '/bootstrap.php';
+
+
+if($protocol_http=='https://'){
+    setcookie(session_name(),session_id(),time()+$lifetime, $paths->writableDirectory,1,1,TRUE);
+}else{
+    setcookie(session_name(),session_id(),time()+$lifetime, $paths->writableDirectory,null,null,TRUE);
+}
 
 /*
  *---------------------------------------------------------------

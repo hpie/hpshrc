@@ -211,7 +211,7 @@ class Security
 	 * @throws \Exception
 	 */
 	public function CSRFVerify(RequestInterface $request)
-	{
+	{                
 		// If it's not a POST request we will set the CSRF cookie
 		if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST')
 		{
@@ -235,8 +235,7 @@ class Security
 
 		// We kill this since we're done and we don't want to pollute the _POST array
 		if (isset($_POST[$this->CSRFTokenName]))
-		{
-                    echo 'hi';die;
+		{                       
 			unset($_POST[$this->CSRFTokenName]);
 			$request->setGlobal('post', $_POST);
 		}

@@ -16,7 +16,7 @@
                                 <div class="row">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_current_password">Current Password:</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" class="form-control col-md-7 col-xs-12" name="user_current_password" id="user_current_password" placeholder="Enter Current Password" required="" autocomplete="off"> 
+                                        <input type="password" class="form-control col-md-7 col-xs-12" name="user_current_password" id="user_current_password" placeholder="Enter Current Password" required="" autocomplete="off"> 
                                     </div>
                                 </div>
                             </div>

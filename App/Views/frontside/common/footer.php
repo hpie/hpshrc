@@ -229,7 +229,7 @@
 
 <!-- Template main javascript -->
 <script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>js/main.js"></script>
-<script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/assets/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+<script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 <?php include(APPPATH . "Views/frontside/common/notify.php"); ?>
 
 <script type="text/javascript" nonce='S51U26wMQz'>
@@ -487,9 +487,7 @@
             return true;
         }
     };
-            
-            
-            
+    
             $('#student_register').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {

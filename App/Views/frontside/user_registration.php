@@ -127,7 +127,11 @@
                             <div class="g-recaptcha" style="" data-sitekey="6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo" data-callback="enableRegister"></div>
                         </div>
                     </div>
-                </div>            
+                </div>
+                
+                
+                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />    
+                
                 <div class="form-group">
                     <div class="m-auto text-center">    
                         <button type="submit" class="btn warning_btn btn_disabled"  disabled="true" id="btnRegister">Register</button>

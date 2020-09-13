@@ -461,11 +461,7 @@
 <?php if ($title == EMPLOYEE_ADD_CASES_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
-
-        $(document).ready(function () { 
-            
-           
-            
+        $(document).ready(function () {                                    
             $('#add_cases').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -474,11 +470,11 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    customer_photo_path: {
+                    case_files_file: {
                         validators: {
                             file: {
-                                extension: 'jpeg,jpg,png,xlsx,xls,doc,docx,ppt,pptx,txt,pdf',
-                                type: '.xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf',
+                                extension: 'jpeg,jpg,png,pdf',
+                                type: '.image/*,.pdf',
                                 message: 'The selected file is not valid'
                             },
                             notEmpty: {

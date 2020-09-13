@@ -25,7 +25,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" name="user_current_password" id="user_current_password" placeholder="Enter Current Password" required="" autocomplete="off">
+                                                <input type="password" class="form-control" name="user_current_password" id="user_current_password" placeholder="Enter Current Password" required="" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>

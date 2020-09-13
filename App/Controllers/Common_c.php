@@ -18,32 +18,10 @@ class Common_c extends Controller {
         helper('url');
         $this->Login_m = new Login_m();
         $this->Common_m = new Common_m();
-        $this->security = \Config\Services::security();                        
-//        if (isset($_SESSION['employee_user_id'])) {            
-//                $result = $this->Login_m->getTokenAndCheck('employee', $_SESSION['employee_user_id']);
-//                if ($result) {
-//                    $token = $result['token'];
-//                    if ($_SESSION['employee_tokencheck'] != $token) {                                                                       
-//                            logoutUser('admin');
-//                            header('Location: ' . EMPLOYEE_LOGIN_LINK);
-//                            exit();                        
-//                    }   
-//                }            
-//        }         
-//        if (isset($_SESSION['admin_user_id'])) {            
-//                $result = $this->Login_m->getTokenAndCheck('admin', $_SESSION['admin_user_id']);
-//                if ($result) {
-//                    $token = $result['token'];
-//                    if ($_SESSION['admin_tokencheck'] != $token) {                                                                       
-//                            logoutUser('admin');
-//                            header('Location: ' . ADMIN_LOGIN_LINK);
-//                            exit();                        
-//                    }   
-//                }            
-//        }                
+        $this->security = \Config\Services::security();                
     }
 
-    public function create_customer() {
+    public function create_customer() {        
         include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                         
         $_SESSION['exist_email'] = 0;
         if (isset($_POST['customer_first_name'])) {
@@ -113,7 +91,6 @@ class Common_c extends Controller {
         }
         helper('form');
         $data['title'] = CUSTOMER_REGISTRATION_TITLE;        
-        
         
         if(isset($_SESSION['employee']['employee_usertype'])){
             sessionCheckEmployee();               

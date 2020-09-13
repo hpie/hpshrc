@@ -31,7 +31,7 @@
     
     $(document).on('click', '#btnSubmit', function () {
         var markupStr = $('#summernote').summernote('code');
-        alert(markupStr);
+        
     });
 
     var _minimal = '.summernote-minimal';

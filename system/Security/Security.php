@@ -211,7 +211,7 @@ class Security
 	 * @throws \Exception
 	 */
 	public function CSRFVerify(RequestInterface $request)
-	{           
+	{
 		// If it's not a POST request we will set the CSRF cookie
 		if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST')
 		{
@@ -226,19 +226,16 @@ class Security
 					($json->{$this->CSRFTokenName} ?? null) :
 					null));
 
-		// Do the tokens exist in both the _POST/POSTed JSON and _COOKIE arrays?                        
+		// Do the tokens exist in both the _POST/POSTed JSON and _COOKIE arrays?
 		if (! isset($CSRFTokenValue, $_COOKIE[$this->CSRFCookieName]) || $CSRFTokenValue !== $_COOKIE[$this->CSRFCookieName]
 		) // Do the tokens match?
-		{                      
-                    $_SESSION['csrfInvalidToken']=1;
-                    header("location:".current_url());
-                    exit();
-                    throw SecurityException::forDisallowedAction();
+		{
+			throw SecurityException::forDisallowedAction();
 		}
 
 		// We kill this since we're done and we don't want to pollute the _POST array
 		if (isset($_POST[$this->CSRFTokenName]))
-		{                    
+		{
 			unset($_POST[$this->CSRFTokenName]);
 			$request->setGlobal('post', $_POST);
 		}

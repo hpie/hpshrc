@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use CodeIgniter\Controller;
+
 use App\Models\Employeem\Login_m;
 
 class Elogin_c extends BaseController {

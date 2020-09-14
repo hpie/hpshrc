@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\Employeem\Customers_m;
 use App\Models\Adminm\Login_m;
 

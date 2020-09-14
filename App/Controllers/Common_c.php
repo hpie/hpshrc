@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 use App\Models\Common_m;
 use App\ThirdParty\smtp_mail\SMTP_mail;

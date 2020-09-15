@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use CodeIgniter\Controller;
+
 use App\Models\Adminm\Login_m;
 
 class Admin_c extends Controller {

@@ -181,7 +181,7 @@ class App extends BaseConfig
 	|
 	*/
 	public $sessionDriver            = 'files';
-	public $sessionCookieName        = 'ci_session';
+	public $sessionCookieName        = 'hpshrc_session';
 	public $sessionExpiration        = 7200;
 	public $sessionSavePath          = WRITEPATH;
 	public $sessionMatchIP           = false;
@@ -242,9 +242,10 @@ class App extends BaseConfig
 	| CSRFRegenerate  = Regenerate token on every submission
 	| CSRFRedirect    = Redirect to previous page with error on failure
 	*/
-	public $CSRFTokenName  = 'csrf_test_name';
+
+	public $CSRFTokenName  = 'csrf_hpshrc';
 	public $CSRFHeaderName = 'X-CSRF-TOKEN';
-	public $CSRFCookieName = 'csrf_cookie_name';
+	public $CSRFCookieName = 'csrf_cookie_hpshrc';
 	public $CSRFExpire     = 7200;
 	public $CSRFRegenerate = true;
 	public $CSRFRedirect   = true;

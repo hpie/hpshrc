@@ -78,8 +78,8 @@
                                     <li> <a href="#"> <i class="fa fa fa-pinterest-p"></i>  </a> </li>
                                     
                                 </ul> <!-- /.header-social  -->   
-                                <a href="#">Login </a>  
-                                <a href="<?php echo CUSTOMER_REGISTER_LINK; ?>">&nbsp;&nbsp;Register </a>  
+                                <!--<a href="#">Login </a>  
+                                <a href="<?php echo CUSTOMER_REGISTER_LINK; ?>">&nbsp;&nbsp;Register </a> -->  
                             </div>
                         </div>
                     </div>

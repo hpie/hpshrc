@@ -1,6 +1,5 @@
 <?php namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\Adminm\Causes_m;
 
 class Home_c extends Controller

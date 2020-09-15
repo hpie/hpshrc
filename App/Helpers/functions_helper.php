@@ -128,8 +128,8 @@ function sessionAdmin($row) {
     }    
     $_SESSION['admin']['admin_usertype'] = 'admin'; 
     $_SESSION['admin'][$_SESSION['admin']['admin_usertype'].'_session_id'] = session_create_id();    
-    session_regenerate_id(); // Generate a new session identifier
-    $_SESSION['SERVER_GENERATED_SID'] = true;    
+    //session_regenerate_id(); // Generate a new session identifier
+    //$_SESSION['SERVER_GENERATED_SID'] = true;
     return true;
 }
 function sessionCheckAdmin() {
@@ -154,8 +154,8 @@ function sessionEmployee($row) {
     $_SESSION['employee']['employee_usertype'] = 'employee';
     $_SESSION['employee'][$_SESSION['employee']['employee_usertype'].'_session_id'] = session_create_id();
 
-    session_regenerate_id(); // Generate a new session identifier
-    $_SESSION['SERVER_GENERATED_SID'] = true;
+    //session_regenerate_id(); // Generate a new session identifier
+    //$_SESSION['SERVER_GENERATED_SID'] = true;
     return true;
 }
 function sessionCheckEmployee() {    

@@ -3,7 +3,7 @@
 use CodeIgniter\Controller;
 use App\Models\Adminm\Causes_m;
 
-class Home_c extends BaseController
+class Home_c extends Controller
 {
     private $Causes_m;
     private $security;  

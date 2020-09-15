@@ -6,7 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\Employeem\Customers_m;
 use App\Models\Adminm\Login_m;
 
-class Customers_a extends BaseController {
+class Customers_a extends Controller {
 
     private $Customers_m;
     private $Login_m;

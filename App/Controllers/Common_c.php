@@ -22,7 +22,7 @@ class Common_c extends BaseController {
     }
 
     public function create_customer() {
-//        print_r($_POST);die;
+             
         include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                         
         $_SESSION['exist_email'] = 0;
         if (isset($_POST['customer_first_name'])) {
@@ -48,8 +48,7 @@ class Common_c extends BaseController {
                     'activationlink' => $email_active_link
                 );
                 $sendmail = new \SMTP_mail();
-                $resMail = $sendmail->sendRegistrationDetails($res['email'], $data);
-//                log_message('info',print_r($resMail,TRUE));        
+                $resMail = $sendmail->sendRegistrationDetails($res['email'], $data);       
                 if ($resMail['success'] == 1) {
                     $params = array();
                     $params['user_id'] = $res['customer_id '];
@@ -84,6 +83,7 @@ class Common_c extends BaseController {
                 }
             }
         }
+        
         helper('form');
         $data['title'] = CUSTOMER_REGISTRATION_TITLE;        
         

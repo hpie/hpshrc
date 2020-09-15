@@ -229,10 +229,7 @@ class Security
 		// Do the tokens exist in both the _POST/POSTed JSON and _COOKIE arrays?                        
 		if (! isset($CSRFTokenValue, $_COOKIE[$this->CSRFCookieName]) || $CSRFTokenValue !== $_COOKIE[$this->CSRFCookieName]
 		) // Do the tokens match?
-		{                      
-                    $_SESSION['csrfInvalidToken']=1;
-                    header("location:".current_url());
-                    exit();
+		{                                         
                     throw SecurityException::forDisallowedAction();
 		}
 

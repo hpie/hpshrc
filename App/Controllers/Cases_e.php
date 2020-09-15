@@ -4,7 +4,7 @@ use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 use App\Models\Employeem\Cases_m;
 
-class Cases_e extends BaseController {
+class Cases_e extends Controller {
     private $Login_m;
     private $Cases_m;
     private $security;     

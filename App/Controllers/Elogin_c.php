@@ -3,7 +3,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Employeem\Login_m;
 
-class Elogin_c extends BaseController {
+class Elogin_c extends Controller {
 
     private $Login_m; 
     private $security;

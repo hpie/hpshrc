@@ -43,8 +43,7 @@
         <div>           
             <div class="login_wrapper" id="validdiv1">
                 <div class="animate form login_form">
-                    <section class="login_content">
-                        
+                    <section class="login_content">                        
                        <?php
                         $attributes = ['id' => 'loginform'];
                         echo form_open(ADMIN_LOGIN_LINK,$attributes);

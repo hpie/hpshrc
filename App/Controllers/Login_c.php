@@ -3,13 +3,13 @@
 use CodeIgniter\Controller;
 use App\Models\Adminm\Login_m;
 
-class Login_c extends BaseController
+class Login_c extends Controller
 {
     private $Login_m; 
-    private $security;  
+//    private $security;  
     public function __construct() {  
-        helper('url');
         helper('functions');
+        helper('url');        
         $this->security = \Config\Services::security();       
         $this->Login_m = new Login_m();        
     }    

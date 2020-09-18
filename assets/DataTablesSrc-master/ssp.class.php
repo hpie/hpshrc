@@ -218,7 +218,6 @@ class SSP {
 	 *  @return array          Server-side processing response array
 	 */
 	
-        
          static function admin_customers_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
          {                         
 		$bindings = array();
@@ -275,8 +274,7 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){                    
                     foreach ($result as $row){                                                                         
-                        $customer_id = $row['customer_id'];                                               
-                        
+                        $customer_id = $row['customer_id'];                                                                       
                         $verify_email_str='';
                         $title = 'Click to unverify email';
                         $class = 'btn_approve_reject_email btn btn-xs btn-success';
@@ -326,7 +324,128 @@ class SSP {
                         }                                                    
                         $active_inactive_str="<button type='button' data-id='".$customer_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                                                                
                         $row['index']='';
-                        $row['action']="<a href='".BASE_URL_DATATABLES."edit-customer/$customer_id' class='btn btn-xs btn-warning'>Edit  <em class='icon ni ni-edit-fill'></em></a>                            
+                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-customer/$customer_id' class='btn btn-xs btn-warning'>Edit  <em class='icon ni ni-edit-fill'></em></a>                            
+                            $verify_email_str $locked_unlocked_str $active_inactive_str";
+                        array_push($resData, $row);
+                    }  
+                }
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+         static function admin_employee_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+         {                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+                $columns_order=$columns;
+		// Build the SQL query string from the request
+                if (($request['order'][0]['column'])>0) {
+                    $columnsArray = array();                   
+                    foreach ($columns as $crow) {                       
+                        if (substr_count($crow['db'], " as ")) {
+                            $crow['db'] = explode(" as ", $crow['db'])[0];
+                        }
+                        array_push($columnsArray, $crow);
+                    }
+                    $columns_order = $columnsArray;
+                }                
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns_order );                               
+                
+		$where = self::filter( $request, $columns, $bindings );
+//                $where="";
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                } 
+                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			FROM $table                       
+			$where
+			$order 
+			$limit"
+		); 		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			FROM $table                       
+			$where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			FROM $table                       
+                        "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){                                                                         
+                        $employee_id = $row['employee_user_id'];                                                                       
+                        $verify_email_str='';
+                        $title = 'Click to unverify email';
+                        $class = 'btn_approve_reject_email btn btn-xs btn-success';
+                        $text = "Email Verified <i class='fa fa-check'></i>";
+                        $isactive = 1; 
+                        $table='employee';
+                        $table_update_field='user_email_verified_status';
+                        $table_where_field='employee_user_id';
+                        if($row['user_email_verified_status'] == 0){
+                            $title = 'Click to verify email';
+                            $class = 'btn_approve_reject_email btn btn-xs btn-danger';
+                            $text  = "Verify Email <i class='fa fa-close'></i>";
+                            $isactive = 0;                            
+                        }                                                    
+                        $verify_email_str="<button type='button' data-id='".$employee_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                
+                        
+                        
+                        $locked_unlocked_str='';
+                        $title = 'Click to locke customer';
+                        $class = 'btn_lock_unlock_customer btn btn-xs btn-success';
+                        $text = "Customer Unlocked <i class='fa fa-unlock'></i>";
+                        $isactive = 1; 
+                        $table='employee';
+                        $table_update_field='user_locked_status';
+                        $table_where_field='employee_user_id';
+                        if($row['user_locked_status'] == 1){
+                            $title = 'Click to unlocke employee';
+                            $class = 'btn_lock_unlock_customer btn btn-xs btn-danger';
+                            $text  = "Employee Locked <i class='fa fa-lock'></i></em>";
+                            $isactive = 0;                            
+                        }                                                    
+                        $locked_unlocked_str="<button type='button' data-id='".$employee_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                
+                        
+                        $active_inactive_str='';
+                        $title = 'Click to inactive employee';
+                        $class = 'btn_active_inactive_customer btn btn-xs btn-success';
+                        $text = "Employee Activated <i class='fa fa-check'></i>";
+                        $isactive = "REMOVED"; 
+                        $table='employee';
+                        $table_update_field='user_status';
+                        $table_where_field='employee_user_id';
+                        if($row['user_status'] == "REMOVED"){
+                            $title = 'Click to active employee';
+                            $class = 'btn_active_inactive_customer btn btn-xs btn-danger';
+                            $text  = "Employee Inactivated <i class='fa fa-close'></i>";
+                            $isactive = "ACTIVE";                            
+                        }                                                    
+                        $active_inactive_str="<button type='button' data-id='".$employee_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                                                                
+                        $row['index']='';
+                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-employee/$employee_id' class='btn btn-xs btn-warning'>Edit  <em class='icon ni ni-edit-fill'></em></a>                            
                             $verify_email_str $locked_unlocked_str $active_inactive_str";
                         array_push($resData, $row);
                     }  
@@ -449,7 +568,7 @@ class SSP {
                         }                                                    
                         $active_inactive_str="<button type='button' data-id='".$customer_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                                                                
                         $row['index']='';
-                        $row['action']="<a href='".BASE_URL_DATATABLES."edit-customer/$customer_id' class='btn btn-xs btn-warning'>Edit  <em class='icon ni ni-edit-fill'></em></a>                            
+                        $row['action']="<a href='".BASE_URL_DATATABLES."employee-edit-customer/$customer_id' class='btn btn-xs btn-warning'>Edit  <em class='icon ni ni-edit-fill'></em></a>                            
                             $verify_email_str $locked_unlocked_str $active_inactive_str";
                         array_push($resData, $row);
                     }  
@@ -497,7 +616,9 @@ class SSP {
                 
                 $data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
-			FROM $table                       
+			FROM $table
+                        INNER JOIN employee emp
+                        ON emp.employee_user_id=cs.cases_assign_to
 			$where
 			$order 
 			$limit"
@@ -505,14 +626,18 @@ class SSP {
 		// Data set length after filtering
 		$resFilterLength = self::sql_exec( $db, $bindings,
 			"SELECT COUNT({$primaryKey})
-			FROM $table                       
+			FROM $table
+                        INNER JOIN employee emp
+                        ON emp.employee_user_id=cs.cases_assign_to
 			$where "
 		);
 		$recordsFiltered = $resFilterLength[0][0];
 		// Total data set length
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
-			FROM $table                       
+			FROM $table
+                        INNER JOIN employee emp
+                        ON emp.employee_user_id=cs.cases_assign_to
                         "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
@@ -522,7 +647,9 @@ class SSP {
                     foreach ($result as $row){                                                                         
                         $cases_id = $row['cases_id'];                                                                       
                         $row['index']='';
-                        $row['action']="<a href='".BASE_URL_DATATABLES."edit-cases/$cases_id' class='btn btn-xs btn-warning'>Edit  <em class='icon ni ni-edit-fill'></em></a>";
+                        $row['employee_name']=$row['user_firstname'].' '.$row['user_lastname'];
+                        $row['action']="<a href='".BASE_URL_DATATABLES."employee-edit-cases/$cases_id' class='btn btn-xs btn-warning'>Edit&nbsp;<em class='icon ni ni-edit-fill'></em></a>
+                                <a href='".BASE_URL_DATATABLES."employee-view-cases/$cases_id' class='btn btn-xs btn-primary'>View&nbsp;<em class='icon ni ni-eye-fill'></em></a>";
                         array_push($resData, $row);
                     }  
                 }

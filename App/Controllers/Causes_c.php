@@ -4,7 +4,7 @@ namespace App\Controllers;
 use App\Models\Adminm\Login_m;
 use App\Models\Adminm\Causes_m;
 
-class Causes_c extends Controller {    
+class Causes_c extends BaseController {    
     private $Login_m;
     private $Causes_m;
     private $security;
@@ -36,7 +36,7 @@ class Causes_c extends Controller {
             if ($_POST['upload_file_title'] && $_POST['upload_file_title'] != '') {                
                 $_POST['admin_user_id'] = $this->userId;
                 if (($_FILES['upload_file_original_name']['name']) != '') {
-                    $fileRes = singleFileUpload('upload_file_original_name');
+                    $fileRes = singleFileUpload('upload_file_original_name','causes/');
                     if (!empty($fileRes[2]['file_name'])) {
                         $_POST['upload_file_location'] = $fileRes[2]['file_name'];
                         $_POST['upload_file_original_name'] = $fileRes[2]['original_file_name'];        

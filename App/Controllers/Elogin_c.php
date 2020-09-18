@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use App\Models\Employeem\Login_m;
 
-class Elogin_c extends Controller {
+class Elogin_c extends BaseController {
 
     private $Login_m; 
     private $security;
@@ -21,14 +21,14 @@ class Elogin_c extends Controller {
                 unset($_SESSION['employee']['employee_user_id']);
                 return redirect()->to(EMPLOYEE_LOGIN_LINK);
             }
-        }
+        }       
         $_SESSION['invalid_login'] = 0;
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $result = $this->Login_m->employee_login_select($_POST['username'], $_POST['password']);
             if ($result == true) {                
                 $userId = $_SESSION['employee']['employee_user_id'];
                 $userType = $_SESSION['employee']['employee_usertype'];
-                log_message('info', "$userType id $userId logged into the system");
+                log_message('info', "$userType id $userId logged into the system");                
                 return redirect()->to(EMPLOYEE_DASHBOARD_LINK);
             }
             if ($result == false) {

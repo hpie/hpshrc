@@ -24,7 +24,7 @@
 //                $attributes = ['class' => 'contact-form', 'id' => 'student_register', 'name' => 'adduser', 'enctype' => 'multipart/form-data'];
 //                echo form_open(CUSTOMER_REGISTER_LINK, $attributes);                
                 ?>                                       
-                <form class="contact-form" id="student_register" name="adduser" enctype="multipart/form-data" action="<?= CUSTOMER_REGISTER_LINK; ?>" method="post">
+                <form class="contact-form" id="student_register" name="adduser" enctype="multipart/form-data" action="<?= EMPLOYEE_CUSTOMER_REGISTER_LINK; ?>" method="post">
                     <?= csrf_field() ?>
                 <div class="form-group">
                     <div class="row">

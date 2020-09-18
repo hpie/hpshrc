@@ -212,7 +212,7 @@
 
 <!--  Scripts
 ================================================== -->
-
+<input class="ajax_csrfname" type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
 <!-- jQuery -->
 <script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>jquery/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
 <script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>

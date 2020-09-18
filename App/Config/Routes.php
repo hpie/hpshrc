@@ -50,7 +50,13 @@ $routes->add('admin-edit-causes/(:any)', 'Causes_c::edit_causes/$1');
 $routes->add('admin-load-sub-categories', 'Causes_c::load_sub_type');
 $routes->add('admin-customers-list', 'Customers_a::customers_list');
 $routes->add('admin-customer-approve-status', 'Customers_a::approve_status');
+$routes->add('admin-customer-registration', 'Customers_a::create_customer');
+$routes->add('admin-edit-customer/(:any)', 'Customers_a::edit_customer/$1');
 
+$routes->add('admin-employee-list', 'Employee_a::employee_list');
+$routes->add('admin-employee-approve-status', 'Employee_a::approve_status');
+$routes->add('admin-employee-registration', 'Employee_a::create_employee');
+$routes->add('admin-edit-employee/(:any)', 'Employee_a::edit_employee/$1');
 
 //************************************Front side route****************************//
 $routes->add('home', 'Home_c::index');
@@ -67,14 +73,17 @@ $routes->add('employee-logout', 'Elogin_c::logout');
 $routes->add('employee-update-profile', 'Employee_c::update_profile');
 $routes->add('employee-dashboard', 'Employee_c::dashboard');
 $routes->add('employee-customers-list', 'Customers_e::customers_list');
+$routes->add('employee-customer-registration', 'Customers_e::create_customer');
+$routes->add('employee-edit-customer/(:any)', 'Customers_e::edit_customer/$1');
+
 $routes->add('approve-status', 'Customers_e::approve_status');
 $routes->add('employee-add-cases', 'Cases_e::add_cases');
+$routes->add('employee-edit-cases/(:any)', 'Cases_e::edit_cases/$1');
 $routes->add('employee-list-cases', 'Cases_e::cases_list');
 
 
 //************************************Customer Registration****************************//
 $routes->add('customer-registration', 'Common_c::create_customer');
-$routes->add('edit-customer/(:any)', 'Common_c::edit_customer/$1');
 $routes->add('email-verify/(:any)/(:any)', 'Common_c::verify_email/$1/$2');
 
 

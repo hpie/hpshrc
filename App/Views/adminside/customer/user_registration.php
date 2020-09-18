@@ -13,7 +13,7 @@
                         <br />
                         <?php
                         $attributes = ['class' => 'form-horizontal form-label-left', 'id' => 'student_register', 'name' => 'adduser', 'enctype' => 'multipart/form-data'];
-                        echo form_open(CUSTOMER_REGISTER_LINK, $attributes);
+                        echo form_open(ADMIN_CUSTOMER_REGISTER_LINK, $attributes);
                         ?>                                                                         
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customer_first_name">First Name

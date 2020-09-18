@@ -6,7 +6,7 @@ use App\Models\Employeem\Customers_m;
 use App\Models\Adminm\Login_m;
 use App\Models\Common_m;
 
-class Customers_a extends BaseController {
+class Employee_a extends BaseController {
 
     private $Customers_m;
     private $Login_m;
@@ -33,9 +33,9 @@ class Customers_a extends BaseController {
             }            
         } 
     }
-    public function customers_list() {
-        $data['title'] = ADMIN_CUSTOMER_LIST_TITLE;
-        echo admin_view('adminside/customer/customers_list', $data);
+    public function employee_list() {
+        $data['title'] = ADMIN_EMPLOYEE_LIST_TITLE;
+        echo admin_view('adminside/employee/employee_list', $data);
     }
 
     public function approve_status() {
@@ -52,38 +52,38 @@ class Customers_a extends BaseController {
     }
     
     
-     public function create_customer() {             
+     public function create_employee() {             
         include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                         
         $_SESSION['exist_email'] = 0;
-        if (isset($_POST['customer_first_name'])) {
+        if (isset($_POST['user_firstname'])) {
             $_SESSION['post_data']=$_POST;            
-            if(!isset($_POST['customer_email_password'])){
-                $_POST['customer_email_password']=generateStrongPassword();
+            if(!isset($_POST['user_email_password'])){
+                $_POST['user_email_password']=generateStrongPassword();
             }
             if(isset($_POST['user_confirm_password'])){
                 unset($_POST['user_confirm_password']); 
             }                                               
-            $res =  $this->Common_m->register_customer($_POST);                       
+            $res =  $this->Common_m->register_employee($_POST);                       
             $result = array();
             $send_email_error = 0;
             if ($res['success'] == true) {
                 $result['success'] = 'success';
-                $link_code = gen_uuid($res['customer_id '], 'e');
-                $email_active_link = CUSTOMER_ACTIVE_EMAIL_LINK . 'customer/' . $link_code;
+                $link_code = gen_uuid($res['employee_user_id'], 'e');
+                $email_active_link = EMPLOYEE_ACTIVE_EMAIL_LINK . $link_code;
                 $result['success'] = 'success';
                 $data = array(
                     'username' => $res['email'],
-                    'password' => $_POST['customer_email_password'],
-                    'template' => 'studentRegistrationTemplate.html',
+                    'password' => $_POST['user_email_password'],
+                    'template' => 'employeeRegistrationTemplate.html',
                     'activationlink' => $email_active_link
                 );
                 $sendmail = new \SMTP_mail();
                 $resMail = $sendmail->sendRegistrationDetails($res['email'], $data);       
                 if ($resMail['success'] == 1) {
                     $params = array();
-                    $params['user_id'] = $res['customer_id'];
+                    $params['user_id'] = $res['employee_user_id'];
                     $params['link_code'] = $link_code;
-                    $params['user_type'] = 'customer';
+                    $params['user_type'] = 'employee';
                     $this->Common_m->user_email_link($params);
                 } else {
                     $_SESSION['send_email_error'] = 1;
@@ -115,18 +115,18 @@ class Customers_a extends BaseController {
         }
         
         helper('form');
-        $data['title'] = CUSTOMER_REGISTRATION_TITLE;              
-        echo admin_view('adminside/customer/user_registration', $data);
+        $data['title'] = ADMIN_EMPLOYEE_REGISTRATION_TITLE;              
+        echo admin_view('adminside/employee/employee_registration', $data);
         
         if(isset($_SESSION['post_data'])){
             unset($_SESSION['post_data']);
         }                              
     }
     
-    public function edit_customer($customer_id) {                                
-        if (isset($_POST['customer_first_name'])) {
+    public function edit_employee($employee_id) {                                
+        if (isset($_POST['user_firstname'])) {
             unset($_POST['g-recaptcha-response']);           
-            $res =  $this->Common_m->edit_customer($_POST,$customer_id);                       
+            $res =  $this->Common_m->edit_employee($_POST,$employee_id);                       
             $result = array();
             $send_email_error = 0;
             if ($res['success'] == true) {
@@ -140,10 +140,10 @@ class Customers_a extends BaseController {
             }            
         }
         helper('form'); 
-        $data['single_customer']=$this->Common_m->get_single_customer($customer_id);
-        $data['customer_id'] = $customer_id;        
-        $data['title'] = EDIT_CUSTOMER_TITLE;            
-        echo admin_view('adminside/customer/edit_customer', $data);                                  
+        $data['single_employee']=$this->Common_m->get_single_employee($employee_id);
+        $data['employee_id'] = $employee_id;        
+        $data['title'] = ADMIN_EDIT_EMPLOYEE_TITLE;            
+        echo admin_view('adminside/employee/edit_employee', $data);                                  
     }
     
     

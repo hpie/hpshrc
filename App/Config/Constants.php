@@ -94,6 +94,14 @@ define('ADMIN_FILES_ACTIVE_LINK',BASE_URL_CI."/admin-active-causes");
 define('ADMIN_LOAD_SUB_CATEGORIES_LINK', BASE_URL_CI.'/admin-load-sub-categories');
 define('ADMIN_CUSTOMER_LIST_LINK', BASE_URL_CI.'/admin-customers-list');
 define('ADMIN_APPROVE_STATUS',BASE_URL."/admin-customer-approve-status");
+define('ADMIN_CUSTOMER_EDIT_LINK',BASE_URL."/admin-edit-customer/");
+define('ADMIN_CUSTOMER_REGISTER_LINK',BASE_URL."/admin-customer-registration");
+define('EMPLOYEE_ACTIVE_EMAIL_LINK',BASE_URL_CI."/email-verify/employee/");
+
+define('ADMIN_EMPLOYEE_LIST_LINK', BASE_URL_CI.'/admin-employee-list');
+define('ADMIN_APPROVE_EMPLOYEE_STATUS',BASE_URL."/admin-employee-approve-status");
+define('ADMIN_EMPLOYEE_EDIT_LINK',BASE_URL."/admin-edit-employee/");
+define('ADMIN_EMPLOYEE_REGISTER_LINK',BASE_URL."/admin-employee-registration");
 
 //**************************************EMPLOYEE ROUTE****************************//
 define('EMPLOYEE_LOGIN_LINK', BASE_URL_CI.'/employee-login');
@@ -102,9 +110,13 @@ define('EMPLOYEE_PROFILE_LINK', BASE_URL_CI.'/employee-profile');
 define('EMPLOYEE_DASHBOARD_LINK', BASE_URL_CI.'/employee-dashboard');
 define('EMPLOYEE_UPDATE_PROFILE_LINK', BASE_URL_CI.'/employee-update-profile');
 define('EMPLOYEE_CUSTOMER_LIST_LINK', BASE_URL_CI.'/employee-customers-list');
+define('EMPLOYEE_CUSTOMER_EDIT_LINK',BASE_URL."/employee-edit-customer/");
+define('EMPLOYEE_CUSTOMER_REGISTER_LINK',BASE_URL."/employee-customer-registration");
 
 define('EMPLOYEE_ADD_CASES_LINK', BASE_URL_CI.'/employee-add-cases');
+define('EMPLOYEE_EDIT_CASES_LINK', BASE_URL_CI.'/employee-edit-cases/');
 define('EMPLOYEE_CASES_LIST_LINK', BASE_URL_CI.'/employee-list-cases');
+
 
 define('APPROVE_STATUS',BASE_URL."/approve-status");
 
@@ -115,7 +127,6 @@ define('FRONT_BUDGET_LINK', BASE_URL_CI.'/front-budget');
 define('FRONT_GALLERY_LINK', BASE_URL_CI.'/front-gallery');
 define('FRONT_CONTACT_LINK', BASE_URL_CI.'/front-contact');
 
-define('CUSTOMER_EDIT_LINK',BASE_URL."/edit-customer/");
 define('CUSTOMER_REGISTER_LINK',BASE_URL."/customer-registration");
 define('CUSTOMER_ACTIVE_EMAIL_LINK',BASE_URL_CI."/email-verify/");
 
@@ -143,7 +154,9 @@ define('EMPLOYEE_DASHBOARD_TITLE', 'HPSHRC-EMPLOYEE-DASHBOARD');
 define('EMPLOYEE_CUSTOMER_LIST_TITLE', 'HPSHRC-EMPLOYEE-CUSTOMER-LIST');
 
 define('EMPLOYEE_ADD_CASES_TITLE', 'HPSHRC-ADD-CASES');
+define('EMPLOYEE_EDIT_CASES_TITLE', 'HPSHRC-EDIT-CASES');
 define('EMPLOYEE_LIST_CASES_TITLE', 'HPSHRC-LIST-CASES');
+
 
 
 //**************************************ADMIN TITLE****************************//
@@ -155,4 +168,7 @@ define('ADMIN_FILE_LIST_TITLE', 'HPSHRC-ADMIN-FILE-LIST');
 define('ADMIN_ADD_CAUSES_TITLE', 'HPSHRC-ADMIN-ADD-CAUSES');
 define('ADMIN_EDIT_CAUSES_TITLE', 'HPSHRC-ADMIN-EDIT-CAUSES');
 define('ADMIN_CUSTOMER_LIST_TITLE', 'HPSHRC-ADMIN-CUSTOMER-LIST');
+define('ADMIN_EMPLOYEE_LIST_TITLE', 'HPSHRC-ADMIN-EMPLOYEE-LIST');
+define('ADMIN_EMPLOYEE_REGISTRATION_TITLE', 'HPSHRC-EMPLOYEE-REGISTRATION');
+define('ADMIN_EDIT_EMPLOYEE_TITLE', 'HPSHRC-EDIT-EMPLOYEE');
 

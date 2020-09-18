@@ -13,7 +13,7 @@
 <!-- main @e -->
 </div>
 
-<input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
+<input class="ajax_csrfname" type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
 <!-- app-root @e -->
 <!-- JavaScript -->
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/bundle.js"></script>
@@ -21,7 +21,8 @@
 
 <link rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/editors/summernote.css">
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/libs/editors/summernote.js"></script>
-<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/editors.js"></script>
+<!--<script src="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>js/editors.js"></script>-->
+<?php include 'assets/employee/js/editors.php'; ?>
 
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/toastr.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/charts/chart-ecommerce.js" type="text/javascript" nonce='S51U26wMQz'></script>
@@ -212,7 +213,7 @@
                         {"data": "index"},
                         {"data": "cases_title"},
                         {"data": "cases_priority"},
-                        {"data": "cases_assign_to"},
+                        {"data": "employee_name"},
                         {"data": "cases_status"},
                         {"data": "cases_dt_created"},
                         {"data": "action"}
@@ -457,7 +458,6 @@
         });
     </script>
 <?php } ?> 
-
 <?php if ($title == EMPLOYEE_ADD_CASES_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
@@ -473,8 +473,8 @@
                     case_files_file: {
                         validators: {
                             file: {
-                                extension: 'jpeg,jpg,png,pdf',
-                                type: '.image/*,.pdf',
+                                extension: 'jpeg,png,jpg,pdf',
+                                type: 'image/jpeg,image/png,image/jpg,application/pdf',                                
                                 message: 'The selected file is not valid'
                             },
                             notEmpty: {
@@ -482,6 +482,34 @@
                             }
                         }
                     },                    
+                    cases_title: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Title'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<?php } ?>  
+    
+<?php if ($title == EMPLOYEE_EDIT_CASES_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {                                    
+            $('#edit_cases').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {                                       
                     cases_title: {
                         validators: {
                             stringLength: {

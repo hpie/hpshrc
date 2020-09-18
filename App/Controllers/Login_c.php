@@ -2,7 +2,7 @@
 
 use App\Models\Adminm\Login_m;
 
-class Login_c extends Controller
+class Login_c extends BaseController
 {
     private $Login_m; 
 //    private $security;  
@@ -14,7 +14,7 @@ class Login_c extends Controller
     }    
     public function index() {
         helper('form');
-        $result == false;
+        $result = false;
 
         if (isset($_SESSION['admin']['admin_user_id'])) {            
             if ($_SESSION['admin']['admin_user_id'] > 0) {                

@@ -11,6 +11,9 @@
             <li>
                 <a href="<?php echo ADMIN_CUSTOMER_LIST_LINK; ?>"><i class="fa fa-users"></i> Customers <span class="fa fa-chevron-right"></span></a>                    
             </li>
+            <li>
+                <a href="<?php echo ADMIN_EMPLOYEE_LIST_LINK; ?>"><i class="fa fa-users"></i> Employees <span class="fa fa-chevron-right"></span></a>                    
+            </li>
 <!--            <li><a><i class="fa fa-users"></i> Dealers <span class="fa fa-chevron-right"></span></a>
                 <ul class="nav child_menu" style="display: none">
                     <li><a href="<?php //echo ADMIN_DASHBOARD_LINK; ?>">Add Files</a>

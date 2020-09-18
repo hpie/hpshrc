@@ -2,7 +2,7 @@
 
 use App\Models\Adminm\Causes_m;
 
-class Home_c extends Controller
+class Home_c extends BaseController
 {
     private $Causes_m;
     private $security;  

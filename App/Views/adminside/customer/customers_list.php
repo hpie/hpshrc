@@ -7,7 +7,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Customer List</h2>
-                        <a href="<?php echo CUSTOMER_REGISTER_LINK; ?>"><button type="button" data-toggle="tooltip" title="Add New Customer" class="btn btn-info btn-sm" style="float: right"><i class="fa fa-plus">Add New</i></button></a>
+                        <a href="<?php echo ADMIN_CUSTOMER_REGISTER_LINK; ?>"><button type="button" data-toggle="tooltip" title="Add New Customer" class="btn btn-info btn-sm" style="float: right"><i class="fa fa-plus">Add New</i></button></a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">                    					

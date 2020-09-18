@@ -13,7 +13,7 @@
                         <br />
                         <?php
                         $attributes = ['class' => 'form-horizontal form-label-left', 'id' => 'edit_customer', 'name' => 'edituser', 'enctype' => 'multipart/form-data'];
-                        echo form_open(CUSTOMER_EDIT_LINK.$customer_id, $attributes);
+                        echo form_open(ADMIN_CUSTOMER_EDIT_LINK.$customer_id, $attributes);
                         ?>                                                                         
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="customer_first_name">First Name

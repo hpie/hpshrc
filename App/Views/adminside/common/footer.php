@@ -22,7 +22,7 @@
         </div>
     </div>
 </div>
-<input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
+<input class="ajax_csrfname" type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
 <!-- jQuery -->
 
 <script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>jquery/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
@@ -296,6 +296,294 @@
         });
     </script>
 <?php } ?> 
+     <?php if ($title == ADMIN_EMPLOYEE_LIST_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {
+                $('#example').DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                                       
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/admin_employee_list.php' ?>",
+                        'data': {
+                            admin_user_id: <?php
+                            if (isset($_SESSION['admin']['admin_user_id'])) {
+                                echo $_SESSION['admin']['admin_user_id'];
+                            }
+                            ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "user_firstname"},                        
+                        {"data": "user_lastname"},  
+                        {"data": "user_email_id"},  
+                        {"data": "employee_type"},  
+                        {"data": "action"}
+                    ]
+                });
+            }
+            $(document).on('click', '.btn_approve_reject_email', function () {
+
+                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+        
+                var self = $(this);
+
+                var table = self.attr('data-table');
+                var updatefield = self.attr('data-updatefield');
+                var wherefield = self.attr('data-wherefield');
+                
+                var status = self.attr('data-status');
+                var user_status = 1;
+                if (status == 1)
+                    user_status = 0;
+
+                if (!confirm('Are you sure want to update?'))
+                    return;
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'table_id': self.data('id'),
+                    'user_status': user_status,
+                    'table':table,
+                    'updatefield':updatefield,
+                    'wherefield':wherefield,
+                    [csrfName]: csrfHash
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo ADMIN_APPROVE_EMPLOYEE_STATUS ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);                                                
+                        $('.ajax_csrfname').val(res.token);                        
+                        if (res.suceess) {
+
+                            var title = 'Click to unverify email';
+                            var class_ = 'btn_approve_reject_email btn btn-xs btn-success';
+                            var text = "Email Verified <i class='fa fa-check'></i>";
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to verify email';
+                                class_ = 'btn_approve_reject_email btn btn-xs btn-danger';
+                                text = "Verify Email <i class='fa fa-close'></i>";
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+
+                        }
+                    }
+                });
+            }); 
+            $(document).on('click', '.btn_lock_unlock_customer', function () {
+
+                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+        
+                var self = $(this);
+
+                var table = self.attr('data-table');
+                var updatefield = self.attr('data-updatefield');
+                var wherefield = self.attr('data-wherefield');
+                
+                var status = self.attr('data-status');
+                var user_status = status;               
+
+                if (!confirm('Are you sure want to update?'))
+                    return;
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'table_id': self.data('id'),
+                    'user_status': user_status,
+                    'table':table,
+                    'updatefield':updatefield,
+                    'wherefield':wherefield,
+                    [csrfName]: csrfHash
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo ADMIN_APPROVE_EMPLOYEE_STATUS ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);                                                
+                        $('.ajax_csrfname').val(res.token);                        
+                        if (res.suceess) {
+
+                            var title = 'Click to locke employee';
+                            var class_ = 'btn_lock_unlock_customer btn btn-xs btn-success';
+                            var text = "Employee Unlocked <i class='fa fa-unlock'></i></em>";
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to unlocke employee';
+                                class_ = 'btn_lock_unlock_customer btn btn-xs btn-danger';
+                                text = "Employee Locked <i class='fa fa-lock'></i></em>";
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+
+                        }
+                    }
+                });
+            }); 
+            $(document).on('click', '.btn_active_inactive_customer', function () {
+
+                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+        
+                var self = $(this);
+
+                var table = self.attr('data-table');
+                var updatefield = self.attr('data-updatefield');
+                var wherefield = self.attr('data-wherefield');
+                
+                var status = self.attr('data-status');
+                var user_status = "ACTIVE";
+                if (status == "REMOVED")
+                    user_status = "REMOVED";
+
+                if (!confirm('Are you sure want to update?'))
+                    return;
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'table_id': self.data('id'),
+                    'user_status': user_status,
+                    'table':table,
+                    'updatefield':updatefield,
+                    'wherefield':wherefield,
+                    [csrfName]: csrfHash
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo ADMIN_APPROVE_EMPLOYEE_STATUS ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);                                                
+                        $('.ajax_csrfname').val(res.token);                        
+                        if (res.suceess) {
+
+                            var title = 'Click to inactive employee';
+                            var class_ = 'btn_active_inactive_customer btn btn-xs btn-success';
+                            var text = "Employee Activated <i class='fa fa-check'></i>";
+                            var isactive = "REMOVED";
+
+                            if (status == "REMOVED") {
+                                title = 'Click to active employee';
+                                class_ = 'btn_active_inactive_customer btn btn-xs btn-danger';
+                                text = "Employee Inactivated <i class='fa fa-close'></i>";
+                                isactive = "ACTIVE";
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+
+                        }
+                    }
+                });
+            }); 
+        });
+    </script>
+<?php } ?> 
+    
+     <?php if ($title == ADMIN_EMPLOYEE_REGISTRATION_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+
+        $(document).ready(function () {            
+            
+            $('#employee_register').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {                                                          
+                     user_firstname: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }
+                        }
+                    },                  
+                    user_lastname: {
+                        validators: {
+                             stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }
+                        }
+                    },                 
+                    user_email_id: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    }                                    
+                }
+            }); 
+        });
+    </script>
+<?php } ?>  
 <?php if ($title == ADMIN_FILE_LIST_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">

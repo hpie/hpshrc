@@ -3,8 +3,7 @@ namespace App\Controllers;
 
 use App\Models\Adminm\Login_m;
 
-class Admin_c extends Controller {
-
+class Admin_c extends BaseController {
     private $Login_m;
     private $security;     
     public function __construct() {         

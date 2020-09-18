@@ -11,6 +11,33 @@ class Cases_m extends Model
         helper('functions');
     }
     
+    public function create_case($params){ 
+        $params['case_user_type']='employee';
+        $params['refUser_id']=$_SESSION['employee']['employee_user_id'];        
+        $builder = $this->db->table('cases');
+        $builder->insert($params);
+        $insert_id = $this->db->insertID();          
+        if(!empty($insert_id)){
+           return $insert_id;
+        }
+        return FALSE;       
+    }
+    public function add_cases_files($params) {
+        $builder = $this->db->table('case_files');
+        $builder->insert($params);
+        return $this->db->insertID();
+    }
+      public function edit_cases($params,$cases_id){  
+        $builder = $this->db->table('cases');
+        $builder->where('cases_id', $cases_id);
+        $update =$builder->update($params);        
+        return $update;
+    }
+    
+    public function get_single_cases($cases_id) {       
+        $ressult = $this->db->query("SELECT * FROM `cases` WHERE cases_id='{$cases_id}'");
+        return $ressult->getRowArray();      
+    }
     public function get_employee() {       
         $ressult = $this->db->query("SELECT * FROM `employee` WHERE user_status='ACTIVE'");
         return $ressult->getResultArray();      

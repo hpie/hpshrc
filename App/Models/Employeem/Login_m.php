@@ -24,9 +24,7 @@ class Login_m extends Model
                 $token=generateToken();                
                 $_SESSION['employee']['employee_tokencheck'] = $token;
                 sessionEmployee($employee_data);
-                                
-                $uid=$employee_data['employee_user_id'];                                
-                
+                $uid=$employee_data['employee_user_id'];                                               
                 $result_token = $this->db->query("select count(*) as allcount from employee_token WHERE employee_user_id='$uid'");
                 $row_token = $result_token->getRowArray();                               
                 if ($row_token['allcount'] > 0) {                    
@@ -34,6 +32,7 @@ class Login_m extends Model
                 } else {
                     $this->db->query("insert into employee_token(employee_user_id,token) values('$uid','$token')");
                 }
+                
                 return true;
             }
         } else {

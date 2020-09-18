@@ -211,7 +211,7 @@ class Security
 	 * @throws \Exception
 	 */
 	public function CSRFVerify(RequestInterface $request)
-	{
+	{            
 		// If it's not a POST request we will set the CSRF cookie
 		if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST')
 		{

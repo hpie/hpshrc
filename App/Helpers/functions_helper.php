@@ -128,8 +128,6 @@ function sessionAdmin($row) {
     }    
     $_SESSION['admin']['admin_usertype'] = 'admin'; 
     $_SESSION['admin'][$_SESSION['admin']['admin_usertype'].'_session_id'] = session_create_id();    
-    //session_regenerate_id(); // Generate a new session identifier
-    //$_SESSION['SERVER_GENERATED_SID'] = true;
     return true;
 }
 function sessionCheckAdmin() {
@@ -152,13 +150,10 @@ function sessionEmployee($row) {
     }    
 //    $_SESSION['user_id'] = $row['employee_user_id'];
     $_SESSION['employee']['employee_usertype'] = 'employee';
-    $_SESSION['employee'][$_SESSION['employee']['employee_usertype'].'_session_id'] = session_create_id();
-
-    //session_regenerate_id(); // Generate a new session identifier
-    //$_SESSION['SERVER_GENERATED_SID'] = true;
+    $_SESSION['employee'][$_SESSION['employee']['employee_usertype'].'_session_id'] = session_create_id();        
     return true;
 }
-function sessionCheckEmployee() {    
+function sessionCheckEmployee() {     
     if (!isset($_SESSION['employee']['employee_user_id']) || !isset($_SESSION['employee']['employee_usertype']) || !isset($_SESSION['employee']['employee_session_id'])) {                 
         header('Location: ' . EMPLOYEE_LOGIN_LINK);        
         exit();
@@ -363,8 +358,7 @@ if (!function_exists('singleFileUpload')) {
 
 if (!function_exists('multiFileUpload')) {
 
-    function multiFileUpload($file_tag) {
-
+    function multiFileUpload($file_tag,$folder) {      
         //print_r($_FILES[$file_tag]);die;
 
         $file_ary = reArrayFiles($_FILES[$file_tag]);
@@ -375,7 +369,7 @@ if (!function_exists('multiFileUpload')) {
 
         foreach ($file_ary as $file) {
 
-            array_push($output_array, fileUpload($file));
+            array_push($output_array, fileUpload($file,$folder));
         }
 
         return $output_array;
@@ -384,15 +378,21 @@ if (!function_exists('multiFileUpload')) {
 }
 if (!function_exists('fileUpload')) {
 
-    function fileUpload($file) {
-
+    function fileUpload($file,$folder='') {
+        
         //If directory doesnot exists create it.
 
         $data = array();
 
-        $output_dir = IMG_DIR;
-        $output_subdir = $output_dir . "doc/";
-
+        $output_dir = IMG_DIR;                                
+        $output_subdir = $output_dir . "doc/$folder";
+        
+        if(!is_dir($output_subdir)){
+            //Directory does not exist, so lets create it.
+            mkdir($output_subdir, 0755);
+        }
+        
+        
         if (isset($file)) {
 
             // print_r($file);die;
@@ -451,9 +451,9 @@ if (!function_exists('fileUpload')) {
                     $data["file_name"] = $NewImageName;
                     $data['original_file_name'] = $file_name;
                     $data["file_ext"] = $file_ext;
+                    $data['file_size']=$file_size;
                     $message = 'File uploaded successfully';
-                    return array(true, $message, $data);
-                    die;
+                    return array(true, $message, $data);die;
                 } else {
                     $message = "Invalid, File not correct";
                     return array(false, $message, $data);
@@ -520,7 +520,7 @@ if (!function_exists('reArrayFiles')) {
 
     function reArrayFiles(&$file_post) {
 
-        // print_r($file_post['name']);die;
+//         print_r($file_post['name']);die;
 
         $file_ary = array();
 

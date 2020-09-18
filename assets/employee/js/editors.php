@@ -1,5 +1,5 @@
+<script>
 "use strict";
-
 !function (NioApp, $) {
   "use strict"; // SummerNote Init @v1.0
 
@@ -16,7 +16,9 @@
         });
       });
     }            
-    
+ <?php 
+    if($title==EMPLOYEE_ADD_CASES_TITLE){    
+    ?>   
     var _basicid = '.summernote-basic-id';
     if ($(_basicid).exists()) {
       $(_basicid).each(function () {
@@ -27,12 +29,30 @@
         });
       });                 
     }            
+<?php
+    }
+?>
+<?php 
+    if($title==EMPLOYEE_EDIT_CASES_TITLE){
     
-//    $('.note-editable').html('<p>asasas<b>asas</b><b style="text-decoration-line: underline;">sasasas</b><strike style=""><b style="text-decoration-line: underline;">asasasas</b><u>asa</u>asas</strike></p><p><strike>asssa</strike><u style=""><strike>sas</strike><b style=""><strike>sa</strike>asas</b></u></p>');
-    
-    $(document).on('click', '#btnSubmit', function () {   
-        $('#contentsummer').val($('.note-editable').html());	        
-    });
+    ?>    
+        var _basicid = '.summernote-basic-id';
+        if ($(_basicid).exists()) {
+          $(_basicid).each(function () {
+            $(this).summernote({         
+              tabsize: 2,
+              height: 120,
+              toolbar: [['style', ['style']], ['font', ['bold', 'underline', 'strikethrough', 'clear']], ['font', ['superscript', 'subscript']], ['color', ['color']], ['fontsize', ['fontsize', 'height']], ['para', ['ul', 'ol', 'paragraph']], ['view', ['fullscreen']]]
+            }).summernote("code","<?php echo $cases_res['cases_message']; ?>");
+          });                 
+        }     
+            <?php
+            }    
+         
+    ?>      
+//    $(document).on('click', '#btnSubmit', function () {   
+//        $('#contentsummer').val($('.note-editable').html());	        
+//    });
 
     var _minimal = '.summernote-minimal';
 
@@ -179,3 +199,4 @@
 
   NioApp.coms.docReady.push(NioApp.EditorInit);
 }(NioApp, jQuery);
+</script>

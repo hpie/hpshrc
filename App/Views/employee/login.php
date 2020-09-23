@@ -41,7 +41,7 @@
                                     </div>
                                     
                                     <?php                        
-                                        echo form_open(EMPLOYEE_LOGIN_LINK);
+                                        echo form_open(EMPLOYEE_LOGIN_LINK); 
                                     ?>                                                                        
                                         <div class="form-group">
                                             <div class="form-label-group">
@@ -61,7 +61,7 @@
                                                 </a>
                                                 <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Enter your password" autocomplete="off" required="" autocomplete="off"> 
                                             </div>
-                                        </div> 
+                                        </div>
                                     
                                         <div class="form-group">                                            
                                             <div class="form-control-wrap">                                                

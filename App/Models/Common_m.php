@@ -41,7 +41,7 @@ class Common_m extends Model
                 'success' => true,
                 'email_exist' => false,                
                 'email' => $params['customer_email_id'],
-                'customer_id '=>$insert_id
+                'customer_id'=>$insert_id
             );
         }
         return FALSE;

@@ -5,7 +5,7 @@ use App\Models\Adminm\Login_m;
 class Login_c extends BaseController
 {
     private $Login_m; 
-//    private $security;  
+    private $security;  
     public function __construct() {  
         helper('functions');
         helper('url');        
@@ -18,12 +18,10 @@ class Login_c extends BaseController
 
         if (isset($_SESSION['admin']['admin_user_id'])) {            
             if ($_SESSION['admin']['admin_user_id'] > 0) {                
-                logoutUser('admin');
-                unset($_SESSION['admin']['admin_user_id']);
+                logoutUser('admin');               
                 return redirect()->to(ADMIN_LOGIN_LINK); 
             }
-        }       
-        $_SESSION['invalid_login'] = 0;
+        }               
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $result = $this->Login_m->admin_login_select($_POST['username'], $_POST['password']);
             if ($result == true) {
@@ -31,10 +29,7 @@ class Login_c extends BaseController
                 $userType = $_SESSION['admin']['admin_usertype'];
 //                log_message('info', "$userType id $userId logged into the system");                
                 return redirect()->to(ADMIN_DASHBOARD_LINK); 
-            }
-            if ($result == false) {
-                $_SESSION['invalid_login'] = 1;
-            }
+            }       
         }
 
         if ($result == false) {

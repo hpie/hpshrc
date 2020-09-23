@@ -25,5 +25,8 @@
             .labelleft{
                 float: right !important;
             }
+            .assign-title{
+                color: #0092db;
+            }
         </style>
     </head>

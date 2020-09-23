@@ -36,6 +36,7 @@
     if($title==EMPLOYEE_EDIT_CASES_TITLE){
     
     ?>    
+                
         var _basicid = '.summernote-basic-id';
         if ($(_basicid).exists()) {
           $(_basicid).each(function () {
@@ -43,7 +44,7 @@
               tabsize: 2,
               height: 120,
               toolbar: [['style', ['style']], ['font', ['bold', 'underline', 'strikethrough', 'clear']], ['font', ['superscript', 'subscript']], ['color', ['color']], ['fontsize', ['fontsize', 'height']], ['para', ['ul', 'ol', 'paragraph']], ['view', ['fullscreen']]]
-            }).summernote("code","<?php echo $cases_res['cases_message']; ?>");
+            }).summernote("code",'<?php echo $cases_res['cases_message']; ?>');
           });                 
         }     
             <?php

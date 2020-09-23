@@ -41,7 +41,6 @@ $routes->add('admin-logout', 'Login_c::logout');
 $routes->add('admin-update-profile', 'Admin_c::update_profile');
 $routes->add('admin-dashboard', 'Admin_c::dashboard');
 
-
 //************causes*****************//
 $routes->add('admin-file-list', 'Causes_c::file_list');
 $routes->add('admin-add-causes', 'Causes_c::add_causes');
@@ -65,6 +64,8 @@ $routes->add('front-download', 'Home_c::download');
 $routes->add('front-budget', 'Home_c::budget');
 $routes->add('front-gallery', 'Home_c::gallery');
 $routes->add('front-contact', 'Home_c::contact');
+$routes->add('customer-login', 'Home_c::login');
+$routes->add('customer-logout', 'Home_c::logout');
 
 
 //************************************Employee side route****************************//
@@ -80,6 +81,8 @@ $routes->add('approve-status', 'Customers_e::approve_status');
 $routes->add('employee-add-cases', 'Cases_e::add_cases');
 $routes->add('employee-edit-cases/(:any)', 'Cases_e::edit_cases/$1');
 $routes->add('employee-list-cases', 'Cases_e::cases_list');
+$routes->add('employee-view-cases/(:any)', 'Cases_e::view_cases/$1');
+
 
 
 //************************************Customer Registration****************************//

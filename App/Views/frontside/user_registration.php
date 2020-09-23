@@ -21,11 +21,9 @@
             <div class="col-md-8 col-sm-12 col-form"> 
                 <!--<h2 class="title-style-2">Registration FORM <span class="title-under"></span></h2>-->
                 <?php
-//                $attributes = ['class' => 'contact-form', 'id' => 'student_register', 'name' => 'adduser', 'enctype' => 'multipart/form-data'];
-//                echo form_open(CUSTOMER_REGISTER_LINK, $attributes);                
-                ?>                                       
-                <form class="contact-form" id="student_register" name="adduser" enctype="multipart/form-data" action="<?= EMPLOYEE_CUSTOMER_REGISTER_LINK; ?>" method="post">
-                    <?= csrf_field() ?>
+                $attributes = ['class' => 'contact-form', 'id' => 'student_register', 'name' => 'adduser', 'enctype' => 'multipart/form-data'];
+                echo form_open(CUSTOMER_REGISTER_LINK, $attributes);                
+                ?>                                                    
                 <div class="form-group">
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_first_name">First Name:</label>
@@ -126,9 +124,9 @@
                         <button type="submit" class="btn warning_btn btn_disabled"  disabled="true" id="btnRegister">Register</button>
                     </div>
                 </div>
-                </form>
+                <!--</form>-->
                 <?php 
-//                echo form_close(); 
+                echo form_close(); 
                 ?>  
             </div>
         </div> <!-- /.row -->       

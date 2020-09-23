@@ -20,7 +20,10 @@ class Common_c extends BaseController {
         $this->security = \Config\Services::security();                
     }
 
-    public function create_customer() {             
+    public function create_customer() {
+        if(isset($_SESSION['customer']['customer_id'])){
+            return redirect()->to(BASE_URL); 
+        }       
         include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                         
         $_SESSION['exist_email'] = 0;
         if (isset($_POST['customer_first_name'])) {
@@ -36,7 +39,7 @@ class Common_c extends BaseController {
             $send_email_error = 0;
             if ($res['success'] == true) {
                 $result['success'] = 'success';
-                $link_code = gen_uuid($res['customer_id '], 'e');
+                $link_code = gen_uuid($res['customer_id'], 'e');
                 $email_active_link = CUSTOMER_ACTIVE_EMAIL_LINK . 'customer/' . $link_code;
                 $result['success'] = 'success';
                 $data = array(

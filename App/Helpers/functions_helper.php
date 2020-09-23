@@ -121,6 +121,27 @@ function lasturl() {
 // Print the link 
     return $link;
 }
+function sessionCustomer($row) {    
+    foreach ($row as $key => &$value) {        
+            $_SESSION['customer'][$key] = $value;        
+    }    
+    $_SESSION['customer']['customer_usertype'] = 'customer'; 
+    $_SESSION['customer'][$_SESSION['customer']['customer_usertype'].'_session_id'] = session_create_id();    
+    return true;
+}
+function sessionCheckCustomer() {
+    if ((!isset($_SESSION['customer']['customer_id'])) || !isset($_SESSION['customer']['customer_usertype']) || !isset($_SESSION['customer']['customer_session_id'])) {    
+        header('Location: ' . FRONT_LOGIN_LINK);
+        exit();
+    }
+    if (isset($_SESSION['customer']['customer_usertype'])) {
+        if ($_SESSION['customer']['customer_usertype'] != 'customer') {            
+            header('Location: ' . FRONT_LOGIN_LINK);
+            exit();
+        }
+    }
+    return true;
+}
 
 function sessionAdmin($row) {    
     foreach ($row as $key => &$value) {        
@@ -168,6 +189,9 @@ function sessionCheckEmployee() {
 }
 
 function logoutUser($usertype) {
+    if($usertype=='customer'){
+        unset($_SESSION['customer']); 
+    }
     if($usertype=='admin'){
         unset($_SESSION['admin']); 
     }

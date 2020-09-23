@@ -21,6 +21,7 @@
 
 <link rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/editors/summernote.css">
 <script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/libs/editors/summernote.js"></script>
+<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/apps/messages.js"></script>
 <!--<script src="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>js/editors.js"></script>-->
 <?php include 'assets/employee/js/editors.php'; ?>
 
@@ -461,7 +462,29 @@
 <?php if ($title == EMPLOYEE_ADD_CASES_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
-        $(document).ready(function () {                                    
+        $(document).ready(function () {     
+            
+            $('#howtocontact').on('change', function () {
+                var howtocontact = $(this).val();
+                if(howtocontact=='Email'){
+                    $(".howtocontact_email").removeClass("howtocontact");
+                    $("#customer_email").val("");
+                    $("#customer_contact").val("9999999999");
+                    $(".howtocontact_mobile").addClass("howtocontact");
+                }
+                if(howtocontact=='Mobile'){
+                    $(".howtocontact_mobile").removeClass("howtocontact");
+                    $("#customer_contact").val("");
+                    $("#customer_email").val("example@gmail.com");
+                    $(".howtocontact_email").addClass("howtocontact");
+                }
+                if(howtocontact=='Both'){
+                    $(".howtocontact_email").removeClass("howtocontact");
+                    $(".howtocontact_mobile").removeClass("howtocontact");
+                    $("#customer_email").val("");
+                    $("#customer_contact").val("");
+                }
+            });
             $('#add_cases').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -481,7 +504,28 @@
                                 message: 'Please select profile image'
                             }
                         }
-                    },                    
+                    },
+                    customer_email: {
+                        validators: {                            
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            },
+                            notEmpty: {
+                                message: 'Please enter valid email address'
+                            }
+                        }
+                    },
+                    customer_contact: {
+                        validators: {
+                            stringLength: {
+                                min: 10,
+                                max: 10
+                            },
+                            notEmpty: {
+                                message: 'Please enter valid mobile number'
+                            }
+                        }
+                    },
                     cases_title: {
                         validators: {
                             stringLength: {
@@ -520,7 +564,7 @@
                             }
                         }
                     }
-                }
+                }                
             });
         });
     </script>

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Employeem\Customers_m;
 use App\Models\Adminm\Login_m;
 use App\Models\Common_m;
+use App\ThirdParty\smtp_mail\SMTP_mail;
 
 class Customers_a extends BaseController {
 
@@ -52,7 +53,7 @@ class Customers_a extends BaseController {
     }
     
     
-     public function create_customer() {             
+    public function create_customer() {             
         include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                         
         $_SESSION['exist_email'] = 0;
         if (isset($_POST['customer_first_name'])) {
@@ -68,7 +69,7 @@ class Customers_a extends BaseController {
             $send_email_error = 0;
             if ($res['success'] == true) {
                 $result['success'] = 'success';
-                $link_code = gen_uuid($res['customer_id '], 'e');
+                $link_code = gen_uuid($res['customer_id'], 'e');
                 $email_active_link = CUSTOMER_ACTIVE_EMAIL_LINK . 'customer/' . $link_code;
                 $result['success'] = 'success';
                 $data = array(

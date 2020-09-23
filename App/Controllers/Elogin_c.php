@@ -17,12 +17,10 @@ class Elogin_c extends BaseController {
         helper('form');        
         if (isset($_SESSION['employee']['employee_user_id'])) {            
             if ($_SESSION['employee']['employee_user_id'] > 0) {                
-                logoutUser('employee'); 
-                unset($_SESSION['employee']['employee_user_id']);
+                logoutUser('employee');                 
                 return redirect()->to(EMPLOYEE_LOGIN_LINK);
             }
-        }       
-        $_SESSION['invalid_login'] = 0;
+        }               
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $result = $this->Login_m->employee_login_select($_POST['username'], $_POST['password']);
             if ($result == true) {                
@@ -31,15 +29,10 @@ class Elogin_c extends BaseController {
                 log_message('info', "$userType id $userId logged into the system");                
                 return redirect()->to(EMPLOYEE_DASHBOARD_LINK);
             }
-            if ($result == false) {
-                $_SESSION['invalid_login'] = 1;
-            }
-        }
-        
+        }        
         $data['title'] = EMPLOYEE_LOGIN_TITLE;
         echo single_page('employee/login', $data);
     }
-
     public function logout() {
         logoutUser('employee');
         return redirect()->to(EMPLOYEE_LOGIN_LINK);

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Employeem\Customers_m;
 use App\Models\Adminm\Login_m;
 use App\Models\Common_m;
+use App\ThirdParty\smtp_mail\SMTP_mail;
 
 class Customers_e extends BaseController {
 
@@ -61,12 +62,12 @@ class Customers_e extends BaseController {
             if(isset($_POST['user_confirm_password'])){
                 unset($_POST['user_confirm_password']); 
             }                                               
-            $res =  $this->Common_m->register_customer($_POST);                       
+            $res =  $this->Common_m->register_customer($_POST);   
             $result = array();
             $send_email_error = 0;
             if ($res['success'] == true) {
                 $result['success'] = 'success';
-                $link_code = gen_uuid($res['customer_id '], 'e');
+                $link_code = gen_uuid($res['customer_id'], 'e');
                 $email_active_link = CUSTOMER_ACTIVE_EMAIL_LINK . 'customer/' . $link_code;
                 $result['success'] = 'success';
                 $data = array(

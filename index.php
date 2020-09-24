@@ -22,8 +22,8 @@ session_start();
 //    session_destroy(); // Destroy all data in session
 //    session_start();
 //}
-session_regenerate_id(); // Generate a new session identifier
-$_SESSION['SERVER_GENERATED_SID'] = true;
+//session_regenerate_id(); // Generate a new session identifier
+//$_SESSION['SERVER_GENERATED_SID'] = true;
 
 include 'common_url.php';
 // Valid PHP Version?

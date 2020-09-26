@@ -22,13 +22,7 @@ class Cases_m extends Model
         if($params['customer_mobile_no']=='9999999999'){
             $params['customer_mobile_no']=0;
         }
-        $params['customer_email_password'] = md5($params['customer_email_password']);
-        
-        if(isset($_SESSION['employee']['employee_usertype'])){
-            $params['createdby_type']=$_SESSION['employee']['employee_usertype'];
-            $params['created_by']=$_SESSION['employee']['employee_user_id'];
-        }      
-        
+        $params['customer_email_password'] = md5($params['customer_email_password']);                    
         $builder = $this->db->table('hpshrc_customer');
         $builder->insert($params);
         $insert_id = $this->db->insertID();
@@ -38,9 +32,7 @@ class Cases_m extends Model
         }
         return FALSE;       
     }
-    public function create_case($params){ 
-        $params['createdby_user_type']='employee';
-        $params['created_by']=$_SESSION['employee']['employee_user_id'];        
+    public function create_case($params){                    
         $builder = $this->db->table('cases');
         $builder->insert($params);
         $insert_id = $this->db->insertID();          
@@ -72,16 +64,16 @@ class Cases_m extends Model
     }
     public function get_view_cases($cases_id) {       
         $ressult = $this->db->query("   SELECT cs.*,hc.*,emp.* FROM `cases` cs
-                                        INNER JOIN hpshrc_customer hc
+                                        LEFT JOIN hpshrc_customer hc
                                         ON hc.customer_id=cs.refCustomer_id
-                                        INNER JOIN employee emp
+                                        LEFT JOIN employee emp
                                         ON emp.employee_user_id=cs.cases_assign_to
                                         WHERE cs.cases_id='{$cases_id}'");
         return $ressult->getRowArray();      
     }
     public function get_involved_peopel($cases_id) {         
         $ressult = $this->db->query("   SELECT emp.* FROM `comment` cmt
-                                        INNER JOIN employee emp
+                                        LEFT JOIN employee emp
                                         ON emp.employee_user_id=cmt.comment_from OR emp.employee_user_id=cmt.comment_to                                       
                                         WHERE cmt.refCases_id='{$cases_id}' AND (cmt.comment_from_usertype='employee' OR cmt.comment_to_usertype='employee') GROUP BY emp.employee_user_id");
         return $ressult->getResultArray();      

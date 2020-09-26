@@ -133,6 +133,8 @@ define('CUSTOMER_ACTIVE_EMAIL_LINK',BASE_URL_CI."/email-verify/");
 define('FRONT_LOGIN_LINK', BASE_URL_CI.'/customer-login');
 define('FRONT_LOGOUT_LINK', BASE_URL_CI.'/customer-logout');
 
+define('CASE_REQUEST_LINK',BASE_URL."/case-request");
+
 //**************************************COMMON ROUTE****************************//
 define('PAGE_404_LINK', BASE_URL_CI.'/errorpage');
 
@@ -148,6 +150,7 @@ define('FRONT_CONTACT_TITLE', 'HPSHRC-FRONT-CONTACT');
 define('FRONT_404_TITLE', 'HPSHRC-404');
 define('CUSTOMER_REGISTRATION_TITLE', 'HPSHRC-CUSTOMER-REGISTRATION');
 define('EDIT_CUSTOMER_TITLE', 'HPSHRC-EDIT-CUSTOMER');
+define('REQUEST_CASES_TITLE', 'HPSHRC-REQUEST-CASES');
 
 
 

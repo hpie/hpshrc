@@ -16,12 +16,12 @@
 <input class="ajax_csrfname" type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
 <!-- app-root @e -->
 <!-- JavaScript -->
-<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/bundle.js"></script>
-<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/scripts.js"></script>
+<script type="text/javascript" nonce='S51U26wMQz' src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/bundle.js"></script>
+<script type="text/javascript" nonce='S51U26wMQz' src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/scripts.js"></script>
 
 <link rel="stylesheet" href="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>css/editors/summernote.css">
-<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/libs/editors/summernote.js"></script>
-<script src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/apps/messages.js"></script>
+<script type="text/javascript" nonce='S51U26wMQz' src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/libs/editors/summernote.js"></script>
+<script type="text/javascript" nonce='S51U26wMQz' src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>js/apps/messages.js"></script>
 <!--<script src="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>js/editors.js"></script>-->
 <?php include 'assets/employee/js/editors.php'; ?>
 

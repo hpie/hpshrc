@@ -66,6 +66,7 @@ $routes->add('front-gallery', 'Home_c::gallery');
 $routes->add('front-contact', 'Home_c::contact');
 $routes->add('customer-login', 'Home_c::login');
 $routes->add('customer-logout', 'Home_c::logout');
+$routes->add('case-request', 'Cases_f::add_cases');
 
 
 //************************************Employee side route****************************//

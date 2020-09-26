@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta http-equiv="X-Content-Type-Options" content="nosniff">   
-        <meta http-equiv="Content-Security-Policy" content="script-src 'strict-dynamic' 'nonce-S51U26wMQz' 'unsafe-inline' http: https: https://www.gstatic.com https://csp.withgoogle.com https://www.google.com; object-src 'none'; base-uri 'none';">
+        <!--<meta http-equiv="Content-Security-Policy" content="script-src 'strict-dynamic' 'nonce-S51U26wMQz' 'unsafe-inline' http: https: https://www.gstatic.com https://csp.withgoogle.com https://www.google.com; object-src 'none'; base-uri 'none';">-->
         <!-- Fonts -->
        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>-->
@@ -27,6 +27,7 @@
         <link href="<?php echo FRONT_ASSETS_FOLDER; ?>css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
         <!-- Template main Css -->
         <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>css/style.css" type="text/css">
+                
         
         <!-- Modernizr -->
         <script nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>js/modernizr-2.6.2.min.js"></script>
@@ -106,18 +107,19 @@
                         </div>
 
                         <div id="navbar" class="navbar-collapse collapse pull-right">
-
                             <ul class="nav navbar-nav">
-
                                 <li><a class="is-active" href="<?php echo BASE_URL; ?>">HOME</a></li>
                                 <li><a href="<?php echo FRONT_ABOUT_LINK; ?>">ABOUT</a></li>
                                 <li class="has-child"><a href="#">CAUSES</a>
-
                                     <ul class="submenu">
                                         <li class="submenu-item"><a href="<?php echo FRONT_DOWNLOAD_LINK; ?>">Downloads</a></li>
                                         <li class="submenu-item"><a href="<?php echo FRONT_BUDGET_LINK; ?>">Budget and Finance</a></li>
                                     </ul>
-
+                                </li>
+                                <li class="has-child"><a href="#">CASE</a>
+                                    <ul class="submenu">
+                                        <li class="submenu-item"><a href="<?php echo CASE_REQUEST_LINK; ?>">Request</a></li>                                        
+                                    </ul>
                                 </li>
                                 <li><a href="<?php echo FRONT_GALLERY_LINK; ?>">GALLERY</a></li>
                                 <li><a href="<?php echo FRONT_CONTACT_LINK; ?>">CONTACT</a></li>

@@ -69,6 +69,8 @@ class Cases_e extends BaseController {
             $params['customer_email_id']=$_POST['customer_email'];
             $params['customer_mobile_no']=$_POST['customer_contact'];
             $params['customer_email_password']=generateStrongPassword(); 
+            $params['createdby_type']=$_SESSION['employee']['employee_usertype'];
+            $params['created_by']=$_SESSION['employee']['employee_user_id'];                        
             $customer_id =  $this->Cases_m->create_customer($params);  
             
             $params=array();            
@@ -78,7 +80,9 @@ class Cases_e extends BaseController {
             $params['cases_assign_to']=$_POST['cases_assign_to'];
             $params['cases_dt_created']=date("Y-m-d H:i:s");
             $params['refCustomer_id']=$customer_id;
-            
+            $params['createdby_user_type']='employee';
+            $params['created_by']=$_SESSION['employee']['employee_user_id'];
+                        
             if($_POST['howtocontact']=='Email'){
                 $params['customer_email']=$_POST['customer_email'];
             }  

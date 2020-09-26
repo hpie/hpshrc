@@ -617,7 +617,7 @@ class SSP {
                 $data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
 			FROM $table
-                        INNER JOIN employee emp
+                        LEFT JOIN employee emp
                         ON emp.employee_user_id=cs.cases_assign_to
 			$where
 			$order 
@@ -627,7 +627,7 @@ class SSP {
 		$resFilterLength = self::sql_exec( $db, $bindings,
 			"SELECT COUNT({$primaryKey})
 			FROM $table
-                        INNER JOIN employee emp
+                        LEFT JOIN employee emp
                         ON emp.employee_user_id=cs.cases_assign_to
 			$where "
 		);
@@ -636,7 +636,7 @@ class SSP {
 		$resTotalLength = self::sql_exec( $db,
 			"SELECT COUNT({$primaryKey})
 			FROM $table
-                        INNER JOIN employee emp
+                        LEFT JOIN employee emp
                         ON emp.employee_user_id=cs.cases_assign_to
                         "
 		);

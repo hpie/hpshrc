@@ -38,13 +38,28 @@
                                 ?>
                           <div class="nk-reply-item">
                             <div class="nk-reply-header">
+                                <?php if($crow['comment_from_usertype']=='employee'){
+                                    ?>
                                 <div class="user-card">
                                     <div class="user-avatar sm bg-blue">
                                         <span><?php echo strtoupper(substr($crow['f_user_firstname'],0,1).substr($crow['f_user_lastname'],0,1)); ?></span>
                                     </div>
-                                    <div class="user-name"><?php echo $crow['f_user_firstname'].' '.$crow['f_user_lastname']; ?></div>
+                                    <div class="user-name"><?php echo $crow['f_user_firstname'].' '.$crow['f_user_lastname']; ?> (Employee)</div>
                                 </div>
                                 <div class="date-time"><?php echo date("d-M-Y", strtotime($crow['comment_datetime'])); ?></div>
+                                <?php
+                                } ?> 
+                                <?php if($crow['comment_from_usertype']=='customer'){
+                                    ?>
+                                <div class="user-card">
+                                    <div class="user-avatar sm bg-blue">
+                                        <span><?php echo strtoupper(substr($crow['fhc_customer_first_name'],0,1).substr($crow['fhc_customer_last_name'],0,1)); ?></span>
+                                    </div>
+                                    <div class="user-name"><?php if($crow['fhc_customer_first_name']==''){echo 'Guest';} else{ echo $crow['fhc_customer_first_name'].' '.$crow['fhc_customer_last_name']; } ?> (Customer)</div>
+                                </div>
+                                <div class="date-time"><?php echo date("d-M-Y", strtotime($crow['comment_datetime'])); ?></div>
+                                <?php
+                                } ?>
                             </div>
                             <div class="nk-reply-body">
                                 <div class="nk-reply-entry entry">
@@ -204,13 +219,13 @@
                                         <h6 class="overline-title-alt mb-2">Customer Information</h6>
                                         <ul class="user-contacts">
                                             <li>
-                                               <em class="icon ni ni-user-fill"></em><span><?php echo $caseDetails['customer_first_name'].' '.$caseDetails['customer_last_name']; ?></span>
+                                               <em class="icon ni ni-user-fill"></em><span><?php if($caseDetails['customer_first_name']==''){echo 'Not Avail';}else{echo $caseDetails['customer_first_name'].' '.$caseDetails['customer_last_name'];} ?></span>
                                             </li>
                                             <li>
-                                                <em class="icon ni ni-mail"></em><span><?php echo $caseDetails['customer_email_id']; ?></span>
+                                                <em class="icon ni ni-mail"></em><span><?php if($caseDetails['customer_email_id']==''){echo 'Not Avail';}else{echo $caseDetails['customer_email_id'];} ?></span>
                                             </li>
                                             <li>
-                                                <em class="icon ni ni-call"></em><span><?php echo $caseDetails['customer_mobile_no']; ?></span>
+                                                <em class="icon ni ni-call"></em><span><?php if($caseDetails['customer_mobile_no']==0){echo 'Not Avail';}else{echo $caseDetails['customer_mobile_no'];} ?></span>
                                             </li>
                                         </ul>
                                     </div>
@@ -223,7 +238,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <span class="sub-text">Created By:</span>
-                                                <span><?php echo $caseDetails['createdby_user_type'].': '; if($caseDetails['createdby_user_type']=='employee'){ echo $caseDetails['customer_first_name'].' '.$caseDetails['customer_last_name'];}if($caseDetails['createdby_user_type']=='customer'){ echo $caseDetails['user_firstname'].' '.$caseDetails['user_lastname'];} ?></span>
+                                                <span><?php echo $caseDetails['createdby_user_type'].': '; if($caseDetails['createdby_user_type']=='customer'){ if($caseDetails['customer_first_name']=='') echo $caseDetails['customer_first_name'].' '.$caseDetails['customer_last_name'];}if($caseDetails['createdby_user_type']=='employee'){ echo $caseDetails['user_firstname'].' '.$caseDetails['user_lastname'];} ?></span>
                                             </div>
                                             <div class="col-12">
                                                 <span class="sub-text">Status:</span>

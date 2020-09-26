@@ -59,9 +59,14 @@ class Login_m extends Model
         return false;
     }
         
-    public function getTokenAndCheck($table,$user_id) {       
-        $where_field=$table.'_user_id';
-        $table=$table.'_token';        
+    public function getTokenAndCheck($table,$user_id) {
+        if($table=="customer"){
+            $where_field=$table.'_id';
+            $table=$table.'_token'; 
+        }else{
+            $where_field=$table.'_user_id';
+            $table=$table.'_token'; 
+        }
         $result = $this->db->query("SELECT token FROM $table WHERE $where_field=$user_id");        
         $data = $result->getRowArray();        
         if($data){

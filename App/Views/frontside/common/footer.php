@@ -216,8 +216,7 @@
 <!-- jQuery -->
 <script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>jquery/jquery.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
 <script src="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrap.min.js" type="text/javascript" nonce='S51U26wMQz'></script>
-<script nonce="S51U26wMQz">window.jQuery || document.write('')</script>
-
+<script nonce="S51U26wMQz">window.jQuery || document.write('');</script>
 <!-- Bootsrap javascript file -->
 <!-- Datatables -->
 <script nonce='S51U26wMQz' src="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -225,13 +224,22 @@
 <script nonce='S51U26wMQz' src="<?php echo CENTRAL_ASSETS_FOLDER; ?>bootstrap/bootstrapValidator.min.js" type="text/javascript"></script>
 
 <!-- owl carouseljavascript file -->
-<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>js/owl.carousel.min.js"></script>
+<script type="text/javascript" nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>js/owl.carousel.min.js"></script>
 
 <!-- Template main javascript -->
-<script nonce="S51U26wMQz" src="<?php echo FRONT_ASSETS_FOLDER; ?>js/main.js"></script>
-<script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.prettyPhoto.js" type="text/javascript"></script>
-<?php include(APPPATH . "Views/frontside/common/notify.php"); ?>
+<script type="text/javascript" nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>js/main.js"></script>
+<script type="text/javascript" nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/front/js/jquery.prettyPhoto.js"></script>
 
+<link type="text/css" href="<?php echo FRONT_ASSETS_FOLDER; ?>css/summernote.min.css" rel="stylesheet">
+<script type="text/javascript" nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>js/summernote.min.js"></script>
+<?php include(APPPATH . "Views/frontside/common/notify.php"); ?>
+<script>
+      $('#summernote').summernote({
+         tabsize: 2,
+          height: 120,
+          toolbar: [['style', ['style']], ['font', ['bold', 'underline', 'strikethrough', 'clear']], ['font', ['superscript', 'subscript']], ['color', ['color']], ['fontsize', ['fontsize', 'height']], ['para', ['ul', 'ol', 'paragraph']], ['view', ['fullscreen']]]
+      });
+</script>
 <script type="text/javascript" nonce='S51U26wMQz'>
    $(document).ready(function () {   
     $(".mobileno").keyup(function (e) {
@@ -315,7 +323,89 @@
             }
         });
     });
-</script>    
+</script> 
+<?php if ($title == REQUEST_CASES_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {                 
+            $('#howtocontact').on('change', function () {
+                var howtocontact = $(this).val();
+                if(howtocontact=='Email'){
+                    $(".howtocontact_email").removeClass("howtocontact");
+                    $("#customer_email").val("");
+                    $("#customer_contact").val("9999999999");
+                    $(".howtocontact_mobile").addClass("howtocontact");
+                }
+                if(howtocontact=='Mobile'){
+                    $(".howtocontact_mobile").removeClass("howtocontact");
+                    $("#customer_contact").val("");
+                    $("#customer_email").val("example@gmail.com");
+                    $(".howtocontact_email").addClass("howtocontact");
+                }
+                if(howtocontact=='Both'){
+                    $(".howtocontact_email").removeClass("howtocontact");
+                    $(".howtocontact_mobile").removeClass("howtocontact");
+                    $("#customer_email").val("");
+                    $("#customer_contact").val("");
+                }
+            });
+            $('#add_cases').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    case_files_file: {
+                        validators: {
+                            file: {
+                                extension: 'jpeg,png,jpg,pdf',
+                                type: 'image/jpeg,image/png,image/jpg,application/pdf',                                
+                                message: 'The selected file is not valid'
+                            },
+                            notEmpty: {
+                                message: 'Please select profile image'
+                            }
+                        }
+                    },
+                    customer_email: {
+                        validators: {                            
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            },
+                            notEmpty: {
+                                message: 'Please enter valid email address'
+                            }
+                        }
+                    },
+                    customer_contact: {
+                        validators: {
+                            stringLength: {
+                                min: 10,
+                                max: 10
+                            },
+                            notEmpty: {
+                                message: 'Please enter valid mobile number'
+                            }
+                        }
+                    },
+                    cases_title: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Title'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<?php } ?>  
+
 <?php if ($title == FRONT_DOWNLOAD_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">

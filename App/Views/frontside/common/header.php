@@ -27,8 +27,10 @@
         <link href="<?php echo FRONT_ASSETS_FOLDER; ?>css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
         <!-- Template main Css -->
         <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>css/style.css" type="text/css">
-                
-        
+         
+        <?php if($title==FRONT_VIEW_CASES_TITLE){ ?>
+        <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>css/comment.css" type="text/css">
+        <?php } ?>
         <!-- Modernizr -->
         <script nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>js/modernizr-2.6.2.min.js"></script>
      

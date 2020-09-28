@@ -67,6 +67,7 @@ $routes->add('front-contact', 'Home_c::contact');
 $routes->add('customer-login', 'Home_c::login');
 $routes->add('customer-logout', 'Home_c::logout');
 $routes->add('case-request', 'Cases_f::add_cases');
+$routes->add('front-view-cases/(:any)', 'Cases_f::view_cases/$1');
 
 
 //************************************Employee side route****************************//

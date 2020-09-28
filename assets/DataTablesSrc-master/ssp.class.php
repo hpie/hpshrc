@@ -747,7 +747,7 @@ class SSP {
                             $text  = 'Removed';
                             $isactive = 0;
                         }
-                        $row['upload_file_original_name']="<a target='_blank' class='download' href=".BASE_URL.'/uploads/doc/'.$row['upload_file_location']."><u>".$row['upload_file_original_name']."</u></a>"; 
+                        $row['upload_file_original_name']="<a target='_blank' class='download' href=".BASE_URL.'/uploads/doc/causes/'.$row['upload_file_location']."><u>".$row['upload_file_original_name']."</u></a>"; 
                         $row['upload_file_status'] = "<button type='button' data-id='".$upload_file_id."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
                         array_push($resData, $row);
                     }  
@@ -762,7 +762,7 @@ class SSP {
 			"data" => $resData
 		);
 	}
-          static function file_list_download ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+        static function file_list_download ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{                         
 		$bindings = array();
 		$db = self::db( $conn );
@@ -833,7 +833,7 @@ class SSP {
                     foreach ($result as $row){
                         $upload_file_id = $row['upload_file_id'];
                         $row['index']=''; 
-                        $row['download']="<a class='download' href=".BASE_URL.'/uploads/doc/'.$row['upload_file_location']." download><u>Click here to download</u></a>"; 
+                        $row['download']="<a class='download' href=".BASE_URL.'/uploads/doc/causes/'.$row['upload_file_location']." download><u>Click here to download</u></a>"; 
                         array_push($resData, $row);
                     }  
                 }

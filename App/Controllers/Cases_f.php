@@ -90,5 +90,12 @@ class Cases_f extends BaseController {
         helper('form');        
         $data['title'] = REQUEST_CASES_TITLE;        
         echo front_view('frontside/case_request',$data);
-    }    
+    } 
+     public function view_cases($case_id) {        
+        $data['caseDetails']=$this->Cases_m->get_view_cases($case_id);
+        $data['involved_peopel']=$this->Cases_m->get_involved_peopel($case_id);
+        $data['comments']=$this->Cases_m->get_comments($case_id);
+        $data['title'] = FRONT_VIEW_CASES_TITLE;       
+        echo front_view('frontside/view_cases',$data);
+    } 
 }

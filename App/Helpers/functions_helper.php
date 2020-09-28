@@ -371,13 +371,12 @@ if (!function_exists('videoUpload')) {
 
 if (!function_exists('singleFileUpload')) {
 
-    function singleFileUpload($file_tag) {
+    function singleFileUpload($file_tag,$folder) {
 
         $file_ary = $_FILES[$file_tag];
 
-        return fileUpload($file_ary);
+        return fileUpload($file_ary,$folder);
     }
-
 }
 
 if (!function_exists('multiFileUpload')) {

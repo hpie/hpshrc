@@ -182,11 +182,11 @@ class App extends BaseConfig
 	*/
 	public $sessionDriver            = 'files';
 	public $sessionCookieName        = 'hpshrc_session';
-	public $sessionExpiration        = 7200;
+	public $sessionExpiration        = 0;
 	public $sessionSavePath          = WRITEPATH;
 	public $sessionMatchIP           = false;
-	public $sessionTimeToUpdate      = 300;
-	public $sessionRegenerateDestroy = true;
+	public $sessionTimeToUpdate      = 0;
+	public $sessionRegenerateDestroy = false;
 
 	/*
 	|--------------------------------------------------------------------------

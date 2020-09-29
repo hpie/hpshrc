@@ -125,7 +125,7 @@ class Employee_a extends BaseController {
     
     public function edit_employee($employee_id) {                                
         if (isset($_POST['user_firstname'])) {
-            unset($_POST['g-recaptcha-response']);           
+                     
             $res =  $this->Common_m->edit_employee($_POST,$employee_id);                       
             $result = array();
             $send_email_error = 0;

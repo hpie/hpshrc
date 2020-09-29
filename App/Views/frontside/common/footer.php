@@ -406,6 +406,57 @@
     </script>
 <?php } ?>  
 
+<?php if ($title == FRONT_LIST_CASES_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {           
+            fill_datatable1();
+            function fill_datatable1()
+            {
+                $('#example').DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/front_cases_list.php' ?>",
+                        'data': {
+                            customer_id: <?php
+    if (isset($_SESSION['customer']['customer_id'])) {
+        echo $_SESSION['customer']['customer_id'];
+    }else{echo 0;}
+    ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "cases_title"},
+                        {"data": "cases_priority"},
+                        {"data": "employee_name"},
+                        {"data": "cases_status"},
+                        {"data": "cases_dt_created"},
+                        {"data": "action"}
+                    ]
+                });
+            }
+        });
+    </script>
+<?php } ?>     
+    
 <?php if ($title == FRONT_DOWNLOAD_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">

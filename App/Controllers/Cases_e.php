@@ -29,7 +29,7 @@ class Cases_e extends BaseController {
         } 
     }   
     
-     public function edit_cases($cases_id) { 
+    public function edit_cases($cases_id) { 
          if (isset($_POST['cases_title'])) {            
             $params=array();
             $params['cases_priority']=$_POST['cases_priority'];

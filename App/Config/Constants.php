@@ -134,6 +134,7 @@ define('FRONT_LOGIN_LINK', BASE_URL_CI.'/customer-login');
 define('FRONT_LOGOUT_LINK', BASE_URL_CI.'/customer-logout');
 
 define('CASE_REQUEST_LINK',BASE_URL."/case-request");
+define('FRONT_CASES_LIST_LINK', BASE_URL_CI.'/front-list-cases');
 define('FRONT_VIEW_CASES_LINK', BASE_URL_CI.'/front-view-cases/');
 
 //**************************************COMMON ROUTE****************************//
@@ -153,6 +154,7 @@ define('CUSTOMER_REGISTRATION_TITLE', 'HPSHRC-CUSTOMER-REGISTRATION');
 define('EDIT_CUSTOMER_TITLE', 'HPSHRC-EDIT-CUSTOMER');
 define('REQUEST_CASES_TITLE', 'HPSHRC-REQUEST-CASES');
 define('FRONT_VIEW_CASES_TITLE', 'HPSHRC-VIEW-CASES');
+define('FRONT_LIST_CASES_TITLE', 'HPSHRC-LIST-CASES');
 
 
 

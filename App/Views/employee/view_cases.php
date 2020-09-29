@@ -4,13 +4,17 @@
             <div class="nk-msg">               
                 <div class="nk-msg-body bg-white profile-shown">
                     <div class="nk-msg-head">
-                        <h4 class="title d-none d-lg-block">#<?php echo $caseDetails['cases_id'].': '.$caseDetails['cases_title']; ?></h4>
+                        <h2 class="title d-none d-lg-block">#<?php echo $caseDetails['cases_id'].': '.$caseDetails['cases_title']; ?></h2>
                         <div class="nk-msg-head-meta">
                             <div class="d-none d-lg-block">
                                 <ul class="nk-msg-tags">
                                     <li><span class="label-tag"><span>Priority: <em class="icon ni ni-more-v"></em><?php echo $caseDetails['cases_priority']; ?></span></span></li>
                                     <li><span class="label-tag"><span>Status: <em class="icon ni ni-bar-chart-fill"></em><?php echo $caseDetails['cases_status']; ?></span></span></li>
                                 </ul>
+                                
+                                <hr>
+                                <span class="label-tag"><span><strong>Description: </strong></span></span>
+                            <?php echo $caseDetails['cases_message']; ?>  
                             </div>
                             <div class="d-lg-none"><a href="#" class="btn btn-icon btn-trigger nk-msg-hide ml-n1"><em class="icon ni ni-arrow-left"></em></a></div>
                             <ul class="nk-msg-actions">
@@ -45,8 +49,7 @@
                                         <span><?php echo strtoupper(substr($crow['f_user_firstname'],0,1).substr($crow['f_user_lastname'],0,1)); ?></span>
                                     </div>
                                     <div class="user-name"><?php echo $crow['f_user_firstname'].' '.$crow['f_user_lastname']; ?> (Employee)</div>
-                                </div>
-                                <div class="date-time"><?php echo date("d-M-Y", strtotime($crow['comment_datetime'])); ?></div>
+                                </div>                                
                                 <?php
                                 } ?> 
                                 <?php if($crow['comment_from_usertype']=='customer'){
@@ -56,10 +59,10 @@
                                         <span><?php echo strtoupper(substr($crow['fhc_customer_first_name'],0,1).substr($crow['fhc_customer_last_name'],0,1)); ?></span>
                                     </div>
                                     <div class="user-name"><?php if($crow['fhc_customer_first_name']==''){echo 'Guest';} else{ echo $crow['fhc_customer_first_name'].' '.$crow['fhc_customer_last_name']; } ?> (Customer)</div>
-                                </div>
-                                <div class="date-time"><?php echo date("d-M-Y", strtotime($crow['comment_datetime'])); ?></div>
+                                </div>                                
                                 <?php
                                 } ?>
+                                <div class="date-time"><?php echo date("d-M-Y", strtotime($crow['comment_datetime'])); ?></div>
                             </div>
                             <div class="nk-reply-body">
                                 <div class="nk-reply-entry entry">

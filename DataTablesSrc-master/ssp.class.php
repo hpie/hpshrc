@@ -16,7 +16,7 @@
 //$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
 //$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
 
-include '../../common_url.php';
+include '../common_url.php';
 //define('BASE_URL', $url);
 // REMOVE THIS BLOCK - used for DataTables test environment only!
 $file = $_SERVER['DOCUMENT_ROOT'].'/datatables/pdo.php';
@@ -339,8 +339,8 @@ class SSP {
 			"data" => $resData
 		);
 	}
-         static function admin_employee_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
-         {                         
+        static function admin_employee_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+        {                         
 		$bindings = array();
 		$db = self::db( $conn );
                 

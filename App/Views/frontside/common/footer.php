@@ -433,7 +433,7 @@
                     "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     "ajax": {
                         'type': 'POST',
-                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/front_cases_list.php' ?>",
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/front_cases_list.php' ?>",
                         'data': {
                             customer_id: <?php
     if (isset($_SESSION['customer']['customer_id'])) {
@@ -496,7 +496,7 @@
                     "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     "ajax": {
                         'type': 'POST',
-                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/file_list_download.php' ?>",
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/file_list_download.php' ?>",
                         'data': {
                             category_code: category_code
                         }

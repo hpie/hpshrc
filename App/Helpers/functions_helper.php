@@ -27,7 +27,6 @@ if (!function_exists('echoCaptcha')) {
                     <div class='g-recaptcha col-md-6 col-sm-6 col-xs-12' style='' data-sitekey='6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo' data-callback='enableLogin'></div>                                                           
                 ";
     }
-
 }
 if (!function_exists('generateStrongPassword')) {
 

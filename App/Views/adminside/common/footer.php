@@ -89,7 +89,7 @@
                     "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     "ajax": {
                         'type': 'POST',
-                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/admin_customers_list.php' ?>",
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/admin_customers_list.php' ?>",
                         'data': {
                             admin_user_id: <?php
                             if (isset($_SESSION['admin']['admin_user_id'])) {
@@ -323,7 +323,7 @@
                     "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     "ajax": {
                         'type': 'POST',
-                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/admin_employee_list.php' ?>",
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/admin_employee_list.php' ?>",
                         'data': {
                             admin_user_id: <?php
                             if (isset($_SESSION['admin']['admin_user_id'])) {
@@ -610,7 +610,7 @@
                     "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     "ajax": {
                         'type': 'POST',
-                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/file_list.php' ?>",
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/file_list.php' ?>",
                         'data': {
                             admin_user_id: <?php
                             if (isset($_SESSION['admin']['admin_user_id'])) {

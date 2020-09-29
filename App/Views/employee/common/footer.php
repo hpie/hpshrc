@@ -201,7 +201,7 @@
                     "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     "ajax": {
                         'type': 'POST',
-                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/cases_list.php' ?>",
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/cases_list.php' ?>",
                         'data': {
                             employee_user_id: <?php
     if (isset($_SESSION['employee']['employee_user_id'])) {
@@ -252,7 +252,7 @@
                     "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     "ajax": {
                         'type': 'POST',
-                        'url': "<?php echo BASE_URL . '/assets/DataTablesSrc-master/customers_list.php' ?>",
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/customers_list.php' ?>",
                         'data': {
                             employee_user_id: <?php
     if (isset($_SESSION['employee']['employee_user_id'])) {

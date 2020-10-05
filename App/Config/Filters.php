@@ -16,7 +16,16 @@ class Filters extends BaseConfig
 	public $globals = [
 		'before' => [
 //			'honeypot',
-			 'csrf' => ['except' => ['admin-load-sub-categories']]
+                    'csrf' => ['except' => ['employee-add-comment',
+                                            'admin-load-sub-categories',
+                                            'front-add-comment',
+                                            'approve-status',
+                                            'employee-update-profile',
+                                            'admin-customer-approve-status',
+                                            'admin-employee-approve-status',
+                                            'admin-active-causes',
+                                            'admin-update-profile'
+                                            ]]                   
 		],
 		'after'  => [
 			'toolbar',

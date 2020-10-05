@@ -21,7 +21,9 @@ class Common_m extends Model
         }    
         $params['customer_email_password'] = md5($params['customer_email_password']);
         unset($params['confirm_password']);
-        unset($params['g-recaptcha-response']);     
+        if(isset($params['g-recaptcha-response'])){
+            unset($params['g-recaptcha-response']);    
+        }
         
         if(isset($_SESSION['employee']['employee_usertype'])){
             $params['createdby_type']=$_SESSION['employee']['employee_usertype'];
@@ -59,8 +61,9 @@ class Common_m extends Model
             );
         }    
         $params['user_email_password'] = md5($params['user_email_password']);        
-        unset($params['g-recaptcha-response']);     
-    
+        if(isset($params['g-recaptcha-response'])){
+            unset($params['g-recaptcha-response']);    
+        }       
         $params['created_by']=$_SESSION['admin']['admin_user_id'];
         
         $builder = $this->db->table('employee');

@@ -123,7 +123,7 @@ class Customers_e extends BaseController {
     
     public function edit_customer($customer_id) {                                
         if (isset($_POST['customer_first_name'])) {
-            unset($_POST['g-recaptcha-response']);           
+                     
             $res =  $this->Common_m->edit_customer($_POST,$customer_id);                       
             $result = array();
             $send_email_error = 0;

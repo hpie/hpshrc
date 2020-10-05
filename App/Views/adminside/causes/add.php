@@ -68,17 +68,12 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="file" id="upload_file_original_name" name="upload_file_original_name" required="required" class="form-control col-md-7 col-xs-12" accept="application/pdf,image/jpg,image/jpeg,image/png">
                                 </div>                                  
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">reCaptcha
-                                </label>                                
-                                    <?php echo echoCaptcha(); ?>                                                           
-                            </div>                                                                                                             
+                            </div>                                                                                                                                        
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
                                     <button class="btn btn-primary" type="reset">Reset</button>
-                                    <button type="submit" class="btn btn-success" disabled  id="btnLogin">Submit</button>
+                                    <button type="submit" class="btn btn-success"  id="btnLogin">Submit</button>
                                 </div>
                             </div>                            
                        <?php echo form_close();?>  

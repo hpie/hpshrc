@@ -16,7 +16,7 @@
 //$protocol = (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS'])!== 'off') ? 'https' : 'http';
 //$base_url = $protocol.'://'.$_SERVER['HTTP_HOST'];
 
-include '../../common_url.php';
+include '../common_url.php';
 //define('BASE_URL', $url);
 // REMOVE THIS BLOCK - used for DataTables test environment only!
 $file = $_SERVER['DOCUMENT_ROOT'].'/datatables/pdo.php';
@@ -339,8 +339,8 @@ class SSP {
 			"data" => $resData
 		);
 	}
-         static function admin_employee_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
-         {                         
+        static function admin_employee_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+        {                         
 		$bindings = array();
 		$db = self::db( $conn );
                 
@@ -583,6 +583,88 @@ class SSP {
 			"data" => $resData
 		);
 	}
+        
+           static function front_cases_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+         {               
+		$bindings = array();
+		$db = self::db( $conn );
+                
+                $columns_order=$columns;
+		// Build the SQL query string from the request
+                if (($request['order'][0]['column'])>0) {
+                    $columnsArray = array();                   
+                    foreach ($columns as $crow) {                       
+                        if (substr_count($crow['db'], " as ")) {
+                            $crow['db'] = explode(" as ", $crow['db'])[0];
+                        }
+                        array_push($columnsArray, $crow);
+                    }
+                    $columns_order = $columnsArray;
+                }                
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns_order );                               
+                
+		$where = self::filter( $request, $columns, $bindings );
+//                $where="";
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                } 
+                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			FROM $table
+                        LEFT JOIN employee emp
+                        ON emp.employee_user_id=cs.cases_assign_to
+			$where
+			$order 
+			$limit"
+		); 		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			FROM $table
+                        LEFT JOIN employee emp
+                        ON emp.employee_user_id=cs.cases_assign_to
+			$where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			FROM $table
+                        LEFT JOIN employee emp
+                        ON emp.employee_user_id=cs.cases_assign_to
+                        "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){                                                                         
+                        $cases_id = $row['cases_id'];                                                                       
+                        $row['index']='';
+                        $row['employee_name']=$row['user_firstname'].' '.$row['user_lastname'];
+                        $row['action']="<a href='".BASE_URL_DATATABLES."front-view-cases/$cases_id' class='btn btn-xs btn-primary'>View&nbsp;<em class='icon ni ni-eye-fill'></em></a>";
+                        array_push($resData, $row);
+                    }  
+                }
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+        
+        
          static function cases_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
          {               
 		$bindings = array();

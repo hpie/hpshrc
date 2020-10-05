@@ -68,16 +68,11 @@
                                             } ?> 
                                         </select>
                                     </div>
-                            </div>                                                       
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">reCaptcha
-                                </label>                                
-                                    <?php echo echoCaptcha(); ?>                                                           
-                            </div>
+                            </div>                                                                                 
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">                                   
-                                    <button type="submit" class="btn btn-success" id="btnSubmit" disabled="">Update</button>                                  
+                                    <button type="submit" class="btn btn-success" id="btnSubmit">Update</button>                                  
                                 </div>
                             </div>                            
                         <?php echo form_close();?> 

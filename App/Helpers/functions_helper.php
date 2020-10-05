@@ -1,5 +1,20 @@
 <?php
 
+function auto_logout($type,$field)
+{    
+    $t = time();    
+    $t0 = $_SESSION[$type][$field];
+    $diff = $t - $t0;
+    if ($diff > 7200 || !isset($t0))
+    {          
+        return true;
+    }
+    else
+    {
+        $_SESSION[$type][$field] = time();
+    }
+    return FALSE;
+}
 if (!function_exists('echoCaptcha')) {
 
     function echoCaptcha() {
@@ -12,7 +27,6 @@ if (!function_exists('echoCaptcha')) {
                     <div class='g-recaptcha col-md-6 col-sm-6 col-xs-12' style='' data-sitekey='6LdnvCQUAAAAAGmHBukXVzjs5NupVLlaIHJdpFWo' data-callback='enableLogin'></div>                                                           
                 ";
     }
-
 }
 if (!function_exists('generateStrongPassword')) {
 
@@ -125,21 +139,9 @@ function sessionCustomer($row) {
     foreach ($row as $key => &$value) {        
             $_SESSION['customer'][$key] = $value;        
     }    
-    $_SESSION['customer']['customer_usertype'] = 'customer'; 
-    $_SESSION['customer'][$_SESSION['customer']['customer_usertype'].'_session_id'] = session_create_id();    
-    return true;
-}
-function sessionCheckCustomer() {
-    if ((!isset($_SESSION['customer']['customer_id'])) || !isset($_SESSION['customer']['customer_usertype']) || !isset($_SESSION['customer']['customer_session_id'])) {    
-        header('Location: ' . FRONT_LOGIN_LINK);
-        exit();
-    }
-    if (isset($_SESSION['customer']['customer_usertype'])) {
-        if ($_SESSION['customer']['customer_usertype'] != 'customer') {            
-            header('Location: ' . FRONT_LOGIN_LINK);
-            exit();
-        }
-    }
+    $_SESSION['customer']['customer_usertype'] = 'customer';
+    $_SESSION['customer']['customer_time'] = time();
+//    $_SESSION['customer'][$_SESSION['customer']['customer_usertype'].'_session_id'] = session_create_id();    
     return true;
 }
 
@@ -148,11 +150,12 @@ function sessionAdmin($row) {
             $_SESSION['admin'][$key] = $value;        
     }    
     $_SESSION['admin']['admin_usertype'] = 'admin'; 
-    $_SESSION['admin'][$_SESSION['admin']['admin_usertype'].'_session_id'] = session_create_id();    
+    $_SESSION['admin']['admin_time'] = time();
+//    $_SESSION['admin'][$_SESSION['admin']['admin_usertype'].'_session_id'] = session_create_id();    
     return true;
 }
 function sessionCheckAdmin() {
-    if ((!isset($_SESSION['admin']['admin_user_id'])) || !isset($_SESSION['admin']['admin_usertype']) || !isset($_SESSION['admin']['admin_session_id'])) {    
+    if ((!isset($_SESSION['admin']['admin_user_id'])) || !isset($_SESSION['admin']['admin_usertype'])) {    
         header('Location: ' . ADMIN_LOGIN_LINK);
         exit();
     }
@@ -162,20 +165,41 @@ function sessionCheckAdmin() {
             exit();
         }
     }
+    if (auto_logout("admin","admin_time")) {
+        header('Location: ' . ADMIN_LOGIN_LINK);
+        exit;
+    }
     return true;
 }
-
 function sessionEmployee($row) {    
     foreach ($row as $key => &$value) {                
         $_SESSION['employee'][$key] = $value;        
     }    
 //    $_SESSION['user_id'] = $row['employee_user_id'];
     $_SESSION['employee']['employee_usertype'] = 'employee';
-    $_SESSION['employee'][$_SESSION['employee']['employee_usertype'].'_session_id'] = session_create_id();        
+    $_SESSION['employee']['employee_time'] = time();
+//    $_SESSION['employee'][$_SESSION['employee']['employee_usertype'].'_session_id'] = session_create_id();        
+    return true;
+}
+function sessionCheckCustomer() {
+    if ((!isset($_SESSION['customer']['customer_id'])) || !isset($_SESSION['customer']['customer_usertype'])) {        
+        header('Location: ' . FRONT_LOGIN_LINK);
+        exit();
+    }    
+    if (isset($_SESSION['customer']['customer_usertype'])) {
+        if ($_SESSION['customer']['customer_usertype'] != 'customer') {            
+            header('Location: ' . FRONT_LOGIN_LINK);
+            exit();
+        }
+    }    
+    if (auto_logout("customer","customer_time")) {
+        header('Location: ' . FRONT_LOGIN_LINK);
+        exit();
+    } 
     return true;
 }
 function sessionCheckEmployee() {     
-    if (!isset($_SESSION['employee']['employee_user_id']) || !isset($_SESSION['employee']['employee_usertype']) || !isset($_SESSION['employee']['employee_session_id'])) {                 
+    if (!isset($_SESSION['employee']['employee_user_id']) || !isset($_SESSION['employee']['employee_usertype'])) {                 
         header('Location: ' . EMPLOYEE_LOGIN_LINK);        
         exit();
     }
@@ -184,6 +208,10 @@ function sessionCheckEmployee() {
             header('Location: ' . EMPLOYEE_LOGIN_LINK);
             exit();
         }
+    }
+    if (auto_logout("employee","employee_time")) {
+        header('Location: ' . EMPLOYEE_LOGIN_LINK);
+        exit();
     }
     return true;
 }

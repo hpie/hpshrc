@@ -31,8 +31,7 @@ class Causes_c extends BaseController {
         $this->userId = (int) $_SESSION['admin']['admin_user_id'];        
     }
     public function add_causes() {         
-        if (isset($_POST['upload_file_title'])) {
-            unset($_POST['g-recaptcha-response']); 
+        if (isset($_POST['upload_file_title'])) {            
             if ($_POST['upload_file_title'] && $_POST['upload_file_title'] != '') {                
                 $_POST['admin_user_id'] = $this->userId;
                 if (($_FILES['upload_file_original_name']['name']) != '') {
@@ -63,8 +62,7 @@ class Causes_c extends BaseController {
     }
     
     public function edit_causes($upload_file_id) {        
-        if (isset($_POST['upload_file_title'])) {   
-            unset($_POST['g-recaptcha-response']);           
+        if (isset($_POST['upload_file_title'])) {                         
             if ($_POST['upload_file_title'] && $_POST['upload_file_title'] != '') {                
                 $_POST['admin_user_id'] = $this->userId;            
                 $res = $this->Causes_m->edit_causes($_POST,$upload_file_id);                

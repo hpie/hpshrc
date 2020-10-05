@@ -56,6 +56,7 @@ class Common_c extends BaseController {
             $res =  $this->Cases_m->create_case($params);             
             if ($res) {
                  if (($_FILES['case_files_file']['name'][0]) != '') {                   
+<<<<<<< HEAD
                     $cases_files = multiFileUpload('case_files_file',$res.'/'); 
                     $i=0;
                     foreach ($cases_files as $row) {
@@ -70,6 +71,17 @@ class Common_c extends BaseController {
                         $params['case_files_type'] ="main";                                                
                         $this->Cases_m->add_cases_files($params);
                         $i=$i+1;
+=======
+                    $cases_files = multiFileUpload('case_files_file',$res.'/');                                        
+                    foreach ($cases_files as $row) {
+                        $params = array();
+                        $params['refCases_id'] = $res;
+                        $params['case_files_name'] = $row[2]['original_file_name'];
+                        $params['case_files_unique_name'] = $row[2]['file_name'];
+                        $params['case_files_size'] = $row[2]['file_size'];
+                        $params['case_files_type'] ="main";                                                
+                        $this->Cases_m->add_cases_files($params);
+>>>>>>> 7115173cb0641d48847ee198896e5b3731ffe0b1
                     }
                 } 
                 $params=array();

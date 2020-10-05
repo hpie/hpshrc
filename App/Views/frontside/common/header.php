@@ -120,7 +120,8 @@
                                 </li>
                                 <li class="has-child"><a href="#">CASE</a>
                                     <ul class="submenu">
-                                        <li class="submenu-item"><a href="<?php echo CASE_REQUEST_LINK; ?>">Request</a></li>                                        
+                                        <li class="submenu-item"><a href="<?php echo CASE_REQUEST_LINK; ?>">Request</a></li>   
+                                        <li class="submenu-item"><a href="<?php echo FRONT_CASES_LIST_LINK; ?>">My Cases</a></li>   
                                     </ul>
                                 </li>
                                 <li><a href="<?php echo FRONT_GALLERY_LINK; ?>">GALLERY</a></li>

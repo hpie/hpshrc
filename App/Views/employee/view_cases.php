@@ -6,193 +6,56 @@
                     <div class="nk-msg-head">
                         <h2 class="title d-none d-lg-block">#<?php echo $caseDetails['cases_id'].': '.$caseDetails['cases_title']; ?></h2>
                         <div class="nk-msg-head-meta">
-                            <div class="d-none d-lg-block">
+                            <div class="d-none d-lg-block col-md-6">
                                 <ul class="nk-msg-tags">
                                     <li><span class="label-tag"><span>Priority: <em class="icon ni ni-more-v"></em><?php echo $caseDetails['cases_priority']; ?></span></span></li>
                                     <li><span class="label-tag"><span>Status: <em class="icon ni ni-bar-chart-fill"></em><?php echo $caseDetails['cases_status']; ?></span></span></li>
-                                </ul>
-                                
+                                </ul>                                
                                 <hr>
                                 <span class="label-tag"><span><strong>Description: </strong></span></span>
-                            <?php echo $caseDetails['cases_message']; ?>  
+                            <?php echo $caseDetails['cases_message']; ?>                                                                                             
                             </div>
-                            <div class="d-lg-none"><a href="#" class="btn btn-icon btn-trigger nk-msg-hide ml-n1"><em class="icon ni ni-arrow-left"></em></a></div>
-                            <ul class="nk-msg-actions">
-                                <li><a href="#" class="btn btn-dim btn-sm btn-outline-light"><em class="icon ni ni-check"></em><span>Mark as Closed</span></a></li>
-                                <!-- <li><span class="badge badge-dim badge-success badge-sm"><em class="icon ni ni-check"></em><span>Closed</span></span></li> -->
-                                <li class="d-lg-none"><a href="#" class="btn btn-icon btn-sm btn-white btn-light profile-toggle"><em class="icon ni ni-info-i"></em></a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="btn btn-icon btn-sm btn-white btn-light dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <ul class="link-list-opt no-bdr">
-                                            <li><a href="#"><em class="icon ni ni-user-add"></em><span>Assign To Member</span></a></li>
-                                            <li><a href="#"><em class="icon ni ni-archive"></em><span>Move to Archive</span></a></li>
-                                            <li><a href="#"><em class="icon ni ni-done"></em><span>Mark as Close</span></a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="d-none d-lg-block col-md-6">
+                                <hr>                                
+                                <span class="label-tag"><span><strong>File details and description: </strong></span></span>                                
+<?php if(!empty($fileDetails)){
+                                    ?>
+                          <table id="example" class="table table-striped table-bordered dt-responsive nowrap datatableEx" style="width:100%">
+                                    <!--<table id="example" class="table table-striped table-bordered dt-responsive nowrap datatableEx" style="width:100%">-->
+                                        <thead>
+                                            <tr>                                                
+                                                <th>File</th>
+                                                <th>Title</th>
+                                                <th>Description</th>                                                                                            
+                                                <th>View</th> 
+                                                <th>Download</th>  
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                <?php
+                                        foreach ($fileDetails as $fdrow){
+                                            ?>                                
+                                            <tr>
+                                                <td><?php echo $fdrow['case_files_name'] ?></td>
+                                                <td><?php echo $fdrow['case_files_title'] ?></td>
+                                                <td><?php echo $fdrow['case_files_desc'] ?></td>
+                                                <td><a href="<?php echo UPLOAD_FOLDER.'doc/'.$fdrow['refCases_id'].'/'.$fdrow['case_files_unique_name']; ?>" target="_blank">View</a></td>                                                
+                                                <td><a href="<?php echo UPLOAD_FOLDER.'doc/'.$fdrow['refCases_id'].'/'.$fdrow['case_files_unique_name']; ?>" download>Download</a></td>                                                
+                                            </tr>                                        
+                                <?php
+                                        }
+                                        ?>
+                                            </tbody>
+                                    </table>
+                                            <?php
+                                } ?>                            
+                            </div>
                         </div>
-                        <a href="#" class="nk-msg-profile-toggle profile-toggle active"><em class="icon ni ni-arrow-left"></em></a>
+<a href="#" class="nk-msg-profile-toggle profile-toggle active"><em class="icon ni ni-arrow-left"></em></a>
                     </div><!-- .nk-msg-head -->
-                    <div class="nk-msg-reply nk-reply" data-simplebar>
-                        
-                        <?php if(!empty($comments)){
-                            foreach ($comments as $crow){
-                                ?>
-                          <div class="nk-reply-item">
-                            <div class="nk-reply-header">
-                                <?php if($crow['comment_from_usertype']=='employee'){
-                                    ?>
-                                <div class="user-card">
-                                    <div class="user-avatar sm bg-blue">
-                                        <span><?php echo strtoupper(substr($crow['f_user_firstname'],0,1).substr($crow['f_user_lastname'],0,1)); ?></span>
-                                    </div>
-                                    <div class="user-name"><?php echo $crow['f_user_firstname'].' '.$crow['f_user_lastname']; ?> (Employee)</div>
-                                </div>                                
-                                <?php
-                                } ?> 
-                                <?php if($crow['comment_from_usertype']=='customer'){
-                                    ?>
-                                <div class="user-card">
-                                    <div class="user-avatar sm bg-blue">
-                                        <span><?php echo strtoupper(substr($crow['fhc_customer_first_name'],0,1).substr($crow['fhc_customer_last_name'],0,1)); ?></span>
-                                    </div>
-                                    <div class="user-name"><?php if($crow['fhc_customer_first_name']==''){echo 'Guest';} else{ echo $crow['fhc_customer_first_name'].' '.$crow['fhc_customer_last_name']; } ?> (Customer)</div>
-                                </div>                                
-                                <?php
-                                } ?>
-                                <div class="date-time"><?php echo date("d-M-Y", strtotime($crow['comment_datetime'])); ?></div>
-                            </div>
-                            <div class="nk-reply-body">
-                                <div class="nk-reply-entry entry">
-                                    <?php if($crow['comment_type']=='comment'){
-                                        echo $crow['comment_description'];
-                                    } ?>
-                                    <?php if($crow['comment_type']=='assign'){
-                                        ?>
-                                    <strong class="assign-title">Assign to</strong> @<?php echo $crow['t_user_firstname'].' '.$crow['t_user_lastname']; ?>
-                                    <?php
-                                    } ?>
-                                    <?php if($crow['comment_type']=='reassign'){
-                                        ?>
-                                    <strong class="assign-title">Reassign to</strong> @<?php echo $crow['t_user_firstname'].' '.$crow['t_user_lastname']; ?>
-                                    <?php
-                                    } ?>
-                                </div>
-<!--                                <div class="attach-files">
-                                    <ul class="attach-list">
-                                        <li class="attach-item">
-                                            <a class="download" href="#"><em class="icon ni ni-img"></em><span>error-show-On-order.jpg</span></a>
-                                        </li>
-                                        <li class="attach-item">
-                                            <a class="download" href="#"><em class="icon ni ni-img"></em><span>full-page-error.jpg</span></a>
-                                        </li>
-                                    </ul>
-                                    <div class="attach-foot">
-                                        <span class="attach-info">2 files attached</span>
-                                        <a class="attach-download link" href="#"><em class="icon ni ni-download"></em><span>Download All</span></a>
-                                    </div>
-                                </div>-->
-                            </div>
-                        </div><!-- .nk-reply-item -->
-                         <div class="nk-reply-meta">
-                            <div class="nk-reply-meta-info"><strong><?php echo date("d-M-Y h:i:sa", strtotime($crow['comment_datetime'])); ?></strong></div>
-                        </div><!-- .nk-reply-meta -->  
-                        <?php
-                            }
-                        } ?>                                                               
-                        <div class="nk-reply-form">
-                            <div class="nk-reply-form-header">
-                                <ul class="nav nav-tabs-s2 nav-tabs nav-tabs-sm">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#reply-form">Reply</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#note-form">Private Note</a>
-                                    </li>
-                                </ul>
-                                <div class="nk-reply-form-title">
-                                    <div class="title">Reply as:</div>
-                                    <div class="user-avatar xs bg-purple">
-                                        <span>IH</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="reply-form">
-                                    <div class="nk-reply-form-editor">
-                                        <div class="nk-reply-form-field">
-                                            <textarea class="form-control form-control-simple no-resize" placeholder="Hello"></textarea>
-                                        </div>
-                                        <div class="nk-reply-form-tools">
-                                            <ul class="nk-reply-form-actions g-1">
-                                                <li class="mr-2"><button class="btn btn-primary" type="submit">Reply</button></li>
-                                                <li>
-                                                    <div class="dropdown">
-                                                        <a class="btn btn-icon btn-sm btn-tooltip" data-toggle="dropdown" title="Templates" href="#"><em class="icon ni ni-hash"></em></a>
-                                                        <div class="dropdown-menu">
-                                                            <ul class="link-list-opt no-bdr link-list-template">
-                                                                <li class="opt-head"><span>Quick Insert</span></li>
-                                                                <li><a href="#"><span>Thank you message</span></a></li>
-                                                                <li><a href="#"><span>Your issues solved</span></a></li>
-                                                                <li><a href="#"><span>Thank you message</span></a></li>
-                                                                <li class="divider">
-                                                                <li><a href="#"><em class="icon ni ni-file-plus"></em><span>Save as Template</span></a></li>
-                                                                <li><a href="#"><em class="icon ni ni-notes-alt"></em><span>Manage Template</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-icon btn-sm" data-toggle="tooltip" data-placement="top" title="Upload Attachment" href="#"><em class="icon ni ni-clip-v"></em></a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-icon btn-sm" data-toggle="tooltip" data-placement="top" title="Insert Emoji" href="#"><em class="icon ni ni-happy"></em></a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-icon btn-sm" data-toggle="tooltip" data-placement="top" title="Upload Images" href="#"><em class="icon ni ni-img"></em></a>
-                                                </li>
-                                            </ul>
-                                            <div class="dropdown">
-                                                <a href="#" class="dropdown-toggle btn-trigger btn btn-icon mr-n2" data-toggle="dropdown"><em class="icon ni ni-more-v"></em></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <ul class="link-list-opt no-bdr">
-                                                        <li><a href="#"><span>Another Option</span></a></li>
-                                                        <li><a href="#"><span>More Option</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div><!-- .nk-reply-form-tools -->
-                                    </div><!-- .nk-reply-form-editor -->
-                                </div>
-                                <div class="tab-pane" id="note-form">
-                                    <div class="nk-reply-form-editor">
-                                        <div class="nk-reply-form-field">
-                                            <textarea class="form-control form-control-simple no-resize" placeholder="Type your private note, that only visible to internal team."></textarea>
-                                        </div>
-                                        <div class="nk-reply-form-tools">
-                                            <ul class="nk-reply-form-actions g-1">
-                                                <li class="mr-2"><button class="btn btn-primary" type="submit">Add Note</button></li>
-                                                <li>
-                                                    <a class="btn btn-icon btn-sm" data-toggle="tooltip" data-placement="top" title="Upload Attachment" href="#"><em class="icon ni ni-clip-v"></em></a>
-                                                </li>
-                                            </ul>
-                                            <div class="dropdown">
-                                                <a href="#" class="dropdown-toggle btn-trigger btn btn-icon mr-n2" data-toggle="dropdown"><em class="icon ni ni-more-v"></em></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <ul class="link-list-opt no-bdr">
-                                                        <li><a href="#"><span>Another Option</span></a></li>
-                                                        <li><a href="#"><span>More Option</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div><!-- .nk-reply-form-tools -->
-                                    </div><!-- .nk-reply-form-editor -->
-                                </div>
-                            </div>
-                        </div><!-- .nk-reply-form -->
-                    </div><!-- .nk-reply -->
+                    <div class="nk-msg-reply nk-reply" data-simplebar>                        
+                        <?php echo $comments; ?>
+                    </div><!-- .nk-reply -->                    
                     <div class="nk-msg-profile visible" data-simplebar>
                         <div class="card">
                             <div class="card-inner-group">
@@ -281,6 +144,41 @@
                     </div><!-- .nk-msg-profile -->
                 </div><!-- .nk-msg-body -->
             </div><!-- .nk-msg -->
+            <?php if($caseDetails['cases_status']!='closed'){ ?>
+          <div class="col-xs-12">
+                        <form class="gy-3" id="add_comment" enctype="multipart/form-data">
+                        <input type="hidden" name="cases_id" value="<?php echo $caseDetails['cases_id']; ?>">
+                        <input type="hidden" name="customer_id" value="<?php echo $caseDetails['refCustomer_id']; ?>">
+                        <div class="nk-reply-form">                            
+                                <div class="g-3 align-center">                              
+                                <div class="col-sm-12">
+                                    <div class="form-control-wrap">
+                                        <div class="card card-bordered">
+                                            <div class="card-inner">
+                                                <textarea class="summernote-basic-id" name="cases_message"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="reply-form">
+                                    <div class="nk-reply-form-editor">                                       
+                                        <div class="nk-reply-form-tools">
+                                            <ul class="nk-reply-form-actions g-1">
+                                                <li>
+                                                    <input type="file" name="case_files_file[]" multiple class="tn btn-icon btn-sm" id="case_files_file" accept="application/pdf,image/jpg,image/jpeg,image/png">                                                   
+                                                </li>
+                                                <li class="mr-2"><input type="submit" class="btn btn-primary" name="submit" id="submit" value="Reply"></li>                                                                                              
+                                            </ul>
+                                        </div><!-- .nk-reply-form-tools -->
+                                    </div><!-- .nk-reply-form-editor -->
+                                </div>                                
+                            </div>
+                        </div><!-- .nk-reply-form -->                        
+                        </form>
+                    </div>
+            <?php } ?>
         </div>
     </div>
 </div>

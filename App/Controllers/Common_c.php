@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Adminm\Login_m;
 use App\Models\Common_m;
+use App\Models\Employeem\Cases_m;
 use App\ThirdParty\smtp_mail\SMTP_mail;
 
 class Common_c extends BaseController {
@@ -11,15 +12,85 @@ class Common_c extends BaseController {
     private $Login_m;
     private $Common_m;
     private $security;
+    private $Cases_m;
 
     public function __construct() {
         helper('functions');
         helper('url');            
         $this->Login_m = new Login_m();
         $this->Common_m = new Common_m();
+        $this->Cases_m = new Cases_m(); 
         $this->security = \Config\Services::security();                
     }
-
+    public function add_cases() {               
+         if (isset($_POST['cases_title'])) { 
+            if(isset($_SESSION['customer']['customer_id'])){
+                $customer_id=$_SESSION['customer']['customer_id'];
+            }else{
+                $params=array();
+                $params['customer_email_id']=$_POST['customer_email'];
+                $params['customer_mobile_no']=$_POST['customer_contact'];
+                $params['customer_email_password']=generateStrongPassword(); 
+                $customer_id =  $this->Cases_m->create_customer($params);  
+            }
+            $params=array();                        
+            $params['cases_title']=$_POST['cases_title'];
+            $params['cases_message']=$_POST['cases_message'];            
+            $params['cases_dt_created']=date("Y-m-d H:i:s");
+            $params['refCustomer_id']=$customer_id;
+            $params['createdby_user_type']='customer';
+            $params['created_by']=$customer_id;
+            
+            if(isset($_POST['howtocontact'])){
+                if($_POST['howtocontact']=='Email'){
+                    $params['customer_email']=$_POST['customer_email'];
+                }  
+                if($_POST['howtocontact']=='Mobile'){
+                    $params['customer_contact']=$_POST['customer_contact'];
+                }
+                if($_POST['howtocontact']=='Both'){
+                    $params['customer_email']=$_POST['customer_email'];
+                    $params['customer_contact']=$_POST['customer_contact'];
+                }   
+            }
+            $res =  $this->Cases_m->create_case($params);             
+            if ($res) {
+                 if (($_FILES['case_files_file']['name'][0]) != '') {                   
+                    $cases_files = multiFileUpload('case_files_file',$res.'/'); 
+                    $i=0;
+                    foreach ($cases_files as $row) {
+                        $params = array();
+                        $params['refCases_id'] = $res;
+                        $params['case_files_title'] =$_POST['title_file'][$i];
+                        $params['case_files_desc'] =$_POST['desc_file'][$i];
+                        $params['case_files_name'] = $row[2]['original_file_name'];
+                        $params['case_files_unique_name'] = $row[2]['file_name'];
+                        $params['case_files_size'] = $row[2]['file_size'];
+                        $params['case_files_ext'] = $row[2]['file_ext'];
+                        $params['case_files_type'] ="main";                                                
+                        $this->Cases_m->add_cases_files($params);
+                        $i=$i+1;
+                    }
+                } 
+                $params=array();
+                $params['refCases_id']=$res;
+                $params['comment_type']='create';
+                $params['comment_from']=$customer_id;
+                $params['comment_to']=$customer_id;
+                $params['comment_from_usertype']='customer';
+                $params['comment_to_usertype']='customer';
+                $params['comment_datetime']=date("Y-m-d H:i:s");
+                $this->Cases_m->add_cases_comment($params);                
+                successOrErrorMessage("Request sent successfully",'success');                
+            } else {                
+                successOrErrorMessage("Somthing happen wrong plz try again",'error');
+            }          
+        }
+        helper('form');        
+        $data['title'] = REQUEST_CASES_TITLE;        
+        echo front_view('frontside/case_request',$data);
+    } 
+    
     public function create_customer() {
         if(isset($_SESSION['customer']['customer_id'])){
             return redirect()->to(BASE_URL); 

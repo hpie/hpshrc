@@ -96,16 +96,21 @@ class Cases_e extends BaseController {
             $res =  $this->Cases_m->create_case($params);             
             if ($res) {
 //                echo '<pre>';print_r($_FILES);die;
-                 if (($_FILES['case_files_file']['name'][0]) != '') {                   
-                    $cases_files = multiFileUpload('case_files_file',$res.'/');                                        
+                if (($_FILES['case_files_file']['name'][0]) != '') {
+                    $cases_files = multiFileUpload('case_files_file', $res . '/');
+                    $i = 0;
                     foreach ($cases_files as $row) {
                         $params = array();
                         $params['refCases_id'] = $res;
+                        $params['case_files_title'] = $_POST['title_file'][$i];
+                        $params['case_files_desc'] = $_POST['desc_file'][$i];
                         $params['case_files_name'] = $row[2]['original_file_name'];
                         $params['case_files_unique_name'] = $row[2]['file_name'];
                         $params['case_files_size'] = $row[2]['file_size'];
-                        $params['case_files_type'] ="main";                                                
+                        $params['case_files_ext'] = $row[2]['file_ext'];
+                        $params['case_files_type'] = "main";
                         $this->Cases_m->add_cases_files($params);
+                        $i = $i + 1;
                     }
                 }
                 $params=array();
@@ -131,11 +136,165 @@ class Cases_e extends BaseController {
         $data['title'] = EMPLOYEE_LIST_CASES_TITLE;        
         echo employee_view('employee/cases_list',$data);
     }
-    public function view_cases($case_id) {        
-        $data['caseDetails']=$this->Cases_m->get_view_cases($case_id);
-        $data['involved_peopel']=$this->Cases_m->get_involved_peopel($case_id);
-        $data['comments']=$this->Cases_m->get_comments($case_id);
-        $data['title'] = EMPLOYEE_VIEW_CASES_TITLE;       
-        echo employee_view('employee/view_cases',$data);
-    }    
+    
+    public function add_comment() {
+        $message = "fail";
+        $comments="";
+        if (isset($_POST['cases_id'])) {
+            if (!empty($_POST['cases_message'])) {
+                $params = array();
+                $params['refCases_id'] = $_POST['cases_id'];
+                $params['comment_description'] = $_POST['cases_message'];
+                $params['comment_type'] = 'comment';
+                $params['comment_from'] = $_SESSION['employee']['employee_user_id'];
+                $params['comment_to'] = $_POST['customer_id'];
+                $params['comment_from_usertype'] = 'employee';
+                $params['comment_to_usertype'] = 'customer';
+                $params['comment_datetime'] = date("Y-m-d H:i:s");
+                $res = $this->Cases_m->add_cases_comment($params);
+                if ($res) {
+                    if (($_FILES['case_files_file']['name'][0]) != '') {
+                        $cases_files = multiFileUpload('case_files_file', $_POST['cases_id'] . '/');
+                        $i = 0;
+                        foreach ($cases_files as $row) {
+                            $params = array();
+                            $params['refCases_id'] = $_POST['cases_id'];
+                            $params['case_files_name'] = $row[2]['original_file_name'];
+                            $params['case_files_unique_name'] = $row[2]['file_name'];
+                            $params['case_files_size'] = $row[2]['file_size'];
+                            $params['case_files_ext'] = $row[2]['file_ext'];
+                            $params['case_files_type'] = "comment";
+                            $params['refComment_id'] = $res;
+                            $this->Cases_m->add_cases_files($params);
+                            $i = $i + 1;
+                        }
+                    }                    
+                    $comments=$this->comment_list($_POST['cases_id'],$_POST['last_comment_id']);                                        
+                    $message = "success";
+                }
+            }
+        }
+        $result = array();
+        $result['message'] = $message;
+        $result['comments'] = $comments;
+        echo json_encode($result);
+    }  
+    public function view_cases($case_id) {
+        helper('form');        
+        $data['caseDetails'] = $this->Cases_m->get_view_cases($case_id);
+        $data['fileDetails'] = $this->Cases_m->get_file_details($case_id);
+        $data['involved_peopel'] = $this->Cases_m->get_involved_peopel($case_id);
+        $data['comments'] = $this->comment_list($case_id);
+        $data['title'] = EMPLOYEE_VIEW_CASES_TITLE;
+        echo employee_view('employee/view_cases', $data);
+    }
+    public function comment_list($case_id,$last_comment_id=0) {
+        $data['comments'] = $this->Cases_m->get_comments($case_id,$last_comment_id);
+        $data['commentFileDetails'] = $this->Cases_m->get_comment_file_details($case_id,$last_comment_id);
+        $result = array();
+        if (!empty($data['comments'])) {
+            foreach ($data['comments'] as $row) {
+                $filesArray = array();
+                foreach ($data['commentFileDetails'] as $row1) {
+                    if ($row1['refComment_id'] == $row['comment_id']) {
+                        array_push($filesArray, $row1);
+                    }
+                }
+                $row['comment_file'] = $filesArray;
+                array_push($result, $row);
+            }
+        }        
+        return $this->generate_comment_view($result,$case_id);
+     }
+    public function generate_comment_view($comments,$case_id) {
+        $return_str = '';
+        if (!empty($comments)) {
+            $i = 0;
+            foreach ($comments as $crow) {
+                $i = $i + 1;
+                $lastcomment = '';
+                $from_name = '';
+                $datavalue = 0;
+                $comment_id = $crow['comment_id'];
+                $date = date("d-M-Y", strtotime($crow['comment_datetime']));
+                $datetime = date("d-M-Y h:i:sa", strtotime($crow['comment_datetime']));
+                if ($i == 1) {
+                    $lastcomment = ' lastcomment';
+                    $datavalue = $comment_id;
+                }
+                if ($crow['comment_from_usertype'] == 'employee') {
+                    $from_name = strtoupper(substr($crow['f_user_firstname'], 0, 1) . substr($crow['f_user_lastname'], 0, 1));
+                    $from_short_name = $crow['f_user_firstname'] . ' ' . $crow['f_user_lastname'] . ' (Employee)';
+                }
+                if ($crow['comment_from_usertype'] == 'customer') {
+                    $from_name = strtoupper(substr($crow['fhc_customer_first_name'], 0, 1) . substr($crow['fhc_customer_last_name'], 0, 1));
+                    $from_short_name = $crow['fhc_customer_first_name'] . ' ' . $crow['fhc_customer_last_name'] . ' (Customer)';
+                    if ($crow['fhc_customer_first_name'] == '') {
+                        $from_short_name = 'Guest (Customer)';
+                    }
+                }
+                $return_str .= '<div class="nk-reply-item' . $lastcomment . '" data-value="' . $datavalue . '">                               
+                            <div class="nk-reply-header">';
+                $return_str .= '<div class="user-card">
+                                    <div class="user-avatar sm bg-blue">
+                                        <span>' . $from_name . '</span>
+                                    </div>
+                                    <div class="user-name">' . $from_short_name . '</div>
+                                </div>                                                              
+                                <div class="date-time">' . $date . '</div>
+                            </div>
+                            <div class="nk-reply-body">
+                                <div class="nk-reply-entry entry">';
+                if ($crow['comment_type'] == 'comment') {
+                        if(strpos($crow['comment_description'],'<p>') !== false){
+                            $description=$crow['comment_description'];
+                        }
+                        else{
+                            $description='<p>'.$crow['comment_description'].'</p>';
+                        }
+                        $return_str .= $description;
+                }
+                if ($crow['comment_type'] == 'assign') {
+                    $assign_to_name = $crow['t_user_firstname'] . ' ' . $crow['t_user_lastname'];
+                    $return_str .= '<strong class="assign-title">Assign to</strong> @' . $assign_to_name;
+                }
+                if ($crow['comment_type'] == 'reassign') {
+                    $re_assign_to_name = $crow['t_user_firstname'] . ' ' . $crow['t_user_lastname'];
+                    $return_str .= '<strong class="assign-title">Reassign to</strong> @' . $re_assign_to_name;
+                }
+                $return_str .= '</div>';
+                if(!empty($crow['comment_file'])) {                    
+                    $return_str .= '<div class="attach-files">
+                                    <ul class="attach-list">';
+                    foreach ($crow['comment_file'] as $cfrow) {
+                        $ext = $cfrow['case_files_ext'];
+                        if ($ext == 'pdf') {
+                            $ext = 'file';
+                        } else {
+                            $ext = 'img';
+                        }
+                        $return_str .= '<li class="attach-item">';
+                        $file_url = UPLOAD_FOLDER . 'doc/' . $case_id . '/' . $cfrow['case_files_unique_name'];
+                        $file_name = $cfrow['case_files_name'];
+                        $return_str .= '<a class="download" target="_blank" href="' . $file_url . '"><em class="icon ni ni-' . $ext . '"></em><span>' . $file_name . '</span></a>
+                                        </li>';
+                    }
+                    $return_str .= '</ul>                                    
+                                </div>';
+                }  
+                           $return_str.='</div>                                                            
+                        </div><!-- .nk-reply-item -->
+                        <div class="nk-reply-meta">
+                            <div class="nk-reply-meta-info"><strong>'.$datetime.'</strong></div>
+                        </div><!-- .nk-reply-meta -->';
+                }
+            }
+            return $return_str;
+        }
+        
+//     public function load_more_comment_list() {        
+//        $result = array();
+//        $result['comments'] = $this->comment_list($_POST['case_id'],$_POST['last_comment_id']);
+//        echo json_encode($result);
+//     }                
 }

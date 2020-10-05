@@ -323,11 +323,97 @@
             }
         });
     });
-</script> 
+</script>
+<?php if ($title == FRONT_VIEW_CASES_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {           
+        $("#add_comment").on('submit', function(e){                                    
+        var fileUpload = document.getElementById('case_files_file');
+        if (parseInt(fileUpload.files.length)>3){            
+            PNotify.error({
+                title: 'Failed!',
+                text: 'You can only upload a maximum of 3 files.'
+            });
+            return false;
+        }        
+        var comment = $("#summernote").val();
+        if (comment===''){ 
+            PNotify.error({
+                title: 'Failed!',
+                text: 'Plz add description in comment'
+            });           
+            return false;
+        }
+        
+        for (var i = 0; i <= fileUpload.files.length - 1; i++) {
+            if (fileUpload.files.item(i).size > 2097152) {
+                PNotify.error({
+                title: 'Failed!',
+                text: 'Try to upload all files less than 2MB!'
+            });                                        
+                return false;
+            }
+        }                               
+        if(confirm("Confirm before submit")) {    
+            e.preventDefault();
+            var last_comment_id=$( ".lastcomment" ).first().data("value");
+            var form_data = new FormData(this);
+            form_data.append('last_comment_id', last_comment_id);
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo FRONT_ADD_COMMENT_LINK; ?>',
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData:false,           
+                success: function(res){
+                    var res = $.parseJSON(res);
+    //                $('.ajax_csrfname').val(res.token);
+                    if(res.message==="success"){                         
+                        $( ".lastcomment" ).first().before( res.comments );                                                
+                        $('#summernote').summernote("code",'');
+                        $('#comments').scrollTop(0); 
+                    }
+                }        
+            });
+        }
+        else{
+            return false;
+        }
+    });                      
+        $('#example').DataTable({
+            responsive: {
+                details: {
+                    type: 'column',
+                    target: 'tr'
+                }
+            },
+            searching: false,
+            paging: false,
+            bInfo: false                                                     
+        });
+           
+    });
+    </script>
+<?php } ?>
 <?php if ($title == REQUEST_CASES_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
-        $(document).ready(function () {                 
+        $(document).ready(function () {
+           
+            $("#case_files_file").on("change", function(){
+                $('.case_files_file_title_desc').remove();
+                var numFiles = $(this)[0].files.length;
+                var i;
+                var text='';
+                for (i = 1; i <= numFiles; i++) {                  
+                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='title_file'>File "+i+" Title:</label><div class='col-sm-8 col-xs-12'><input type='text' class='form-control' name='title_file[]' placeholder='Enter file "+i+" title' autocomplete='off' required></div></div></div>";
+                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='desc_file'>File "+i+" Description:</label><div class='col-sm-8 col-xs-12'><textarea class='form-control' name='desc_file[]' placeholder='Enter file "+i+" description'></textarea></div></div></div>"
+                }
+                $( ".case_files_file_div" ).after(text);
+            });
+            
             $('#howtocontact').on('change', function () {
                 var howtocontact = $(this).val();
                 if(howtocontact=='Email'){
@@ -395,6 +481,13 @@
                             stringLength: {
                                 min: 2
                             },
+                            notEmpty: {
+                                message: 'Please Enter Title'
+                            }
+                        }
+                    },
+                     howtocontact: {
+                        validators: {                           
                             notEmpty: {
                                 message: 'Please Enter Title'
                             }

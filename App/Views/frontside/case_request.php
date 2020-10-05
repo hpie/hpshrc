@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <?php } ?>                           
-                <div class="form-group">
+                <div class="form-group case_files_file_div">
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="case_files_file">Files:
                         </label>

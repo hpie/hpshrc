@@ -71,6 +71,16 @@ class Cases_m extends Model
                                         WHERE cs.cases_id='{$cases_id}'");
         return $ressult->getRowArray();      
     }
+    
+    public function get_file_details($cases_id) {         
+        $ressult = $this->db->query("SELECT * FROM case_files WHERE refCases_id='{$cases_id}' AND case_files_type='main'");
+        return $ressult->getResultArray();      
+    }
+    public function get_comment_file_details($cases_id,$last_comment_id=0) {         
+        $ressult = $this->db->query("SELECT * FROM case_files WHERE refCases_id='{$cases_id}' AND case_files_type='comment' AND refComment_id > '{$last_comment_id}'");
+        return $ressult->getResultArray();      
+    }
+    
     public function get_involved_peopel($cases_id) {         
         $ressult = $this->db->query("   SELECT emp.* FROM `comment` cmt
                                         LEFT JOIN employee emp
@@ -81,9 +91,8 @@ class Cases_m extends Model
     public function get_employee() {       
         $ressult = $this->db->query("SELECT * FROM `employee` WHERE user_status='ACTIVE'");
         return $ressult->getResultArray();      
-    }
-    
-    public function get_comments($case_id) {       
+    }    
+    public function get_comments($case_id,$last_comment_id=0) {       
         $ressult = $this->db->query("   SELECT
                                         fhc.customer_first_name as fhc_customer_first_name,fhc.customer_last_name as fhc_customer_last_name,fhc.customer_id as fhc_customer_id,
                                         thc.customer_first_name as thc_customer_first_name,thc.customer_last_name as thc_customer_last_name,thc.customer_id as thc_customer_id,
@@ -101,7 +110,7 @@ class Cases_m extends Model
                                         LEFT JOIN hpshrc_customer thc
                                         ON thc.customer_id=cmt.comment_to AND cmt.comment_to_usertype='customer'
 
-                                        WHERE cmt.refCases_id='{$case_id}'");
+                                        WHERE cmt.refCases_id='{$case_id}' AND cmt.comment_id > '{$last_comment_id}'  ORDER BY cmt.comment_id DESC");
         return $ressult->getResultArray();      
     }
     

@@ -484,6 +484,8 @@ if (!function_exists('fileUpload')) {
             }
             if (empty($errors) == true) {
 
+                $filename_join_upload=substr($file_name, 0, strpos($file_name, "."));
+                
                 $RandomNum = time() . date("-Ymd-hisa");
 
                 $ImageName = str_replace(' ', '-', strtolower($file_name));
@@ -494,7 +496,7 @@ if (!function_exists('fileUpload')) {
 
                 $ImageName = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
 
-                $NewImageName = 'uploads-' . rand(111, 999) . rand(11, 99) . '-' . $RandomNum . '.' . $ImageExt;
+                $NewImageName = $filename_join_upload.'-uploads-' . rand(111, 999) . rand(11, 99) . '-' . $RandomNum . '.' . $ImageExt;
 
                 $filepath_original = $output_subdir . $NewImageName;
 

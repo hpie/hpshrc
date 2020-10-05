@@ -727,11 +727,29 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){                    
                     foreach ($result as $row){                                                                         
-                        $cases_id = $row['cases_id'];                                                                       
+                        $cases_id = $row['cases_id'];
+                        
+                        $locked_unlocked_str='';
+                        $title = 'Click to locke customer';
+                        $class = 'btn_lock_unlock_customer btn btn-xs btn-success';
+                        $text = "Customer Unlocked <em class='icon ni ni-unlock-fill'></em>";
+                        $isactive = 1; 
+                        $table='cases';
+                        $table_update_field='is_block_user';
+                        $table_where_field='cases_id';
+                        if($row['is_block_user'] == 1){
+                            $title = 'Click to unlocke customer';
+                            $class = 'btn_lock_unlock_customer btn btn-xs btn-danger';
+                            $text  = "Customer Locked <em class='icon ni ni-lock-fill'></em>";
+                            $isactive = 0;                            
+                        }                                                    
+                        $locked_unlocked_str="<button type='button' data-id='".$cases_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                
+                        
                         $row['index']='';
                         $row['employee_name']=$row['user_firstname'].' '.$row['user_lastname'];
                         $row['action']="<a href='".BASE_URL_DATATABLES."employee-edit-cases/$cases_id' class='btn btn-xs btn-warning'>Edit&nbsp;<em class='icon ni ni-edit-fill'></em></a>
-                                <a href='".BASE_URL_DATATABLES."employee-view-cases/$cases_id' class='btn btn-xs btn-primary'>View&nbsp;<em class='icon ni ni-eye-fill'></em></a>";
+                                <a href='".BASE_URL_DATATABLES."employee-view-cases/$cases_id' class='btn btn-xs btn-primary'>View&nbsp;<em class='icon ni ni-eye-fill'></em></a>                                
+                                $locked_unlocked_str";
                         array_push($resData, $row);
                     }  
                 }

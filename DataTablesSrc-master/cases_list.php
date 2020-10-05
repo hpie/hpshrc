@@ -37,8 +37,10 @@ $columns = array(
     array('db' => 'cs.cases_assign_to', 'dt' =>'cases_assign_to'),
     array('db' => 'cs.cases_status', 'dt' =>'cases_status'),
     array('db' => 'cs.cases_dt_created', 'dt' =>'cases_dt_created'),
+    array('db' => 'cs.is_block_user', 'dt' =>'is_block_user'),
     array('db' => 'emp.user_firstname', 'dt' =>'user_firstname'),
-    array('db' => 'emp.user_lastname', 'dt' =>'user_lastname')    
+    array('db' => 'emp.user_lastname', 'dt' =>'user_lastname')
+    
 );
 include 'conn.php';
 

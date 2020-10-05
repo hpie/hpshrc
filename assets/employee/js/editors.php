@@ -16,7 +16,7 @@
       });
     }            
  <?php 
-    if($title==EMPLOYEE_ADD_CASES_TITLE){    
+    if($title==EMPLOYEE_ADD_CASES_TITLE || $title==EMPLOYEE_VIEW_CASES_TITLE){    
     ?>   
     var _basicid = '.summernote-basic-id';
     if ($(_basicid).exists()) {

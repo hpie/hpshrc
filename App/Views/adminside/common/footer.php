@@ -114,8 +114,8 @@
             }
             $(document).on('click', '.btn_approve_reject_email', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
         
                 var self = $(this);
 
@@ -137,8 +137,7 @@
                     'user_status': user_status,
                     'table':table,
                     'updatefield':updatefield,
-                    'wherefield':wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield':wherefield
                 };
 
                 $.ajax({
@@ -147,7 +146,7 @@
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+//                        $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
                             var title = 'Click to unverify email';
@@ -175,8 +174,8 @@
             }); 
             $(document).on('click', '.btn_lock_unlock_customer', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
         
                 var self = $(this);
 
@@ -196,8 +195,7 @@
                     'user_status': user_status,
                     'table':table,
                     'updatefield':updatefield,
-                    'wherefield':wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield':wherefield
                 };
 
                 $.ajax({
@@ -206,7 +204,7 @@
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+//                        $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
                             var title = 'Click to locke customer';
@@ -234,8 +232,8 @@
             }); 
             $(document).on('click', '.btn_active_inactive_customer', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
         
                 var self = $(this);
 
@@ -257,8 +255,7 @@
                     'user_status': user_status,
                     'table':table,
                     'updatefield':updatefield,
-                    'wherefield':wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield':wherefield
                 };
 
                 $.ajax({
@@ -267,7 +264,7 @@
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+//                        $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
                             var title = 'Click to inactive customer';
@@ -344,8 +341,8 @@
             }
             $(document).on('click', '.btn_approve_reject_email', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
         
                 var self = $(this);
 
@@ -367,8 +364,8 @@
                     'user_status': user_status,
                     'table':table,
                     'updatefield':updatefield,
-                    'wherefield':wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield':wherefield
+//                    [csrfName]: csrfHash
                 };
 
                 $.ajax({
@@ -377,7 +374,7 @@
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+//                        $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
                             var title = 'Click to unverify email';
@@ -405,8 +402,8 @@
             }); 
             $(document).on('click', '.btn_lock_unlock_customer', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
         
                 var self = $(this);
 
@@ -426,8 +423,8 @@
                     'user_status': user_status,
                     'table':table,
                     'updatefield':updatefield,
-                    'wherefield':wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield':wherefield
+//                    [csrfName]: csrfHash
                 };
 
                 $.ajax({
@@ -436,7 +433,7 @@
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+//                        $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
                             var title = 'Click to locke employee';
@@ -464,8 +461,8 @@
             }); 
             $(document).on('click', '.btn_active_inactive_customer', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
         
                 var self = $(this);
 
@@ -487,8 +484,8 @@
                     'user_status': user_status,
                     'table':table,
                     'updatefield':updatefield,
-                    'wherefield':wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield':wherefield
+//                    [csrfName]: csrfHash
                 };
 
                 $.ajax({
@@ -497,7 +494,7 @@
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);                                                
-                        $('.ajax_csrfname').val(res.token);                        
+//                        $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
                             var title = 'Click to inactive employee';
@@ -636,8 +633,8 @@
             
               $(document).on('click', '.btn_approve_reject', function () {
               
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
               
                 var self = $(this);
 
@@ -656,8 +653,8 @@
 
                 var data = {
                     'upload_file_id': self.data('id'),
-                    'upload_file_status': upload_file_status,
-                    [csrfName]: csrfHash
+                    'upload_file_status': upload_file_status
+//                    [csrfName]: csrfHash
                 };
 
                 $.ajax({
@@ -666,7 +663,7 @@
                     data: data,
                     success: function (res) {
                         var data = $.parseJSON(res);
-                        $('.ajax_csrfname').val(data.token);
+//                        $('.ajax_csrfname').val(data.token);
                         if (data.suceess) {
                             var title = 'Click to deactivate causes';
                             var class_ = 'btn_approve_reject btn btn-success btn-xs';
@@ -813,7 +810,7 @@
                             text: 'Old password not match'
                         });
                     }
-                    $('.txt_csrfname').val(result['token']);
+//                    $('.txt_csrfname').val(result['token']);
                 }, 'json');
             });
         });
@@ -826,17 +823,17 @@
         $(document).ready(function () {
             $('#upload_file_type').on('change', function () {
                 
-                var csrfName = $('.txt_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.txt_csrfname').val(); // CSRF hash
+//                var csrfName = $('.txt_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.txt_csrfname').val(); // CSRF hash
                 
                 var category_code = $(this).val();
                 $.ajax({
                     type: "POST",
                     url: "<?php echo ADMIN_LOAD_SUB_CATEGORIES_LINK ?>",
-                    data: {'category_code': category_code,[csrfName]: csrfHash},
+                    data: {'category_code': category_code},
                     success: function (res) {
                         var data = jQuery.parseJSON(res);
-                        $('.txt_csrfname').val(data.token);
+//                        $('.txt_csrfname').val(data.token);
                         $("#upload_file_sub_type").empty();
                         $("#upload_file_sub_type").append(new Option('---Select---', ''));
                         $.each(data.sub_type, function (index, value) {

@@ -5,7 +5,7 @@ function auto_logout($type,$field)
     $t = time();    
     $t0 = $_SESSION[$type][$field];
     $diff = $t - $t0;
-    if ($diff > 7200 || !isset($t0))
+    if ($diff > 900 || !isset($t0))
     {          
         return true;
     }

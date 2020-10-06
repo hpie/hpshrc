@@ -403,13 +403,13 @@
         $(document).ready(function () {
            
             $("#case_files_file").on("change", function(){
-                $('.case_files_file_title_desc').remove();
+                $('.case_files_file_title_desc').remove();                  
                 var numFiles = $(this)[0].files.length;
                 var i;
                 var text='';
-                for (i = 1; i <= numFiles; i++) {                  
-                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='title_file'>File "+i+" Title:</label><div class='col-sm-8 col-xs-12'><input type='text' class='form-control' name='title_file[]' placeholder='Enter file "+i+" title' autocomplete='off' required></div></div></div>";
-                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='desc_file'>File "+i+" Description:</label><div class='col-sm-8 col-xs-12'><textarea class='form-control' name='desc_file[]' placeholder='Enter file "+i+" description'></textarea></div></div></div>"
+                for (i = 1; i <= numFiles; i++) {                   
+                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='title_file'>"+$(this)[0].files.item(i-1).name+" Title:</label><div class='col-sm-8 col-xs-12'><input type='text' class='form-control' name='title_file[]' placeholder='Enter "+$(this)[0].files.item(i-1).name" title' autocomplete='off' required></div></div></div>";
+                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='desc_file'>"+$(this)[0].files.item(i-1).name+" Description:</label><div class='col-sm-8 col-xs-12'><textarea class='form-control' name='desc_file[]' placeholder='Enter "+$(this)[0].files.item(i-1).name" description'></textarea></div></div></div>"
                 }
                 $( ".case_files_file_div" ).after(text);
             });
@@ -744,15 +744,15 @@
                             }
                         }
                     },                    
-                    customer_middle_name: {
-                        validators: {
-                            regexp: {
-                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
-                                message: 'Special character not allowed'
-                            }
-                            
-                        }
-                    },                    
+//                    customer_middle_name: {
+//                        validators: {
+//                            regexp: {
+//                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+//                                message: 'Special character not allowed'
+//                            }
+//                            
+//                        }
+//                    },                    
                     customer_last_name: {
                         validators: {
                              stringLength: {

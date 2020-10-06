@@ -182,10 +182,10 @@ class App extends BaseConfig
 	*/
 	public $sessionDriver            = 'files';
 	public $sessionCookieName        = 'hpshrc_session';
-	public $sessionExpiration        = 0;
+	public $sessionExpiration        = 900;
 	public $sessionSavePath          = WRITEPATH;
 	public $sessionMatchIP           = false;
-	public $sessionTimeToUpdate      = 0;
+	public $sessionTimeToUpdate      = 900;
 	public $sessionRegenerateDestroy = false;
 
 	/*
@@ -246,7 +246,7 @@ class App extends BaseConfig
 	public $CSRFTokenName  = 'csrf_hpshrc';
 	public $CSRFHeaderName = 'X-CSRF-TOKEN';
 	public $CSRFCookieName = 'csrf_cookie_hpshrc';
-	public $CSRFExpire     = 7200;
+	public $CSRFExpire     = 900;
 	public $CSRFRegenerate = true;
 	public $CSRFRedirect   = true;
 

@@ -4,7 +4,7 @@ header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: sameorigin');
 header('X-Powered-By:');
 
-$lifetime=1500;
+$lifetime=900;
 session_set_cookie_params($lifetime);
 $protocol_http = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 

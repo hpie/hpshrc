@@ -36,7 +36,8 @@
 
 <?php include(APPPATH . "Views/employee/common/notify.php"); ?>
 
-<script type="text/javascript" nonce='S51U26wMQz'>   
+
+<script type="text/javascript" nonce='S51U26wMQz'>
     $(document).ready(function () {
         $(".mobileno").keyup(function (e) {
             var str = $(this).val();

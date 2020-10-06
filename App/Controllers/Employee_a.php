@@ -41,12 +41,12 @@ class Employee_a extends BaseController {
     public function approve_status() {
         if (isset($_REQUEST['table_id'])) {
             $res = $this->Customers_m->approve_status($_REQUEST);
-            if ($res) {
+             if ($res) {
                 $data = array(
                     'suceess' => true
                 );
             }
-            $data['token'] = $this->security->getCSRFHash();
+//            $data['token'] = $this->security->getCSRFHash();
             echo json_encode($data);
         }
     }

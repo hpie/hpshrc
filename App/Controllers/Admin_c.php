@@ -40,7 +40,7 @@ class Admin_c extends BaseController {
             } else {
                 $result['success'] = "fail";
             }
-            $result['token'] = $this->security->getCSRFHash();
+//            $result['token'] = $this->security->getCSRFHash();
             echo json_encode($result);
             die;
         }

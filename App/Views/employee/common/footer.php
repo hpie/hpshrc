@@ -37,6 +37,7 @@
 <?php include(APPPATH . "Views/employee/common/notify.php"); ?>
 
 <script type="text/javascript" nonce='S51U26wMQz'>
+   
     $(document).ready(function () {
         $(".mobileno").keyup(function (e) {
             var str = $(this).val();
@@ -166,14 +167,85 @@
                     if (result['success'] == "fail") {
                         toastr.error('Old Password not matched!');
                     }
-                    $('.txt_csrfname').val(result['token']);
+//                    $('.txt_csrfname').val(result['token']);
                 }, 'json');
             });
         });
     </script>
 <?php } ?>
 
-
+<?php if ($title == EMPLOYEE_VIEW_CASES_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {                        
+        $("#add_comment").on('submit', function(e){
+                                    
+        var fileUpload = document.getElementById('case_files_file');
+        if (parseInt(fileUpload.files.length)>3){
+            toastr.error('You can only upload a maximum of 3 files.'); 
+            return false;
+        }        
+        var comment = $(".summernote-basic-id").val();
+        if (comment===''){            
+            toastr.error('Plz add description in comment'); 
+            return false;
+        }
+        
+        for (var i = 0; i <= fileUpload.files.length - 1; i++) {
+            if (fileUpload.files.item(i).size > 2097152) {
+                toastr.error('Try to upload all files less than 2MB!');                
+                return false;
+            }
+        }                               
+        if(confirm("Confirm before submit")) {    
+            e.preventDefault();
+            var last_comment_id=$( ".lastcomment" ).first().data("value");
+            var form_data = new FormData(this);
+            form_data.append('last_comment_id', last_comment_id);
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo EMPLOYEE_ADD_COMMENT_LINK; ?>',
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData:false,           
+                success: function(res){
+                    var res = $.parseJSON(res);
+    //                $('.ajax_csrfname').val(res.token);
+                    if(res.message==="success"){                         
+                        $( ".lastcomment" ).first().before( res.comments );                                                
+                        $('.summernote-basic-id').summernote("code",'');
+                        $('.simplebar-content-wrapper').scrollTop(0); 
+                    }
+                }        
+            });
+        }
+        else{
+            return false;
+        }
+    });
+            
+         
+            fill_datatable1();
+            function fill_datatable1()
+            {
+                $('#example').DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    searching: false,
+                    paging: false,
+                    bInfo: false                                                     
+                });
+            }
+        });
+    </script>
+<?php } ?> 
+    
+    
 <?php if ($title == EMPLOYEE_LIST_CASES_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
@@ -221,6 +293,54 @@
                     ]
                 });
             }
+             $(document).on('click', '.btn_lock_unlock_customer', function () {
+                var self = $(this);
+                var table = self.attr('data-table');
+                var updatefield = self.attr('data-updatefield');
+                var wherefield = self.attr('data-wherefield');
+                var status = self.attr('data-status');
+                var user_status = status;
+                if (!confirm('Are you sure want to update?'))
+                    return;
+                self.attr('disabled', 'disabled');
+                var data = {
+                    'table_id': self.data('id'),
+                    'user_status': user_status,
+                    'table': table,
+                    'updatefield': updatefield,
+                    'wherefield': wherefield
+//                    [csrfName]: csrfHash
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo APPROVE_STATUS ?>",
+                    data: data,
+                    success: function (res) {
+                        var res = $.parseJSON(res);
+//                        $('.ajax_csrfname').val(res.token);
+                        if (res.suceess) {
+                            var title = 'Click to locke customer';
+                            var class_ = 'btn_lock_unlock_customer btn btn-xs btn-success';
+                            var text = "Customer Unlocked <em class='icon ni ni-unlock-fill'></em>";
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to unlocke customer';
+                                class_ = 'btn_lock_unlock_customer btn btn-xs btn-danger';
+                                text = "Customer Locked <em class='icon ni ni-lock-fill'></em>";
+                                isactive = 0;
+                            }
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });
+                            self.removeAttr('disabled');
+                            self.html(text);
+                        }
+                    }
+                });
+            });
         });
     </script>
 <?php } ?> 
@@ -277,8 +397,8 @@
             }
             $(document).on('click', '.btn_approve_reject_email', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
 
                 var self = $(this);
 
@@ -300,8 +420,7 @@
                     'user_status': user_status,
                     'table': table,
                     'updatefield': updatefield,
-                    'wherefield': wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield': wherefield
                 };
 
                 $.ajax({
@@ -310,7 +429,7 @@
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);
-                        $('.ajax_csrfname').val(res.token);
+//                        $('.ajax_csrfname').val(res.token);
                         if (res.suceess) {
 
                             var title = 'Click to unverify email';
@@ -338,8 +457,8 @@
             });
             $(document).on('click', '.btn_lock_unlock_customer', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
 
                 var self = $(this);
 
@@ -359,8 +478,8 @@
                     'user_status': user_status,
                     'table': table,
                     'updatefield': updatefield,
-                    'wherefield': wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield': wherefield
+//                    [csrfName]: csrfHash
                 };
 
                 $.ajax({
@@ -369,7 +488,7 @@
                     data: data,
                     success: function (res) {
                         var res = $.parseJSON(res);
-                        $('.ajax_csrfname').val(res.token);
+//                        $('.ajax_csrfname').val(res.token);
                         if (res.suceess) {
 
                             var title = 'Click to locke customer';
@@ -397,8 +516,8 @@
             });
             $(document).on('click', '.btn_active_inactive_customer', function () {
 
-                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
-                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
 
                 var self = $(this);
 
@@ -420,8 +539,8 @@
                     'user_status': user_status,
                     'table': table,
                     'updatefield': updatefield,
-                    'wherefield': wherefield,
-                    [csrfName]: csrfHash
+                    'wherefield': wherefield
+//                    [csrfName]: csrfHash
                 };
 
                 $.ajax({
@@ -463,6 +582,19 @@
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {     
+            
+            $("#case_files_file").on("change", function(){
+                $('.case_files_file_title_desc').remove();
+                var numFiles = $(this)[0].files.length;
+                var i;
+                var text='';
+                for (i = 1; i <= numFiles; i++) {                  
+                text+="<div class='row g-3 align-center case_files_file_title_desc'><div class='col-lg-4'><div class='form-group'><label class='form-label float-right' for='title_file'>File "+i+"  Title:</label></div></div><div class='col-lg-4'><div class='form-control-wrap'><input type='text' class='form-control' name='title_file[]' placeholder='Enter file "+i+" title' required autocomplete='off'></div></div></div></div>";
+                text+="<div class='row g-3 align-center case_files_file_title_desc'><div class='col-lg-4'><div class='form-group'><label class='form-label float-right' for='desc_file'>File "+i+" Description:</label></div></div><div class='col-lg-4'><div class='form-group'><div class='form-control-wrap'><textarea class='form-control' rows='2' name='desc_file[]'  placeholder='Enter file "+i+" description'></textarea></div></div></div></div>";                    
+                }
+                $( ".case_files_file_div" ).after(text);
+            });
+            
             
             $('#howtocontact').on('change', function () {
                 var howtocontact = $(this).val();

@@ -97,7 +97,7 @@ class Causes_c extends BaseController {
             $sub_type = $this->Causes_m->load_sub_type($_POST);           
             $result=array();
             $result['sub_type']=$sub_type;            
-            $result['token'] = $this->security->getCSRFHash();               
+//            $result['token'] = $this->security->getCSRFHash();               
             echo json_encode($result);
         }
     }
@@ -114,7 +114,7 @@ class Causes_c extends BaseController {
                     'suceess' => false
                 );
             }
-            $data['token'] = $this->security->getCSRFHash();
+//            $data['token'] = $this->security->getCSRFHash();
             echo json_encode($data);
         }
     }

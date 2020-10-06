@@ -47,7 +47,7 @@ class Customers_a extends BaseController {
                     'suceess' => true
                 );
             }
-            $data['token'] = $this->security->getCSRFHash();
+//            $data['token'] = $this->security->getCSRFHash();
             echo json_encode($data);
         }
     }

@@ -34,12 +34,10 @@ $columns = array(
     array('db' => 'emp.employee_user_id', 'dt' =>'employee_user_id'),
     array('db' => 'emp.user_firstname', 'dt' =>'user_firstname'),
     array('db' => 'emp.user_lastname', 'dt' =>'user_lastname'),   
-    array('db' => 'emp.user_email_id', 'dt' =>'user_email_id'),
-    array('db' => 'emp.employee_type', 'dt' =>'employee_type'),            
+    array('db' => 'emp.user_email_id', 'dt' =>'user_email_id'),               
     array('db' => 'emp.user_email_verified_status', 'dt' =>'user_email_verified_status'),
     array('db' => 'emp.user_locked_status', 'dt' =>'user_locked_status'),
-    array('db' => 'emp.user_status', 'dt' =>'user_status')
-   
+    array('db' => 'emp.user_status', 'dt' =>'user_status')   
 );
 include 'conn.php';
 

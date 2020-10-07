@@ -19,30 +19,47 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_firstname">First Name
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="user_firstname" id="user_firstname"  placeholder="Enter First Name" class="form-control col-md-7 col-xs-12" required="" value="<?php if (isset($_SESSION['post_data'])) {
-                            echo $_SESSION['post_data']['user_firstname'];
-                        } ?>" autocomplete="off">
+                                <input type="text" name="user_firstname" id="user_firstname"  placeholder="Enter First Name" class="form-control col-md-7 col-xs-12" required="" value="<?php
+                                if (isset($_SESSION['post_data'])) {
+                                    echo $_SESSION['post_data']['user_firstname'];
+                                }
+                                ?>" autocomplete="off">
                             </div>                                
                         </div> 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_lastname">Last Name
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="user_lastname" id="user_lastname"  placeholder="Enter Last Name" class="form-control col-md-7 col-xs-12" value="<?php if (isset($_SESSION['post_data'])) {
-                            echo $_SESSION['post_data']['user_lastname'];
-                        } ?>" autocomplete="off">
+                                <input type="text" name="user_lastname" id="user_lastname"  placeholder="Enter Last Name" class="form-control col-md-7 col-xs-12" value="<?php
+                                if (isset($_SESSION['post_data'])) {
+                                    echo $_SESSION['post_data']['user_lastname'];
+                                }
+                                ?>" autocomplete="off">
                             </div>                                
                         </div>                      
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_email_id">Email
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="email" name="user_email_id" id="user_email_id"  placeholder="Enter Email" class="form-control col-md-7 col-xs-12" required="" value="<?php if (isset($_SESSION['post_data'])) {
-                            echo $_SESSION['post_data']['user_email_id'];
-                        } ?>" autocomplete="off">
+                                <input type="email" name="user_email_id" id="user_email_id"  placeholder="Enter Email" class="form-control col-md-7 col-xs-12" required="" value="<?php
+                                if (isset($_SESSION['post_data'])) {
+                                    echo $_SESSION['post_data']['user_email_id'];
+                                }
+                                ?>" autocomplete="off">
                             </div>                                
-                        </div>                              
-                                                                                                                                   
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label for="employee_roll" class="control-label col-md-3 col-sm-3 col-xs-12">Employee Roll</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="checkbox" name="employee_roll[]" value="executive"> Executive &nbsp;&nbsp;
+                                <input type="checkbox" name="employee_roll[]" value="lead"> Lead &nbsp;&nbsp;
+                                <input type="checkbox" name="employee_roll[]" value="manager"> Manager &nbsp;&nbsp;
+                                <input type="checkbox" name="employee_roll[]" value="director"> Director &nbsp;&nbsp;
+                                <input type="checkbox" name="employee_roll[]" value="chairman"> Chairman
+                            </div>                           
+                        </div>                       
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
@@ -50,7 +67,7 @@
                                 <button type="submit" class="btn btn-success"  id="btnSubmit">Submit</button>
                             </div>
                         </div>                            
-                        <?php echo form_close(); ?>  
+<?php echo form_close(); ?>  
                     </div>
                 </div>
             </div>

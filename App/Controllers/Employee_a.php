@@ -52,11 +52,13 @@ class Employee_a extends BaseController {
     }
     
     
-     public function create_employee() {             
+     public function create_employee() {
         include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                         
         $_SESSION['exist_email'] = 0;
         if (isset($_POST['user_firstname'])) {
-            $_SESSION['post_data']=$_POST;            
+            $_SESSION['post_data']=$_POST;
+            $userRoll=$_POST['employee_roll'];
+            unset($_POST['employee_roll']);
             if(!isset($_POST['user_email_password'])){
                 $_POST['user_email_password']=generateStrongPassword();
             }
@@ -67,10 +69,16 @@ class Employee_a extends BaseController {
             $result = array();
             $send_email_error = 0;
             if ($res['success'] == true) {
+                $this->Common_m->remove_employee_roll($res['employee_user_id']);
+                $roll_params=array();
+                $roll_params['refUser_id']=$res['employee_user_id'];                
+                for ($i=0;$i<count($userRoll);$i++){                
+                    $roll_params['roll_title']=$userRoll[$i];
+                    $this->Common_m->add_employee_roll($roll_params);                    
+                } 
                 $result['success'] = 'success';
                 $link_code = gen_uuid($res['employee_user_id'], 'e');
-                $email_active_link = EMPLOYEE_ACTIVE_EMAIL_LINK . $link_code;
-                $result['success'] = 'success';
+                $email_active_link = EMPLOYEE_ACTIVE_EMAIL_LINK . $link_code;                
                 $data = array(
                     'username' => $res['email'],
                     'password' => $_POST['user_email_password'],
@@ -125,7 +133,15 @@ class Employee_a extends BaseController {
     
     public function edit_employee($employee_id) {                                
         if (isset($_POST['user_firstname'])) {
-                     
+            $userRoll=$_POST['employee_roll'];            
+            unset($_POST['employee_roll']);
+            $this->Common_m->remove_employee_roll($employee_id);
+            $roll_params=array();
+            $roll_params['refUser_id']=$employee_id;                        
+            for ($i=0;$i<count($userRoll);$i++){                  
+                $roll_params['roll_title']=$userRoll[$i];
+                $this->Common_m->add_employee_roll($roll_params);                
+            }             
             $res =  $this->Common_m->edit_employee($_POST,$employee_id);                       
             $result = array();
             $send_email_error = 0;
@@ -139,7 +155,8 @@ class Employee_a extends BaseController {
                 }                
             }            
         }
-        helper('form'); 
+        helper('form');
+        $data['employee_roll']=$this->Common_m->get_employee_roll($employee_id);       
         $data['single_employee']=$this->Common_m->get_single_employee($employee_id);
         $data['employee_id'] = $employee_id;        
         $data['title'] = ADMIN_EDIT_EMPLOYEE_TITLE;            

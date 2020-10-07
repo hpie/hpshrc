@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                             </div> 
-                            <div class="row g-3 align-center">
+                            <div class="row g-3 align-center case_files_file_div">
                                 <div class="col-lg-4">
                                     <div class="form-group">                                            
                                         <label class="form-label float-right" for="case_files_file">Files:</label>

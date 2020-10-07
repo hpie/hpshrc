@@ -1,5 +1,11 @@
 <?php
 
+function set_checked($desired_value1, $new_value1) {
+    if ($desired_value1 == $new_value1) {
+        echo ' checked="true"';
+    }
+}
+
 function auto_logout($type,$field)
 {    
     $t = time();    

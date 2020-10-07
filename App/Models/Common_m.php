@@ -64,8 +64,7 @@ class Common_m extends Model
         if(isset($params['g-recaptcha-response'])){
             unset($params['g-recaptcha-response']);    
         }       
-        $params['created_by']=$_SESSION['admin']['admin_user_id'];
-        
+        $params['created_by']=$_SESSION['admin']['admin_user_id'];        
         $builder = $this->db->table('employee');
         $builder->insert($params);
         $insert_id = $this->db->insertID();
@@ -80,6 +79,25 @@ class Common_m extends Model
         }
         return FALSE;
         //it will be return boolean value (true/false)
+    }
+    public function remove_employee_roll($refUser_id){
+       return $this->db->query("DELETE FROM user_roll WHERE refUser_id=$refUser_id");       
+    }
+    public function add_employee_roll($params){
+        $refUser_id=$params['refUser_id'];         
+        $builder = $this->db->table('user_roll');
+        $builder->insert($params);
+        $insert_id = $this->db->insertID();        
+        if(!empty($insert_id)){
+            return TRUE;
+        }
+        return FALSE;
+        //it will be return boolean value (true/false)
+    } 
+     public function get_employee_roll($employee_id){  
+        $res = $this->db->query("SELECT * FROM user_roll WHERE refUser_id={$employee_id}");
+        $data = $res->getResultArray();
+        return $data;
     }
     
     public function chek_code_exist($user_id,$link_code,$user_type) {       
@@ -162,6 +180,7 @@ class Common_m extends Model
         $row = $res->getRowArray();
         return $row;
     }
+   
     public function get_single_customer($customer_id){  
         $res = $this->db->query("SELECT * FROM hpshrc_customer WHERE customer_id={$customer_id} ");
         $row = $res->getRowArray();

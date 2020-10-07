@@ -551,13 +551,12 @@
                         var res = $.parseJSON(res);
                         $('.ajax_csrfname').val(res.token);
                         if (res.suceess) {
-
                             var title = 'Click to inactive customer';
                             var class_ = 'btn_active_inactive_customer btn btn-xs btn-success';
                             var text = "Customer Activated <em class='icon ni ni-user-check-fill'></em>";
                             var isactive = "REMOVED";
 
-                            if (status == "REMOVED") {
+                            if (status === "REMOVED") {
                                 title = 'Click to active customer';
                                 class_ = 'btn_active_inactive_customer btn btn-xs btn-danger';
                                 text = "Customer Inactivated <em class='icon ni ni-user-cross-fill'></em>";
@@ -581,21 +580,19 @@
 <?php if ($title == EMPLOYEE_ADD_CASES_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
-        $(document).ready(function () {     
-            
-            $("#case_files_file").on("change", function(){
-                $('.case_files_file_title_desc').remove();
+        $(document).ready(function () {                 
+            $("#case_files_file").on("change", function(){                
+                $('.case_files_file_title_desc').remove();                
                 var numFiles = $(this)[0].files.length;
                 var i;
                 var text='';
                 for (i = 1; i <= numFiles; i++) {                  
-                text+="<div class='row g-3 align-center case_files_file_title_desc'><div class='col-lg-4'><div class='form-group'><label class='form-label float-right' for='title_file'>"+$(this)[0].files.item(i-1).name"  Title:</label></div></div><div class='col-lg-4'><div class='form-control-wrap'><input type='text' class='form-control' name='title_file[]' placeholder='Enter "+$(this)[0].files.item(i-1).name" title' required autocomplete='off'></div></div></div></div>";
-                text+="<div class='row g-3 align-center case_files_file_title_desc'><div class='col-lg-4'><div class='form-group'><label class='form-label float-right' for='desc_file'>"+$(this)[0].files.item(i-1).name" Description:</label></div></div><div class='col-lg-4'><div class='form-group'><div class='form-control-wrap'><textarea class='form-control' rows='2' name='desc_file[]'  placeholder='Enter "+$(this)[0].files.item(i-1).name" description'></textarea></div></div></div></div>";                    
+                    text+="<div class='row g-3 align-center case_files_file_title_desc'><div class='col-lg-4'><div class='form-group'><label class='form-label float-right' for='title_file'>"+$(this)[0].files.item(i-1).name.substr(0,30)+"  Title:</label></div></div><div class='col-lg-4'><div class='form-control-wrap'><input type='text' class='form-control' name='title_file[]' placeholder='Enter "+$(this)[0].files.item(i-1).name.substr(0,30)+" title' required autocomplete='off'></div></div></div></div>";
+                    text+="<div class='row g-3 align-center case_files_file_title_desc'><div class='col-lg-4'><div class='form-group'><label class='form-label float-right' for='desc_file'>"+$(this)[0].files.item(i-1).name.substr(0,30)+" Description:</label></div></div><div class='col-lg-4'><div class='form-group'><div class='form-control-wrap'><textarea class='form-control' rows='2' name='desc_file[]'  placeholder='Enter "+$(this)[0].files.item(i-1).name.substr(0,30)+" description'></textarea></div></div></div></div>";                    
                 }
                 $( ".case_files_file_div" ).after(text);
             });
-            
-            
+                        
             $('#howtocontact').on('change', function () {
                 var howtocontact = $(this).val();
                 if(howtocontact=='Email'){
@@ -820,15 +817,15 @@
                             }
                         }
                     },                    
-                    customer_middle_name: {
-                        validators: {
-                            regexp: {
-                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
-                                message: 'Special character not allowed'
-                            }
-                            
-                        }
-                    },                    
+//                    customer_middle_name: {
+//                        validators: {
+//                            regexp: {
+//                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+//                                message: 'Special character not allowed'
+//                            }
+//                            
+//                        }
+//                    },                    
                     customer_last_name: {
                         validators: {
                              stringLength: {

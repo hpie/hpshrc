@@ -333,8 +333,7 @@
                         {"data": "index"},
                         {"data": "user_firstname"},                        
                         {"data": "user_lastname"},  
-                        {"data": "user_email_id"},  
-                        {"data": "employee_type"},  
+                        {"data": "user_email_id"},                         
                         {"data": "action"}
                     ]
                 });
@@ -575,7 +574,16 @@
                                 message: 'Please supply a valid email address'
                             }
                         }
-                    }                                    
+                    },
+                    'employee_roll[]': {
+                    validators: {
+                    choice: {
+                        min: 1,
+                        max: 5,
+                        message: 'Please choose employee roll'
+                            }
+                        }
+                    }
                 }
             }); 
         });

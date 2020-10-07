@@ -2,7 +2,7 @@
 if($_SERVER['HTTP_HOST']=='localhost'){
     define('USERNAME','root');
     define('PASSWORD','');
-    define('DATABASE','hpshrc');
+    define('DATABASE','hpshrc1');
 }
 else{
      define('USERNAME','knebxnii_knebxnii');

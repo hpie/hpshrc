@@ -23,12 +23,12 @@
                     <!-- content @s -->
                     <div class="nk-content ">
                         <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
-                            <div class="brand-logo pb-4 text-center">
-                                <a href="<?php echo BASE_URL; ?>" class="logo-link">
-                                    <img class="logo-light logo-img logo-img-lg" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo2x.png 2x" alt="logo">
-                                    <img class="logo-dark logo-img logo-img-lg" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-dark.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-dark2x.png 2x" alt="logo-dark">
+<!--                            <div class="brand-logo pb-4 text-center">
+                                <a href="<?php //echo BASE_URL; ?>" class="logo-link">
+                                    <img class="logo-light logo-img logo-img-lg" src="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo.png" srcset="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo2x.png 2x" alt="logo">
+                                    <img class="logo-dark logo-img logo-img-lg" src="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-dark.png" srcset="<?php //echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-dark2x.png 2x" alt="logo-dark">
                                 </a>
-                            </div>
+                            </div>-->
                             <div class="card">
                                 <div class="card-inner card-inner-lg">
                                     <div class="nk-block-head">

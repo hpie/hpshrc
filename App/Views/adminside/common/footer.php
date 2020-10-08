@@ -588,7 +588,163 @@
             }); 
         });
     </script>
-<?php } ?>  
+<?php } ?> 
+    <?php if ($title == ADMIN_CATEGORIES_LIST_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {
+                $('#example').DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "bInfo": false,
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/categories_list.php' ?>",
+                        'data': {
+                            admin_user_id: <?php
+                            if (isset($_SESSION['admin']['admin_user_id'])) {
+                                echo $_SESSION['admin']['admin_user_id'];
+                            }
+                            ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "category_code"},
+                        {"data": "category_title"},
+                        {"data": "category_description"},
+                        {"data": "category_status"},                       
+                        {"data": "action"}
+                    ]
+                });
+            }
+            
+            
+            fill_datatable2();
+            function fill_datatable2()
+            {
+                $('#example2').DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "bInfo": false,
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/sub_categories_list.php' ?>",
+                        'data': {
+                            admin_user_id: <?php
+                            if (isset($_SESSION['admin']['admin_user_id'])) {
+                                echo $_SESSION['admin']['admin_user_id'];
+                            }
+                            ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "category_code"},
+                        {"data": "category_title"},
+                        {"data": "category_description"},
+                        {"data": "ref_category_code"},
+                        {"data": "category_status"},                       
+                        {"data": "action"}
+                    ]
+                });
+            }
+            
+            
+            
+              $(document).on('click', '.btn_approve_reject', function () {
+              
+//                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
+//                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
+              
+                var self = $(this);
+
+                var status = self.attr('data-status');
+
+                var category_status = 'ACTIVE';
+
+                if (status == 1) {
+                    category_status = 'REMOVED';
+                }
+
+                if (!confirm('Are you sure want to ' + category_status.toLocaleLowerCase() + ' category?'))
+                    return;
+
+                self.attr('disabled', 'disabled');
+
+                var data = {
+                    'category_code': self.data('id'),
+                    'category_status': category_status
+//                    [csrfName]: csrfHash
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo ADMIN_CATEGORIES_ACTIVE_LINK ?>",
+                    data: data,
+                    success: function (res) {
+                        var data = $.parseJSON(res);
+//                        $('.ajax_csrfname').val(data.token);
+                        if (data.suceess) {
+                            var title = 'Click to deactivate category';
+                            var class_ = 'btn_approve_reject btn btn-success btn-xs';
+                            var text = 'Active';
+                            var isactive = 1;
+
+                            if (status == 1) {
+                                title = 'Click to active category';
+                                class_ = 'btn_approve_reject btn btn-danger btn-xs';
+                                text = 'Removed';
+                                isactive = 0;
+                            }
+                            
+                            self.removeClass().addClass(class_);
+                            self.attr({
+                                'data-status': isactive,
+                                'title': title
+                            });                            
+                            self.removeAttr('disabled');
+                            self.html(text);
+                        }
+                    }
+                });
+            });
+            
+        });
+
+    </script>
+<?php } ?>
 <?php if ($title == ADMIN_FILE_LIST_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
@@ -825,6 +981,91 @@
     </script>
 <?php } ?>
 
+ <?php if ($title == ADMIN_ADD_CATEGORIES_TITLE || $title == ADMIN_EDIT_CATEGORIES_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            $('#add_categories').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    category_code: {
+                        validators: {
+                            stringLength: {
+                                max: 50
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Category Code'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    },
+                    category_title: {
+                        validators: {
+                            stringLength: {
+                                max: 500
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Title'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    }
+                }
+            });
+            $('#edit_categories').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    category_code: {
+                        validators: {
+                            stringLength: {
+                                max: 50
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Category Code'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    },
+                    category_title: {
+                        validators: {
+                            stringLength: {
+                                max: 500
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Title'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<?php } ?>   
+    
+    
 <?php if ($title == ADMIN_ADD_CAUSES_TITLE || $title == ADMIN_EDIT_CAUSES_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">

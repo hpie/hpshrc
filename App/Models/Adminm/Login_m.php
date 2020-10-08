@@ -9,7 +9,18 @@ class Login_m extends Model
     {
         $this->db = db_connect();
         helper('functions');
-    }    
+    } 
+    
+    public function count_data($table,$count_field,$where_field,$where_field_value){        
+        $tehsil = $this->db->query("SELECT COUNT($count_field) as cnt FROM $table WHERE $where_field='$where_field_value'");
+        return $tehsil->getRowArray();
+    } 
+    public function count_data1($table,$count_field){        
+        $tehsil = $this->db->query("SELECT COUNT($count_field) as cnt FROM $table");
+        return $tehsil->getRowArray();
+    } 
+    
+    
     public function admin_login_select($username, $password) {        
         $password = md5($password);
         $resAdmin = $this->db->query("SELECT * FROM `admin` WHERE ( user_email_id = '$username') AND user_email_password = '$password' AND user_status = 'ACTIVE' AND user_locked_status=0");

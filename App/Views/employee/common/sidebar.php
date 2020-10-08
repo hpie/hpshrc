@@ -7,9 +7,10 @@
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
                         <a href="<?php echo EMPLOYEE_DASHBOARD_LINK; ?>" class="logo-link nk-sidebar-logo">
-                            <img class="logo-light logo-img" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo2x.png 2x" alt="logo">
+                            <h5>EMPLOYEE PANEL</h5>
+<!--                            <img class="logo-light logo-img" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo2x.png 2x" alt="logo">
                             <img class="logo-dark logo-img" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-dark.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-dark2x.png 2x" alt="logo-dark">
-                            <img class="logo-small logo-img logo-img-small" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-small.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-small2x.png 2x" alt="logo-small">
+                            <img class="logo-small logo-img logo-img-small" src="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-small.png" srcset="<?php echo EMPLOYEE_ASSETS_FOLDER; ?>images/logo-small2x.png 2x" alt="logo-small">-->
                         </a>
                     </div>
                     <div class="nk-menu-trigger mr-n2">

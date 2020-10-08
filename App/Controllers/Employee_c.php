@@ -25,7 +25,14 @@ class Employee_c extends BaseController {
             
         } 
     }           
-    public function dashboard() {                     
+    public function dashboard() {
+        $data['totaluser']=$this->Login_m->count_data1('hpshrc_customer','customer_id');
+        $data['totalactiveuser']=$this->Login_m->count_data('hpshrc_customer','customer_id','customer_status','ACTIVE');
+        $data['totalinactiveuser']=$this->Login_m->count_data('hpshrc_customer','customer_id','customer_status','REMOVED');
+        
+        $data['totalcases']=$this->Login_m->count_data1('cases','cases_id');
+        $data['totalopencases']=$this->Login_m->count_data('cases','cases_id','cases_status','open');
+        $data['totalclosedcases']=$this->Login_m->count_data('cases','cases_id','cases_status','closed');  
         $data['title'] = EMPLOYEE_DASHBOARD_TITLE;        
         echo employee_view('employee/dashboard',$data);
     }

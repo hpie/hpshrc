@@ -103,6 +103,13 @@ define('ADMIN_APPROVE_EMPLOYEE_STATUS',BASE_URL."/admin-employee-approve-status"
 define('ADMIN_EMPLOYEE_EDIT_LINK',BASE_URL."/admin-edit-employee/");
 define('ADMIN_EMPLOYEE_REGISTER_LINK',BASE_URL."/admin-employee-registration");
 
+define('ADMIN_CATEGORIES_LIST_LINK', BASE_URL_CI.'/admin-categories-list');
+define('ADMIN_ADD_CATEGORIES_LINK', BASE_URL_CI.'/admin-add-category');
+define('ADMIN_EDIT_CATEGORIES_LINK', BASE_URL_CI.'/admin-edit-category/');
+define('ADMIN_CATEGORIES_ACTIVE_LINK',BASE_URL_CI."/admin-active-category");
+define('ADMIN_ADD_SUB_CATEGORIES_LINK', BASE_URL_CI.'/admin-add-sub-category');
+define('ADMIN_EDIT_SUB_CATEGORIES_LINK', BASE_URL_CI.'/admin-edit-sub-category/');
+
 //**************************************EMPLOYEE ROUTE****************************//
 define('EMPLOYEE_LOGIN_LINK', BASE_URL_CI.'/employee-login');
 define('EMPLOYEE_LOGOUT_LINK', BASE_URL_CI.'/employee-logout');
@@ -187,3 +194,8 @@ define('ADMIN_EMPLOYEE_LIST_TITLE', 'HPSHRC-ADMIN-EMPLOYEE-LIST');
 define('ADMIN_EMPLOYEE_REGISTRATION_TITLE', 'HPSHRC-EMPLOYEE-REGISTRATION');
 define('ADMIN_EDIT_EMPLOYEE_TITLE', 'HPSHRC-EDIT-EMPLOYEE');
 
+define('ADMIN_CATEGORIES_LIST_TITLE', 'HPSHRC-ADMIN-CATEGORIES-LIST');
+define('ADMIN_ADD_CATEGORIES_TITLE', 'HPSHRC-ADMIN-ADD-CATEGORIES');
+define('ADMIN_EDIT_CATEGORIES_TITLE', 'HPSHRC-ADMIN-EDIT-CATEGORIES');
+define('ADMIN_ADD_SUB_CATEGORIES_TITLE', 'HPSHRC-ADMIN-ADD-SUB-CATEGORIES');
+define('ADMIN_EDIT_SUB_CATEGORIES_TITLE', 'HPSHRC-ADMIN-EDIT-SUB-CATEGORIES');

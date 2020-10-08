@@ -9,6 +9,9 @@
                 <a href="<?php echo ADMIN_FILE_LIST_LINK; ?>"><i class="fa fa-files-o"></i> Files <span class="fa fa-chevron-right"></span></a>                    
             </li>
             <li>
+                <a href="<?php echo ADMIN_CATEGORIES_LIST_LINK; ?>"><i class="fa fa-list-alt"></i> Categories <span class="fa fa-chevron-right"></span></a>                    
+            </li>
+            <li>
                 <a href="<?php echo ADMIN_CUSTOMER_LIST_LINK; ?>"><i class="fa fa-users"></i> Customers <span class="fa fa-chevron-right"></span></a>                    
             </li>
             <li>

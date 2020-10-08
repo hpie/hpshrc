@@ -764,7 +764,173 @@ class SSP {
 		);
 	}
         
-         static function file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+        static function categories_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+                $columns_order=$columns;
+		// Build the SQL query string from the request
+                if (($request['order'][0]['column'])>0) {
+                    $columnsArray = array();                   
+                    foreach ($columns as $crow) {                       
+                        if (substr_count($crow['db'], " as ")) {
+                            $crow['db'] = explode(" as ", $crow['db'])[0];
+                        }
+                        array_push($columnsArray, $crow);
+                    }
+                    $columns_order = $columnsArray;
+                }                
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns_order );                               
+                
+		$where = self::filter( $request, $columns, $bindings );
+//                $where="";
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                } 
+                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			FROM $table                        
+			$where
+			$order 
+			$limit"
+		); 		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			FROM   $table                        
+			$where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			FROM   $table                        
+                        "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){ 
+                        $category_code = $row['category_code'];
+                        $row['index']='';
+                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-category/$category_code' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";                ;                        
+                        $title = 'Click to deactivate category';
+                        $class = 'btn_approve_reject btn btn-success btn-xs';
+                        $text = 'Active';
+                        $isactive = 1;
+                        if($row['category_status'] == 'REMOVED'){
+                            $title = 'Click to active category';
+                            $class = 'btn_approve_reject btn btn-danger btn-xs';
+                            $text  = 'Removed';
+                            $isactive = 0;
+                        }                       
+                        $row['category_status'] = "<button type='button' data-id='".$category_code."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
+                        array_push($resData, $row);
+                    }  
+                }
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+        static function sub_categories_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+                $columns_order=$columns;
+		// Build the SQL query string from the request
+                if (($request['order'][0]['column'])>0) {
+                    $columnsArray = array();                   
+                    foreach ($columns as $crow) {                       
+                        if (substr_count($crow['db'], " as ")) {
+                            $crow['db'] = explode(" as ", $crow['db'])[0];
+                        }
+                        array_push($columnsArray, $crow);
+                    }
+                    $columns_order = $columnsArray;
+                }                
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns_order );                               
+                
+		$where = self::filter( $request, $columns, $bindings );
+//                $where="";
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                } 
+                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			FROM $table                        
+			$where
+			$order 
+			$limit"
+		); 		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			FROM   $table                        
+			$where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			FROM   $table                        
+                        "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){ 
+                        $category_code = $row['category_code'];
+                        $row['index']='';
+                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-sub-category/$category_code' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";                ;                        
+                        $title = 'Click to deactivate category';
+                        $class = 'btn_approve_reject btn btn-success btn-xs';
+                        $text = 'Active';
+                        $isactive = 1;
+                        if($row['category_status'] == 'REMOVED'){
+                            $title = 'Click to active category';
+                            $class = 'btn_approve_reject btn btn-danger btn-xs';
+                            $text  = 'Removed';
+                            $isactive = 0;
+                        }                       
+                        $row['category_status'] = "<button type='button' data-id='".$category_code."' data-status = '".$isactive."' title='".$title."' class='".$class." btn-xs'>".$text."</button>";                        
+                        array_push($resData, $row);
+                    }  
+                }
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+          static function file_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{                         
 		$bindings = array();
 		$db = self::db( $conn );
@@ -930,7 +1096,7 @@ class SSP {
                 $result=self::data_output($columns,$data);
                 $resData=array();
                 if(!empty($result)){                    
-                    foreach ($result as $row){
+                    foreach ($result as $row){ 
                         $upload_file_id = $row['upload_file_id'];
                         $row['index']=''; 
                         $row['download']="<a class='download' href=".BASE_URL.'/uploads/doc/causes/'.$row['upload_file_location']." download><u>Click here to download</u></a>"; 

@@ -15,21 +15,30 @@ class Causes_m extends Model
         $builder->insert($params);
         return $this->db->insertID();
     }
+    public function add_category($params) {
+        $builder = $this->db->table('hpshrc_categories');
+        return $builder->insert($params);
+//        return $this->db->insertID();
+    }
     public function get_file_type($category_ref_type) {       
-        $ressult = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_status='A' AND category_ref_type='$category_ref_type'");
+        $ressult = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_status='ACTIVE' AND category_ref_type='$category_ref_type'");
         return $ressult->getResultArray();      
     }
     public function load_sub_type($params){
         $subtype_id = $params['category_code'];
-        $res = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE  category_status='A' AND category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
+        $res = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE  category_status='ACTIVE' AND category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
         return $res->getResultArray();
     }
     public function get_sub_type($subtype_id){        
-        $tehsil = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE  category_status='A' AND category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
+        $tehsil = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE  category_status='ACTIVE' AND category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
         return $tehsil->getResultArray();
     }
     public function get_single_file($upload_file_id){        
         $tehsil = $this->db->query("SELECT * FROM `hpshrc_upload_files` WHERE upload_file_id='$upload_file_id'");
+        return $tehsil->getRowArray();
+    }
+     public function get_single_category($category_code){        
+        $tehsil = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_code='$category_code'");
         return $tehsil->getRowArray();
     }
     public function edit_causes($params,$upload_file_id){  
@@ -37,6 +46,12 @@ class Causes_m extends Model
         $builder->where('upload_file_id', $upload_file_id);
         $update =$builder->update($params);        
 //        $update = $this->db->update('hpshrc_upload_files', $params, array('upload_file_id' => $upload_file_id));
+        return $update;
+    }
+    public function edit_category($params,$category_code){  
+        $builder = $this->db->table('hpshrc_categories');
+        $builder->where('category_code', $category_code);
+        $update =$builder->update($params);        
         return $update;
     }
      public function active_causes($params) {
@@ -47,5 +62,12 @@ class Causes_m extends Model
         }
         return false;
     }
-    
+     public function active_category($params) {
+        $query_res = $this->db->query("UPDATE  hpshrc_categories SET category_status = '{$params['category_status']}'
+                                       WHERE category_code='{$params['category_code']}'");
+        if ($query_res) {
+            return true;
+        }
+        return false;
+    }
 }

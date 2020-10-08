@@ -57,6 +57,14 @@ $routes->add('admin-employee-approve-status', 'Employee_a::approve_status');
 $routes->add('admin-employee-registration', 'Employee_a::create_employee');
 $routes->add('admin-edit-employee/(:any)', 'Employee_a::edit_employee/$1');
 
+$routes->add('admin-add-category', 'Categories_c::add_category');
+$routes->add('admin-categories-list', 'Categories_c::categories_list');
+$routes->add('admin-active-category', 'Categories_c::active_category');
+$routes->add('admin-edit-category/(:any)', 'Categories_c::edit_category/$1');
+
+$routes->add('admin-add-sub-category', 'Categories_c::add_sub_category');
+$routes->add('admin-edit-sub-category/(:any)', 'Categories_c::edit_sub_category/$1');
+
 //************************************Front side route****************************//
 $routes->add('home', 'Home_c::index');
 $routes->add('front-about', 'Home_c::about');

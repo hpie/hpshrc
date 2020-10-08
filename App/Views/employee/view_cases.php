@@ -6,7 +6,7 @@
                     <div class="nk-msg-head">
                         <h2 class="title d-none d-lg-block">#<?php echo $caseDetails['cases_id'].': '.$caseDetails['cases_title']; ?></h2>
                         <div class="nk-msg-head-meta">
-                            <div class="d-none d-lg-block col-md-6">
+                            <div class="d-none d-lg-block col-md-12">
                                 <ul class="nk-msg-tags">
                                     <li><span class="label-tag"><span>Priority: <em class="icon ni ni-more-v"></em><?php echo $caseDetails['cases_priority']; ?></span></span></li>
                                     <li><span class="label-tag"><span>Status: <em class="icon ni ni-bar-chart-fill"></em><?php echo $caseDetails['cases_status']; ?></span></span></li>
@@ -14,8 +14,9 @@
                                 <hr>
                                 <span class="label-tag"><span><strong>Description: </strong></span></span>
                             <?php echo $caseDetails['cases_message']; ?>                                                                                             
-                            </div>
-                            <div class="d-none d-lg-block col-md-6">
+                            </div>                           
+                        </div>                        
+                        <div class="col-md-12">
                                 <hr>                                
                                 <span class="label-tag"><span><strong>File details and description: </strong></span></span>                                
 <?php if(!empty($fileDetails)){
@@ -50,7 +51,8 @@
                                             <?php
                                 } ?>                            
                             </div>
-                        </div>
+                        
+                        
 <a href="#" class="nk-msg-profile-toggle profile-toggle active"><em class="icon ni ni-arrow-left"></em></a>
                     </div><!-- .nk-msg-head -->
                     <div class="nk-msg-reply nk-reply" data-simplebar>                        

@@ -414,9 +414,9 @@ class SSP {
                         
                         
                         $locked_unlocked_str='';
-                        $title = 'Click to locke customer';
+                        $title = 'Click to locke employee';
                         $class = 'btn_lock_unlock_customer btn btn-xs btn-success';
-                        $text = "Customer Unlocked <i class='fa fa-unlock'></i>";
+                        $text = "Employee Unlocked <i class='fa fa-unlock'></i>";
                         $isactive = 1; 
                         $table='employee';
                         $table_update_field='user_locked_status';

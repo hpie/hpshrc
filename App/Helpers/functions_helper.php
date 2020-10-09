@@ -146,7 +146,7 @@ function sessionCustomer($row) {
             $_SESSION['customer'][$key] = $value;        
     }    
     $_SESSION['customer']['customer_usertype'] = 'customer';
-    $_SESSION['customer']['customer_time'] = time();
+//    $_SESSION['customer']['customer_time'] = time();
 //    $_SESSION['customer'][$_SESSION['customer']['customer_usertype'].'_session_id'] = session_create_id();    
     return true;
 }
@@ -156,7 +156,7 @@ function sessionAdmin($row) {
             $_SESSION['admin'][$key] = $value;        
     }    
     $_SESSION['admin']['admin_usertype'] = 'admin'; 
-    $_SESSION['admin']['admin_time'] = time();
+//    $_SESSION['admin']['admin_time'] = time();
 //    $_SESSION['admin'][$_SESSION['admin']['admin_usertype'].'_session_id'] = session_create_id();    
     return true;
 }
@@ -171,10 +171,10 @@ function sessionCheckAdmin() {
             exit();
         }
     }
-    if (auto_logout("admin","admin_time")) {
-        header('Location: ' . ADMIN_LOGIN_LINK);
-        exit;
-    }
+//    if (auto_logout("admin","admin_time")) {
+//        header('Location: ' . ADMIN_LOGIN_LINK);
+//        exit;
+//    }
     return true;
 }
 function sessionEmployee($row) {    
@@ -183,7 +183,7 @@ function sessionEmployee($row) {
     }    
 //    $_SESSION['user_id'] = $row['employee_user_id'];
     $_SESSION['employee']['employee_usertype'] = 'employee';
-    $_SESSION['employee']['employee_time'] = time();
+//    $_SESSION['employee']['employee_time'] = time();
 //    $_SESSION['employee'][$_SESSION['employee']['employee_usertype'].'_session_id'] = session_create_id();        
     return true;
 }
@@ -198,10 +198,10 @@ function sessionCheckCustomer() {
             exit();
         }
     }    
-    if (auto_logout("customer","customer_time")) {
-        header('Location: ' . FRONT_LOGIN_LINK);
-        exit();
-    } 
+//    if (auto_logout("customer","customer_time")) {
+//        header('Location: ' . FRONT_LOGIN_LINK);
+//        exit();
+//    } 
     return true;
 }
 function sessionCheckEmployee() {     
@@ -215,10 +215,10 @@ function sessionCheckEmployee() {
             exit();
         }
     }
-    if (auto_logout("employee","employee_time")) {
-        header('Location: ' . EMPLOYEE_LOGIN_LINK);
-        exit();
-    }
+//    if (auto_logout("employee","employee_time")) {
+//        header('Location: ' . EMPLOYEE_LOGIN_LINK);
+//        exit();
+//    }
     return true;
 }
 

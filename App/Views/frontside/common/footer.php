@@ -324,6 +324,20 @@
         });
     });
 </script>
+
+<?php if ($title == FRONT_BUDGET_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {   
+            $( "#budget_year" ).change(function() {
+                var years=$(this).val();
+                var url="<?php echo ADMIN_EXPENSE_LIST_LINK; ?>"+years;
+//                alert(url);
+                window.location = url;
+            });
+        });
+<?php } ?>
+
 <?php if ($title == FRONT_VIEW_CASES_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">

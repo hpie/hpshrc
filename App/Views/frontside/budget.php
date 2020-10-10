@@ -37,7 +37,7 @@
 
                 <h2 class="title-style-2"> Budget <span class="title-under"></span></h2>
 
-                <h4>Year 2020-2021</h4>
+                <h4>Year <?php echo $year; ?></h4>
                 <table class="table table-style-1">
                     <thead>
                         <tr>
@@ -47,60 +47,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if(!empty($result)){
+                            $total=0;
+                            foreach($result as $row){
+                                $total=$total+$row['budget_amount'];
+                            ?>
                         <tr>
                             <th scope="row">1</th>
-                            <td>Salary</td>
-                            <td>25,72,000.00</td>
+                            <td><?php echo $row['budget_soe']; ?></td>
+                            <td><?php echo $row['budget_amount']; ?></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Office Expenses</td>
-                            <td>40,000.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Medical reimbursement</td>
-                            <td>21,000.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Motor Vehicle</td>
-                            <td>1,58,000.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Publication</td>
-                            <td>1,000.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Travelling Expenses</td>
-                            <td>1,000.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>Other Charges</td>
-                            <td>1,000.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7</th>
-                            <td>MV Purchase</td>
-                            <td>1,000.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8</th>
-                            <td>Transfer TA</td>
-                            <td>1,000.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9</th>
-                            <td>Training</td>
-                            <td>1,000.00</td>
-                        </tr>
+                        <?php
+                            }
+                        }
+                        ?>                                               
                         <tr>
                             <th scope="row"></th>
                             <td><strong>Total</strong></td>
-                            <td><strong>27,97,000.00</strong></td>
+                            <td><strong><?php echo $total; ?></strong></td>
                         </tr>
                     </tbody>
                 </table>

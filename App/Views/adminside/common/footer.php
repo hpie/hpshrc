@@ -745,6 +745,62 @@
 
     </script>
 <?php } ?>
+      <?php if ($title == ADMIN_EXPENSE_LIST_TITLE) {
+    ?> 
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            fill_datatable1();
+            function fill_datatable1()
+            {
+                $('#example').DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: 'tr'
+                        }
+                    },
+                    columnDefs: [{
+                            className: 'control',
+                            orderable: false,
+                            targets: 0
+                        }],
+                    "bInfo": false,
+                    "processing": true,
+                    "serverSide": true,
+                    "pageLength": 10,
+                    "paginationType": "full_numbers",
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                    "ajax": {
+                        'type': 'POST',
+                        'url': "<?php echo BASE_URL . '/DataTablesSrc-master/expense_list.php' ?>",
+                        'data': {
+                            year:'<?php echo $year; ?>',
+                            admin_user_id: <?php
+                            if (isset($_SESSION['admin']['admin_user_id'])) {
+                                echo $_SESSION['admin']['admin_user_id'];
+                            }
+                            ?>
+                        }
+                    },
+                    "columns": [
+                        {"data": "index"},
+                        {"data": "budget_soe"},
+                        {"data": "budget_amount"},
+                        {"data": "budget_year"},                                          
+                        {"data": "action"}
+                    ]
+                });
+            }                         
+            $( "#budget_year" ).change(function() {
+                var years=$(this).val();
+                var url="<?php echo ADMIN_EXPENSE_LIST_LINK; ?>"+years;
+//                alert(url);
+                window.location = url;
+            });
+        });
+
+    </script>
+<?php } ?>
 <?php if ($title == ADMIN_FILE_LIST_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
@@ -795,7 +851,7 @@
                 });
             }
             
-              $(document).on('click', '.btn_approve_reject', function () {
+            $(document).on('click', '.btn_approve_reject', function () {
               
 //                var csrfName = $('.ajax_csrfname').attr('name'); // Value specified in $config['csrf_token_name']
 //                var csrfHash = $('.ajax_csrfname').val(); // CSRF hash
@@ -981,7 +1037,7 @@
     </script>
 <?php } ?>
 
- <?php if ($title == ADMIN_ADD_CATEGORIES_TITLE || $title == ADMIN_EDIT_CATEGORIES_TITLE) {
+<?php if ($title == ADMIN_ADD_CATEGORIES_TITLE || $title == ADMIN_EDIT_CATEGORIES_TITLE) {
     ?>
     <script nonce='S51U26wMQz' type="text/javascript">
         $(document).ready(function () {
@@ -1052,6 +1108,80 @@
                             },
                             notEmpty: {
                                 message: 'Please Enter Title'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<?php } ?>       
+    
+    
+    
+ <?php if ($title == ADMIN_ADD_EXPENSE_TITLE || $title == ADMIN_EDIT_EXPENSE_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            $('#add_expense').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    budget_soe: {
+                        validators: {                            
+                            notEmpty: {
+                                message: 'Please Enter SOE'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    },
+                    budget_amount: {
+                        validators: {                           
+                            notEmpty: {
+                                message: 'Please Enter Amount'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    }
+                }
+            });
+            $('#edit_expense').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    budget_soe: {
+                        validators: {                           
+                            notEmpty: {
+                                message: 'Please Enter SOE'
+                            },
+                            regexp: {
+                                regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
+                            }                            
+                        }
+                    },
+                    budget_amount: {
+                        validators: {                           
+                            notEmpty: {
+                                message: 'Please Enter Amount'
                             },
                             regexp: {
                                 regexp: /^[^*|\":<>[\]{}`\\()';@&/$]+$/,

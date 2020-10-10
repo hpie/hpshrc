@@ -129,7 +129,7 @@
                                         <label class="form-label float-right" for="cases_message">Description:</label>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-8">
                                     <div class="form-control-wrap">
                                         <div class="card card-bordered">
                                             <div class="card-inner">

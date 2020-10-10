@@ -52,11 +52,13 @@ class Home_c extends BaseController
         echo front_view('frontside/about',$data);
     }
     public function download() { 
-        $data['file_type']=$this->Causes_m->get_file_type('MAIN_TYPE');
+        $data['file_type']=$this->Causes_m->get_file_type('MAIN_TYPE');        
         $data['title'] = FRONT_DOWNLOAD_TITLE;        
         echo front_view('frontside/download',$data);
     }
-    public function budget() {        
+    public function budget($year) {
+        $data['year'] = $year; 
+        $data['result']=$this->Causes_m->get_expense($year); 
         $data['title'] = FRONT_BUDGET_TITLE;        
         echo front_view('frontside/budget',$data);
     }

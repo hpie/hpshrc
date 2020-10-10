@@ -115,7 +115,7 @@
                                 <li class="has-child"><a href="#">CAUSES</a>
                                     <ul class="submenu">
                                         <li class="submenu-item"><a href="<?php echo FRONT_DOWNLOAD_LINK; ?>">Downloads</a></li>
-                                        <li class="submenu-item"><a href="<?php echo FRONT_BUDGET_LINK; ?>">Budget and Finance</a></li>
+                                        <li class="submenu-item"><a href="<?php echo FRONT_BUDGET_LINK.((date("Y"))-1).'-'.(date("Y")); ?>">Budget and Finance</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-child"><a href="#">CASE</a>

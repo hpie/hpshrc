@@ -4,7 +4,7 @@
             <div class="nk-msg">               
                 <div class="nk-msg-body bg-white profile-shown">
                     <div class="nk-msg-head">
-                        <h2 class="title d-none d-lg-block">#<?php echo $caseDetails['cases_id'].': '.$caseDetails['cases_title']; ?></h2>
+                        <h2 class="title d-none d-lg-block">#<?php echo $caseDetails['cases_id'] . ': ' . $caseDetails['cases_title']; ?></h2>
                         <div class="nk-msg-head-meta">
                             <div class="d-none d-lg-block col-md-12">
                                 <ul class="nk-msg-tags">
@@ -13,47 +13,47 @@
                                 </ul>                                
                                 <hr>
                                 <span class="label-tag"><span><strong>Description: </strong></span></span>
-                            <?php echo $caseDetails['cases_message']; ?>                                                                                             
+                                <?php echo $caseDetails['cases_message']; ?>                                                                                             
                             </div>                           
                         </div>                        
                         <div class="col-md-12">
-                                <hr>                                
-                                <span class="label-tag"><span><strong>File details and description: </strong></span></span>                                
-<?php if(!empty($fileDetails)){
-                                    ?>
-                          <table id="example" class="table table-striped table-bordered dt-responsive nowrap datatableEx" style="width:100%">
-                                    <!--<table id="example" class="table table-striped table-bordered dt-responsive nowrap datatableEx" style="width:100%">-->
-                                        <thead>
-                                            <tr>                                                
-                                                <th>File</th>
-                                                <th>Title</th>
-                                                <th>Description</th>                                                                                            
-                                                <th>View</th> 
-                                                <th>Download</th>  
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                <?php
-                                        foreach ($fileDetails as $fdrow){
+                            <hr>                                
+                            <span class="label-tag"><span><strong>File details and description: </strong></span></span>                                
+                            <?php if (!empty($fileDetails)) {
+                                ?>
+                                <table id="example" class="table table-striped table-bordered dt-responsive nowrap datatableEx" style="width:100%">
+                                          <!--<table id="example" class="table table-striped table-bordered dt-responsive nowrap datatableEx" style="width:100%">-->
+                                    <thead>
+                                        <tr>                                                
+                                            <th>File</th>
+                                            <th>Title</th>
+                                            <th>Description</th>                                                                                            
+                                            <th>View</th> 
+                                            <th>Download</th>  
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        foreach ($fileDetails as $fdrow) {
                                             ?>                                
                                             <tr>
                                                 <td><?php echo $fdrow['case_files_name'] ?></td>
                                                 <td><?php echo $fdrow['case_files_title'] ?></td>
                                                 <td><?php echo $fdrow['case_files_desc'] ?></td>
-                                                <td><a href="<?php echo UPLOAD_FOLDER.'doc/'.$fdrow['refCases_id'].'/'.$fdrow['case_files_unique_name']; ?>" target="_blank">View</a></td>                                                
-                                                <td><a href="<?php echo UPLOAD_FOLDER.'doc/'.$fdrow['refCases_id'].'/'.$fdrow['case_files_unique_name']; ?>" download>Download</a></td>                                                
+                                                <td><a href="<?php echo UPLOAD_FOLDER . 'doc/' . $fdrow['refCases_id'] . '/' . $fdrow['case_files_unique_name']; ?>" target="_blank">View</a></td>                                                
+                                                <td><a href="<?php echo UPLOAD_FOLDER . 'doc/' . $fdrow['refCases_id'] . '/' . $fdrow['case_files_unique_name']; ?>" download>Download</a></td>                                                
                                             </tr>                                        
-                                <?php
+                                            <?php
                                         }
                                         ?>
-                                            </tbody>
-                                    </table>
-                                            <?php
-                                } ?>                            
-                            </div>
-                        
-                        
-<a href="#" class="nk-msg-profile-toggle profile-toggle active"><em class="icon ni ni-arrow-left"></em></a>
+                                    </tbody>
+                                </table>
+                                <?php }
+                            ?>                            
+                        </div>
+
+
+                        <a href="#" class="nk-msg-profile-toggle profile-toggle active"><em class="icon ni ni-arrow-left"></em></a>
                     </div><!-- .nk-msg-head -->
                     <div class="nk-msg-reply nk-reply" data-simplebar>                        
                         <?php echo $comments; ?>
@@ -64,10 +64,10 @@
                                 <div class="card-inner">
                                     <div class="user-card user-card-s2 mb-2">
                                         <div class="user-avatar md bg-primary">
-                                            <span><?php echo strtoupper(substr($caseDetails['user_firstname'],0,1).substr($caseDetails['user_lastname'],0,1)); ?></span>
+                                            <span><?php echo strtoupper(substr($caseDetails['user_firstname'], 0, 1) . substr($caseDetails['user_lastname'], 0, 1)); ?></span>
                                         </div>
                                         <div class="user-info">
-                                            <h5><?php echo $caseDetails['user_firstname'].' '.$caseDetails['user_lastname']; ?></h5>
+                                            <h5><?php echo $caseDetails['user_firstname'] . ' ' . $caseDetails['user_lastname']; ?></h5>
                                             <span class="sub-text">Assigned To</span>
                                         </div>
                                         <div class="user-card-menu dropdown">
@@ -87,13 +87,25 @@
                                         <h6 class="overline-title-alt mb-2">Customer Information</h6>
                                         <ul class="user-contacts">
                                             <li>
-                                               <em class="icon ni ni-user-fill"></em><span><?php if($caseDetails['customer_first_name']==''){echo 'Not Avail';}else{echo $caseDetails['customer_first_name'].' '.$caseDetails['customer_last_name'];} ?></span>
+                                                <em class="icon ni ni-user-fill"></em><span><?php if ($caseDetails['customer_first_name'] == '') {
+                            echo 'Not Avail';
+                        } else {
+                            echo $caseDetails['customer_first_name'] . ' ' . $caseDetails['customer_last_name'];
+                        } ?></span>
                                             </li>
                                             <li>
-                                                <em class="icon ni ni-mail"></em><span><?php if($caseDetails['customer_email_id']==''){echo 'Not Avail';}else{echo $caseDetails['customer_email_id'];} ?></span>
+                                                <em class="icon ni ni-mail"></em><span><?php if ($caseDetails['customer_email_id'] == '') {
+                            echo 'Not Avail';
+                        } else {
+                            echo $caseDetails['customer_email_id'];
+                        } ?></span>
                                             </li>
                                             <li>
-                                                <em class="icon ni ni-call"></em><span><?php if($caseDetails['customer_mobile_no']==0){echo 'Not Avail';}else{echo $caseDetails['customer_mobile_no'];} ?></span>
+                                                <em class="icon ni ni-call"></em><span><?php if ($caseDetails['customer_mobile_no'] == 0) {
+                            echo 'Not Avail';
+                        } else {
+                            echo $caseDetails['customer_mobile_no'];
+                        } ?></span>
                                             </li>
                                         </ul>
                                     </div>
@@ -106,19 +118,24 @@
                                             </div>
                                             <div class="col-12">
                                                 <span class="sub-text">Created By:</span>
-                                                <span><?php echo $caseDetails['createdby_user_type'].': '; if($caseDetails['createdby_user_type']=='customer'){ if($caseDetails['customer_first_name']=='') echo $caseDetails['customer_first_name'].' '.$caseDetails['customer_last_name'];}if($caseDetails['createdby_user_type']=='employee'){ echo $caseDetails['user_firstname'].' '.$caseDetails['user_lastname'];} ?></span>
+                                                <span><?php echo $caseDetails['createdby_user_type'] . ': ';
+                                                if ($caseDetails['createdby_user_type'] == 'customer') {
+                                                    if ($caseDetails['customer_first_name'] == '') echo $caseDetails['customer_first_name'] . ' ' . $caseDetails['customer_last_name'];
+                                                }if ($caseDetails['createdby_user_type'] == 'employee') {
+                                                    echo $caseDetails['user_firstname'] . ' ' . $caseDetails['user_lastname'];
+                                                } ?></span>
                                             </div>
                                             <div class="col-12">
                                                 <span class="sub-text">Status:</span>
-                                                <?php 
-                                                $text='text-primary';
-                                                if($caseDetails['cases_status']=='open'){
-                                                    $text='text-success';
-                                                }
-                                                if($caseDetails['cases_status']=='closed'){
-                                                    $text='text-danger';
-                                                }
-                                                ?>
+                                            <?php
+                                            $text = 'text-primary';
+                                            if ($caseDetails['cases_status'] == 'open') {
+                                                $text = 'text-success';
+                                            }
+                                            if ($caseDetails['cases_status'] == 'closed') {
+                                                $text = 'text-danger';
+                                            }
+                                            ?>
                                                 <span class="lead-text <?php echo $text; ?>"><?php echo ucfirst($caseDetails['cases_status']); ?></span>
                                             </div>                                            
                                         </div>
@@ -126,18 +143,20 @@
                                     <div class="aside-wg">
                                         <h6 class="overline-title-alt mb-2">Involved Employee</h6>
                                         <ul class="align-center g-2">
-                                            <?php if(!empty($involved_peopel)){
-                                                foreach ($involved_peopel as $row){
-                                                    ?>
-                                                <li>
-                                                   <div class="user-avatar bg-purple">
-                                                       <span><?php echo strtoupper(substr($row['user_firstname'],0,1).substr($row['user_lastname'],0,1)); ?></span>
-                                                   </div>
-                                                </li>
-                                            <?php
-                                                }
-                                            } ?>
-                                                                                     
+<?php
+if (!empty($involved_peopel)) {
+    foreach ($involved_peopel as $row) {
+        ?>
+                                                    <li>
+                                                        <div class="user-avatar bg-purple">
+                                                            <span><?php echo strtoupper(substr($row['user_firstname'], 0, 1) . substr($row['user_lastname'], 0, 1)); ?></span>
+                                                        </div>
+                                                    </li>
+        <?php
+    }
+}
+?>
+
                                         </ul>
                                     </div>
                                 </div><!-- .card-inner -->
@@ -146,13 +165,13 @@
                     </div><!-- .nk-msg-profile -->
                 </div><!-- .nk-msg-body -->
             </div><!-- .nk-msg -->
-            <?php if($caseDetails['cases_status']!='closed'){ ?>
-          <div class="col-xs-12">
-                        <form class="gy-3" id="add_comment" enctype="multipart/form-data">
+<?php if ($caseDetails['cases_status'] != 'closed') { ?>
+                <div class="col-xs-12">
+                    <form class="gy-3" id="add_comment" enctype="multipart/form-data">
                         <input type="hidden" name="cases_id" value="<?php echo $caseDetails['cases_id']; ?>">
                         <input type="hidden" name="customer_id" value="<?php echo $caseDetails['refCustomer_id']; ?>">
                         <div class="nk-reply-form">                            
-                                <div class="g-3 align-center">                              
+                            <div class="g-3 align-center">                              
                                 <div class="col-sm-12">
                                     <div class="form-control-wrap">
                                         <div class="card card-bordered">
@@ -165,12 +184,16 @@
                             </div>                            
                             <div class="tab-content">
                                 <div class="tab-pane active" id="reply-form">
-                                    <div class="nk-reply-form-editor">                                       
+                                    <div class="nk-reply-form-editor">                                        
                                         <div class="nk-reply-form-tools">
+                                            <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" name="cases_status" value="closed" class="custom-control-input" id="customCheck1">
+                                                        <label class="custom-control-label" for="customCheck1">Close</label>
+                                                    </div>
                                             <ul class="nk-reply-form-actions g-1">
                                                 <li>
                                                     <input type="file" name="case_files_file[]" multiple class="tn btn-icon btn-sm" id="case_files_file" accept="application/pdf,image/jpg,image/jpeg,image/png">                                                   
-                                                </li>
+                                                </li>                                               
                                                 <li class="mr-2"><input type="submit" class="btn btn-primary" name="submit" id="submit" value="Reply"></li>                                                                                              
                                             </ul>
                                         </div><!-- .nk-reply-form-tools -->
@@ -178,9 +201,9 @@
                                 </div>                                
                             </div>
                         </div><!-- .nk-reply-form -->                        
-                        </form>
-                    </div>
-            <?php } ?>
+                    </form>
+                </div>
+<?php } ?>
         </div>
     </div>
 </div>

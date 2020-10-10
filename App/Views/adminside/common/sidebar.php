@@ -17,14 +17,9 @@
             <li>
                 <a href="<?php echo ADMIN_EMPLOYEE_LIST_LINK; ?>"><i class="fa fa-users"></i> Employees <span class="fa fa-chevron-right"></span></a>                    
             </li>
-<!--            <li><a><i class="fa fa-users"></i> Dealers <span class="fa fa-chevron-right"></span></a>
-                <ul class="nav child_menu" style="display: none">
-                    <li><a href="<?php //echo ADMIN_DASHBOARD_LINK; ?>">Add Files</a>
-                    </li>
-                    <li><a href="<?php //echo ADMIN_TAX_DEALER_PENDING_LIST_LINK; ?>">Pending</a>
-                    </li>                                   
-                </ul>
-            </li>           -->
+            <li>
+                <a href="<?php echo ADMIN_EXPENSE_LIST_LINK.((date("Y"))-1).'-'.(date("Y")); ?>"><i class="fa fa-money"></i> Budget <span class="fa fa-chevron-right"></span></a>                     
+            </li>
         </ul>
     </div>            
 </div>

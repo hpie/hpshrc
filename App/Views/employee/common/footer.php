@@ -212,7 +212,10 @@
                 success: function(res){
                     var res = $.parseJSON(res);
     //                $('.ajax_csrfname').val(res.token);
-                    if(res.message==="success"){                         
+                    if(res.message==="success"){
+                        if(res.case_sts==="yes"){
+                            location.reload();
+                        }
                         $( ".lastcomment" ).first().before( res.comments );                                                
                         $('.summernote-basic-id').summernote("code",'');
                         $('.simplebar-content-wrapper').scrollTop(0); 

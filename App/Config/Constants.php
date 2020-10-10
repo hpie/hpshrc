@@ -110,6 +110,10 @@ define('ADMIN_CATEGORIES_ACTIVE_LINK',BASE_URL_CI."/admin-active-category");
 define('ADMIN_ADD_SUB_CATEGORIES_LINK', BASE_URL_CI.'/admin-add-sub-category');
 define('ADMIN_EDIT_SUB_CATEGORIES_LINK', BASE_URL_CI.'/admin-edit-sub-category/');
 
+define('ADMIN_EXPENSE_LIST_LINK', BASE_URL_CI.'/admin-expense-list/');
+define('ADMIN_ADD_EXPENSE_LINK', BASE_URL_CI.'/admin-add-expense');
+define('ADMIN_EDIT_EXPENSE_LINK', BASE_URL_CI.'/admin-edit-expense/');
+
 //**************************************EMPLOYEE ROUTE****************************//
 define('EMPLOYEE_LOGIN_LINK', BASE_URL_CI.'/employee-login');
 define('EMPLOYEE_LOGOUT_LINK', BASE_URL_CI.'/employee-logout');
@@ -132,7 +136,7 @@ define('APPROVE_STATUS',BASE_URL."/approve-status");
 //**************************************FRONT ROUTE****************************//
 define('FRONT_ABOUT_LINK', BASE_URL_CI.'/front-about');
 define('FRONT_DOWNLOAD_LINK', BASE_URL_CI.'/front-download');
-define('FRONT_BUDGET_LINK', BASE_URL_CI.'/front-budget');
+define('FRONT_BUDGET_LINK', BASE_URL_CI.'/front-budget/');
 define('FRONT_GALLERY_LINK', BASE_URL_CI.'/front-gallery');
 define('FRONT_CONTACT_LINK', BASE_URL_CI.'/front-contact');
 
@@ -199,3 +203,7 @@ define('ADMIN_ADD_CATEGORIES_TITLE', 'HPSHRC-ADMIN-ADD-CATEGORIES');
 define('ADMIN_EDIT_CATEGORIES_TITLE', 'HPSHRC-ADMIN-EDIT-CATEGORIES');
 define('ADMIN_ADD_SUB_CATEGORIES_TITLE', 'HPSHRC-ADMIN-ADD-SUB-CATEGORIES');
 define('ADMIN_EDIT_SUB_CATEGORIES_TITLE', 'HPSHRC-ADMIN-EDIT-SUB-CATEGORIES');
+
+define('ADMIN_EXPENSE_LIST_TITLE', 'HPSHRC-ADMIN-EXPENSE-LIST');
+define('ADMIN_ADD_EXPENSE_TITLE', 'HPSHRC-ADMIN-ADD-EXPENSE');
+define('ADMIN_EDIT_EXPENSE_TITLE', 'HPSHRC-ADMIN-EDIT-EXPENSE');

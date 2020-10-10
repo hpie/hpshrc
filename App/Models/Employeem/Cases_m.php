@@ -58,6 +58,15 @@ class Cases_m extends Model
         return $update;
     }
     
+    public function close_cases($cases_id){         
+        $params=array();
+        $params['cases_status']='closed';
+        $builder = $this->db->table('cases');
+        $builder->where('cases_id', $cases_id);
+        $update =$builder->update($params);        
+        return $update;
+    }
+    
     public function get_single_cases($cases_id) {       
         $ressult = $this->db->query("SELECT * FROM `cases` WHERE cases_id='{$cases_id}'");
         return $ressult->getRowArray();      

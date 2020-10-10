@@ -727,8 +727,7 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){                    
                     foreach ($result as $row){                                                                         
-                        $cases_id = $row['cases_id'];
-                        
+                        $cases_id = $row['cases_id'];                        
                         $locked_unlocked_str='';
                         $title = 'Click to locke customer';
                         $class = 'btn_lock_unlock_customer btn btn-xs btn-success';
@@ -743,9 +742,22 @@ class SSP {
                             $text  = "Customer Locked <em class='icon ni ni-lock-fill'></em>";
                             $isactive = 0;                            
                         }                                                    
-                        $locked_unlocked_str="<button type='button' data-id='".$cases_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";                            //                                                
+                        $locked_unlocked_str="<button type='button' data-id='".$cases_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";
                         
                         $row['index']='';
+                        
+                        $cases_status='';
+                        if($row['cases_status']=='open'){
+                            $cases_status="<button type='button' class='btn btn-xs btn-success'>OPEN</button>";                                                
+                        }
+                        if($row['cases_status']=='closed'){
+                            $cases_status="<button type='button' class='btn btn-xs btn-danger'>CLOSED</button>";                                                
+                        }
+                        if($row['cases_status']=='inprogress'){
+                            $cases_status="<button type='button' class='btn btn-xs btn-warning'>INPROGRESS</button>";                                                
+                        }
+                        $row['cases_status']=$cases_status;
+                        
                         $row['employee_name']=$row['user_firstname'].' '.$row['user_lastname'];
                         $row['action']="<a href='".BASE_URL_DATATABLES."employee-edit-cases/$cases_id' class='btn btn-xs btn-warning'>Edit&nbsp;<em class='icon ni ni-edit-fill'></em></a>
                                 <a href='".BASE_URL_DATATABLES."employee-view-cases/$cases_id' class='btn btn-xs btn-primary'>View&nbsp;<em class='icon ni ni-eye-fill'></em></a>                                
@@ -847,6 +859,81 @@ class SSP {
 			"data" => $resData
 		);
 	}
+        
+        
+          static function expense_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
+	{                         
+		$bindings = array();
+		$db = self::db( $conn );
+                
+                $columns_order=$columns;
+		// Build the SQL query string from the request
+                if (($request['order'][0]['column'])>0) {
+                    $columnsArray = array();                   
+                    foreach ($columns as $crow) {                       
+                        if (substr_count($crow['db'], " as ")) {
+                            $crow['db'] = explode(" as ", $crow['db'])[0];
+                        }
+                        array_push($columnsArray, $crow);
+                    }
+                    $columns_order = $columnsArray;
+                }                
+                
+		$limit = self::limit( $request, $columns );                                               
+		$order = self::order( $request, $columns_order );                               
+                
+		$where = self::filter( $request, $columns, $bindings );
+//                $where="";
+                if ($where_custom) {
+                    if ($where) {
+                        $where .= ' AND ' . $where_custom;
+                    } else {
+                        $where .= 'WHERE ' . $where_custom;
+                    }
+                } 
+                
+                $data = self::sql_exec( $db, $bindings,
+			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
+			FROM $table                        
+			$where
+			$order 
+			$limit"
+		); 		
+		// Data set length after filtering
+		$resFilterLength = self::sql_exec( $db, $bindings,
+			"SELECT COUNT({$primaryKey})
+			FROM   $table                        
+			$where "
+		);
+		$recordsFiltered = $resFilterLength[0][0];
+		// Total data set length
+		$resTotalLength = self::sql_exec( $db,
+			"SELECT COUNT({$primaryKey})
+			FROM   $table                        
+                        "
+		);
+		$recordsTotal = $resTotalLength[0][0];                
+                $result=self::data_output($columns,$data);
+                $resData=array();
+                if(!empty($result)){                    
+                    foreach ($result as $row){ 
+                        $budget_id = $row['budget_id'];
+                        $row['index']='';
+                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-expense/$budget_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";                                                                                       
+                        array_push($resData, $row);
+                    }  
+                }
+		/*
+		 * Output
+		 */
+		return array(
+			"draw" => isset ( $request['draw'] ) ? intval( $request['draw'] ) : 0,
+			"recordsTotal" => intval( $recordsTotal ),
+			"recordsFiltered" => intval( $recordsFiltered ),
+			"data" => $resData
+		);
+	}
+        
         static function sub_categories_list ($request, $conn, $table, $primaryKey, $columns,$where_custom = '')
 	{                         
 		$bindings = array();
@@ -905,7 +992,7 @@ class SSP {
                     foreach ($result as $row){ 
                         $category_code = $row['category_code'];
                         $row['index']='';
-                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-sub-category/$category_code' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";                ;                        
+                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-sub-category/$category_code' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";                       
                         $title = 'Click to deactivate category';
                         $class = 'btn_approve_reject btn btn-success btn-xs';
                         $text = 'Active';
@@ -1001,7 +1088,7 @@ class SSP {
 //                            print_r($row);die;
                         $upload_file_id = $row['upload_file_id'];
                         $row['index']='';
-                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-causes/$upload_file_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";                ;
+                        $row['action']="<a href='".BASE_URL_DATATABLES."admin-edit-causes/$upload_file_id' class='btn btn-xs btn-warning'>Edit  <i class='fa fa-pencil'></i></a>";
                         
                         $title = 'Click to deactivate causes';
                         $class = 'btn_approve_reject btn btn-success btn-xs';

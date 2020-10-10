@@ -65,11 +65,15 @@ $routes->add('admin-edit-category/(:any)', 'Categories_c::edit_category/$1');
 $routes->add('admin-add-sub-category', 'Categories_c::add_sub_category');
 $routes->add('admin-edit-sub-category/(:any)', 'Categories_c::edit_sub_category/$1');
 
+$routes->add('admin-add-expense', 'Expense_c::add_expense');
+$routes->add('admin-expense-list/(:any)', 'Expense_c::expense_list/$1');
+$routes->add('admin-edit-expense/(:any)', 'Expense_c::edit_expense/$1');
+
 //************************************Front side route****************************//
 $routes->add('home', 'Home_c::index');
 $routes->add('front-about', 'Home_c::about');
 $routes->add('front-download', 'Home_c::download');
-$routes->add('front-budget', 'Home_c::budget');
+$routes->add('front-budget/(:any)', 'Home_c::budget/$1');
 $routes->add('front-gallery', 'Home_c::gallery');
 $routes->add('front-contact', 'Home_c::contact');
 $routes->add('customer-login', 'Home_c::login');

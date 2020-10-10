@@ -140,8 +140,14 @@ class Cases_e extends BaseController {
     public function add_comment() {
         $message = "fail";
         $comments="";
+        $close_sts='no';
         if (isset($_POST['cases_id'])) {
-            if (!empty($_POST['cases_message'])) {
+            if (!empty($_POST['cases_message'])) {                                
+                if(isset($_POST['cases_status'])){
+                    $this->Cases_m->close_cases($_POST['cases_id']);
+                    successOrErrorMessage("Case is closed", 'success');
+                    $close_sts='yes';
+                }                
                 $params = array();
                 $params['refCases_id'] = $_POST['cases_id'];
                 $params['comment_description'] = $_POST['cases_message'];
@@ -177,6 +183,7 @@ class Cases_e extends BaseController {
         $result = array();
         $result['message'] = $message;
         $result['comments'] = $comments;
+        $result['case_sts'] = $close_sts;
         echo json_encode($result);
     }  
     public function view_cases($case_id) {

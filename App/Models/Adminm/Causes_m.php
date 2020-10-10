@@ -20,10 +20,21 @@ class Causes_m extends Model
         return $builder->insert($params);
 //        return $this->db->insertID();
     }
+     public function add_expense($params) {
+        $builder = $this->db->table('budget');
+        $builder->insert($params);
+        return $this->db->insertID();
+    }
     public function get_file_type($category_ref_type) {       
         $ressult = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_status='ACTIVE' AND category_ref_type='$category_ref_type'");
         return $ressult->getResultArray();      
     }
+    
+    public function get_expense($year) {       
+        $ressult = $this->db->query("SELECT * FROM `budget` WHERE budget_year='$year'");
+        return $ressult->getResultArray();      
+    }
+    
     public function load_sub_type($params){
         $subtype_id = $params['category_code'];
         $res = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE  category_status='ACTIVE' AND category_ref_type='SUB_TYPE' AND ref_category_code='$subtype_id'");
@@ -41,6 +52,10 @@ class Causes_m extends Model
         $tehsil = $this->db->query("SELECT * FROM `hpshrc_categories` WHERE category_code='$category_code'");
         return $tehsil->getRowArray();
     }
+     public function get_single_budget($budget_id){        
+        $tehsil = $this->db->query("SELECT * FROM `budget` WHERE budget_id='$budget_id'");
+        return $tehsil->getRowArray();
+    }
     public function edit_causes($params,$upload_file_id){  
         $builder = $this->db->table('hpshrc_upload_files');
         $builder->where('upload_file_id', $upload_file_id);
@@ -51,6 +66,12 @@ class Causes_m extends Model
     public function edit_category($params,$category_code){  
         $builder = $this->db->table('hpshrc_categories');
         $builder->where('category_code', $category_code);
+        $update =$builder->update($params);        
+        return $update;
+    }
+     public function edit_expense($params,$budget_id){  
+        $builder = $this->db->table('budget');
+        $builder->where('budget_id', $budget_id);
         $update =$builder->update($params);        
         return $update;
     }

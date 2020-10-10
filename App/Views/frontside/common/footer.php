@@ -328,14 +328,15 @@
 <?php if ($title == FRONT_BUDGET_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
-        $(document).ready(function () {   
-            $( "#budget_year" ).change(function() {
+        $(document).ready(function () {          
+            $( "#budget_year" ).change(function() {              
                 var years=$(this).val();
-                var url="<?php echo ADMIN_EXPENSE_LIST_LINK; ?>"+years;
+                var url="<?php echo FRONT_BUDGET_LINK; ?>"+years;
 //                alert(url);
                 window.location = url;
             });
         });
+        </script>
 <?php } ?>
 
 <?php if ($title == FRONT_VIEW_CASES_TITLE) {

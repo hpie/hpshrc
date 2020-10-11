@@ -75,14 +75,16 @@
                             <td><?php echo $row['budget_amount']; ?></td>
                         </tr>
                         <?php
-                            }
-                        }
+                            }                        
                         ?>                                               
                         <tr>
                             <th scope="row"></th>
                             <td><strong>Total</strong></td>
                             <td><strong><?php echo $total; ?></strong></td>
                         </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
                 <!--

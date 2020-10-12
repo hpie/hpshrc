@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Models\Adminm\Login_m;
 use App\Models\Employeem\Cases_m;
+use App\ThirdParty\smtp_mail\SMTP_mail;
 
 class Cases_e extends BaseController {
     private $Login_m;
@@ -12,7 +13,6 @@ class Cases_e extends BaseController {
         helper('url');
         helper('functions');
         $this->security = \Config\Services::security(); 
-//        print_r($_SESSION);die;
         sessionCheckEmployee();     
         $this->Login_m = new Login_m();  
         $this->Cases_m = new Cases_m();        
@@ -27,51 +27,70 @@ class Cases_e extends BaseController {
                     }   
                 }            
         } 
-    }   
-    
-    public function edit_cases($cases_id) { 
-         if (isset($_POST['cases_title'])) {            
+    }       
+    public function edit_cases($cases_id) {
+        include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php'; 
+        $data['cases_res']=$this->Cases_m->get_single_cases($cases_id);
+        $data['res_employee']=$this->Cases_m->get_employee(); 
+                
+        if (isset($_POST['cases_title'])) {            
             $params=array();
             $params['cases_priority']=$_POST['cases_priority'];
             $params['cases_title']=$_POST['cases_title'];
             $params['cases_message']=$_POST['cases_message'];
             $params['cases_assign_to']=$_POST['cases_assign_to'];
             $params['case_update_date']=date("Y-m-d H:i:s");          
-            $res =  $this->Cases_m->edit_cases($params,$cases_id);             
-            if ($res) {                
-                $params=array();
-                $params['refCases_id']=$cases_id;
-                $params['comment_type']='reassign';
-                $params['comment_from']=$_SESSION['employee']['employee_user_id'];
-                $params['comment_to']=$_POST['cases_assign_to'];
-                $params['comment_from_usertype']='employee';
-                $params['comment_to_usertype']='employee';
-                $params['comment_datetime']=date("Y-m-d H:i:s");                
-                $this->Cases_m->add_cases_comment($params);
-
-                successOrErrorMessage("Data updated successfully",'success');                
-            } else {                
-                successOrErrorMessage("Somthing happen wrong plz try again",'error');
-            }          
-        }
-        
-        $data['cases_res']=$this->Cases_m->get_single_cases($cases_id);
-        $data['res_employee']=$this->Cases_m->get_employee();        
+            $res =  $this->Cases_m->edit_cases($params,$cases_id); 
+            if ($res) {
+                successOrErrorMessage("Data updated successfully",'success');
+                if($_POST['cases_assign_to']!=$data['cases_res']['cases_assign_to']){                    
+                    $params=array();
+                    $params['refCases_id']=$cases_id;
+                    
+                    if($data['cases_res']['cases_assign_to']==0){
+                        $params['comment_type']='assign';
+                    }else{
+                        $params['comment_type']='reassign';
+                    }
+                    $params['comment_from']=$_SESSION['employee']['employee_user_id'];
+                    $params['comment_to']=$_POST['cases_assign_to'];
+                    $params['comment_from_usertype']='employee';
+                    $params['comment_to_usertype']='employee';
+                    $params['comment_datetime']=date("Y-m-d H:i:s");                
+                    $this->Cases_m->add_cases_comment($params);
+                    
+                    if($data['cases_res']['customer_email']!=''){
+                        $email_data=array();
+                        if($params['comment_type']=='assign'){
+                            $email_data['mail_title']='Your case is updated and assigned to our employee.';
+                        }else{
+                            $email_data['mail_title']='Your case is updated and Re-assigned to our employee.';
+                        }
+                        $email_data['link_title']='View case details by clicking this link ';
+                        $email_data['case_link']=FRONT_VIEW_CASES_LINK.$cases_id;
+                        $sendmail = new \SMTP_mail();
+                        $resMail = $sendmail->sendCommentDetails($data['cases_res']['customer_email'],$email_data); 
+                    }
+                } 
+            }else {                
+                    successOrErrorMessage("Somthing happen wrong plz try again",'error');
+            } 
+        }                       
         helper('form');
         $data['title'] = EMPLOYEE_EDIT_CASES_TITLE;        
         echo employee_view('employee/edit_cases',$data);
     }
     
     public function add_cases() { 
-         if (isset($_POST['cases_title'])) { 
-            
+         if (isset($_POST['cases_title'])) {                         
+            include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';                   
             $params=array();
             $params['customer_email_id']=$_POST['customer_email'];
             $params['customer_mobile_no']=$_POST['customer_contact'];
             $params['customer_email_password']=generateStrongPassword(); 
             $params['createdby_type']=$_SESSION['employee']['employee_usertype'];
             $params['created_by']=$_SESSION['employee']['employee_user_id'];                        
-            $customer_id =  $this->Cases_m->create_customer($params);  
+            $customer_id =  $this->Cases_m->create_customer($params);              
             
             $params=array();            
             $params['cases_priority']=$_POST['cases_priority'];
@@ -94,8 +113,16 @@ class Cases_e extends BaseController {
                 $params['customer_contact']=$_POST['customer_contact'];
             }                           
             $res =  $this->Cases_m->create_case($params);             
-            if ($res) {
-//                echo '<pre>';print_r($_FILES);die;
+            if ($res) { 
+                if($_POST['howtocontact']=='Email' || $_POST['howtocontact']=='Both'){
+                    $email_data=array();
+                    $email_data['mail_title']='New case is created based on your request.';
+                    $email_data['link_title']='View case details by clicking this link ';
+                    $email_data['case_link']=FRONT_VIEW_CASES_LINK.$res;
+
+                    $sendmail = new \SMTP_mail();
+                    $resMail = $sendmail->sendCommentDetails($_POST['customer_email'],$email_data);                               
+                }
                 if (($_FILES['case_files_file']['name'][0]) != '') {
                     $cases_files = multiFileUpload('case_files_file', $res . '/');
                     $i = 0;
@@ -159,6 +186,22 @@ class Cases_e extends BaseController {
                 $params['comment_datetime'] = date("Y-m-d H:i:s");
                 $res = $this->Cases_m->add_cases_comment($params);
                 if ($res) {
+                     
+                    include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php'; 
+                    $data['cases_res']=$this->Cases_m->get_single_cases($_POST['cases_id']);
+                    if($data['cases_res']['customer_email']!=''){
+                        $email_data=array();                            
+                        $email_data['mail_title']='HPSHRC Employee is commented on your case.';                        
+                        $email_data['link_title']='View comment by clicking this link ';
+                        if($close_sts=='yes'){
+                            $email_data['mail_title']='HPSHRC Employee closed your case.';                        
+                            $email_data['link_title']='View case details by clicking this link ';
+                        }                        
+                        $email_data['case_link']=FRONT_VIEW_CASES_LINK.$_POST['cases_id'];
+                        $sendmail = new \SMTP_mail();
+                        $resMail = $sendmail->sendCommentDetails($data['cases_res']['customer_email'],$email_data); 
+                    }
+                    
                     if (($_FILES['case_files_file']['name'][0]) != '') {
                         $cases_files = multiFileUpload('case_files_file', $_POST['cases_id'] . '/');
                         $i = 0;

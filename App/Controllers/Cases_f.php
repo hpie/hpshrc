@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Models\Adminm\Login_m;
 use App\Models\Employeem\Cases_m;
+use App\ThirdParty\smtp_mail\SMTP_mail;
 
 class Cases_f extends BaseController {
     private $Login_m;
@@ -28,20 +29,10 @@ class Cases_f extends BaseController {
             }
         }
     }
-
-//    public function view_cases($case_id) { 
-//        $data['fileDetails']=$this->Cases_m->get_file_details($case_id);
-//        $data['caseDetails']=$this->Cases_m->get_view_cases($case_id);
-//        $data['involved_peopel']=$this->Cases_m->get_involved_peopel($case_id);
-//        $data['comments']=$this->Cases_m->get_comments($case_id);
-//        $data['title'] = FRONT_VIEW_CASES_TITLE;       
-//        echo front_view('frontside/view_cases',$data);
-//    }
     public function cases_list() {
         $data['title'] = FRONT_LIST_CASES_TITLE;
         echo front_view('frontside/cases_list', $data);
     }
-
     public function add_comment() {
         $message = "fail";
         $comments = "";
@@ -58,6 +49,19 @@ class Cases_f extends BaseController {
                 $params['comment_datetime'] = date("Y-m-d H:i:s");
                 $res = $this->Cases_m->add_cases_comment($params);
                 if ($res) {
+                    if($_POST['employee_id']!=0){
+                    include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php'; 
+                        $employee_data=$this->Cases_m->get_single_employee($_POST['employee_id']);                                        
+                        if($employee_data['user_email_id']!=''){
+                            $email_data=array();                            
+                            $email_data['mail_title']='User is commented on case.';                        
+                            $email_data['link_title']='View comment by clicking this link ';                                               
+                            $email_data['case_link']=EMPLOYEE_VIEW_CASES_LINK.$_POST['cases_id'];
+                            $sendmail = new \SMTP_mail();
+                            $resMail = $sendmail->sendCommentDetails($employee_data['user_email_id'],$email_data); 
+                        }
+                    }
+                                        
                     if (($_FILES['case_files_file']['name'][0]) != '') {
                         $cases_files = multiFileUpload('case_files_file', $_POST['cases_id'] . '/');
                         $i = 0;

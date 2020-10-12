@@ -17,6 +17,7 @@
                                     <thead>
                                         <tr>                                            
                                             <th>Index</th>
+                                            <th>ID</th>
                                             <th>Title</th>
                                             <th>Priority</th>
                                             <th>Assign to</th>                                            
@@ -28,6 +29,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Index</th>
+                                            <th>ID</th>
                                             <th>Title</th>
                                             <th>Priority</th>
                                             <th>Assign to</th>                                            

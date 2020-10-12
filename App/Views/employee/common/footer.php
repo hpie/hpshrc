@@ -269,6 +269,7 @@
                             orderable: false,
                             targets: 0
                         }],
+                    "order": [[ 1, "desc" ]],
                     "processing": true,
                     "serverSide": true,
                     "pageLength": 10,
@@ -287,6 +288,7 @@
                     },
                     "columns": [
                         {"data": "index"},
+                        {"data": "cases_id"},
                         {"data": "cases_title"},
                         {"data": "cases_priority"},
                         {"data": "employee_name"},

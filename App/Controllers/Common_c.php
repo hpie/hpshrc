@@ -26,7 +26,7 @@ class Common_c extends BaseController {
          if (isset($_POST['cases_title'])) { 
             if(isset($_SESSION['customer']['customer_id'])){
                 $customer_id=$_SESSION['customer']['customer_id'];
-            }else{
+            }else{                
                 $params=array();
                 $params['customer_email_id']=$_POST['customer_email'];
                 $params['customer_mobile_no']=$_POST['customer_contact'];

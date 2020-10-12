@@ -10,15 +10,16 @@ class Cases_m extends Model
         $this->db = db_connect();
         helper('functions');
     }
-    public function create_customer($params){ 
+    public function create_customer($params){           
         $email_exist = $this->db->query("SELECT * FROM hpshrc_customer WHERE customer_email_id='".$params['customer_email_id']."' OR customer_mobile_no='".$params['customer_mobile_no']."' ");
-        $res = $email_exist->getRowArray();                       
+        $res = $email_exist->getRowArray();         
         if($res){
             return $res['customer_id'];
         } 
         if($params['customer_email_id']=='example@gmail.com'){
             $params['customer_email_id']='';
-        }
+        }                
+        
         if($params['customer_mobile_no']=='9999999999'){
             $params['customer_mobile_no']=0;
         }
@@ -69,6 +70,10 @@ class Cases_m extends Model
     
     public function get_single_cases($cases_id) {       
         $ressult = $this->db->query("SELECT * FROM `cases` WHERE cases_id='{$cases_id}'");
+        return $ressult->getRowArray();      
+    }
+    public function get_single_employee($emp_id) {       
+        $ressult = $this->db->query("SELECT * FROM `employee` WHERE employee_user_id='{$emp_id}'");
         return $ressult->getRowArray();      
     }
     public function get_view_cases($cases_id) {       

@@ -745,7 +745,7 @@ class SSP {
                         $locked_unlocked_str="<button type='button' data-id='".$cases_id."' data-status = '".$isactive."' title='".$title."' class='".$class."' data-table = '".$table."' data-updatefield = '".$table_update_field."' data-wherefield = '".$table_where_field."'>".$text."</button>";
                         
                         $row['index']='';
-                        
+                                                                                                
                         $cases_status='';
                         if($row['cases_status']=='open'){
                             $cases_status="<button type='button' class='btn btn-xs btn-success'>OPEN</button>";                                                
@@ -758,7 +758,11 @@ class SSP {
                         }
                         $row['cases_status']=$cases_status;
                         
-                        $row['employee_name']=$row['user_firstname'].' '.$row['user_lastname'];
+                        if($row['cases_assign_to']==0){                            
+                            $row['employee_name']="<button type='button' class='btn btn-xs btn-danger'>Not Assigned</button>";
+                        }else{ 
+                            $row['employee_name']=$row['user_firstname'].' '.$row['user_lastname'];                        
+                        }
                         $row['action']="<a href='".BASE_URL_DATATABLES."employee-edit-cases/$cases_id' class='btn btn-xs btn-warning'>Edit&nbsp;<em class='icon ni ni-edit-fill'></em></a>
                                 <a href='".BASE_URL_DATATABLES."employee-view-cases/$cases_id' class='btn btn-xs btn-primary'>View&nbsp;<em class='icon ni ni-eye-fill'></em></a>                                
                                 $locked_unlocked_str";

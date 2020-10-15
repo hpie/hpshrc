@@ -54,5 +54,48 @@
             });
             <?php $_SESSION['csrfInvalidToken'] = 0; ?>
         }
+        
+        
+        
+        
+         if (<?php
+if (isset($_SESSION['forget_mail_sent'])) {
+    echo $_SESSION['forget_mail_sent'];
+}else{echo 0;}
+?> == 1) {
+ 
+                PNotify.success({
+                    title: 'Success!',
+                    text: 'Password reset Link sent on your email.'
+                });
+                
+                <?php $_SESSION['forget_mail_sent'] = 0; ?>
+            }        
+        
+                        if (<?php
+if (isset($_SESSION['update_forget_password'])) {
+    echo $_SESSION['update_forget_password'];
+}else{echo 0;}
+?> == 1) {                               
+                PNotify.success({
+                    title: 'Success!',
+                    text: 'Password set successfully'
+                });
+                
+                <?php $_SESSION['update_forget_password'] = 0; ?>
+            } 
+        
+                             if (<?php
+if (isset($_SESSION['forget_validity'])) {
+    echo $_SESSION['forget_validity'];
+}else{echo 0;}
+?> == 1) {               
+                PNotify.error({
+                    title: 'Error!',
+                    text: 'HPSHRC allowed per day only one request for forget password.'
+                });                                
+                <?php $_SESSION['forget_validity'] = 0; ?>
+            } 
+        
     });
 </script>

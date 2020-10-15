@@ -150,6 +150,13 @@ define('FRONT_CASES_LIST_LINK', BASE_URL_CI.'/front-list-cases');
 define('FRONT_VIEW_CASES_LINK', BASE_URL_CI.'/front-view-cases/');
 define('FRONT_ADD_COMMENT_LINK', BASE_URL_CI.'/front-add-comment');
 
+define('FRONT_UPDATE_PROFILE_LINK', BASE_URL_CI.'/front-update-profile');
+
+
+
+define('FORGET_PASSWORD_LINK',BASE_URL."/forget-password/");
+define('CHANGE_FORGET_PASSWORD_LINK',BASE_URL."/change-forget-password/");
+define('UPDATE_FORGET_PASSWORD_LINK',BASE_URL."/update-forget-password");
 //**************************************COMMON ROUTE****************************//
 define('PAGE_404_LINK', BASE_URL_CI.'/errorpage');
 
@@ -168,7 +175,7 @@ define('EDIT_CUSTOMER_TITLE', 'HPSHRC-EDIT-CUSTOMER');
 define('REQUEST_CASES_TITLE', 'HPSHRC-REQUEST-CASES');
 define('FRONT_VIEW_CASES_TITLE', 'HPSHRC-VIEW-CASES');
 define('FRONT_LIST_CASES_TITLE', 'HPSHRC-LIST-CASES');
-
+define('FRONT_UPDATE_PROFILE_TITLE', 'HPSHRC-FRONT-UPDATE-PROFILE');
 
 
 //**************************************Employee TITLE****************************//
@@ -207,3 +214,6 @@ define('ADMIN_EDIT_SUB_CATEGORIES_TITLE', 'HPSHRC-ADMIN-EDIT-SUB-CATEGORIES');
 define('ADMIN_EXPENSE_LIST_TITLE', 'HPSHRC-ADMIN-EXPENSE-LIST');
 define('ADMIN_ADD_EXPENSE_TITLE', 'HPSHRC-ADMIN-ADD-EXPENSE');
 define('ADMIN_EDIT_EXPENSE_TITLE', 'HPSHRC-ADMIN-EDIT-EXPENSE');
+
+define('FORGET_PASSWORD_TITLE',"HPSHRC-CHANGE-PASSWORD");
+define('CHANGE_FORGET_PASSWORD_TITLE',"HPSHRC-CHANGE-FORGET-PASSWORD");

@@ -27,10 +27,7 @@ class Home_c extends BaseController
         }               
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $result = $this->Login_m->customer_login_select($_POST['username'], $_POST['password']);
-            if ($result == true) {
-//                $userId = $_SESSION['customer']['customer_id'];
-//                $userType = $_SESSION['customer']['customer_usertype'];
-//                log_message('info', "$userType id $userId logged into the system");                
+            if ($result == true) {               
                 return redirect()->to(BASE_URL); 
             }          
         }

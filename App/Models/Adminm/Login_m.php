@@ -115,4 +115,27 @@ class Login_m extends Model
                               WHERE admin_user_id = '" . $admin_user_id . "'");
         return $result; //return true/false
     }
+    
+    public function update_password_front($params) {
+        $new_password = md5($params['user_new_password']);
+        $customer_id = $_SESSION['customer']['customer_id'];
+        $result = $this->db->query("UPDATE hpshrc_customer
+                              SET customer_email_password = '" . $new_password . "'
+                              WHERE customer_id = '" . $customer_id . "'");
+        return $result; //return true/false
+    }
+    public function check_current_password_front($current_password) {
+        $current_password = md5($current_password);
+        $customer_id = $_SESSION['customer']['customer_id'];
+        $check = $this->db->query("SELECT * FROM hpshrc_customer
+                                       WHERE customer_id = '" . $customer_id . "'
+                                       AND customer_email_password ='" . $current_password . "'");
+        $row = $check->getRowArray();
+        if (isset($row)) {
+            if ($current_password == $row['customer_email_password']) {
+                return true; //matched
+            }
+        }
+        return false; //not matched
+    }
 }

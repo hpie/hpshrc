@@ -83,7 +83,8 @@
                                     <a href="<?php echo CUSTOMER_REGISTER_LINK; ?>">&nbsp;&nbsp;Register</a>
                                 <?php
                                 }else{ ?>
-                                    <a href="<?php echo FRONT_LOGOUT_LINK; ?>">Logout</a>  
+                                    <a href="<?php echo FRONT_LOGOUT_LINK; ?>">Logout</a><br> 
+                                    <a href="<?php echo FRONT_UPDATE_PROFILE_LINK; ?>">Change Password</a> 
                                 <?php } ?>
                                    
                             </div>

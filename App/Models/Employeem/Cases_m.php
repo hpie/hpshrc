@@ -68,6 +68,11 @@ class Cases_m extends Model
         return $update;
     }
     
+    public function get_admin_email() {       
+        $ressult = $this->db->query("SELECT * FROM `admin`");
+        return $ressult->getRowArray();      
+    }
+    
     public function get_single_cases($cases_id) {       
         $ressult = $this->db->query("SELECT * FROM `cases` WHERE cases_id='{$cases_id}'");
         return $ressult->getRowArray();      

@@ -186,4 +186,85 @@ class Common_m extends Model
         $row = $res->getRowArray();
         return $row;
     }
+    
+    
+    
+    public function email_exist_check($email,$table) {
+        if($table=='employee'){
+            $where_field="user_email_id";
+        }
+        if($table=='hpshrc_customer'){
+            $where_field="customer_email_id";
+        }
+        $email_exist = $this->db->query("SELECT * FROM $table WHERE $where_field = '" . $email . "' ");
+        $res = $email_exist->getRowArray();
+        if ($res) {
+            return Array(
+                'success' => true,
+                'email_exist' => true,
+                'data'=>$res
+            );
+        }
+        else{
+            return Array(
+                'success' => false
+            );
+        }
+    }
+    public function check_forget_validity($user_type,$user_id,$date) {
+        $validity_res = $this->db->query("SELECT * FROM user_forget_link WHERE user_id = '" . $user_id . "' AND user_type = '" . $user_type . "' AND DATE(request_date) = '" . $date . "' ");
+        $res = $validity_res->getRowArray();       
+        if ($res) {
+            return FALSE;
+        }
+        else{
+            return TRUE;
+        }
+    }
+    public function chek_forget_code_exist($rmsa_user_id,$user_type,$link_code,$date) {       
+        $validity_res = $this->db->query("SELECT * FROM user_forget_link WHERE user_id = '" . $rmsa_user_id . "' AND user_type = '" . $user_type . "' AND link_code = '" . $link_code . "' AND DATE(request_date) = '" . $date . "' ");
+        $res = $validity_res->getRowArray();       
+        if ($res) {
+            return TRUE;
+        }
+        else{
+            return FALSE;
+        }
+    }
+      public function update_forget_password($params) {
+        $table="";  
+        $new_password = md5($params['rmsa_user_new_password']);
+        $user_id = $params['user_id'];
+        
+        if($params['user_type']=='employee'){
+            $table='employee';
+            $result = $this->db->query("UPDATE $table
+              SET user_email_password = '" . $new_password . "', user_attempt =0,user_locked_status=0
+              WHERE employee_user_id = '" . $user_id . "'"); 
+            
+        }       
+        if($params['user_type']=='customer'){
+            $table='hpshrc_customer';
+                    
+            $result = $this->db->query("UPDATE $table
+              SET customer_email_password = '" . $new_password . "', customer_attempt =0,customer_locked_status=0
+              WHERE customer_id = '" . $user_id . "'");   
+            
+        }             
+        if($result){
+            $user_type=$params['user_type'];
+            $this->db->query("DELETE  FROM user_forget_link WHERE user_id='{$user_id}' AND user_type='$user_type'");
+        }
+        return $result; //return true/false
+    }
+    
+    public function user_forget_link($params) {        
+        $builder = $this->db->table('user_forget_link');
+        $builder->insert($params);
+        $insert_id = $this->db->insertID();        
+        if (!empty($insert_id)) {
+            return true;
+        }
+        return false;       
+     }
 }

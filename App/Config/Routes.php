@@ -82,6 +82,11 @@ $routes->add('case-request', 'Common_c::add_cases');
 $routes->add('front-view-cases/(:any)', 'Cases_f::view_cases/$1');
 $routes->add('front-list-cases', 'Cases_f::cases_list');
 $routes->add('front-add-comment', 'Cases_f::add_comment');
+$routes->add('front-update-profile', 'Cases_f::update_profile');
+
+$routes->add('forget-password/(:any)', 'Common_c::forget_password/$1');
+$routes->add('change-forget-password/(:any)', 'Common_c::forget_password_change/$1');
+$routes->add('update-forget-password', 'Common_c::update_forget_password');
 
 //************************************Employee side route****************************//
 $routes->add('employee-login', 'Elogin_c::index');

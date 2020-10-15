@@ -222,9 +222,9 @@ class SMTP_mail {
         
         $this->sender_email ='info@codexives.com';
 
-        $this->sender_name ='Gyanshala';
+        $this->sender_name ='HPSHRC';
 
-        $this->subject ='Gyanshala Support: User Change Forget Password Link';
+        $this->subject ='HPSHRC Support: User Change Forget Password Link';
 
         $this->mail->isSMTP();
 

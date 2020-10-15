@@ -21,27 +21,29 @@
             <div class="col-md-8 col-sm-12 col-form"> 
                 <!--<h2 class="title-style-2">Registration FORM <span class="title-under"></span></h2>-->
                 <?php
-                $attributes = ['class' => 'contact-form', 'id' => 'userlogin', 'name' => 'loginuser'];
-                echo form_open(FRONT_LOGIN_LINK, $attributes);                
+                $attributes = ['class' => 'contact-form','id'=>'frm_change_password'];
+                echo form_open(UPDATE_FORGET_PASSWORD_LINK, $attributes);                
                 ?>                                                                           
                 <div class="form-group">
-                    <div class="row"> 
-                        <label class="control-label col-sm-4 col-xs-12" for="customer_email_password">Email/Username:</label>
-                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter your email address or username" required="" autocomplete="off">
-                        </div>
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_new_password">New Password:</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="password" class="form-control" name="rmsa_user_new_password" id="rmsa_user_new_password" placeholder="Enter New Password" required="">
                     </div>
-                </div>          
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-4 col-xs-12" for="rmsa_user_confirm_password">Confirm Password: </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="password" class="form-control" name="rmsa_user_confirm_password" id="rmsa_user_confirm_password" placeholder="Enter Confirm Password" required="">
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+            <input type="hidden" name="user_type" value="<?php echo $user_type; ?>">                                                                                   
                 <div class="form-group">
                     <div class="row">
-                        <label class="control-label col-sm-4 col-xs-12" for="password">Password:</label>
-                        <div class="col-sm-8 col-xs-12">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" autocomplete="off" required="">
-                        </div>
-                    </div>
-                </div>                                                
-                <div class="form-group">                    
-                    <div class="row">                        
                         <script nonce='S51U26wMQz' type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
                         <script nonce='S51U26wMQz' type="text/javascript">function enableRegister() {
                                 $("#btnRegister").removeClass('btn_disabled');
@@ -55,9 +57,8 @@
                 </div>                                                              
                 <div class="form-group">
                     <div class="m-auto text-center">    
-                        <button type="submit" class="btn warning_btn btn_disabled"  disabled="true" id="btnRegister">Login</button>
-                        <a href="<?php echo FORGET_PASSWORD_LINK.'customer'; ?>" class="btn btn-default">Foreget Password</a>
-                    </div>                    
+                        <button type="submit" class="btn warning_btn btn_disabled"  disabled="true" id="btnRegister">Submit</button>
+                    </div>
                 </div>
                 <!--</form>-->
                 <?php 

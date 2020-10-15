@@ -22,7 +22,129 @@ class Common_c extends BaseController {
         $this->Cases_m = new Cases_m(); 
         $this->security = \Config\Services::security();                
     }
-    public function add_cases() {               
+    
+    
+    public function forget_password($user_type) {
+        helper('form');
+        if (isset($_POST['username'])) {
+            $_SESSION['email_not_exist'] = 0;
+            $sendData = array();
+            $sendData['success'] = 0;
+            if ($user_type == 'customer') {
+                $resEmailCheck = $this->Common_m->email_exist_check($_POST['username'], 'hpshrc_customer');
+                if ($resEmailCheck['success']) {
+                    $sendData['success'] = 1;
+                } else {
+                    $_SESSION['email_not_exist'] = 1;
+                }
+            }
+            if ($user_type == 'employee') {
+                $resEmailCheck = $this->Common_m->email_exist_check($_POST['username'], 'employee');
+                if ($resEmailCheck['success']) {
+                    $sendData['success'] = 1;
+                } else {
+                    $_SESSION['email_not_exist'] = 1;
+                }
+            }           
+            if ($sendData['success'] == 1) {
+                
+                if($user_type=='employee'){
+                    $user_id=$resEmailCheck['data']['employee_user_id'];
+                }
+                if($user_type=='customer'){
+                    $user_id=$resEmailCheck['data']['customer_id'];
+                }
+                
+                $chekReqValidity = $this->Common_m->check_forget_validity($user_type, $user_id, date("Y-m-d"));
+                if ($chekReqValidity) {
+                    $link_code = forget_password_uuid($user_id, $user_type, 'e');
+                    $change_password_link = CHANGE_FORGET_PASSWORD_LINK . $link_code;
+                    $data = array(
+                        'username' => $_POST['username'],
+                        'template' => 'forgetPasswordChangeTemplate.html',
+                        'change_password_link' => $change_password_link
+                    );
+                                        
+                    include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php'; 
+                   $sendmail = new \SMTP_mail();
+                    $resMail = $sendmail->sendForgetLink($_POST['username'], $data);
+                    if ($resMail['success'] == 1) {                        
+                        $params = array();
+                        $params['user_id'] = $user_id;
+                        $params['link_code'] = $link_code;
+                        $params['user_type'] = $user_type;
+                        $params['request_date'] = date("Y-m-d");
+                        $this->Common_m->user_forget_link($params);                        
+                        
+                        $_SESSION['forget_mail_sent']=1;
+                        
+                    } else {
+                        $_SESSION['send_email_error'] = 1;
+                        $send_email_error = 1;
+                    }
+                }else{
+                    $_SESSION['forget_validity'] = 1;
+                }
+            }
+        }
+        $data['user_type'] = $user_type;
+        $data['title'] = FORGET_PASSWORD_TITLE;       
+        echo front_view('frontside/forget_password',$data);      
+    }
+    public function forget_password_change($link_code){
+        helper('form'); 
+        $resCode=forget_password_uuid($link_code,'','d');
+        $date=date("Y-m-d");
+        $res=$this->Common_m->chek_forget_code_exist($resCode['user_id'],$resCode['user_type'],$link_code,$date);        
+        $data['success']=0;
+        if($res){
+            $data['user_id']=$resCode['user_id'];
+            $data['user_type']=$resCode['user_type'];
+            $data['success']=1;
+            $data['title']=CHANGE_FORGET_PASSWORD_TITLE;            
+            echo front_view('frontside/change_forget_password',$data); 
+            exit();
+        }else{
+            $data['title']=CHANGE_FORGET_PASSWORD_TITLE; 
+            $data['success']=0;
+            echo single_page('frontside/forget_expierd',$data);             
+            exit();
+        }                          
+    }
+    public function update_forget_password(){
+        $_SESSION['update_forget_password']=0;
+        if(isset($_POST['rmsa_user_new_password']) && $_POST['rmsa_user_new_password']!=''){                                      
+            $res = $this->Common_m->update_forget_password($_POST);                    
+            if($res){               
+                $_SESSION['update_forget_password']=1; 
+                $result['success']="success";                   
+            }                            
+            else{
+                $result['success']="fail";
+            }
+            echo json_encode($result);die;            
+        }       
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public function add_cases() {        
          if (isset($_POST['cases_title'])) { 
             if(isset($_SESSION['customer']['customer_id'])){
                 $customer_id=$_SESSION['customer']['customer_id'];
@@ -54,7 +176,18 @@ class Common_c extends BaseController {
                 }   
             }
             $res =  $this->Cases_m->create_case($params);             
-            if ($res) {
+            if ($res) {                
+                include APPPATH . 'ThirdParty/smtp_mail/smtp_send.php';   
+                $admin_email=$this->Cases_m->get_admin_email();
+                $email_data=array();
+                $email_data['mail_title']='Customer is created new case.';
+                $email_data['link_title']='View case details by clicking this link ';
+                $email_data['case_link']=EMPLOYEE_VIEW_CASES_LINK.$res;                 
+                $sendmail = new \SMTP_mail();
+                $resMail = $sendmail->sendCommentDetails($admin_email['user_email_id'],$email_data); 
+                
+                
+                
                  if (($_FILES['case_files_file']['name'][0]) != '') {                   
                     $cases_files = multiFileUpload('case_files_file',$res.'/'); 
                     $i=0;

@@ -1,23 +1,29 @@
-<!-- page content -->
-<div class="right_col">
-    <div class="">      
-        <div class="clearfix"></div>
+<style>
+    .btn_disabled{
+        pointer-events: none;
+        background-color: #c3bdbd;
+        opacity: 15.9;
+    }
+</style>
+<div class="page-heading text-center">
+    <div class="container zoomIn animated">
+        <h1 class="page-title">LOGIN<span class="title-under"></span></h1>
+        <p class="page-description">
+            Himachal Pradesh Human Rights Commission , Pines Grove Building Shimla 171002
+        </p>
+    </div>
+</div>
+<div class="main-container fadeIn animated">
+    <div class="container">
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Update Profile</h2>                    
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <br />
-                        <!--<form method="post" id="frm_change_password" class="form-horizontal form-label-left" action="<?php echo ADMIN_UPDATE_PROFILE_LINK ?>">-->  
-                            
-                             <?php
-                                $attributes = ['id' => 'frm_change_password','class'=>'form-horizontal form-label-left'];
-                                echo form_open(ADMIN_UPDATE_PROFILE_LINK,$attributes);
-                               ?> 
-                            
+            <div class="col-md-1"></div>
+            <!-- content -->
+            <div class="col-md-8 col-sm-12 col-form"> 
+                <!--<h2 class="title-style-2">Registration FORM <span class="title-under"></span></h2>-->
+                <?php
+                $attributes = ['class' => 'contact-form', 'id' => 'frm_change_password', 'name' => 'frm_change_password'];
+                echo form_open(FRONT_UPDATE_PROFILE_LINK, $attributes);                
+                ?>                                                                                          
                             <div class="form-group">
                                 <div class="row">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_current_password">Current Password:</label>
@@ -41,17 +47,17 @@
                                         <input type="password" class="form-control col-md-7 col-xs-12" name="user_confirm_password" id="user_confirm_password" placeholder="Enter Confirm Password" required autocomplete="off">
                                     </div>
                                 </div>
-                            </div>                                                                                                                                         
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" id="btnSubmit"  class="btn btn-success">Update</button>
-                                </div>
-                            </div>
-                         <?php echo form_close();?> 
+                            </div>                                                           
+                <div class="form-group">
+                    <div class="m-auto text-center">    
+                        <button type="submit" class="btn warning_btn" id="btnRegister">Submit</button>
                     </div>
                 </div>
+                <!--</form>-->
+                <?php 
+                echo form_close(); 
+                ?>  
             </div>
-        </div>                       
+        </div> <!-- /.row -->       
     </div>
 </div>

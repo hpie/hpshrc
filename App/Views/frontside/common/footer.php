@@ -256,6 +256,73 @@
         });
     });
 </script>
+
+
+<?php if ($title == CHANGE_FORGET_PASSWORD_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            $('#frm_change_password').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    rmsa_user_new_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'rmsa_user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    rmsa_user_confirm_password: {
+                        validators: {
+                            stringLength: {
+                                min: 8
+                            },
+                            identical: {
+                                field: 'rmsa_user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] === "success") {
+                        window.location.href = "<?php echo BASE_URL; ?>";
+                    }                   
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>
+
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script nonce="S51U26wMQz">
     (function (b, o, i, l, e, r) {
@@ -339,6 +406,129 @@
         </script>
 <?php } ?>
 
+        
+<?php if ($title == FRONT_UPDATE_PROFILE_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {
+            
+            $.fn.bootstrapValidator.validators.securePassword = {
+        validate: function(validator, $field, options) {
+            var value = $field.val();
+            if (value === '') {
+                return true;
+            }
+
+            // Check the password strength
+            if (value.length < 8) {
+                return {
+                    valid: false,
+                    message: 'The password must be more than 8 characters long'
+                };
+            }
+            
+            if (value.length > 20) {
+                return {
+                    valid: false,
+                    message: 'The password must be less than 20 characters'
+                };
+            }
+
+            // The password doesn't contain any uppercase character
+            if (value === value.toLowerCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one upper case character'
+                };
+            }
+
+            // The password doesn't contain any uppercase character
+            if (value === value.toUpperCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one lower case character'
+                };
+            }
+
+            // The password doesn't contain any digit
+            if (value.search(/[0-9]/) < 0) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one digit'
+                };
+            }
+
+            return true;
+        }
+    };                        
+            $('#frm_change_password').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    user_new_password: {
+                        validators: {                           
+                            identical: {
+                                field: 'user_confirm_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            securePassword: {
+                                message: 'The password is not valid'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your new password'
+                            }
+                        }
+                    },
+                    user_confirm_password: {
+                        validators: {                            
+                            identical: {
+                                field: 'user_new_password',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            securePassword: {
+                                message: 'The password is not valid'
+                            },
+                            notEmpty: {
+                                message: 'Please supply your confirm password'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.bv', function (e) {
+                $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
+                $('#frm_change_password').data('bootstrapValidator').resetForm();
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the BootstrapValidator instance
+                var bv = $form.data('bootstrapValidator');
+
+                // Use Ajax to submit form data
+                $.post($form.attr('action'), $form.serialize(), function (result) {
+                    if (result['success'] == "success") {
+                        location.href = "<?php echo FRONT_UPDATE_PROFILE_LINK; ?>";
+                    }
+                    if (result['success'] == "fail") {
+                        PNotify.error({
+                            title: 'Error!',
+                            text: 'Old password not match'
+                        });
+                    }
+//                    $('.txt_csrfname').val(result['token']);
+                }, 'json');
+            });
+        });
+    </script>
+<?php } ?>        
+        
 <?php if ($title == FRONT_VIEW_CASES_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">

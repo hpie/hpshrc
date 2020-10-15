@@ -33,6 +33,30 @@ class Cases_f extends BaseController {
         $data['title'] = FRONT_LIST_CASES_TITLE;
         echo front_view('frontside/cases_list', $data);
     }
+    
+    
+     public function update_profile() {
+        $result = array();
+        if (isset($_POST['user_current_password']) && $_POST['user_current_password'] != '') {
+            if ($this->Login_m->check_current_password_front($_POST['user_current_password'])) {
+                $res = $this->Login_m->update_password_front($_POST);
+                if ($res) {
+                    successOrErrorMessage("Password changed successfully", 'success');
+                    $result['success'] = "success";
+                }
+            } else {
+                $result['success'] = "fail";
+            }
+//            $result['token'] = $this->security->getCSRFHash();
+            echo json_encode($result);
+            die;
+        }
+        helper('form');
+        $data['title'] = FRONT_UPDATE_PROFILE_TITLE;
+        echo front_view('frontside/update_profile', $data);
+    }
+    
+    
     public function add_comment() {
         $message = "fail";
         $comments = "";

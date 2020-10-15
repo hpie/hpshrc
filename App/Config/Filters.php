@@ -25,7 +25,9 @@ class Filters extends BaseConfig
                                             'admin-employee-approve-status',
                                             'admin-active-causes',
                                             'admin-update-profile',
-                                            'admin-active-category'
+                                            'admin-active-category',
+                                            'front-update-profile',
+                                            'update-forget-password'
                                             ]]                   
 		],
 		'after'  => [

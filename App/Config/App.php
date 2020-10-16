@@ -205,7 +205,7 @@ class App extends BaseConfig
 	*/  
 	public $cookiePrefix   = '_hpshrc';
 	public $cookieDomain   = '';
-	public $cookiePath     = '/;                
+	public $cookiePath     = '/';                
 	public $cookieSecure   = false;
 	public $cookieHTTPOnly = true;
 

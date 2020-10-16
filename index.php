@@ -3,19 +3,19 @@ header("X-XSS-Protection: 1; mode=block");
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: sameorigin');
 header('X-Powered-By:');
-
+//
 $lifetime=900;
 session_set_cookie_params($lifetime);
 $protocol_http = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 
-if($protocol_http=='https://'){
-    ini_set( 'session.cookie_httponly',TRUE);
-    ini_set('session.cookie_secure', TRUE);
-}else{
-    ini_set('session.cookie_samesite', 'None');
-}
+//if($protocol_http=='https://'){
+//    ini_set( 'session.cookie_httponly',TRUE);
+//    ini_set('session.cookie_secure', TRUE);
+//}else{
+//    ini_set('session.cookie_samesite', 'None');
+//}
 
-session_start();
+//session_start();
 
 include 'common_url.php';
 // Valid PHP Version?
@@ -53,9 +53,9 @@ $paths = new Config\Paths();
 $app = require rtrim($paths->systemDirectory, '/ ') . '/bootstrap.php';
 
 if($protocol_http=='https://'){
-    setcookie(session_name(),session_id(),time()+$lifetime,$paths->writableDirectory,1,1,TRUE);
+    setcookie(session_name(),session_id(),time()+$lifetime,$paths->writableDirectory.'session',1,1,TRUE);
 }else{
-    setcookie(session_name(),session_id(),time()+$lifetime,$paths->writableDirectory,null,null,TRUE);
+    setcookie(session_name(),session_id(),time()+$lifetime,$paths->writableDirectory.'session',null,null,TRUE);
 }
 
 /*

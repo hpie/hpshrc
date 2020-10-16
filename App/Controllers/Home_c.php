@@ -8,7 +8,10 @@ class Home_c extends BaseController
     private $Login_m;
     private $Causes_m;
     private $security;     
-    public function __construct() {
+    protected $session;
+    public function __construct() {   
+        $this->session = \Config\Services::session();
+        $this->session->start(); 
         helper('url');
         helper('functions');
         $this->security = \Config\Services::security();           

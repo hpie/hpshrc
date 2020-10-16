@@ -9,7 +9,10 @@ class Categories_c extends BaseController {
     private $Causes_m;
     private $security;
     private $userId;
-    public function __construct() {               
+    protected $session;
+    public function __construct() {   
+        $this->session = \Config\Services::session();
+        $this->session->start();              
         helper('url');
         helper('functions');
         sessionCheckAdmin();              

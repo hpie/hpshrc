@@ -5,8 +5,10 @@ use CodeIgniter\Model;
 class Login_m extends Model
 {
     protected $db;
+    protected $session;
     public function __construct()
     {
+        $this->session = session();
         $this->db = db_connect();
         helper('functions');
     } 
@@ -35,9 +37,12 @@ class Login_m extends Model
                 
                 $this->db->query("UPDATE admin SET user_login_active = 1 WHERE admin_user_id='" . $admin_data['admin_user_id'] . "' ");
                 
-                $token=generateToken();                
-                $_SESSION['admin']['admin_tokencheck'] = $token;
-                sessionAdmin($admin_data);                                                
+                $token=generateToken();     
+                $admin_data['admin_tokencheck'] = $token;
+                $user_data=sessionAdmin($admin_data);                                                
+                $this->session->set($user_data);
+                
+                
                 $uid=$admin_data['admin_user_id'];
                                                 
                 $result_token = $this->db->query("select count(*) as allcount from admin_token WHERE admin_user_id='$uid'");

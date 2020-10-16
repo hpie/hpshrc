@@ -5,8 +5,10 @@ use CodeIgniter\Model;
 class Login_m extends Model
 {
     protected $db;
+    protected $session;
     public function __construct()
     {
+        $this->session = session();
         $this->db = db_connect();
         helper('functions');
     }    
@@ -21,8 +23,9 @@ class Login_m extends Model
                 $this->db->query("UPDATE hpshrc_customer SET customer_attempt =0,customer_locked_status=0 WHERE customer_id = '{$customer_data['customer_id']}'");
                 
                 $token=generateToken();                
-                $_SESSION['customer']['customer_tokencheck'] = $token;
-                sessionCustomer($customer_data);                                                
+                $customer_data['customer_tokencheck'] = $token;
+                $user_data=sessionCustomer($customer_data);                                                
+                $this->session->set($user_data);  
                 $uid=$customer_data['customer_id'];
                                                 
                 $result_token = $this->db->query("select count(*) as allcount from customer_token WHERE customer_id='$uid'");

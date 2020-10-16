@@ -5,8 +5,10 @@ use CodeIgniter\Model;
 class Customers_m extends Model
 {
     protected $db;
+    protected $session;
     public function __construct()
     {
+        $this->session = session();
         $this->db = db_connect();
         helper('functions');
     }   

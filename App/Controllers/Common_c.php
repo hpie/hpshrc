@@ -14,7 +14,10 @@ class Common_c extends BaseController {
     private $security;
     private $Cases_m;
 
-    public function __construct() {
+    protected $session;
+    public function __construct() {   
+        $this->session = \Config\Services::session();
+        $this->session->start(); 
         helper('functions');
         helper('url');            
         $this->Login_m = new Login_m();

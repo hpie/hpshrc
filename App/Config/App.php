@@ -180,13 +180,13 @@ class App extends BaseConfig
 	| except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 	|
 	*/
-	public $sessionDriver            = 'files';
+	public $sessionDriver            = 'CodeIgniter\Session\Handlers\FileHandler';
 	public $sessionCookieName        = 'hpshrc_session';
 	public $sessionExpiration        = 900;
-	public $sessionSavePath          = WRITEPATH;
+	public $sessionSavePath          = '';
 	public $sessionMatchIP           = false;
 	public $sessionTimeToUpdate      = 900;
-	public $sessionRegenerateDestroy = false;
+	public $sessionRegenerateDestroy = true;
 
 	/*
 	|--------------------------------------------------------------------------
@@ -205,7 +205,7 @@ class App extends BaseConfig
 	*/  
 	public $cookiePrefix   = '_hpshrc';
 	public $cookieDomain   = '';
-	public $cookiePath     = WRITEPATH;                
+	public $cookiePath     = WRITEPATH.'session';                
 	public $cookieSecure   = false;
 	public $cookieHTTPOnly = true;
 

@@ -141,24 +141,22 @@ function lasturl() {
 // Print the link 
     return $link;
 }
-function sessionCustomer($row) {    
+function sessionCustomer($row) { 
+    $session_data=array();
     foreach ($row as $key => &$value) {        
-            $_SESSION['customer'][$key] = $value;        
+            $session_data['customer'][$key] = $value;        
     }    
-    $_SESSION['customer']['customer_usertype'] = 'customer';
-//    $_SESSION['customer']['customer_time'] = time();
-//    $_SESSION['customer'][$_SESSION['customer']['customer_usertype'].'_session_id'] = session_create_id();    
-    return true;
+    $session_data['customer']['customer_usertype'] = 'customer';   
+    return $session_data;
 }
 
-function sessionAdmin($row) {    
+function sessionAdmin($row) {  
+    $session_data=array();
     foreach ($row as $key => &$value) {        
-            $_SESSION['admin'][$key] = $value;        
+            $session_data['admin'][$key] = $value;        
     }    
-    $_SESSION['admin']['admin_usertype'] = 'admin'; 
-//    $_SESSION['admin']['admin_time'] = time();
-//    $_SESSION['admin'][$_SESSION['admin']['admin_usertype'].'_session_id'] = session_create_id();    
-    return true;
+    $session_data['admin']['admin_usertype'] = 'admin';   
+    return $session_data;
 }
 function sessionCheckAdmin() {
     if ((!isset($_SESSION['admin']['admin_user_id'])) || !isset($_SESSION['admin']['admin_usertype'])) {    
@@ -177,15 +175,13 @@ function sessionCheckAdmin() {
 //    }
     return true;
 }
-function sessionEmployee($row) {    
+function sessionEmployee($row) { 
+    $session_data=array();
     foreach ($row as $key => &$value) {                
-        $_SESSION['employee'][$key] = $value;        
+        $session_data['employee'][$key] = $value;        
     }    
-//    $_SESSION['user_id'] = $row['employee_user_id'];
-    $_SESSION['employee']['employee_usertype'] = 'employee';
-//    $_SESSION['employee']['employee_time'] = time();
-//    $_SESSION['employee'][$_SESSION['employee']['employee_usertype'].'_session_id'] = session_create_id();        
-    return true;
+    $session_data['employee']['employee_usertype'] = 'employee';        
+    return $session_data;
 }
 function sessionCheckCustomer() {
     if ((!isset($_SESSION['customer']['customer_id'])) || !isset($_SESSION['customer']['customer_usertype'])) {        

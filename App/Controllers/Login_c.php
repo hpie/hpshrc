@@ -6,7 +6,10 @@ class Login_c extends BaseController
 {
     private $Login_m; 
     private $security;  
-    public function __construct() {  
+    protected $session;
+    public function __construct() {   
+        $this->session = \Config\Services::session();
+        $this->session->start();   
         helper('functions');
         helper('url');        
         $this->security = \Config\Services::security();       
@@ -15,7 +18,6 @@ class Login_c extends BaseController
     public function index() {
         helper('form');
         $result = false;
-
         if (isset($_SESSION['admin']['admin_user_id'])) {            
             if ($_SESSION['admin']['admin_user_id'] > 0) {                
                 logoutUser('admin');               

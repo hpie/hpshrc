@@ -6,7 +6,10 @@ use App\Models\Adminm\Login_m;
 class Admin_c extends BaseController {
     private $Login_m;
     private $security;     
-    public function __construct() {         
+    protected $session;
+    public function __construct() {   
+        $this->session = \Config\Services::session();
+        $this->session->start();         
         helper('url');
         helper('functions');
         sessionCheckAdmin();        

@@ -8,12 +8,14 @@ use App\ThirdParty\smtp_mail\SMTP_mail;
 class Cases_f extends BaseController {
     private $Login_m;
     private $Cases_m;
-    private $security;     
-    public function __construct() {
+    private $security;
+    protected $session;
+    public function __construct() {   
+        $this->session = \Config\Services::session();
+        $this->session->start();        
         helper('url');
-        helper('functions');
-        $this->security = \Config\Services::security();
-//        print_r($_SESSION);die;        
+        helper('functions');        
+        $this->security = \Config\Services::security();                
         sessionCheckCustomer();
         $this->Login_m = new Login_m();
         $this->Cases_m = new Cases_m();

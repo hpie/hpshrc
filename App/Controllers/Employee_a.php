@@ -13,7 +13,10 @@ class Employee_a extends BaseController {
     private $security;
     private $Common_m;
 
-    public function __construct() {
+    protected $session;
+    public function __construct() {   
+        $this->session = \Config\Services::session();
+        $this->session->start(); 
         helper('url');
         helper('functions');
         $this->security = \Config\Services::security();        

@@ -44,10 +44,10 @@ class BaseController extends Controller
 //		$this->session = \Config\Services::session();
 //		
 //                             
-//                if(session_status() == PHP_SESSION_NONE)
-//                {                    
-//                    $this->session = \Config\Services::session();
-//                }
+                if(session_status() == PHP_SESSION_NONE)
+                {                    
+                    $this->session = \Config\Services::session();
+                }
 //                $this->session = \Config\Services::session();
 //                $this->session->start();
 	}

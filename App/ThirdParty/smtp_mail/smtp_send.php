@@ -79,7 +79,7 @@ class SMTP_mail {
 
         $this->mail->Subject = $this->subject;
 
-        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+        $html = file_get_contents(APPPATH."ThirdParty/smtp_mail/$template");
 //        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
 
         $word = array('{{username}}','{{password}}','{{activationlink}}');
@@ -137,7 +137,7 @@ class SMTP_mail {
 
         $this->mail->Subject = $this->subject;
 
-        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+        $html = file_get_contents(APPPATH."ThirdParty/smtp_mail/$template");
 
         $word = array('{{mail_title}}','{{link_title}}','{{case_link}}');
         $replace = array($data['mail_title'],$data['link_title'],$data['case_link']);
@@ -195,7 +195,7 @@ class SMTP_mail {
 
         $this->mail->Subject = $this->subject;
 
-        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+        $html = file_get_contents(APPPATH."ThirdParty/smtp_mail/$template");
 //        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
 
         $word = array('{{username}}','{{password}}');
@@ -252,7 +252,7 @@ class SMTP_mail {
 
         $this->mail->Subject = $this->subject;
 
-        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+        $html = file_get_contents(APPPATH."ThirdParty/smtp_mail/$template");
 //        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
 
         $word = array('{{change_password_link}}');
@@ -310,7 +310,7 @@ class SMTP_mail {
 
         $this->mail->Subject = $this->subject;
 
-        $html = file_get_contents(APPPATH."Thirdparty/smtp_mail/$template");
+        $html = file_get_contents(APPPATH."ThirdParty/smtp_mail/$template");
 //        $this->mail->Body ='Welcome to RMSA \r\n\r\n Username: '.$data['userName'].'\r\n\r\n Password:'.$data['password'];
 
         $word = array('{{username}}','{{password}}','{{activationlink}}');

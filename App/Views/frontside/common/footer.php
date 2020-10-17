@@ -612,8 +612,8 @@
                 var i;
                 var text='';
                 for (i = 1; i <= numFiles; i++) {                   
-                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='title_file'>"+$(this)[0].files.item(i-1).name.substr(0,30)+" Title:</label><div class='col-sm-8 col-xs-12'><input type='text' class='form-control' name='title_file[]' placeholder='Enter "+$(this)[0].files.item(i-1).name.substr(0,30)+" title' autocomplete='off' required></div></div></div>";
-                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='desc_file'>"+$(this)[0].files.item(i-1).name.substr(0,30)+" Description:</label><div class='col-sm-8 col-xs-12'><textarea class='form-control' name='desc_file[]' placeholder='Enter "+$(this)[0].files.item(i-1).name.substr(0,30)+" description'></textarea></div></div></div>"
+                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='title_file'>Title: ["+$(this)[0].files.item(i-1).name.substr(0,30)+" ] </label><div class='col-sm-8 col-xs-12'><input type='text' class='form-control' name='title_file[]' placeholder='Enter "+$(this)[0].files.item(i-1).name.substr(0,30)+" title' autocomplete='off' required></div></div></div>";
+                  text +="<div class='form-group case_files_file_title_desc'><div class='row'><label class='control-label col-sm-4 col-xs-12' for='desc_file'>Description: ["+$(this)[0].files.item(i-1).name.substr(0,30)+" ] </label><div class='col-sm-8 col-xs-12'><textarea class='form-control' name='desc_file[]' placeholder='Enter "+$(this)[0].files.item(i-1).name.substr(0,30)+" description'></textarea></div></div></div>"
                 }
                 $( ".case_files_file_div" ).after(text);
             });

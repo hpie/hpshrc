@@ -65,7 +65,7 @@
                             <div class="col-sm-6 col-xs-12">
                                 <ul class="list-unstyled list-inline header-contact">
                                     <li> <i class="fa fa-phone"></i> <a href="tel:">+91 177 262 4908 </a> </li>
-                                    <li> <i class="fa fa-envelope"></i> <a href="mailto:info@hpshrc.hp.gov.in">info(at)hpshrc.hp.gov.in</a> </li>
+                                    <li> <i class="fa fa-envelope"></i> <a href="mailto:info@hpshrc.hp.gov.in">sridhar.sharma909(at)hp.gov.in</a> </li>
                                 </ul> <!-- /.header-contact  -->
                             </div>
                             <div class="col-sm-6 col-xs-12 text-right">
@@ -113,10 +113,9 @@
                             <ul class="nav navbar-nav">
                                 <li><a class="is-active" href="<?php echo BASE_URL; ?>">HOME</a></li>
                                 <li><a href="<?php echo FRONT_ABOUT_LINK; ?>">ABOUT</a></li>
-                                <li class="has-child"><a href="#">CAUSES</a>
+                                <li class="has-child"><a href="#">CASE STATUS</a>
                                     <ul class="submenu">
                                         <li class="submenu-item"><a href="<?php echo FRONT_DOWNLOAD_LINK; ?>">Downloads</a></li>
-                                        <li class="submenu-item"><a href="<?php echo FRONT_BUDGET_LINK.((date("Y"))-1).'-'.(date("Y")); ?>">Budget and Finance</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-child"><a href="#">CASE</a>
@@ -125,6 +124,7 @@
                                         <li class="submenu-item"><a href="<?php echo FRONT_CASES_LIST_LINK; ?>">My Cases</a></li>   
                                     </ul>
                                 </li>
+								<li><a href="<?php echo FRONT_BUDGET_LINK.((date("Y"))-1).'-'.(date("Y")); ?>">BUDGET &amp; FINANCE</a></li>
                                 <li><a href="<?php echo FRONT_GALLERY_LINK; ?>">GALLERY</a></li>
                                 <li><a href="<?php echo FRONT_CONTACT_LINK; ?>">CONTACT</a></li>
 

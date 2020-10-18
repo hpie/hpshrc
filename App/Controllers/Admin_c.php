@@ -59,5 +59,4 @@ class Admin_c extends BaseController {
         $data['title'] = ADMIN_UPDATE_PROFILE_TITLE;
         echo admin_view('adminside/update_profile', $data);
     }
-
 }

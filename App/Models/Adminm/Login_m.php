@@ -143,4 +143,27 @@ class Login_m extends Model
         }
         return false; //not matched
     }
+    public function check_emp_current_password($current_password) {
+        $current_password = md5($current_password);
+        $employee_user_id = $_SESSION['employee']['employee_user_id'];
+        $check = $this->db->query("SELECT * FROM employee
+                                       WHERE employee_user_id = '" . $employee_user_id . "'
+                                       AND user_email_password ='" . $current_password . "'");
+        $row = $check->getRowArray();
+        if (isset($row)) {
+            if ($current_password == $row['user_email_password']) {
+                return true; //matched
+            }
+        }
+        return false; //not matched
+    }
+
+    public function update_emp_password($params) {
+        $new_password = md5($params['user_new_password']);
+        $employee_user_id = $_SESSION['employee']['employee_user_id'];
+        $result = $this->db->query("UPDATE employee
+                              SET user_email_password = '" . $new_password . "'
+                              WHERE employee_user_id = '" . $employee_user_id . "'");
+        return $result; //return true/false
+    }
 }

@@ -42,8 +42,8 @@ class Employee_c extends BaseController {
     public function update_profile(){         
         $result=array();               
         if(isset($_POST['user_current_password']) && $_POST['user_current_password']!=''){            
-            if($this->Login_m->check_current_password($_POST['user_current_password'])){                
-                $res = $this->Login_m->update_password($_POST);                    
+            if($this->Login_m->check_emp_current_password($_POST['user_current_password'])){                
+                $res = $this->Login_m->update_emp_password($_POST);                    
                 if($res){
                     successOrErrorMessage("Password changed successfully", 'success');
                     $result['success']="success";                   

@@ -129,24 +129,6 @@ class Common_c extends BaseController {
         }       
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public function add_cases() {        
          if (isset($_POST['cases_title'])) { 
             if(isset($_SESSION['customer']['customer_id'])){

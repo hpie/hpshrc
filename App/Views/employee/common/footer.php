@@ -689,7 +689,7 @@
                             }
                         }
                     },
-                    cases_no: {
+                    case_no: {
                         validators: {
                             stringLength: {
                                 min: 3
@@ -747,7 +747,7 @@
                             }
                         }
                     },
-                    cases_no: {
+                    case_no: {
                         validators: {
                             stringLength: {
                                 min: 3

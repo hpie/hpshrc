@@ -6,8 +6,8 @@
                     <div class="tile-stats">
                         <div class="icon"><i class="fa fa-users" style="font-size: 30px;"></i></div>
                         <div class="count"><?php echo $totaluser['cnt']; ?></div>
-                        <h3>Total Customers</h3>
-                        <p>Total active/inactive customers</p>
+                        <h3>Total Complainant's</h3>
+                        <p>Total active/inactive Complainant's</p>
                     </div>
                 </div>
             </a> 
@@ -15,17 +15,17 @@
                     <div class="tile-stats">
                         <div class="icon"><i class="fa fa-check-square" style="font-size: 30px;"></i></div>
                         <div class="count"><?php echo $totalactiveuser['cnt']; ?></div>
-                        <h3>Active Customers</h3>
-                        <p>Total active customers</p>
+                        <h3>Active Complainant's</h3>
+                        <p>Total active Complainant's</p>
                     </div>
                 </div>
             </a>
             <a href="#"><div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="tile-stats">
                         <div class="icon"><i class="fa fa-ban" style="font-size: 30px;"></i></div>
-                        <div class="count"><?php echo $totalinactiveuser['cnt'];; ?></div>
-                        <h3>InActive Customers</h3>
-                        <p>Total inactive customers</p>
+                        <div class="count"><?php echo $totalinactiveuser['cnt']; ?></div>
+                        <h3>InActive Complainant's</h3>
+                        <p>Total inactive Complainant's</p>
                     </div>
                 </div>
             </a>

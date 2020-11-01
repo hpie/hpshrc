@@ -46,12 +46,12 @@
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
-                                        <span class="nk-menu-text">Customers</span>
+                                        <span class="nk-menu-text">Complainant</span>
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="<?php echo EMPLOYEE_CUSTOMER_LIST_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Customers List</span></a>
-                                            <a href="<?php echo EMPLOYEE_CUSTOMER_REGISTER_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Add Customers</span></a>
+                                            <a href="<?php echo EMPLOYEE_CUSTOMER_LIST_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Complainant List</span></a>
+                                            <a href="<?php echo EMPLOYEE_CUSTOMER_REGISTER_LINK; ?>" class="nk-menu-link"><span class="nk-menu-text">Add Complainant</span></a>
                                         </li>                                       
                                     </ul>                                     
                                 </li>                               

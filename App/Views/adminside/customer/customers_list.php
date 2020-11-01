@@ -6,8 +6,8 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Customer List</h2>
-                        <a href="<?php echo ADMIN_CUSTOMER_REGISTER_LINK; ?>"><button type="button" data-toggle="tooltip" title="Add New Customer" class="btn btn-info btn-sm" style="float: right"><i class="fa fa-plus">Add New</i></button></a>
+                        <h2>Complainant List</h2>
+                        <a href="<?php echo ADMIN_CUSTOMER_REGISTER_LINK; ?>"><button type="button" data-toggle="tooltip" title="Add New Complainant" class="btn btn-info btn-sm" style="float: right"><i class="fa fa-plus">Add New</i></button></a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">                    					

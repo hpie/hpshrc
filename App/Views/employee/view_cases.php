@@ -84,7 +84,7 @@
                                 </div><!-- .card-inner -->
                                 <div class="card-inner">
                                     <div class="aside-wg">
-                                        <h6 class="overline-title-alt mb-2">Customer Information</h6>
+                                        <h6 class="overline-title-alt mb-2">Complainant Information</h6>
                                         <ul class="user-contacts">
                                             <li>
                                                 <em class="icon ni ni-user-fill"></em><span><?php if ($caseDetails['customer_first_name'] == '') {

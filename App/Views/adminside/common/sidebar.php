@@ -12,7 +12,7 @@
                 <a href="<?php echo ADMIN_CATEGORIES_LIST_LINK; ?>"><i class="fa fa-list-alt"></i> Categories <span class="fa fa-chevron-right"></span></a>                    
             </li>
             <li>
-                <a href="<?php echo ADMIN_CUSTOMER_LIST_LINK; ?>"><i class="fa fa-users"></i> Customers <span class="fa fa-chevron-right"></span></a>                    
+                <a href="<?php echo ADMIN_CUSTOMER_LIST_LINK; ?>"><i class="fa fa-users"></i> Complainant <span class="fa fa-chevron-right"></span></a>                    
             </li>
             <li>
                 <a href="<?php echo ADMIN_EMPLOYEE_LIST_LINK; ?>"><i class="fa fa-users"></i> Employees <span class="fa fa-chevron-right"></span></a>                    

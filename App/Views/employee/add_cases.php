@@ -72,7 +72,7 @@
                             <div class="row g-3 align-center howtocontact howtocontact_email">
                                 <div class="col-lg-4">
                                     <div class="form-group">                                            
-                                        <label class="form-label float-right" for="customer_email">Customer Email:</label>
+                                        <label class="form-label float-right" for="customer_email">Complainant Email:</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -86,7 +86,7 @@
                             <div class="row g-3 align-center howtocontact howtocontact_mobile">
                                 <div class="col-lg-4">
                                     <div class="form-group">                                            
-                                        <label class="form-label float-right" for="customer_contact">Customer Mobile:</label>
+                                        <label class="form-label float-right" for="customer_contact">Complainant Mobile:</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">

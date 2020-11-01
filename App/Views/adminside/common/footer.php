@@ -207,15 +207,15 @@
 //                        $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
-                            var title = 'Click to locke customer';
+                            var title = 'Click to locke Complainant';
                             var class_ = 'btn_lock_unlock_customer btn btn-xs btn-success';
-                            var text = "Customer Unlocked <i class='fa fa-unlock'></i></em>";
+                            var text = "Complainant Unlocked <i class='fa fa-unlock'></i></em>";
                             var isactive = 1;
 
                             if (status == 1) {
-                                title = 'Click to unlocke customer';
+                                title = 'Click to unlocke Complainant';
                                 class_ = 'btn_lock_unlock_customer btn btn-xs btn-danger';
-                                text = "Customer Locked <i class='fa fa-lock'></i></em>";
+                                text = "Complainant Locked <i class='fa fa-lock'></i></em>";
                                 isactive = 0;
                             }
                             self.removeClass().addClass(class_);
@@ -267,15 +267,15 @@
 //                        $('.ajax_csrfname').val(res.token);                        
                         if (res.suceess) {
 
-                            var title = 'Click to inactive customer';
+                            var title = 'Click to inactive Complainant';
                             var class_ = 'btn_active_inactive_customer btn btn-xs btn-success';
-                            var text = "Customer Activated <i class='fa fa-check'></i>";
+                            var text = "Complainant Activated <i class='fa fa-check'></i>";
                             var isactive = "REMOVED";
 
                             if (status == "REMOVED") {
-                                title = 'Click to active customer';
+                                title = 'Click to active Complainant';
                                 class_ = 'btn_active_inactive_customer btn btn-xs btn-danger';
-                                text = "Customer Inactivated <i class='fa fa-close'></i>";
+                                text = "Complainant Inactivated <i class='fa fa-close'></i>";
                                 isactive = "ACTIVE";
                             }
                             self.removeClass().addClass(class_);

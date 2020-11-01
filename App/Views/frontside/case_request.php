@@ -51,17 +51,17 @@
                 </div>                
                 <div class="form-group howtocontact howtocontact_email">
                     <div class="row">
-                        <label class="control-label col-sm-4 col-xs-12" for="customer_email">Customer Email:</label>
+                        <label class="control-label col-sm-4 col-xs-12" for="customer_email">Complainant Email:</label>
                         <div class="col-sm-8 col-xs-12">                            
-                            <input type="email" class="form-control" name="customer_email" id="customer_email" placeholder="Enter customer email" autocomplete="off" value="example@gmail.com">
+                            <input type="email" class="form-control" name="customer_email" id="customer_email" placeholder="Enter Complainant email" autocomplete="off" value="example@gmail.com">
                         </div>
                     </div>
                 </div>
                 <div class="form-group howtocontact howtocontact_mobile">
                     <div class="row">
-                        <label class="control-label col-sm-4 col-xs-12" for="customer_contact">Customer Mobile:</label>
+                        <label class="control-label col-sm-4 col-xs-12" for="customer_contact">Complainant Mobile:</label>
                         <div class="col-sm-8 col-xs-12">
-                            <input type="text" class="form-control mobileno" name="customer_contact" id="customer_contact" placeholder="Enter customer mobile number" maxlength="10" minlength="10" autocomplete="off" value="9999999999">
+                            <input type="text" class="form-control mobileno" name="customer_contact" id="customer_contact" placeholder="Enter Complainant mobile number" maxlength="10" minlength="10" autocomplete="off" value="9999999999">
                         </div>
                     </div>
                 </div>

@@ -333,15 +333,15 @@
                         var res = $.parseJSON(res);
 //                        $('.ajax_csrfname').val(res.token);
                         if (res.suceess) {
-                            var title = 'Click to locke customer';
+                            var title = 'Click to locke Complainant';
                             var class_ = 'btn_lock_unlock_customer btn btn-xs btn-success';
-                            var text = "Customer Unlocked <em class='icon ni ni-unlock-fill'></em>";
+                            var text = "Complainant Unlocked <em class='icon ni ni-unlock-fill'></em>";
                             var isactive = 1;
 
                             if (status == 1) {
-                                title = 'Click to unlocke customer';
+                                title = 'Click to unlocke Complainant';
                                 class_ = 'btn_lock_unlock_customer btn btn-xs btn-danger';
-                                text = "Customer Locked <em class='icon ni ni-lock-fill'></em>";
+                                text = "Complainant Locked <em class='icon ni ni-lock-fill'></em>";
                                 isactive = 0;
                             }
                             self.removeClass().addClass(class_);
@@ -505,15 +505,15 @@
 //                        $('.ajax_csrfname').val(res.token);
                         if (res.suceess) {
 
-                            var title = 'Click to locke customer';
+                            var title = 'Click to locke Complainant';
                             var class_ = 'btn_lock_unlock_customer btn btn-xs btn-success';
-                            var text = "Customer Unlocked <em class='icon ni ni-unlock-fill'></em>";
+                            var text = "Complainant Unlocked <em class='icon ni ni-unlock-fill'></em>";
                             var isactive = 1;
 
                             if (status == 1) {
-                                title = 'Click to unlocke customer';
+                                title = 'Click to unlocke Complainant';
                                 class_ = 'btn_lock_unlock_customer btn btn-xs btn-danger';
-                                text = "Customer Locked <em class='icon ni ni-lock-fill'></em>";
+                                text = "Complainant Locked <em class='icon ni ni-lock-fill'></em>";
                                 isactive = 0;
                             }
                             self.removeClass().addClass(class_);

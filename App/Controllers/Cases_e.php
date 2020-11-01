@@ -304,9 +304,9 @@ class Cases_e extends BaseController {
                 }
                 if ($crow['comment_from_usertype'] == 'customer') {
                     $from_name = strtoupper(substr($crow['fhc_customer_first_name'], 0, 1) . substr($crow['fhc_customer_last_name'], 0, 1));
-                    $from_short_name = $crow['fhc_customer_first_name'] . ' ' . $crow['fhc_customer_last_name'] . ' (Customer)';
+                    $from_short_name = $crow['fhc_customer_first_name'] . ' ' . $crow['fhc_customer_last_name'] . ' (Complainant)';
                     if ($crow['fhc_customer_first_name'] == '') {
-                        $from_short_name = 'Guest (Customer)';
+                        $from_short_name = 'Guest (Complainant)';
                     }
                 }
                 $return_str .= '<div class="nk-reply-item' . $lastcomment . '" data-value="' . $datavalue . '">                               

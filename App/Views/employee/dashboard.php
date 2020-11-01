@@ -18,8 +18,8 @@
                                     <div class="card-inner">
                                         <div class="card-title-group">
                                             <div class="card-title">
-                                                <h6 class="title">Total Customers</h6>
-                                                <div class="info"><span> Total active/inactive customers</span></div>
+                                                <h6 class="title">Total Complainant's</h6>
+                                                <div class="info"><span> Total active/inactive Complainant's</span></div>
                                             </div>
                                         </div>
                                         <div class="data">
@@ -37,8 +37,8 @@
                                     <div class="card-inner">
                                         <div class="card-title-group">
                                             <div class="card-title">
-                                                <h6 class="title">Active Customers</h6>
-                                                <div class="info"><span> Total active customers</span></div>
+                                                <h6 class="title">Active Complainant's</h6>
+                                                <div class="info"><span> Total active Complainant's</span></div>
                                             </div>
                                         </div>
                                         <div class="data">
@@ -56,8 +56,8 @@
                                     <div class="card-inner">
                                         <div class="card-title-group">
                                             <div class="card-title">
-                                                <h6 class="title">InActive Customers</h6>
-                                                <div class="info"><span> Total inactive customers</span></div>
+                                                <h6 class="title">InActive Complainant's</h6>
+                                                <div class="info"><span> Total inactive Complainant's</span></div>
                                             </div>
                                         </div>
                                         <div class="data">

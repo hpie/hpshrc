@@ -29,21 +29,25 @@
                                         <thead>
                                             <tr>
                                                 <th>Index</th>
+                                                <th>Case No</th>
                                                 <th>Title</th>
                                                 <th>Priority</th>
                                                 <th>Assign to</th>                                            
                                                 <th>Status</th> 
+                                                <th>Hearing Date</th>
                                                 <th>Created Date</th> 
                                                 <th>Action</th>  
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Index</th>
+                                            <th>Index</th>
+                                            <th>Case No</th>
                                             <th>Title</th>
                                             <th>Priority</th>
                                             <th>Assign to</th>                                            
                                             <th>Status</th> 
+                                            <th>Hearing Date</th>
                                             <th>Created Date</th> 
                                             <th>Action</th>  
                                             </tr>

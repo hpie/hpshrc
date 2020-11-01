@@ -646,7 +646,18 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){                    
                     foreach ($result as $row){                                                                         
-                        $cases_id = $row['cases_id'];                                                                       
+                        $cases_id = $row['cases_id'];   
+                        
+                        
+                        $hearing_date="0000-00-00";
+                        $hearing_date_res = self::sql_exec($db,"SELECT comment_hearing_date FROM comment WHERE refCases_id = '{$cases_id}' ORDER BY comment_id DESC LIMIT 1"); 
+                        if(!empty($hearing_date_res)){
+                            $hearing_date=$hearing_date_res[0]['comment_hearing_date'];                        
+                            
+                        }
+                        $row['hearing_date']=$hearing_date;
+                        
+                        
                         $row['index']='';
                         $row['employee_name']=$row['user_firstname'].' '.$row['user_lastname'];
                         $row['action']="<a href='".BASE_URL_DATATABLES."front-view-cases/$cases_id' class='btn btn-xs btn-primary'>View&nbsp;<em class='icon ni ni-eye-fill'></em></a>";
@@ -694,13 +705,14 @@ class SSP {
                     } else {
                         $where .= 'WHERE ' . $where_custom;
                     }
-                } 
-                
+                }                 
                 $data = self::sql_exec( $db, $bindings,
 			"SELECT ".implode(", ", self::pluck($columns, 'db'))."
 			FROM $table
                         LEFT JOIN employee emp
                         ON emp.employee_user_id=cs.cases_assign_to
+                        LEFT JOIN hpshrc_customer cus
+                        ON cus.customer_id=cs.refCustomer_id
 			$where
 			$order 
 			$limit"
@@ -711,6 +723,8 @@ class SSP {
 			FROM $table
                         LEFT JOIN employee emp
                         ON emp.employee_user_id=cs.cases_assign_to
+                        LEFT JOIN hpshrc_customer cus
+                        ON cus.customer_id=cs.refCustomer_id
 			$where "
 		);
 		$recordsFiltered = $resFilterLength[0][0];
@@ -720,6 +734,8 @@ class SSP {
 			FROM $table
                         LEFT JOIN employee emp
                         ON emp.employee_user_id=cs.cases_assign_to
+                        LEFT JOIN hpshrc_customer cus
+                        ON cus.customer_id=cs.refCustomer_id
                         "
 		);
 		$recordsTotal = $resTotalLength[0][0];                
@@ -727,7 +743,17 @@ class SSP {
                 $resData=array();
                 if(!empty($result)){                    
                     foreach ($result as $row){                                                                         
-                        $cases_id = $row['cases_id'];                        
+                        $cases_id = $row['cases_id'];
+
+                        
+                        $hearing_date="0000-00-00";
+                        $hearing_date_res = self::sql_exec($db,"SELECT comment_hearing_date FROM comment WHERE refCases_id = '{$cases_id}' ORDER BY comment_id DESC LIMIT 1"); 
+                        if(!empty($hearing_date_res)){
+                            $hearing_date=$hearing_date_res[0]['comment_hearing_date'];                        
+                            
+                        }
+                        $row['hearing_date']=$hearing_date;
+                                                
                         $locked_unlocked_str='';
                         $title = 'Click to locke customer';
                         $class = 'btn_lock_unlock_customer btn btn-xs btn-success';
@@ -759,13 +785,16 @@ class SSP {
                         $row['cases_status']=$cases_status;
                         
                         if($row['cases_assign_to']==0){                            
-                            $row['employee_name']="<button type='button' class='btn btn-xs btn-danger'>Not Assigned</button>";
+                            $row['user_firstname']="<button type='button' class='btn btn-xs btn-danger'>Not Assigned</button>";
                         }else{ 
-                            $row['employee_name']=$row['user_firstname'].' '.$row['user_lastname'];                        
+                            $row['user_firstname']=$row['user_firstname'].' '.$row['user_lastname'];                        
                         }
                         $row['action']="<a href='".BASE_URL_DATATABLES."employee-edit-cases/$cases_id' class='btn btn-xs btn-warning'>Edit&nbsp;<em class='icon ni ni-edit-fill'></em></a>
                                 <a href='".BASE_URL_DATATABLES."employee-view-cases/$cases_id' class='btn btn-xs btn-primary'>View&nbsp;<em class='icon ni ni-eye-fill'></em></a>                                
                                 $locked_unlocked_str";
+                        
+//                        $row['customer_first_name']=$row['customer_first_name'].' '.$row['customer_middle_name'].' '.$row['customer_last_name'];
+                                                                        
                         array_push($resData, $row);
                     }  
                 }

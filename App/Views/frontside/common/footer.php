@@ -752,10 +752,12 @@
                     },
                     "columns": [
                         {"data": "index"},
+                        {"data": "case_no"},
                         {"data": "cases_title"},
                         {"data": "cases_priority"},
                         {"data": "employee_name"},
                         {"data": "cases_status"},
+                        {"data": "hearing_date"},
                         {"data": "cases_dt_created"},
                         {"data": "action"}
                     ]

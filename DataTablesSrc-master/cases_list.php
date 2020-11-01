@@ -39,14 +39,16 @@ $columns = array(
     array('db' => 'cs.cases_status', 'dt' =>'cases_status'),
     array('db' => 'cs.cases_dt_created', 'dt' =>'cases_dt_created'),
     array('db' => 'cs.is_block_user', 'dt' =>'is_block_user'),
+    array('db' => 'cs.cases_party_name', 'dt' =>'cases_party_name'),
     array('db' => 'emp.user_firstname', 'dt' =>'user_firstname'),
-    array('db' => 'emp.user_lastname', 'dt' =>'user_lastname')
-    
+    array('db' => 'emp.user_lastname', 'dt' =>'user_lastname'),
+    array('db' => 'cus.customer_first_name', 'dt' =>'customer_first_name'),
+    array('db' => 'cus.customer_middle_name', 'dt' =>'customer_middle_name'),
+    array('db' => 'cus.customer_last_name', 'dt' =>'customer_last_name')    
 );
 include 'conn.php';
 
 $where="";
-
 //if(!empty($_REQUEST['search']['value'])){
 //    $value=$_REQUEST['search']['value'];
 //    $where.=" (hc.category_title LIKE '%$value%' OR hc1.category_title LIKE '%$value%' OR huf.upload_file_title LIKE '%$value%' OR huf.upload_file_desc LIKE '%$value%' OR huf.upload_file_original_name LIKE '%$value%' OR huf.upload_file_status LIKE '%$value%') ";

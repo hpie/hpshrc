@@ -308,10 +308,13 @@
                     "columns": [
                         {"data": "index"},
                         {"data": "case_no"},
+                        {"data": "customer_first_name"},
+                        {"data": "cases_party_name"},                        
                         {"data": "cases_title"},
                         {"data": "cases_priority"},
-                        {"data": "employee_name"},
+                        {"data": "user_firstname"},
                         {"data": "cases_status"},
+                        {"data": "hearing_date"},
                         {"data": "cases_dt_created"},
                         {"data": "action"}
                     ]

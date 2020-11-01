@@ -25,6 +25,11 @@ class Employee_c extends BaseController {
                             exit();                        
                     }   
                 }
+                  else{
+                    logoutUser('employee');
+                    header('Location: ' . EMPLOYEE_LOGIN_LINK);
+                    exit();
+                }
             
         } 
     }           

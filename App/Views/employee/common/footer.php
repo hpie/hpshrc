@@ -660,6 +660,26 @@
                             }
                         }
                     },
+                    cases_party_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Party Name'
+                            }
+                        }
+                    },
+                    cases_no: {
+                        validators: {
+                            stringLength: {
+                                min: 3
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Case No'
+                            }
+                        }
+                    },
                     cases_title: {
                         validators: {
                             stringLength: {
@@ -695,6 +715,26 @@
                             },
                             notEmpty: {
                                 message: 'Please Enter Title'
+                            }
+                        }
+                    },
+                    cases_party_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Party Name'
+                            }
+                        }
+                    },
+                    cases_no: {
+                        validators: {
+                            stringLength: {
+                                min: 3
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Case No'
                             }
                         }
                     }

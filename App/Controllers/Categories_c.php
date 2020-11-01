@@ -29,6 +29,11 @@ class Categories_c extends BaseController {
                             exit();                        
                     }   
                 }
+                else{
+                    logoutUser('admin');
+                    header('Location: ' . ADMIN_LOGIN_LINK);
+                    exit();
+                }
             
         }
         $this->userId = (int) $_SESSION['admin']['admin_user_id'];        

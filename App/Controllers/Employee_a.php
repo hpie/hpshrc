@@ -33,7 +33,12 @@ class Employee_a extends BaseController {
                         header('Location: ' . ADMIN_LOGIN_LINK);
                         exit();                        
                 }   
-            }            
+            }
+             else{
+                    logoutUser('admin');
+                    header('Location: ' . ADMIN_LOGIN_LINK);
+                    exit();
+                }
         } 
     }
     public function employee_list() {

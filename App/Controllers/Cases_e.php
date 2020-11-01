@@ -28,7 +28,11 @@ class Cases_e extends BaseController {
                             header('Location: ' . EMPLOYEE_LOGIN_LINK);
                             exit();                        
                     }   
-                }            
+                }else{
+                    logoutUser('employee');
+                    header('Location: ' . EMPLOYEE_LOGIN_LINK);
+                    exit();
+                }             
         } 
     }       
     public function edit_cases($cases_id) {
@@ -36,13 +40,19 @@ class Cases_e extends BaseController {
         $data['cases_res']=$this->Cases_m->get_single_cases($cases_id);
         $data['res_employee']=$this->Cases_m->get_employee(); 
                 
-        if (isset($_POST['cases_title'])) {            
+        if (isset($_POST['cases_title'])) { 
+                                   
             $params=array();
             $params['cases_priority']=$_POST['cases_priority'];
             $params['cases_title']=$_POST['cases_title'];
             $params['cases_message']=$_POST['cases_message'];
             $params['cases_assign_to']=$_POST['cases_assign_to'];
-            $params['case_update_date']=date("Y-m-d H:i:s");          
+            $params['case_update_date']=date("Y-m-d H:i:s");
+            $params['cases_party_name']=$_POST['cases_party_name'];
+            $params['cases_party_address']=$_POST['cases_party_address'];
+            $params['cases_party_number']=$_POST['cases_party_number'];
+            $params['case_no']=$_POST['case_no'];
+                        
             $res =  $this->Cases_m->edit_cases($params,$cases_id); 
             if ($res) {
                 successOrErrorMessage("Data updated successfully",'success');
@@ -104,6 +114,11 @@ class Cases_e extends BaseController {
             $params['refCustomer_id']=$customer_id;
             $params['createdby_user_type']='employee';
             $params['created_by']=$_SESSION['employee']['employee_user_id'];
+            
+            $params['cases_party_name']=$_POST['cases_party_name'];
+            $params['cases_party_address']=$_POST['cases_party_address'];
+            $params['cases_party_number']=$_POST['cases_party_number'];
+            $params['case_no']=$_POST['case_no'];
                         
             if($_POST['howtocontact']=='Email'){
                 $params['customer_email']=$_POST['customer_email'];

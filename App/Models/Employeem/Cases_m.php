@@ -54,7 +54,7 @@ class Cases_m extends Model
         $builder->insert($params);
         return $this->db->insertID();
     }
-      public function edit_cases($params,$cases_id){         
+      public function edit_cases($params,$cases_id){                              
         $builder = $this->db->table('cases');
         $builder->where('cases_id', $cases_id);
         $update =$builder->update($params);        

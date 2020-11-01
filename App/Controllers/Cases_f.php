@@ -28,7 +28,11 @@ class Cases_f extends BaseController {
                     header('Location: ' . FRONT_LOGIN_LINK);
                     exit();
                 }
-            }
+            }else{
+                    logoutUser('customer');
+                    header('Location: ' . FRONT_LOGIN_LINK);
+                    exit();
+                } 
         }
     }
     public function cases_list() {

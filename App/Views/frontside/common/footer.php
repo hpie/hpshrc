@@ -690,6 +690,16 @@
                             }
                         }
                     },
+                    cases_party_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Party Name'
+                            }
+                        }
+                    },
                      howtocontact: {
                         validators: {                           
                             notEmpty: {

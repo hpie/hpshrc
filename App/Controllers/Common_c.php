@@ -147,6 +147,9 @@ class Common_c extends BaseController {
             $params['refCustomer_id']=$customer_id;
             $params['createdby_user_type']='customer';
             $params['created_by']=$customer_id;
+            $params['cases_party_name']=$_POST['cases_party_name'];
+            $params['cases_party_address']=$_POST['cases_party_address'];
+            $params['cases_party_number']=$_POST['cases_party_number'];
             
             if(isset($_POST['howtocontact'])){
                 if($_POST['howtocontact']=='Email'){

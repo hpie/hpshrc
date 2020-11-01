@@ -82,7 +82,55 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
+                            
+                            
+                            <div class="row g-3 align-center">
+                                <div class="col-lg-4">
+                                    <div class="form-group">                                            
+                                        <label class="form-label float-right" for="cases_party_name">Party Name:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="cases_party_name" id="cases_party_name" placeholder="Enter Party Name" required="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                            <div class="row g-3 align-center">
+                                <div class="col-lg-4">
+                                    <div class="form-group">                                            
+                                        <label class="form-label float-right" for="cases_party_address">Party Address:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <textarea class="form-control form-control-sm" name="cases_party_address" id="cf-default-textarea" placeholder="Enter Party Address"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3 align-center">
+                                <div class="col-lg-4">
+                                    <div class="form-group">                                            
+                                        <label class="form-label float-right" for="cases_party_number">Party Contact Number:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control mobileno" name="cases_party_number" id="cases_party_number" placeholder="Enter Party Mobile Number" maxlength="10" minlength="10" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
                             <div class="row g-3 align-center case_files_file_div">
                                 <div class="col-lg-4">
                                     <div class="form-group">                                            
@@ -139,7 +187,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<input type="hidden" name="contentsummer" id="contentsummer">-->
+                           
+                            <div class="row g-3 align-center">
+                                <div class="col-lg-4">
+                                    <div class="form-group">                                            
+                                        <label class="form-label float-right" for="case_no">Case No:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="case_no" id="case_no" placeholder="Enter Case No" required="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
                             <div class="row g-3 align-center">
                                 <div class="col-lg-4">
                                     <div class="form-group">                                            

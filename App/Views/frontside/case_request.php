@@ -48,13 +48,11 @@
                             </select>
                         </div>
                     </div>
-                </div>
-                
+                </div>                
                 <div class="form-group howtocontact howtocontact_email">
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="customer_email">Customer Email:</label>
-                        <div class="col-sm-8 col-xs-12">
-                            <!--<input type="text" class="form-control" name="cases_title" id="cases_title" placeholder="Enter Title" required="" autocomplete="off">-->
+                        <div class="col-sm-8 col-xs-12">                            
                             <input type="email" class="form-control" name="customer_email" id="customer_email" placeholder="Enter customer email" autocomplete="off" value="example@gmail.com">
                         </div>
                     </div>
@@ -68,6 +66,33 @@
                     </div>
                 </div>
                 <?php } ?>                           
+                <div class="form-group">
+                    <div class="row">
+                        <label class="control-label col-sm-4 col-xs-12" for="cases_party_name">Party Name:</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control" name="cases_party_name" id="cases_party_name" placeholder="Enter Party Name" required="" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="control-label col-sm-4 col-xs-12" for="cases_party_address">Party Address:</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <textarea class="form-control" rows="5" placeholder="Enter Party Address" name="cases_party_address"></textarea>
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <div class="row">
+                        <label class="control-label col-sm-4 col-xs-12" for="cases_party_number">Party Contact Number:</label>
+                        <div class="col-sm-8 col-xs-12">
+                            <input type="text" class="form-control mobileno" name="cases_party_number" id="cases_party_number" placeholder="Enter Party Mobile Number" maxlength="10" minlength="10" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
                 <div class="form-group case_files_file_div">
                     <div class="row">
                         <label class="control-label col-sm-4 col-xs-12" for="case_files_file">Files:

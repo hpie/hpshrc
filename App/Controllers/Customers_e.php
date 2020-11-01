@@ -34,7 +34,11 @@ class Customers_e extends BaseController {
                             exit();                        
                     }   
                 }
-            
+                else{
+                    logoutUser('employee');
+                    header('Location: ' . EMPLOYEE_LOGIN_LINK);
+                    exit();
+                }
         }
     }
 

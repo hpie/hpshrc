@@ -24,6 +24,10 @@ class Admin_c extends BaseController {
                             header('Location: ' . ADMIN_LOGIN_LINK);
                             exit();                        
                     }   
+                }else{
+                    logoutUser('admin');
+                    header('Location: ' . ADMIN_LOGIN_LINK);
+                    exit();
                 }            
         }        
     }

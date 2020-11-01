@@ -52,8 +52,6 @@
                                 <?php }
                             ?>                            
                         </div>
-
-
                         <a href="#" class="nk-msg-profile-toggle profile-toggle active"><em class="icon ni ni-arrow-left"></em></a>
                     </div><!-- .nk-msg-head -->
                     <div class="nk-msg-reply nk-reply" data-simplebar>                        

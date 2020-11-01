@@ -177,7 +177,17 @@
 <?php if ($title == EMPLOYEE_VIEW_CASES_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
-        $(document).ready(function () {            
+        $(document).ready(function () { 
+            
+        $('#customCheck1').change(function() {
+            if(this.checked) {
+                var returnVal = confirm("Are you sure you want to close?");
+                $(this).prop("checked", returnVal);
+            }
+            $('#customCheck1').val(this.checked);        
+        });      
+            
+            
         $("#add_comment").on('submit', function(e){                        
         var fileUpload = document.getElementById('case_files_file');
         if (parseInt(fileUpload.files.length)>3){

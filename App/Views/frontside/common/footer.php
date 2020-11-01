@@ -532,7 +532,8 @@
 <?php if ($title == FRONT_VIEW_CASES_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
-        $(document).ready(function () {           
+        $(document).ready(function () {  
+          
         $("#add_comment").on('submit', function(e){                                    
         var fileUpload = document.getElementById('case_files_file');
         if (parseInt(fileUpload.files.length)>3){            

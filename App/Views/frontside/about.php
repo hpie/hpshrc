@@ -218,16 +218,17 @@
 
                         <div class="thumnail">
 
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/male-mamber.jpg" alt="" class="cause-img">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/acdogra.jpg" alt="" class="cause-img">
 
                         </div>
 
 
 
-                        <h4 class="member-name"><a href="#">To Be Provided</a></h4>
+                        <h4 class="member-name"><a href="#">Avatar Chand Dogra</a></h4>
 
                         <div class="member-position">
-                            Member
+                            Distt & Sessions Judge (R)
+							Judicial H.P. Human Rights Commission
                         </div>
 
                         <div class="btn-holder">

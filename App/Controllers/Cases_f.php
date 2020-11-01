@@ -163,6 +163,7 @@ class Cases_f extends BaseController {
                     $from_name = '';
                     $datavalue = 0;
                     $user_img = '';
+                    $hearing_date=$crow['comment_hearing_date'];
                     $comment_id = $crow['comment_id'];
                     $date = date("d-M-Y", strtotime($crow['comment_datetime']));
                     $datetime = date("d-M-Y h:i:sa", strtotime($crow['comment_datetime']));
@@ -196,6 +197,13 @@ class Cases_f extends BaseController {
                             $description='<p>'.$crow['comment_description'].'</p>';
                         }
                         $return_str .= $description;
+                        
+                        $date_array=explode("-",$hearing_date);
+                        if($date_array[0]!=0){
+                            $return_str .='<p><strong class="assign-title">Next Hearing Date : </strong>'.$date_array[2].'-'.$date_array[1].'-'.$date_array[0].'</p>';
+                        }
+                        
+                        
                     }
                     if ($crow['comment_type'] == 'assign') {
 

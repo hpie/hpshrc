@@ -33,6 +33,7 @@ $primaryKey = 'cs.cases_id';
 $columns = array(      
     array('db' => 'cs.cases_id', 'dt' =>'cases_id'),
     array('db' => 'cs.cases_priority', 'dt' =>'cases_priority'),
+    array('db' => 'cs.case_no', 'dt' =>'case_no'),
     array('db' => 'cs.cases_title', 'dt' =>'cases_title'),
     array('db' => 'cs.cases_assign_to', 'dt' =>'cases_assign_to'),
     array('db' => 'cs.cases_status', 'dt' =>'cases_status'),

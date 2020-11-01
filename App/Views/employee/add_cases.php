@@ -20,7 +20,21 @@
                             <?php
                             $attributes = ['class' => 'gy-3', 'id' => 'add_cases', 'name' => 'addcases', 'enctype' => 'multipart/form-data'];
                             echo form_open(EMPLOYEE_ADD_CASES_LINK, $attributes);
-                            ?>                             
+                            ?>  
+                              <div class="row g-3 align-center">
+                                <div class="col-lg-4">
+                                    <div class="form-group">                                            
+                                        <label class="form-label float-right" for="case_no">Case No:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="case_no" id="case_no" placeholder="Enter Case No" required="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row g-3 align-center">
                                 <div class="col-lg-4">
                                     <div class="form-group">                                            
@@ -188,20 +202,7 @@
                                 </div>
                             </div>
                            
-                            <div class="row g-3 align-center">
-                                <div class="col-lg-4">
-                                    <div class="form-group">                                            
-                                        <label class="form-label float-right" for="case_no">Case No:</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <div class="form-control-wrap">
-                                            <input type="text" class="form-control" name="case_no" id="case_no" placeholder="Enter Case No" required="" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                          
                             
                             
                             

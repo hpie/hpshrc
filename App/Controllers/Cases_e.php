@@ -84,7 +84,8 @@ class Cases_e extends BaseController {
                         $sendmail = new \SMTP_mail();
                         $resMail = $sendmail->sendCommentDetails($data['cases_res']['customer_email'],$email_data); 
                     }
-                } 
+                }
+                return redirect()->to(EMPLOYEE_CASES_LIST_LINK);     
             }else {                
                     successOrErrorMessage("Somthing happen wrong plz try again",'error');
             } 
@@ -187,6 +188,9 @@ class Cases_e extends BaseController {
         $comments="";
         $close_sts='no';
         if (isset($_POST['cases_id'])) {
+            
+//            print_r($_POST);die;
+            
             if (!empty($_POST['cases_message'])) {                                
                 if(isset($_POST['cases_status'])){
                     $this->Cases_m->close_cases($_POST['cases_id']);
@@ -202,6 +206,9 @@ class Cases_e extends BaseController {
                 $params['comment_from_usertype'] = 'employee';
                 $params['comment_to_usertype'] = 'customer';
                 $params['comment_datetime'] = date("Y-m-d H:i:s");
+                if($close_sts=='no'){                    
+                    $params['comment_hearing_date'] = $_POST['cases_hearing_date'];
+                }
                 $res = $this->Cases_m->add_cases_comment($params);
                 if ($res) {
                      

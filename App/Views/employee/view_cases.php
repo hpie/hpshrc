@@ -187,9 +187,25 @@ if (!empty($involved_peopel)) {
                                     <div class="nk-reply-form-editor">                                        
                                         <div class="nk-reply-form-tools">
                                             <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="cases_status" value="closed" class="custom-control-input" id="customCheck1">
-                                                        <label class="custom-control-label" for="customCheck1">Close</label>
+                                                <input type="checkbox" name="cases_status" value="closed" class="custom-control-input" id="customCheck1">
+                                                <label class="custom-control-label" for="customCheck1">Close</label>
+                                            </div>                                                                                       
+                                            <div class="row g-3 align-center">
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">                                            
+                                                        <label class="form-label float-right" for="cases_hearing_date">Next Hearing Date:</label>
                                                     </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <div class="form-control-wrap">
+                                                            <input type="text" class="form-control date-picker" data-date-format="yyyy-mm-dd" name="cases_hearing_date" id="cases_hearing_date" placeholder="Select Date" autocomplete="off">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
                                             <ul class="nk-reply-form-actions g-1">
                                                 <li>
                                                     <input type="file" name="case_files_file[]" multiple class="tn btn-icon btn-sm" id="case_files_file" accept="application/pdf,image/jpg,image/jpeg,image/png">                                                   

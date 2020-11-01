@@ -177,9 +177,8 @@
 <?php if ($title == EMPLOYEE_VIEW_CASES_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
-        $(document).ready(function () {                        
-        $("#add_comment").on('submit', function(e){
-                                    
+        $(document).ready(function () {            
+        $("#add_comment").on('submit', function(e){                        
         var fileUpload = document.getElementById('case_files_file');
         if (parseInt(fileUpload.files.length)>3){
             toastr.error('You can only upload a maximum of 3 files.'); 
@@ -190,6 +189,15 @@
             toastr.error('Plz add description in comment'); 
             return false;
         }
+        var hearingdate=$("#cases_hearing_date").val();
+        if(hearingdate===''){            
+            if ($('#customCheck1').is(":checked")){}
+            else{            
+                toastr.error('Plz select hearing date'); 
+                return false;
+            }
+        }
+        
         
         for (var i = 0; i <= fileUpload.files.length - 1; i++) {
             if (fileUpload.files.item(i).size > 2097152) {
@@ -216,6 +224,7 @@
                         if(res.case_sts==="yes"){
                             location.reload();
                         }
+                        $("#cases_hearing_date").val('');
                         $( ".lastcomment" ).first().before( res.comments );                                                
                         $('.summernote-basic-id').summernote("code",'');
                         $('.simplebar-content-wrapper').scrollTop(0); 
@@ -288,7 +297,7 @@
                     },
                     "columns": [
                         {"data": "index"},
-                        {"data": "cases_id"},
+                        {"data": "case_no"},
                         {"data": "cases_title"},
                         {"data": "cases_priority"},
                         {"data": "employee_name"},

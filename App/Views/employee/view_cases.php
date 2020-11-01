@@ -10,6 +10,7 @@
                                 <ul class="nk-msg-tags">
                                     <li><span class="label-tag"><span>Priority: <em class="icon ni ni-more-v"></em><?php echo $caseDetails['cases_priority']; ?></span></span></li>
                                     <li><span class="label-tag"><span>Status: <em class="icon ni ni-bar-chart-fill"></em><?php echo $caseDetails['cases_status']; ?></span></span></li>
+                                    <li><span class="label-tag"><span>Case No: <?php echo $caseDetails['case_no']; ?></span></span></li>
                                 </ul>                                
                                 <hr>
                                 <span class="label-tag"><span><strong>Description: </strong></span></span>

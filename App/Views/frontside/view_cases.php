@@ -23,6 +23,7 @@
                             <p><strong>Priority: </strong> <span class="tags"><i class="fa fa-flag-o"> </i> <?php echo $caseDetails['cases_priority']; ?></span> </p>
                             <p><strong>Status: </strong> <span class="tags"><i class="fa fa-line-chart"> </i> <?php echo $caseDetails['cases_status']; ?></span> </p>  
                             <p><strong>Assigned To: </strong> <span class="tags"><i class="fa fa-user"> </i> <?php echo $caseDetails['user_firstname'] . ' ' . $caseDetails['user_lastname']; ?></span> </p>  
+                            <p><strong>Case No: </strong> <?php echo $caseDetails['case_no']; ?> </p>  
                             <p><strong>Created Date: </strong>
                                 <span><i class="fa fa-calendar"> </i> <?php echo date("d-M-Y h:i:sa", strtotime($caseDetails['cases_dt_created'])); ?></span>                         
                             </p>

@@ -486,7 +486,7 @@ if (!function_exists('fileUpload')) {
             }
             if (empty($errors) == true) {
 
-                $filename_join_upload=substr($file_name, 0, strpos($file_name, "."));
+                $filename_join_upload=str_replace(' ', '-',substr($file_name, 0, strpos($file_name, ".")));
                 
                 $RandomNum = time() . date("-Ymd-hisa");
 

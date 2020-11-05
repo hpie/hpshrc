@@ -238,6 +238,7 @@
                         $( ".lastcomment" ).first().before( res.comments );                                                
                         $('.summernote-basic-id').summernote("code",'');
                         $('.simplebar-content-wrapper').scrollTop(0); 
+                        toastr.success('Comment sent successfully');                          
                     }
                 }        
             });

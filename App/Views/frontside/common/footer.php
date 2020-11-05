@@ -579,7 +579,13 @@
                     if(res.message==="success"){                         
                         $( ".lastcomment" ).first().before( res.comments );                                                
                         $('#summernote').summernote("code",'');
-                        $('#comments').scrollTop(0); 
+                        $('#comments').scrollTop(0);
+                        
+                        PNotify.success({
+                            title: 'Success!',
+                            text: 'Comment sent successfully'
+                        }); 
+                        
                     }
                 }        
             });

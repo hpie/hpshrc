@@ -211,24 +211,24 @@
                     </div> <!-- /.team-member -->
 
                 </div>
-
-                <div class="col-md-3 col-sm-6">
+				
+				<div class="col-md-3 col-sm-6">
 
                     <div class="team-member">
 
                         <div class="thumnail">
 
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/acdogra.jpg" alt="" class="cause-img">
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/ajaibhandari.jpg" alt="" class="cause-img">
 
                         </div>
 
 
 
-                        <h4 class="member-name"><a href="#">Avatar Chand Dogra</a></h4>
+                        <h4 class="member-name"><a href="#">Dr. Ajai Bhandari (Retd. IAS)</a></h4>
 
                         <div class="member-position">
-                            Distt & Sessions Judge (R)
-							Judicial H.P. Human Rights Commission
+                            Member H.P. Human Rights Commission
+
                         </div>
 
                         <div class="btn-holder">
@@ -247,7 +247,42 @@
 
                 </div>
 
+                <div class="col-md-3 col-sm-6">
 
+                    <div class="team-member">
+
+                        <div class="thumnail">
+
+                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/acdogra.jpg" alt="" class="cause-img">
+
+                        </div>
+
+
+
+                        <h4 class="member-name"><a href="#">Avatar Chand Dogra</a></h4>
+
+                        <div class="member-position">
+                            Distt & Sessions Judge (R)
+							Judicial Member H.P. Human Rights Commission
+                        </div>
+
+                        <div class="btn-holder">
+
+                            <a href="#" class="btn"> <i class="fa fa-envelope"></i> </a>
+                            <a href="#" class="btn"> <i class="fa fa-facebook"></i> </a>
+                            <a href="#" class="btn"> <i class="fa fa-google"></i> </a>
+                            <a href="#" class="btn"> <i class="fa fa-twitter"></i> </a>
+                            <a href="#" class="btn"> <i class="fa fa-linkedin"></i> </a>
+
+                        </div>
+
+
+
+                    </div> <!-- /.team-member -->
+
+                </div>
+				
+				
                 <div class="col-md-3 col-sm-6">
 
                     <div class="team-member">
@@ -283,39 +318,7 @@
                 </div>
 
 
-                <div class="col-md-3 col-sm-6">
-
-                    <div class="team-member">
-
-                        <div class="thumnail">
-
-                            <img src="<?php echo FRONT_ASSETS_FOLDER; ?>images/team/male-mamber.jpg" alt="" class="cause-img">
-
-                        </div>
-
-
-
-                        <h4 class="member-name"><a href="#">To Be Provided</a></h4>
-
-                        <div class="member-position">
-                            Member
-                        </div>
-
-                        <div class="btn-holder">
-
-                            <a href="#" class="btn"> <i class="fa fa-envelope"></i> </a>
-                            <a href="#" class="btn"> <i class="fa fa-facebook"></i> </a>
-                            <a href="#" class="btn"> <i class="fa fa-google"></i> </a>
-                            <a href="#" class="btn"> <i class="fa fa-twitter"></i> </a>
-                            <a href="#" class="btn"> <i class="fa fa-linkedin"></i> </a>
-
-                        </div>
-
-
-
-                    </div> <!-- /.team-member -->
-
-                </div>
+                
 
             </div> <!-- /.row -->
 

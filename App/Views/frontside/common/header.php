@@ -65,7 +65,7 @@
                             <div class="col-sm-6 col-xs-12">
                                 <ul class="list-unstyled list-inline header-contact">
                                     <li> <i class="fa fa-phone"></i> <a href="tel:">+91 177 262 4908 </a> </li>
-                                    <li> <i class="fa fa-envelope"></i> <a href="mailto:info@hpshrc.hp.gov.in">sridhar.sharma909(at)hp.gov.in</a> </li>
+                                    <li> <i class="fa fa-envelope"></i> <a href="mailto:info@hpshrc.hp.gov.in">hphrc-shi(at)hp.gov.in</a> </li>
                                 </ul> <!-- /.header-contact  -->
                             </div>
                             <div class="col-sm-6 col-xs-12 text-right">

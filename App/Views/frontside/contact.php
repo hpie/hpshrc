@@ -75,7 +75,7 @@
                         <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-map-marker"></i></span> Pines Grove Building Shimla 171002</li>
                         <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-phone"></i></span> +91 177 262 4908</li>
 
-                        <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-envelope"></i></span>sridhar.sharma909(at)hp.gov.in</li>
+                        <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-envelope"></i></span>hphrc-shi(at)hp.gov.in</li>
                     </ul>
                 </div>
 

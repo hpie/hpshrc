@@ -2,7 +2,9 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title><?php echo $title; ?></title>        
+        <title><?php echo $title; ?></title>  
+		<meta name="description" content="Human Right Commission Shimla Himachal Pradesh">
+        <meta name="keywords" content="hphrc,human right,human right commission,human right commission shimla,human right himachal,human right commission himachal,humanright,humanrightcommission,humanrightcommissionshimla,humanrights,humanrightscommissionshimla">		
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta http-equiv="X-Content-Type-Options" content="nosniff">   
@@ -11,8 +13,8 @@
        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>-->
 
-       <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-    <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/dataTables.responsive.css" rel="stylesheet" type="text/css"> 
+        <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo CENTRAL_ASSETS_FOLDER; ?>datatable/dataTables.responsive.css" rel="stylesheet" type="text/css"> 
 
         <!-- favico -->
         <link rel='icon' href="<?php echo FRONT_ASSETS_FOLDER; ?>images/favico/favicon.ico" type="image/x-icon">

@@ -34,13 +34,13 @@
         <link rel="stylesheet" href="<?php echo FRONT_ASSETS_FOLDER; ?>css/comment.css" type="text/css">
         <?php } ?>
         <!-- Modernizr -->
-        <script nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>js/modernizr-2.6.2.min.js"></script>
+        <script nonce='S51U26wMQz' src="<?php echo FRONT_ASSETS_FOLDER; ?>js/modernizr-2.6.2.min.js" type="text/javascript"></script>
      
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotify.js" type="text/javascript"></script>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyStyleMaterial.js" type="text/javascript"></script>
         <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyButtons.js" type="text/javascript"></script>              
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/PNotifyBrightTheme.css"/>
-        <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyConfirm.js"></script>
+        <script nonce='S51U26wMQz' src="<?php echo BASE_URL; ?>/assets/pnotify/js/PNotifyConfirm.js" type="text/javascript"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/animate.css" rel="stylesheet"/>      
         <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>/assets/pnotify/css/icon.css"/>        
         

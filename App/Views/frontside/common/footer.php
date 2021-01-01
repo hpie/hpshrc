@@ -673,7 +673,7 @@
                             },
                             notEmpty: {
                                 message: 'Please enter valid email address'
-                            }
+                            }                           
                         }
                     },
                     customer_contact: {
@@ -684,6 +684,10 @@
                             },
                             notEmpty: {
                                 message: 'Please enter valid mobile number'
+                            },
+                            regexp: {
+                                regexp: /^[^~!#%^_,.*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
                             }
                         }
                     },
@@ -694,6 +698,10 @@
                             },
                             notEmpty: {
                                 message: 'Please Enter Title'
+                            },
+                            regexp: {
+                                regexp: /^[^~!#%^_,.*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
                             }
                         }
                     },
@@ -704,6 +712,10 @@
                             },
                             notEmpty: {
                                 message: 'Please Enter Party Name'
+                            },
+                            regexp: {
+                                regexp: /^[^~!#%^_,.*|\":<>[\]{}`\\()';@&/$]+$/,
+                                message: 'Special character not allowed'
                             }
                         }
                     },
@@ -720,6 +732,40 @@
     </script>
 <?php } ?>  
 
+
+<?php if ($title == FRONT_LOGIN_TITLE) {
+    ?>
+    <script nonce='S51U26wMQz' type="text/javascript">
+        $(document).ready(function () {                   
+            $('#userlogin').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {                  
+                    username: {
+                        validators: {
+                            stringLength: {
+                                min: 2
+                            },
+                            notEmpty: {
+                                message: 'Please Enter Party Name'
+                            },
+                            regexp: {
+                                regexp: /^[^~!#%^_,*|\":<>[\]{}`\\()';&/$]+$/,
+                                message: 'Special character not allowed'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+<?php } ?>     
+    
+    
 <?php if ($title == FRONT_LIST_CASES_TITLE) {
     ?> 
     <script nonce='S51U26wMQz' type="text/javascript">
